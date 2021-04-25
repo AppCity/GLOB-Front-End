@@ -1,11 +1,15 @@
 {
-  "name": "glob",
+  "name": "GLOB",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "start": "next dev",
+    "build": "npx git config core.ignorecase false && next build",
+    "postbuild": "next-sitemap & next-on-netlify",
+    "prod": "next start",
+    "bp": "next build && next start",
+    "kill": "npx kill-port 3000",
+    "git": "npx git config --local user.name 'Santhosh' && npx git config --local user.email 'santhosh.umapathi@app-city.co'"
   },
   "dependencies": {
     "next": "10.1.3",
