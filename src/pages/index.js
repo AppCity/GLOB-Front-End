@@ -1,5 +1,6 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import styles from '../../styles/Home.module.css'
+import colors from '../assets/colors/colors'
 
 export default function Home() {
   return (
@@ -10,7 +11,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
+        <h1 className={styles.title} style = {{background:colors("darkMode").bg}}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
