@@ -60,7 +60,8 @@ yarn add next-sitemap -D
 yarn add next-optimized-images@canary imagemin-optipng imagemin-gifsicle imagemin-svgo svg-sprite-loader webp-loader lqip-loader responsive-loader image-trace-loader
 
 ```
-
+## Back-End
+[GLOB-API](https://github.com/AppCity/GLOB-Back-End)
 
 ## Project Structure
 

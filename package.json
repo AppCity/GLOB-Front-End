@@ -1,7 +1,16 @@
 {
   "name": "GLOB",
+  "description": "Where globe writes blogs",
+  "homepage": "https://google.com",
+  "keywords": [
+    "GLOB"
+  ],
   "version": "0.1.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AppCity/GLOB-Front-End"
+  },
   "scripts": {
     "start": "next dev",
     "build": "npx git config core.ignorecase false && next build",
@@ -12,8 +21,30 @@
     "git": "npx git config --local user.name 'Santhosh' && npx git config --local user.email 'santhosh.umapathi@app-city.co'"
   },
   "dependencies": {
+    "axios": "^0.21.1",
+    "framer-motion": "^4.1.10",
+    "image-trace-loader": "^1.0.2",
+    "imagemin-gifsicle": "^7.0.0",
+    "imagemin-optipng": "^8.0.0",
+    "imagemin-svgo": "^9.0.0",
+    "lqip-loader": "^2.2.1",
     "next": "10.1.3",
+    "next-on-netlify": "^2.9.0",
+    "next-optimized-images": "^2.6.2",
+    "next-redux-wrapper": "^6.0.2",
+    "prop-types": "^15.7.2",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-icons": "^4.2.0",
+    "react-redux": "^7.2.4",
+    "redux": "^4.1.0",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.3.0",
+    "responsive-loader": "^2.3.0",
+    "svg-sprite-loader": "^6.0.6",
+    "webp-loader": "^0.6.0"
+  },
+  "devDependencies": {
+    "next-sitemap": "^1.6.25"
   }
 }
