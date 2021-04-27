@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import {ReduxWrapper} from '../store/store';
 
 //Global Css
-import '../styles/globals.css'
+import '../../styles/globals.css'
 
 
 //Components
