@@ -15,6 +15,7 @@ import Head from '../components/Head/Head'
 //Page Animation
 import  {  AnimatePresence  }  from  "framer-motion" ; 
 
+
 // Redirect from default Netlify Domain
 // if(typeof window != "undefined") //Runs only on client side
 // {
@@ -36,6 +37,8 @@ const WrappedApp = ({ Component, pageProps }) =>
       {/* <Layout> */}
 
         <Head />
+
+
 
         <Component {...pageProps} />
         
