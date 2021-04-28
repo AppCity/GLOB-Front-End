@@ -8,55 +8,7 @@
     background-size: cover;
     justify-content: center;
     align-items: center;
-    animation: splash 0.4s 3s linear forwards;
-}
-
-.ImageContainer
-{
-    display: flex;
-    position: relative;
-    height: 100px;
-    width: 100%;
-    /* background-color: green; */
-}
-
-.Image
-{
-    display: flex;
-    position: absolute;
-    justify-content: center;
-    width: 100%;
-    top: 0;
-    left: 0;
-}
-
-.Image img
-{
-    height: 100px;
-}
-
-.Cursor
-{
-    animation: fadeInOut 1s linear forwards infinite;
-}
-
-@keyframes fadeInOut
-{
-	0% {
-	  opacity:0;
-	}
-    25% {
-		opacity:0.5;
-	  }
-	50% {
-		opacity:1;
-	  }
-    75% {
-    opacity:0.5;
-    }
-	100% {
-	  opacity:0;
-	}
+    animation: splash 0.2s 2500ms linear forwards;
 }
 
 @keyframes splash {
