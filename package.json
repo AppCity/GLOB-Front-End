@@ -45,6 +45,9 @@
     "webp-loader": "^0.6.0"
   },
   "devDependencies": {
-    "next-sitemap": "^1.6.25"
+    "autoprefixer": "^10.2.5",
+    "next-sitemap": "^1.6.25",
+    "postcss": "^8.2.13",
+    "tailwindcss": "^2.1.2"
   }
 }
