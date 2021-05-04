@@ -42,6 +42,7 @@ yarn start
 * [NextJs Sitemap](https://www.npmjs.com/package/next-sitemap) - Sitemap Generator
 * [Next Optimized Images](https://github.com/cyrilwanner/next-optimized-images) - Optimized Images
 * [Framer Motion](https://github.com/framer/motion) - Page Animations
+* [Tailwind CSS](https://tailwindcss.com/docs/guides/nextjs) - Tailwind CSS
 
 ```
 yarn add redux react-redux next-redux-wrapper redux-thunk redux-devtools-extension 
@@ -58,10 +59,16 @@ yarn add next-on-netlify
 yarn add nodemailer 
 yarn add next-sitemap -D
 yarn add next-optimized-images@canary imagemin-optipng imagemin-gifsicle imagemin-svgo svg-sprite-loader webp-loader lqip-loader responsive-loader image-trace-loader
-
+yarn add -D tailwindcss@latest postcss@latest autoprefixer@latest && npx tailwindcss init -p
 ```
 ## Back-End
 [GLOB-API](https://github.com/AppCity/GLOB-Back-End)
+
+## Styling
+* TailWind CSS
+* CSS Modules
+* CSS
+* JSS
 
 ## Project Structure
 

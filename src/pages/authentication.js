@@ -8,7 +8,7 @@ const authentication = (props) =>
 
     return(
         <div>
-             <h1>authentication</h1>
+             <h1>Authentication Page</h1>
         </div>
     )
 };

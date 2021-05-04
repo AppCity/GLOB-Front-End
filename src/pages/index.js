@@ -8,7 +8,7 @@ const App = () =>
 {
   const router = useRouter()
 
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false)
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(true)
   const [isSplashComplete, setIsSplashComplete] = useState(false)
 
   useEffect(() => {
@@ -22,6 +22,10 @@ const App = () =>
     }
     
   }, [isSplashComplete])
+
+
+  
+  
 
   return (
     <><SplashScreen setIsSplashComplete={setIsSplashComplete}/></>
