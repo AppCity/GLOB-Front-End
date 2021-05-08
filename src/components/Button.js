@@ -11,9 +11,10 @@ import Proptypes from "prop-types";
 const Button = ({ title, onClick, customCss }) => {
   return (
     <button
-      className={`px-3 py-1 focus:outline-none bg-gradient-to-r  from-fucsia via-yellow to-orange-light
-                  hover:bg-opacity-95                
-                ${customCss && customCss}`}
+      className={`text-bg text-lg py-2 w-full rounded-3xl  focus:outline-none 
+      bg-gradient-to-r from-yellow via-orange to-fucsia bg-blend-soft-light
+      hover:drop-shadow-lg filter transition-all
+      ${customCss && customCss}`}
       onClick={onClick}
     >
       {title}

@@ -2,7 +2,7 @@ import Proptypes from "prop-types";
 
 const Background = ({ children }) => {
   return (
-    <div className="flex h-screen bg-background bg-no-repeat">{children}</div>
+    <div className="flex h-screen bg-bg-image bg-no-repeat">{children}</div>
   );
 };
 

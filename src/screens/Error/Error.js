@@ -1,8 +1,3 @@
-//Css
-import classes from './Error.module.css'
-
-//Components
-
 
 //Next Js
 import { useRouter } from 'next/router'
@@ -18,9 +13,9 @@ const ErrorScreen = () =>
     const router = useRouter()
 
     return (
-        <div className = {classes.Root}>
+        <div>
             
-            <div className = {classes.ImageContainer}>
+            <div >
                 {/* <Img 
                     src = {Error404}
                     alt = {"Error - 404"}
