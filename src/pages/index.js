@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 
 //Screens
 import SplashScreen from '../screens/SplashScreen/SplashScreen';
+import HomeScreen from '../screens/HomeScreen/HomeScreen';
 
 const App = () => 
 {
@@ -24,12 +25,17 @@ const App = () =>
   // }, [isSplashLoading])
 
 
-  
+  if(isSplashLoading)
+  {
+    return <SplashScreen setIsSplashLoading={setIsSplashLoading}/>
+  }
 
   return (
-    <><SplashScreen setIsSplashLoading={setIsSplashLoading}/></>
-
+    <HomeScreen />
   )
+  
+
+  
 }
 
 export default App;
