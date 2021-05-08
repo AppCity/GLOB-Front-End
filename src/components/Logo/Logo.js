@@ -1,48 +1,39 @@
-import React, {useState, useEffect} from 'react'
-import Proptypes from 'prop-types'
-
-//Css
-import classes from './Logo.module.css'
 //NEXT Optimizied Image
 import Img from 'react-optimized-image';
+
 //Images
 import logo_text from '../../../public/images/logo_text.svg'
 import logo_underscore from '../../../public/images/logo_underscore.svg'
 
-const Logo = (props) =>
+const Logo = () =>
 {
 
 
     return(
-        <div className = {classes.ImageContainer}>
-             
-                <div className = {classes.Image}>
-                    <Img 
-                        src = {logo_text}
-                        alt = {"logo_text"}
-                        sizes = {[600, 800, 1200]}
-                        loading = "eager"
-                    />
-                </div>
-
-                <div className = {classes.Image}>
-                    <Img 
-                        src = {logo_underscore}
-                        alt = {"logo_underscore"}
-                        sizes = {[600, 800, 1200]}
-                        loading = "eager"
-                        className = {classes.Cursor}
-                    />
-                </div>
-             
+        <div className="flex relative h-28 w-full">
+            <div className="flex absolute justify-center w-full top-0 left-0">
+                <Img 
+                    src = {logo_text}
+                    alt = {"logo_text"}
+                    sizes = {[1200]}
+                    loading = "eager"
+                    original
+                    className="h-28"
+                />
             </div>
+
+            <div className="flex absolute justify-center w-full top-0 left-0">
+                <Img 
+                    src = {logo_underscore}
+                    alt = {"logo_underscore"}
+                    sizes = {[1200]}
+                    original
+                    loading = "eager"
+                    className="h-28 animate-blink"
+                />
+            </div>
+        </div>
     )
 };
-
-
-Logo.propTypes = 
-{
-
-}
 
 export default Logo;

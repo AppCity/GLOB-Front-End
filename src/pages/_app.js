@@ -9,7 +9,6 @@ import '../../styles/globals.css'
 
 
 //Components
-import Head from '../components/Head/Head'
 // import Layout from '../Layout/Layout'
 
 //Page Animation
@@ -35,10 +34,6 @@ const WrappedApp = ({ Component, pageProps }) =>
   return (
     <AnimatePresence exitBeforeEnter>
       {/* <Layout> */}
-
-        <Head />
-
-
 
         <Component {...pageProps} />
         

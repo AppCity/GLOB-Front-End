@@ -3,17 +3,19 @@ import {useEffect} from 'react'
 import Proptypes from 'prop-types'
 
 //Css
-import classes from './SplashScreen.module.css'
+// import classes from './SplashScreen.module.css'
 
 //Components
 import Logo from '../../components/Logo/Logo';
 
-const SplashScreen = ({setIsSplashComplete}) =>
+
+
+const SplashScreen = ({setIsSplashLoading}) =>
 {
 
     useEffect(() => {
         setTimeout(() => {
-            setIsSplashComplete(true)
+            setIsSplashLoading(false)
         }, 3000);
         
     }, [])
@@ -21,8 +23,8 @@ const SplashScreen = ({setIsSplashComplete}) =>
   
 
     return(
-        <div className = {classes.Root} >
-            <Logo />
+        <div className="flex items-center justify-center h-screen ">
+           <Logo />
         </div>
     )
 };
@@ -30,7 +32,7 @@ const SplashScreen = ({setIsSplashComplete}) =>
 
 SplashScreen.propTypes = 
 {
-    setIsSplashComplete: Proptypes.func.isRequired
+    setIsSplashLoading: Proptypes.func.isRequired
 }
 
 export default SplashScreen;

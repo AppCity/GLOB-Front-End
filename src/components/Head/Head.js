@@ -1,8 +1,9 @@
 //NEXT Js Head
 import NEXTHead from 'next/head'
+import Proptypes from "prop-types";
 
 //Default Head for all pages
-const Head = () => (
+const Head = ({ title, content }) => (
     <NEXTHead>
         <meta charSet="utf-8" />
         <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -12,13 +13,13 @@ const Head = () => (
         <meta property="og:site_name" content="GLOB" key="ogsitename"/>
         <meta property="og:author" content="GLOB" key="author"/>
         <meta property="og:type" content="website" key="ogtype"/>
-        <meta property="og:image" content="/images/logo.png" key="ogimage" />
-        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image" content="/images/logo_full.svg" key="ogimage" />
+        <meta property="og:image:type" content="image/svg" />
         <meta property="og:image:alt" content="GLOB" />
         <meta property="og:locale" content="en_US" />
         <meta property="og:locale:alternate" content="it_IT" />
-        <meta name="twitter:image" content="/images/logo.png" />
-        <meta name="twitter:card" content="/images/logo.png" />
+        <meta name="twitter:image" content="/images/logo_full.svg" />
+        <meta name="twitter:card" content="/images/logo_full.svg" />
 
         <link rel="icon" href="/favicon.ico"/>
         <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
@@ -44,10 +45,26 @@ const Head = () => (
             crossOrigin=""
         />
 
-     
+        <title>{`GLOB | ${title}`}</title>
+        <meta property="og:title" content={`GLOB | ${title}`} key="ogtitle" />
+        <meta property="og:url" content="https://www.GLOB.it/" key="ogurl" />
+
+        <meta name="description" content={`GLOB | ${content}`} />
+        <meta
+        property="og:description"
+        content={`GLOB | ${content}`}
+        key="ogdesc"
+        />
+        <meta name="twitter:title" content={`GLOB | ${title}`} />
+        <meta name="twitter:description" content={`GLOB | ${content}`} />
 
     </NEXTHead>
 )
+
+Head.propTypes = {
+    title: Proptypes.string,
+    content: Proptypes.string,
+  };
 
 export default Head;
 

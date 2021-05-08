@@ -9,26 +9,25 @@ const App = () =>
   const router = useRouter()
 
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(true)
-  const [isSplashComplete, setIsSplashComplete] = useState(false)
+  const [isSplashLoading, setIsSplashLoading] = useState(true)
 
-  useEffect(() => {
-    if(isUserLoggedIn && isSplashComplete)
-    {
-      router.push('home')
-    }
-    if(!isUserLoggedIn && isSplashComplete)
-    {
-      router.push('authentication')
-    }
+  // useEffect(() => {
+  //   if(isUserLoggedIn && !isSplashLoading)
+  //   {
+  //     router.push('home')
+  //   }
+  //   if(!isUserLoggedIn && !isSplashLoading)
+  //   {
+  //     router.push('authentication')
+  //   }
     
-  }, [isSplashComplete])
+  // }, [isSplashLoading])
 
 
-  
   
 
   return (
-    <><SplashScreen setIsSplashComplete={setIsSplashComplete}/></>
+    <><SplashScreen setIsSplashLoading={setIsSplashLoading}/></>
 
   )
 }

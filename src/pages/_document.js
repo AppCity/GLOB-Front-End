@@ -9,7 +9,6 @@ export default class MyDocument extends Document
     return (
       <Html>
         <Head>
-         
         </Head>
         <body>
           <script>0</script>
