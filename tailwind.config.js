@@ -39,6 +39,9 @@ module.exports = {
         poetsenOne: ['PoetsenOne'],
         worksans: ['WorkSans'],
       },
+      fontSize: {
+        "10xl": '9rem',
+      },
       backgroundImage: {
         'bg-image': "url('/images/background.svg')",
        },
@@ -49,8 +52,8 @@ module.exports = {
      },
      keyframes: {
       wiggle: {
-        '0%, 100%': { transform: 'rotate(-3deg)' },
-        '50%': { transform: 'rotate(3deg)' },
+        '0%, 100%': { transform: 'rotate(-5deg)' },
+        '50%': { transform: 'rotate(5deg)' },
       },
       blink:{
         '0%, 100%': { opacity: 0 },
