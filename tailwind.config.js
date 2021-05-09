@@ -67,7 +67,10 @@ module.exports = {
       backgroundColor: ["checked"],
       textColor: ["checked", "first"],
       borderColor: ["checked"],
-      dropShadow:['hover']
+      dropShadow:['hover'],
+      backgroundImage:['hover'],
+      animation:['hover'],
+
     },
   },
   plugins: [],

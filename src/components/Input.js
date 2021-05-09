@@ -1,16 +1,27 @@
 import { useState } from "react";
 import Proptypes from "prop-types";
+import TextButton from "./TextButton";
 
+/**
+ * TextButton component
+ * @param {*} label - String - Label to show on top of Input
+ * @param {*} placeholder String - Placeholder to show on Input
+ * @param {*} onChange Function - onChange handler
+ * @param {*} value String - Value of Input
+ * @param {*} required Bool - Field is required
+ * @param {*} type String - Normal field or Password field
+ * @param {*} minLength Number - Minimum length required
+ * @returns
+ */
 
 const Input = ({
-  label,
-  placeholder,
+  label="",
+  placeholder="",
   onChange = () => {},
-  value,
-  dark,
-  required,
-  type,
-  minLength,
+  value="",
+  required=false,
+  type=null,
+  minLength=null,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showBorder, setShowBorder] = useState(false)
@@ -22,16 +33,9 @@ const Input = ({
       <div className="flex relative">
         {type === "password" && (
           <div className="flex absolute h-full items-center right-3">
-            <span 
-                className="cursor-pointer 
-                text-gray-500 
-                hover:text-black 
-                transition-colors text-xs
-                " 
-                onClick={() => setShowPassword(!showPassword)}
-            >
-            Show
-            </span>
+
+            <TextButton title={!showPassword ? "Show" : "Hide"} onClick={() => setShowPassword(!showPassword)}/>
+
           </div>
         )}
         <input
