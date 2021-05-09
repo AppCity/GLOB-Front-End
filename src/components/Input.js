@@ -1,9 +1,6 @@
-import { useState } from "react";
 import Proptypes from "prop-types";
-import TextButton from "./TextButton";
-
 /**
- * TextButton component
+ * Input component
  * @param {*} label - String - Label to show on top of Input
  * @param {*} placeholder String - Placeholder to show on Input
  * @param {*} onChange Function - onChange handler
@@ -14,17 +11,22 @@ import TextButton from "./TextButton";
  * @returns
  */
 
+import { useState } from "react";
+
+//Components
+import TextButton from "./TextButton";
+
 const Input = ({
-  label="",
-  placeholder="",
+  label = "",
+  placeholder = "",
   onChange = () => {},
-  value="",
-  required=false,
-  type=null,
-  minLength=null,
+  value = "",
+  required = false,
+  type = null,
+  minLength = null,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
-  const [showBorder, setShowBorder] = useState(false)
+  const [showBorder, setShowBorder] = useState(false);
 
   return (
     <div className="flex flex-col w-full">
@@ -33,9 +35,10 @@ const Input = ({
       <div className="flex relative">
         {type === "password" && (
           <div className="flex absolute h-full items-center right-3">
-
-            <TextButton title={!showPassword ? "Show" : "Hide"} onClick={() => setShowPassword(!showPassword)}/>
-
+            <TextButton
+              title={!showPassword ? "Show" : "Hide"}
+              onClick={() => setShowPassword(!showPassword)}
+            />
           </div>
         )}
         <input
@@ -50,8 +53,11 @@ const Input = ({
           onBlur={() => setShowBorder(false)}
         />
 
-        <div className={`${showBorder ? "opacity-100":"opacity-0"} flex absolute h-px w-full bottom-0 bg-gradient-to-r from-yellow via-orange to-fucsia transition-opacity`} />
-
+        <div
+          className={`${
+            showBorder ? "opacity-100" : "opacity-0"
+          } flex absolute h-px w-full bottom-0 bg-gradient-to-r from-yellow via-orange to-fucsia transition-opacity`}
+        />
       </div>
     </div>
   );

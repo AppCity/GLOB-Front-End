@@ -3,7 +3,7 @@ import {useEffect} from 'react'
 import Proptypes from 'prop-types'
 
 //Components
-import Logo from '../../components/Logo/Logo';
+import Logo from '../../components/Logo';
 
 
 

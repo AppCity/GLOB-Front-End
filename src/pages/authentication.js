@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import Proptypes from 'prop-types'
-import Head from '../components/Head/Head';
+import Head from '../components/Head';
 import AuthenticationScreen from '../screens/Authentication/AuthenticationScreen';
 
 

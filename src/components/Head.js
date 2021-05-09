@@ -1,6 +1,12 @@
 //NEXT Js Head
 import NEXTHead from 'next/head'
 import Proptypes from "prop-types";
+/**
+ * Head component
+ * @param {*} title - String - Title of Head
+ * @param {*} content String - Content of Head
+ * @returns
+ */
 
 //Default Head for all pages
 const Head = ({ title, content }) => (

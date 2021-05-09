@@ -1,9 +1,14 @@
 //NEXT Optimizied Image
 import Img from 'react-optimized-image';
 
+/**
+ * Logo component
+ * @returns Logo
+ */
+
 //Images
-import logo_text from '../../../public/images/logo_text.svg'
-import logo_underscore from '../../../public/images/logo_underscore.svg'
+import logo_text from '../../public/images/logo_text.svg'
+import logo_underscore from '../../public/images/logo_underscore.svg'
 
 const Logo = () =>
 {

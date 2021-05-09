@@ -1,7 +1,6 @@
 import  {useState, useEffect} from 'react'
 import Proptypes from 'prop-types'
-import Background from '../../components/Background/Background';
-import Logo from '../../components/Logo/Logo';
+import Logo from '../../components/Logo';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import TextButton from '../../components/TextButton';
