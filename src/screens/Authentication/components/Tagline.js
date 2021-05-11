@@ -11,10 +11,7 @@ const Tagline = (props) => {
         xl:text-10xl    
         2xl:w-1/2  2xl:items-end
         transition-all
-        
-        
-        
-           
+         
         smd:bg-blue-800 md:bg-blue-300 lg:bg-green-500 xl:bg-yellow-400 2xl:bg-purple-500
         "
     >
