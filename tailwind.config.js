@@ -1,3 +1,7 @@
+// tailwind.config.js
+const defaultTheme = require('tailwindcss/defaultTheme')
+
+
 module.exports = {
   purge: [
     './pages/**/*.{js,ts,jsx,tsx}', 
@@ -11,6 +15,10 @@ module.exports = {
   theme: {
     
      extend: {
+      screens: {
+        smd: {'min':'768px', 'max':'900px'},
+        ...defaultTheme.screens,
+      },
       colors: {
         transparent: 'transparent',
         current: 'currentColor',
@@ -40,7 +48,8 @@ module.exports = {
         worksans: ['WorkSans'],
       },
       fontSize: {
-        "10xl": '9rem',
+        "8.5xl": ['7.5rem', '1'],
+        "10xl": ['9rem', '1'],
       },
       backgroundImage: {
         'bg-image': "url('/images/background.svg')",
