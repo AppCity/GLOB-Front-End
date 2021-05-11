@@ -8,6 +8,7 @@ import Proptypes from "prop-types";
  * @param {*} required Bool - Field is required
  * @param {*} type String - Normal field or Password field
  * @param {*} minLength Number - Minimum length required
+ * @param {*} autofocus Boolean - Focus input on load
  * @returns
  */
 
@@ -24,6 +25,7 @@ const Input = ({
   required = false,
   type = null,
   minLength = null,
+  autoFocus=false
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showBorder, setShowBorder] = useState(false);
@@ -51,6 +53,7 @@ const Input = ({
           minLength={minLength}
           onFocus={() => setShowBorder(true)}
           onBlur={() => setShowBorder(false)}
+          autoFocus={autoFocus}
         />
 
         <div
@@ -71,6 +74,7 @@ Input.propTypes = {
   required: Proptypes.bool,
   type: Proptypes.string,
   minLength: Proptypes.number,
+  autoFocus: Proptypes.bool
 };
 
 export default Input;

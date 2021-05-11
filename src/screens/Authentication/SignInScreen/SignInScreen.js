@@ -27,7 +27,7 @@ const SignInScreen = (props) =>
             <span className="text-2xl">Welcome back</span>
             <span className="text-sm text-gray-500">Sign in with your account</span>
 
-            <Input label="Username" />
+            <Input label="Username" autoFocus/>
 
             <Input label="Password" type="password" />
 

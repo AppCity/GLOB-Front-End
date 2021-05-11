@@ -13,11 +13,11 @@ const Button = ({ title, onClick, customCss }) => {
     <button
       className={`text-bg text-lg py-2 w-full rounded-3xl  focus:outline-none 
       bg-gradient-to-r from-yellow via-orange to-fucsia bg-blend-soft-light
-      hover:drop-shadow-lg filter transition-all
+      hover:drop-shadow-lg filter transition-all tracking-wide
       ${customCss && customCss}`}
       onClick={onClick}
     >
-      {title}
+      {title.toUpperCase()}
     </button>
   );
 };
