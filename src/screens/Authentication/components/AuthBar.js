@@ -1,8 +1,17 @@
 import {useState, useEffect} from 'react'
 import Proptypes from 'prop-types'
 
+//Screens
+import SignInScreen from '../SignInScreen/SignInScreen'
+import SignUpScreen from '../SignUpScreen/SignUpScreen';
+
 const AuthBar = (props) =>
 {
+
+    const [tab, setTab] = useState({
+        signIn:true,
+        signUp:false
+    })
 
 
     return(
@@ -13,10 +22,18 @@ const AuthBar = (props) =>
             transition-all
         ">
              <div className="flex w-full justify-around my-3 text-white" >
-                <span className="cursor-pointer text-gray-200 hover:text-white transition-colors">Sign In</span>
-                <span className="cursor-pointer text-gray-200 hover:text-white transition-colors">Sign Up</span> 
+                <span                 
+                onClick={() => setTab({...tab, signUp:false, signIn:true})}
+                className={`cursor-pointer ${tab.signIn ? "text-white" : "text-gray-200"} hover:text-white transition-colors`}>Sign In</span>
+                <span 
+                onClick={() => setTab({...tab, signIn:false, signUp:true})}
+                className={`cursor-pointer ${tab.signUp ? "text-white" : "text-gray-200"} hover:text-white transition-colors`}>Sign Up</span> 
             </div>
-            {props.children}
+
+            {tab.signIn && <SignInScreen />}
+
+            {tab.signUp && <SignUpScreen />}
+
             
         </div>
     )

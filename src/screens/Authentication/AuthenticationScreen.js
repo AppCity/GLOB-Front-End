@@ -23,10 +23,8 @@ const AuthenticationScreen = (props) =>
 
         <Tagline />
 
-        <AuthBar>
-            <SignInScreen />
-
-        </AuthBar>
+        <AuthBar />
+            
 
         
     </div>

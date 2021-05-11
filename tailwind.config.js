@@ -19,6 +19,9 @@ module.exports = {
         smd: {'min':'768px', 'max':'900px'},
         ...defaultTheme.screens,
       },
+      spacing: {
+          "100":"500px"
+       },
       colors: {
         transparent: 'transparent',
         current: 'currentColor',
@@ -77,7 +80,7 @@ module.exports = {
       opacity: ["disabled", "first"],
       cursor: ["disabled"],
       backgroundColor: ["checked"],
-      textColor: ["checked", "first"],
+      textColor: ["checked", "first", "active"],
       borderColor: ["checked"],
       dropShadow:['hover'],
       backgroundImage:['hover'],

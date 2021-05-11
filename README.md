@@ -43,6 +43,7 @@ yarn start
 * [Next Optimized Images](https://github.com/cyrilwanner/next-optimized-images) - Optimized Images
 * [Framer Motion](https://github.com/framer/motion) - Page Animations
 * [Tailwind CSS](https://tailwindcss.com/docs/guides/nextjs) - Tailwind CSS
+* [React Custom Scrollbars](https://github.com/malte-wessel/react-custom-scrollbars) - Scrollbars
 
 ```
 yarn add redux react-redux next-redux-wrapper redux-thunk redux-devtools-extension 
@@ -60,6 +61,7 @@ yarn add nodemailer
 yarn add next-sitemap -D
 yarn add next-optimized-images@canary imagemin-optipng imagemin-gifsicle imagemin-svgo svg-sprite-loader webp-loader lqip-loader responsive-loader image-trace-loader
 yarn add -D tailwindcss@latest postcss@latest autoprefixer@latest && npx tailwindcss init -p
+yarn add react-custom-scrollbars
 ```
 ## Back-End
 [GLOB-API](https://github.com/AppCity/GLOB-Back-End)
