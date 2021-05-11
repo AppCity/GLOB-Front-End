@@ -11,7 +11,6 @@ import Icons from '../../../components/Icons';
 const SignInScreen = (props) =>
 {
 
-
     return(
         <div 
             className="flex flex-col py-5 w-full items-center bg-white bg-opacity-70 rounded-3xl space-y-4
@@ -23,7 +22,7 @@ const SignInScreen = (props) =>
             transition-all
             "
         >
-            {/* <Logo /> */}
+            <Logo imageCss="h-14 smd:h-20 md:h-auto"/>
 
             <span className="text-2xl">Welcome back</span>
             <span className="text-sm text-gray-500">Sign in with your account</span>

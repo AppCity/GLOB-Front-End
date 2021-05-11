@@ -21,7 +21,7 @@ const SplashScreen = ({setIsSplashLoading}) =>
 
     return(
         <div className="flex items-center justify-center h-screen">
-           <Logo />
+           <Logo imageCss="h-28 smd:h-32 md:h-36 lg:h-40"/>
         </div>
     )
 };
