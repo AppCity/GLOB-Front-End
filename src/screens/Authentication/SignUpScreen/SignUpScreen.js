@@ -5,6 +5,7 @@ import Logo from '../../../components/Logo';
 import Button from '../../../components/Button';
 import Input from '../../../components/Input';
 import Scrollbar from '../../../components/Scrollbar';
+import { EMAIL_REGEX } from '../../../constants/constants';
 
 const SignUpScreen = (props) =>
 {
@@ -44,21 +45,28 @@ const SignUpScreen = (props) =>
     })
 
     //Validate input fields
-    const checkValidity = (value, rules) =>
-	{
-		let isValid = true
+    const checkValidity = (value, isRequired, field) =>
+    {
+      let isValid = true
 
-		if(rules.required)
-		{
-			isValid = value.trim() !== "" && isValid
-		}
+      if(isRequired)
+      {
+        isValid = value.trim() !== "" && isValid
+      }
 
-		if(rules.isEmail)
-		{
-            isValid = emailRegex.test(value) && isValid
-        }
-		
-		return isValid;
+      //Email validation
+      if(field==="email")
+      {
+        isValid = EMAIL_REGEX.test(value) && isValid
+      }
+
+      //Password validation
+      if(field==="password")
+      {
+        isValid = value.length > 6 && isValid
+      }
+      
+      return isValid;
     }
 
     const dataHandler = (formField, value) =>
@@ -66,23 +74,40 @@ const SignUpScreen = (props) =>
         const currentState = {...data}
         const currentField = {...currentState[formField]}
 
-        currentField.value = value
-        currentField.isValid = checkValidity(currentField.value, currentField.validation)
-
+        currentField.value = formField === "fullname" ? value : value.trim()
         currentField.touched = true
         currentState[formField] = currentField
+        //Fields Validation
+        currentField.isValid = checkValidity(currentField.value, currentField.isRequired, formField)
 
+        //Form Validation
         let formValidation = true
-		for (let key in currentState)
-		{
-			formValidation = currentState[key].isValid && formValidation
+        for (let key in currentState)
+        {
+          if(key!=="isFormValid")
+          {
+            formValidation = currentState[key].isValid && formValidation
+          }
         }
 
         currentState.isFormValid = formValidation
 
-        
         setData(currentState)
     }
+
+    const register = () =>
+    {
+      const postData = {
+        fullname:data.fullname.value,
+        username:data.username.value,
+        email:data.email.value,
+        phone:data.phone.value,
+        password:data.password.value,
+        
+      }
+      console.log("POST", postData)
+    }
+
 
 
 
@@ -153,7 +178,7 @@ const SignUpScreen = (props) =>
             xl:px-20
             2xl:px-24
             ">
-            <Button title="Register" disabled={!data.isFormValid}/>
+            <Button title="Register" disabled={!data.isFormValid} onClick={register}/>
           </div>
         
         </div>

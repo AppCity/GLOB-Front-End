@@ -32,9 +32,10 @@ const Input = ({
   const [showPassword, setShowPassword] = useState(false);
   const [showBorder, setShowBorder] = useState(false);
 
+
   return (
     <div className="flex flex-col w-full">
-      <label className="text-xs text-gray-500">{label}</label>
+      <label className={`text-xs ${!error ? "text-gray-500" :"text-red-500"}`}>{label}</label>
 
       <div className="flex relative">
         {type === "password" && (
