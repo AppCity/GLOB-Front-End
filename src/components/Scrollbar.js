@@ -2,6 +2,17 @@ import Proptypes from "prop-types";
 import { Scrollbars } from "react-custom-scrollbars";
 
 const Scrollbar = (props) => {
+  
+  const {
+    autoHideTimeout,
+    autoHeightMin,
+    autoHeightMax,    
+    thumbMinSize,
+    thumbSize,
+    height
+  } = props;
+  
+  
   const renderThumb = ({ style, ...props }) => {
     return (
       <div
@@ -19,13 +30,14 @@ const Scrollbar = (props) => {
       // renderView={renderView}
       // renderThumbHorizontal={renderThumb}
       renderThumbVertical={renderThumb}
-      autoHideTimeout={2000}
+      autoHideTimeout={autoHideTimeout ?? 2000}
       autoHeight
-      autoHeightMin={0}
-      autoHeightMax={550}
-      thumbMinSize={150}
-      thumbSize={200}
+      autoHeightMin={autoHeightMin ?? 0}
+      autoHeightMax={autoHeightMax ?? 550}
+      thumbMinSize={thumbMinSize ?? 50}
+      thumbSize={thumbSize ?? 100}
       {...props}
+      style={{height:height}}
     >
       {props.children}
     </Scrollbars>
