@@ -16,7 +16,7 @@
     "build": "npx git config core.ignorecase false && next build",
     "postbuild": "next-sitemap & next-on-netlify",
     "prod": "next start",
-    "bp": "next build && next start",
+    "build:prod": "next build && next start",
     "kill": "npx kill-port 3000",
     "git": "npx git config --local user.name 'Santhosh' && npx git config --local user.email 'santhosh.umapathi@app-city.co'"
   },

@@ -15,8 +15,11 @@ const AuthBar = (props) =>
 
 
     return(
-        <div className="flex flex-col items-center  bg-white bg-opacity-20 rounded-3xl
-            md:w-1/2 md:mx-5
+        <div className="flex flex-col rounded-3xl  
+            w-full
+            h-full
+            bg-gradient-to-r from-yellow via-orange to-fucsia bg-blend-soft-light
+            md:items-center  md:h-auto md:w-1/2 md:mx-5 md:bg-white md:bg-opacity-20
             lg:w-2/5 lg:mx-10
             2xl:w-1/3
             transition-all

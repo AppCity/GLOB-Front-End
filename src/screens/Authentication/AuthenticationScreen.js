@@ -17,11 +17,15 @@ const AuthenticationScreen = (props) =>
 
 
     return(
-    <div className="flex justify-center items-center h-screen w-full bg-bg-image bg-no-repeat bg-cover select-none
-        md:justify-between   
-        ">
+    <div className="flex flex-col justify-center items-center h-screen w-full select-none
+        md:justify-between md:bg-bg-image md:bg-no-repeat md:bg-cover md:flex-row
+    ">
 
         <Tagline />
+
+        <div className="flex md:hidden  my-5">
+            <Logo />
+        </div>
 
         <AuthBar />
             

@@ -99,7 +99,7 @@ const SignInScreen = (props) =>
             transition-all
             "
         >
-            <Logo imageCss="h-14 smd:h-20 md:h-auto"/>
+            <Logo imageCss="h-14 smd:h-20 md:h-auto" customCss={"hidden smd:flex md:flex lg:flex xl:flex 2xl:flex"}/>
 
             <span className="text-2xl">Welcome back</span>
             <span className="text-sm text-gray-500">Sign in with your account</span>

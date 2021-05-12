@@ -11,7 +11,7 @@ import Proptypes from 'prop-types'
 import logo_text from '../../public/images/logo_text.svg'
 import logo_underscore from '../../public/images/logo_underscore.svg'
 
-const Logo = ({customCss, imageCss}) =>
+const Logo = ({customCss="", imageCss=""}) =>
 {
 
     return(
