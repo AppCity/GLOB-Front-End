@@ -7,7 +7,7 @@ import Proptypes from "prop-types";
  * @returns
  */
 
-const TextButton = ({ title, onClick, customCss }) => {
+const TextButton = ({ title="", onClick=()=>{}, customCss="" }) => {
   return (
     <span
       className={`cursor-pointer text-xs py-2 w-full rounded-3xl  focus:outline-none

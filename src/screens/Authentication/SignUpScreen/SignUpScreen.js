@@ -105,7 +105,7 @@ const SignUpScreen = (props) =>
         password:data.password.value,
         
       }
-      console.log("POST", postData)
+      console.log("REGISTER", postData)
     }
 
 
