@@ -5,17 +5,21 @@ import Proptypes from "prop-types";
  * @param {*} title - String - Title to show in the Button
  * @param {*} customCss String - classNames
  * @param {*} onClick Function - onClick handler
+ * @param {*} disabled Boolean - Button disable status
  * @returns
  */
 
-const Button = ({ title, onClick, customCss }) => {
+const Button = ({ title, onClick, customCss, disabled }) => {
   return (
     <button
       className={`text-bg text-lg py-2 w-full rounded-3xl  focus:outline-none 
       bg-gradient-to-r from-yellow via-orange to-fucsia bg-blend-soft-light
-      hover:drop-shadow-lg filter transition-all tracking-wide
+      filter transition-all tracking-wide
+      hover:${disabled ? "": "drop-shadow-lg"}
+      disabled:cursor-not-allowed disabled:opacity-70
       ${customCss && customCss}`}
       onClick={onClick}
+      disabled={disabled}
     >
       {title.toUpperCase()}
     </button>
@@ -26,6 +30,7 @@ Button.propTypes = {
   title: Proptypes.string,
   onClick: Proptypes.func,
   customCss: Proptypes.string, //Passing customCss
+  disabled: Proptypes.bool
 };
 
 export default Button;

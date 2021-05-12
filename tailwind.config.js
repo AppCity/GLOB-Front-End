@@ -79,7 +79,7 @@ module.exports = {
     extend: {
       opacity: ["disabled", "first"],
       cursor: ["disabled"],
-      backgroundColor: ["checked"],
+      backgroundColor: ["checked", "disabled"],
       textColor: ["checked", "first", "active"],
       borderColor: ["checked"],
       dropShadow:['hover'],

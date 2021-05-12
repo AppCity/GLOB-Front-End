@@ -9,6 +9,7 @@ import Proptypes from "prop-types";
  * @param {*} type String - Normal field or Password field
  * @param {*} minLength Number - Minimum length required
  * @param {*} autofocus Boolean - Focus input on load
+ * @param {*} error Boolean - Error state
  * @returns
  */
 
@@ -25,7 +26,8 @@ const Input = ({
   required = false,
   type = null,
   minLength = null,
-  autoFocus=false
+  autoFocus=false,
+  error=false
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showBorder, setShowBorder] = useState(false);
@@ -48,7 +50,7 @@ const Input = ({
           placeholder={placeholder}
           onChange={(e) => onChange(e.target.value)}
           value={value}
-          className={`w-full py-2 border-b border-gray-300 bg-transparent transition-colors focus:outline-none`}
+          className={`w-full py-2 border-b ${!error ? "border-gray-300" : "border-red-500"} bg-transparent transition-colors focus:outline-none`}
           required={required}
           minLength={minLength}
           onFocus={() => setShowBorder(true)}
@@ -74,7 +76,8 @@ Input.propTypes = {
   required: Proptypes.bool,
   type: Proptypes.string,
   minLength: Proptypes.number,
-  autoFocus: Proptypes.bool
+  autoFocus: Proptypes.bool,
+  error: Proptypes.bool
 };
 
 export default Input;
