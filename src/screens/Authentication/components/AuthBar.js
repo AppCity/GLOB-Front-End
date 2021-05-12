@@ -20,6 +20,7 @@ const AuthBar = (props) =>
             lg:w-2/5 lg:mx-10
             2xl:w-1/3
             transition-all
+            overflow-hidden
         ">
              <div className="flex w-full justify-around my-3 text-white" >
                 <span                 

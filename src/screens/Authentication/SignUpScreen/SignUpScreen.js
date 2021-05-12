@@ -1,19 +1,18 @@
 import {useState, useEffect} from 'react'
 import Proptypes from 'prop-types'
-import { Scrollbars } from 'react-custom-scrollbars';
 //Components
 import Logo from '../../../components/Logo';
 import Button from '../../../components/Button';
 import Input from '../../../components/Input';
-import TextButton from '../../../components/TextButton';
-import Icons from '../../../components/Icons';
+import Scrollbar from '../../../components/Scrollbar';
 
 const SignUpScreen = (props) =>
 {
 
 
 
-    return(    
+    return( 
+        <Scrollbar>  
         <div 
             className="flex flex-col py-5 w-full items-center bg-white bg-opacity-70 rounded-3xl space-y-4
             smd:px-5
@@ -21,9 +20,7 @@ const SignUpScreen = (props) =>
             lg:px-16
             xl:px-20
             2xl:px-24
-            transition-all
-            md:h-100
-            overflow-y-scroll
+            transition-all            
             "
         >
             <Logo imageCss="h-14 smd:h-20 md:h-auto"/>
@@ -43,7 +40,7 @@ const SignUpScreen = (props) =>
 
             <Button title="Sign Up"/>
         </div>
-
+        </Scrollbar> 
         
     )
 };
