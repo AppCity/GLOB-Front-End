@@ -36,6 +36,7 @@ const Scrollbar = (props) => {
       autoHeightMax={autoHeightMax ?? 550}
       thumbMinSize={thumbMinSize ?? 50}
       thumbSize={thumbSize ?? 100}
+      universal
       {...props}
       style={{height:height}}
     >

@@ -60,7 +60,8 @@ module.exports = {
      animation: {
       'spin-slow': 'spin 3s linear infinite',
       wiggle: 'wiggle 1s ease-in-out infinite',
-      blink:'blink 1s linear infinite'
+      blink:'blink 1s linear infinite',
+      slideUp:'slideUp 0.3s linear'
      },
      keyframes: {
       wiggle: {
@@ -71,6 +72,12 @@ module.exports = {
         '0%, 100%': { opacity: 0 },
         '25%, 75%': { opacity: 0.5 },
         '50%': { opacity: 1 }
+      },
+      slideUp:
+      {
+        '0%': { opacity: 0, transform:'translateY(50%)' },
+        '50%': { opacity: 0.5, transform:'translateY(25%)' },
+        '100%': { opacity: 1, transform:'translateY(0%)' }
       }
      }
     }
@@ -85,6 +92,7 @@ module.exports = {
       dropShadow:['hover'],
       backgroundImage:['hover'],
       animation:['hover'],
+      transitionDelay: ['hover', 'focus'],
 
     },
   },

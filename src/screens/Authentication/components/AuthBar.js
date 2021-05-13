@@ -19,13 +19,13 @@ const AuthBar = (props) =>
             w-full
             h-full
             bg-gradient-to-r from-yellow via-orange to-fucsia bg-blend-soft-light
-            rounded-t-3xl
+            rounded-t-3xl 
 
             md:items-center  md:h-auto md:w-1/2 md:mx-5 md:bg-white md:bg-opacity-20 md:rounded-3xl md:from-transparent  md:via-transparent md:to-transparent
             lg:w-2/5 lg:mx-10
             2xl:w-1/3
             transition-all
-            overflow-hidden
+            overflow-hidden animate-slideUp
         ">
              <div className="flex w-full justify-around my-3 text-white" >
                 <span                 

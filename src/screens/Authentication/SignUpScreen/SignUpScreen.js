@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useRef} from 'react'
 import Proptypes from 'prop-types'
 //Components
 import Logo from '../../../components/Logo';
@@ -108,20 +108,34 @@ const SignUpScreen = (props) =>
       console.log("REGISTER", postData)
     }
 
+    const [animate, setAnimate] = useState(false)
+    const ref = useRef(null)
+
+
+    useEffect(() => {
+      if(!ref.current)
+      setTimeout(() => {
+        setAnimate(true)
+        ref.current=true
+      }, 300);
+    
+    }, [])
 
 
 
     return (
         <div
-          className="flex flex-col py-5 w-full items-center bg-white space-y-4
+          className={`flex flex-col py-5 w-full items-center bg-white space-y-4
             h-full rounded-t-3xl
             smd:bg-opacity-70 smd:rounded-3xl 
             md:bg-opacity-70
             lg:bg-opacity-70
             xl:bg-opacity-70
             2xl:bg-opacity-70
-            transition-all            
-            "
+            transition-all   
+            ${animate ? "animate-slideUp smd:animate-none md:animate-none lg:animate-none xl:animate-none 2xl:animate-none" : "hidden smd:flex md:flex lg:flex xl:flex 2xl:flex smd:animate-none md:animate-none lg:animate-none xl:animate-none 2xl:animate-none"}
+            `}         
+            
         >
           <Logo imageCss="h-14 smd:h-20 md:h-auto" customCss={"hidden smd:flex md:flex lg:flex xl:flex 2xl:flex"}/>
 
