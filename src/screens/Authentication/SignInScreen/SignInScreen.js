@@ -97,7 +97,7 @@ const SignInScreen = (props) =>
       setTimeout(() => {
         setAnimate(true)
         ref.current=true
-      }, 300);
+      }, 100);
     
     }, [])
 

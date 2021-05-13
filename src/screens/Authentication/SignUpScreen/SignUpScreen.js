@@ -117,7 +117,7 @@ const SignUpScreen = (props) =>
       setTimeout(() => {
         setAnimate(true)
         ref.current=true
-      }, 300);
+      }, 100);
     
     }, [])
 
