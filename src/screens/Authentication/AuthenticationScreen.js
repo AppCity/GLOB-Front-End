@@ -24,7 +24,7 @@ const AuthenticationScreen = (props) =>
         <Tagline />
 
         <div className="flex md:hidden  my-5">
-            <Logo />
+            <Logo imageCss="h-20" customCss="py-5"/>
         </div>
 
         <AuthBar />

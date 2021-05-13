@@ -90,19 +90,30 @@ const SignInScreen = (props) =>
 
     return(
         <div 
-            className="flex flex-col py-5 w-full items-center bg-white bg-opacity-70 rounded-3xl space-y-4
-            smd:px-5
-            md:px-10
-            lg:px-16
-            xl:px-20
-            2xl:px-24
+            className="flex flex-col py-5 w-full items-center bg-white space-y-4
+            h-full rounded-t-3xl px-5
+            smd:rounded-3xl smd:bg-opacity-70
+            md:px-10 md:bg-opacity-70
+            lg:px-16 lg:bg-opacity-70
+            xl:px-20 xl:bg-opacity-70
+            2xl:px-24 2xl:bg-opacity-70
             transition-all
             "
         >
             <Logo imageCss="h-14 smd:h-20 md:h-auto" customCss={"hidden smd:flex md:flex lg:flex xl:flex 2xl:flex"}/>
 
-            <span className="text-2xl">Welcome back</span>
-            <span className="text-sm text-gray-500">Sign in with your account</span>
+            <span className="text-2xl self-start
+          smd:self-auto
+          md:self-auto
+          lg:self-auto
+          xl:self-auto
+          2xl:self-auto">Welcome back</span>
+            <span className="text-sm text-gray-500 self-start pb-5
+          smd:self-auto
+          md:self-auto
+          lg:self-auto
+          xl:self-auto
+          2xl:self-auto">Sign in with your account</span>
 
             <Input 
             label="Username" 

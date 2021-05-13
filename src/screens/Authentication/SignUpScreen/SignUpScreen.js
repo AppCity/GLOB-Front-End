@@ -113,19 +113,36 @@ const SignUpScreen = (props) =>
 
     return (
         <div
-          className="flex flex-col py-5 w-full items-center bg-white bg-opacity-70 rounded-3xl space-y-4
+          className="flex flex-col py-5 w-full items-center bg-white space-y-4
+            h-full rounded-t-3xl
+            smd:bg-opacity-70 smd:rounded-3xl 
+            md:bg-opacity-70
+            lg:bg-opacity-70
+            xl:bg-opacity-70
+            2xl:bg-opacity-70
             transition-all            
             "
         >
           <Logo imageCss="h-14 smd:h-20 md:h-auto" customCss={"hidden smd:flex md:flex lg:flex xl:flex 2xl:flex"}/>
 
-          <span className="text-2xl">Create Account</span>
-          <span className="text-sm text-gray-500">Sign up to get started!</span>
+          <span className="text-2xl self-start px-5
+          smd:self-auto
+          md:self-auto
+          lg:self-auto
+          xl:self-auto
+          2xl:self-auto
+          "
+          >Create Account</span>
+          <span className="text-sm text-gray-500 self-start px-5 pb-5
+          smd:self-auto
+          md:self-auto
+          lg:self-auto
+          xl:self-auto
+          2xl:self-auto">Sign up to get started!</span>
 
           <Scrollbar height="256px">
 
-          <div className="flex flex-col w-full h-64 space-y-4
-            smd:px-5
+          <div className="flex flex-col w-full h-64 space-y-4 px-5
             md:px-10
             lg:px-16
             xl:px-20
@@ -171,8 +188,7 @@ const SignUpScreen = (props) =>
           </div>
           </Scrollbar>
 
-          <div className="flex flex-col w-full space-y-4
-            smd:px-5
+          <div className="flex flex-col w-full space-y-4 px-5
             md:px-10
             lg:px-16
             xl:px-20

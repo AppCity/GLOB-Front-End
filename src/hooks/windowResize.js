@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useLayoutEffect } from 'react';
 
 
 const useWindowSize = () =>
@@ -16,7 +16,7 @@ const useWindowSize = () =>
     };
   
 
-    useEffect(() => 
+    useLayoutEffect(() => 
     {
         handleResize();
 

@@ -4,6 +4,7 @@ import Proptypes from 'prop-types'
 
 //Components
 import Logo from '../../components/Logo';
+import useWindowSize from '../../hooks/windowResize';
 
 
 
@@ -17,12 +18,17 @@ const SplashScreen = ({setIsSplashLoading}) =>
         
     }, [])
 
+    const {height} = useWindowSize()
+
+
+
+
   
 
     return(
-        <div className="flex items-center justify-center h-screen">
-           <Logo imageCss="h-28 smd:h-32 md:h-36 lg:h-40"/>
-        </div>
+        <div className="flex items-center justify-center" style={{height}} >
+           <Logo imageCss="h-20 smd:h-28 md:h-28"/>
+         </div>
     )
 };
 

@@ -14,7 +14,7 @@ const Button = ({ title, onClick, customCss, disabled }) => {
     <button
       className={`text-bg text-lg py-2 w-full rounded-3xl  focus:outline-none 
       bg-gradient-to-r from-yellow via-orange to-fucsia bg-blend-soft-light
-      filter transition-all tracking-wide
+      filter transition-all tracking-wide shadow-xl
       hover:${disabled ? "": "drop-shadow-lg"}
       disabled:cursor-not-allowed disabled:opacity-70
       ${customCss && customCss}`}
