@@ -13,7 +13,7 @@ const App = () =>
   const state = useSelector(state => state.glob)  
   const router = useRouter()
 
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(true)
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false)
 
 
 
