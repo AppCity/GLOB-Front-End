@@ -2,7 +2,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import {createWrapper} from 'next-redux-wrapper'; //NEXT Redux Wrapper
 import thunk from 'redux-thunk'; //Middleware
-// import { composeWithDevTools } from 'redux-devtools-extension'
 
 //Reducer
 import reducers from './reducers/reducers'

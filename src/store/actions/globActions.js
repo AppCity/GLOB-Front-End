@@ -1,4 +1,4 @@
-import actionTypes from '../types'
+import types from '../types'
 
 //Api
 // import { NEXTApi } from '../../api/axios'
@@ -8,8 +8,16 @@ import actionTypes from '../types'
 const setLoading = (status) =>
 {
 	return {
-		type: actionTypes.SET_LOADING,
+		type: types.SET_LOADING,
 		payload: status
+	}
+}
+
+export const setSplashLoading = (value) =>
+{
+	return {
+		type: types.SET_SPLASH_LOADING,
+		payload:value
 	}
 }
 

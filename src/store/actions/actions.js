@@ -1,1 +1,1 @@
-export * from './layoutActions';
+export * from './globActions';

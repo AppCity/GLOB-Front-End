@@ -2,11 +2,11 @@
 import { combineReducers } from 'redux';
 
 //Reducer
-import layoutReducer from './layoutReducer'
+import globReducer from './globReducer'
 
 
 const reducers = combineReducers({
-	lr: layoutReducer,
+	glob: globReducer,
 })
 
 

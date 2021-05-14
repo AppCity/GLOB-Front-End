@@ -1,49 +1,43 @@
-import {useState, useEffect, useRef} from 'react'
+import {useState, useEffect} from 'react'
 import { useRouter } from 'next/router'
 
 //Screens
 import SplashScreen from '../screens/SplashScreen/SplashScreen';
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
-//Helpers
-import { getDataFromLocal, saveDataToLocal } from '../helpers/localStorage';
-
+//Store
+import { useSelector } from 'react-redux';
 
 
 const App = () => 
 {
+  const state = useSelector(state => state.glob)  
   const router = useRouter()
 
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false)
-  const [isSplashLoading, setIsSplashLoading] = useState(true)
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(true)
 
 
 
   useEffect(() => {
-    if(!isSplashLoading && !isUserLoggedIn)
+    if(!isUserLoggedIn && !state.isSplashLoading)
     {
       router.push('/authentication')
     }
   
-  }, [isSplashLoading])
-
+  }, [state.isSplashLoading])
 
 
   
 
-  if(isSplashLoading)
+  if(state.isSplashLoading)
   {
-    return <SplashScreen setIsSplashLoading={setIsSplashLoading}/>
+    return <SplashScreen />
   }
 
     
 
  
 
-  return (
-  <>
-    {isUserLoggedIn && <HomeScreen />}
-  </>
-  )
+  return isUserLoggedIn && <HomeScreen />
   
 
   

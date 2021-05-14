@@ -9,8 +9,7 @@ const HomeScreen = (props) =>
 
     return(
         <div className="flex justify-center items-center h-screen flex-col">
-             <h1>HomeScreen</h1>
-             <Button title="Test" />
+             <h1 className="text-2xl">HomeScreen</h1>
         </div>
     )
 };

@@ -5,14 +5,12 @@ const initialState =
 {
 	sidebarIsOpen: false,
 	device: "desktop",
-	messageStatus: null,
-	link:null,
-	footerLink:false,
-	isLoading:false
+	isLoading:false,
+	isSplashLoading:true
 }
 
 
-const layoutReducer = (state = initialState, action) =>
+const globReducer = (state = initialState, action) =>
 {
     switch (action.type) 
     {
@@ -39,9 +37,11 @@ const layoutReducer = (state = initialState, action) =>
 
 			return {...state, device: device}
 
-
 		case actionTypes.SET_LOADING:
 			return {...state , isLoading: action.payload}
+
+		case actionTypes.SET_SPLASH_LOADING:
+			return {...state , isSplashLoading: action.payload}
 
 		
 		default:
@@ -50,4 +50,4 @@ const layoutReducer = (state = initialState, action) =>
 
 }
 
-export default layoutReducer;
+export default globReducer;
