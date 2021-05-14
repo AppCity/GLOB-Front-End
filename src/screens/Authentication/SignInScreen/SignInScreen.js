@@ -8,9 +8,11 @@ import Input from '../../../components/Input';
 import TextButton from '../../../components/TextButton';
 import Icons from '../../../components/Icons';
 import { EMAIL_REGEX } from '../../../constants/constants';
+import { useRouter } from 'next/router';
 
 const SignInScreen = (props) =>
 {
+  const router =useRouter()
 
     const [data, setData] = useState({
         email:{
@@ -86,6 +88,7 @@ const SignInScreen = (props) =>
         password:data.password.value,
       }
       console.log("LOGIN", postData)
+      router.push('/')
     }
 
     const [animate, setAnimate] = useState(false)

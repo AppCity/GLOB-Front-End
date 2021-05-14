@@ -18,7 +18,7 @@ const AuthenticationScreen = (props) =>
 
     return(
     <div className="flex flex-col justify-center items-center h-screen w-full select-none
-        md:justify-between md:bg-bg-image md:bg-no-repeat md:bg-cover md:flex-row
+        md:justify-between md:bg-bg-image md:bg-no-repeat md:bg-cover md:flex-row overflow-y-hidden
     ">
 
         <Tagline />

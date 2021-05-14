@@ -1,4 +1,4 @@
-import {useEffect} from 'react'
+import {useEffect, useRef, useState} from 'react'
 
 import Proptypes from 'prop-types'
 
@@ -7,23 +7,25 @@ import Logo from '../../components/Logo';
 import useWindowSize from '../../hooks/windowResize';
 
 
-
 const SplashScreen = ({setIsSplashLoading}) =>
 {
 
     useEffect(() => {
+
+      
         setTimeout(() => {
-            setIsSplashLoading(false)
-        }, 3000);
-        
-    }, [])
+          setIsSplashLoading(false)
+      }, 3000);
+    
+      
+  }, [])
 
     const {height} = useWindowSize()
 
-
-
-
-  
+    // if(!isSplashLoading)
+    // {
+    //     return null;
+    // }
 
     return(
         <div className="flex items-center justify-center" style={{height}} >
