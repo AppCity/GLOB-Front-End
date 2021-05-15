@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import Proptypes from 'prop-types'
 import Button from '../../components/Button'
 import AppBar from '../../components/AppBar'
+import Logo from '../../components/Logo';
 
 
 const HomeScreen = (props) =>
@@ -36,7 +37,7 @@ const HomeScreen = (props) =>
              <h1 className="text-2xl ">HomeScreen</h1>
              <h1 className="text-2xl ">HomeScreen</h1>
              <h1 className="text-2xl ">HomeScreen</h1>
-             <h1 className="text-2xl ">HomeScreen</h1>
+             <Logo />
 
              </div>
 

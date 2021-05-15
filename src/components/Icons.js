@@ -81,7 +81,7 @@ const Icons = ({ type, className, onClick }) => {
   );
 
   const AddIcon = (
-    <Img
+    <img
       src={add}
       alt={"add"}
       sizes={[1200]}

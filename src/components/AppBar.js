@@ -1,26 +1,37 @@
 import {useState, useEffect} from 'react'
 import Proptypes from 'prop-types'
-import Icons from './Icons'
+
+//Icons
+import AddIcon from './Icons/AddIcon';
+import HomeIcon from './Icons/HomeIcon';
+import FavoriteIcon from './Icons/FavoriteIcon';
+import ChatIcon from './Icons/ChatIcon';
+import DocIcon from './Icons/DocIcon';
 
 const AppBar = (props) =>
 {
 
 
     return(
-        <div className='flex fixed bottom-0 w-full h-16 overflow-hidden z-20 rounded-t-3xl 
-         shadow-lg  justify-around items-center
-         bg-white bg-opacity-80 glass transition-all
+        <div className='flex fixed bottom-0 w-full h-16 z-10 rounded-t-3xl 
+          justify-around items-center 
+          transition-all  
+          bg-white bg-opacity-30
+          backdrop-filter backdrop-blur-md
+          shadow-t
         '
         >
 
-            <Icons type="home" className="h-6"/>
-            <Icons type="favorite" className="h-6"/>
-            <Icons type="add" className="h-6"/>
-            <Icons type="doc" className="h-6"/>
-            <Icons type="chat" className="h-6"/>
+            <HomeIcon size="25px" />
+            <FavoriteIcon size="25px" />
+            <AddIcon size="25px" />
+            <DocIcon size="25px" />
+            <ChatIcon size="25px" />
+
 
 
         </div>
+        
     )
 };
 
