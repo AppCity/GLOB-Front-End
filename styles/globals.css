@@ -31,5 +31,5 @@ a {
 }
 
 .glass {
-  backdrop-filter: blur(100px);
+  backdrop-filter: blur(10px);
 }
