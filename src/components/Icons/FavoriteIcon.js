@@ -1,6 +1,6 @@
 import Proptypes from "prop-types";
 
-const FavoriteIcon = ({ css, size }) => {
+const FavoriteIcon = ({ css, size, onClick }) => {
   return (
     <svg
       version="1.1"
@@ -13,7 +13,8 @@ const FavoriteIcon = ({ css, size }) => {
       xmlSpace="preserve"
       height={size ?? "30px"}
       width={size ?? "30px"}
-      className={`${css}`}
+      className={`${css} cursor-pointer`}
+      onClick={onClick}
     >
       <g>
         <g>
@@ -55,6 +56,7 @@ const FavoriteIcon = ({ css, size }) => {
 FavoriteIcon.propTypes = {
   css: Proptypes.string,
   size: Proptypes.string,
+  onClick: Proptypes.func
 };
 
 export default FavoriteIcon;

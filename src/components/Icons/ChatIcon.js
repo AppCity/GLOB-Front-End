@@ -1,6 +1,6 @@
 import Proptypes from "prop-types";
 
-const ChatIcon = ({ css, size }) => {
+const ChatIcon = ({ css, size, onClick }) => {
   return (
     <svg
       version="1.1"
@@ -13,7 +13,8 @@ const ChatIcon = ({ css, size }) => {
       xmlSpace="preserve"
       height={size ?? "30px"}
       width={size ?? "30px"}
-      className={`${css}`}
+      className={`${css} cursor-pointer`}
+      onClick={onClick}
     >
       <g>
         <g>
@@ -60,6 +61,7 @@ const ChatIcon = ({ css, size }) => {
 ChatIcon.propTypes = {
   css: Proptypes.string,
   size: Proptypes.string,
+  onClick: Proptypes.func
 };
 
 export default ChatIcon;

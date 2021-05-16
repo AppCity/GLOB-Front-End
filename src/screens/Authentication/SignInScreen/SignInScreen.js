@@ -1,14 +1,19 @@
 import {useState, useEffect, useRef} from 'react'
 import Proptypes from 'prop-types'
+import { useRouter } from 'next/router';
 
 //Components
 import Logo from '../../../components/Logo';
 import Button from '../../../components/Button';
 import Input from '../../../components/Input';
 import TextButton from '../../../components/TextButton';
-import Icons from '../../../components/Icons';
+//Constants
 import { EMAIL_REGEX } from '../../../constants/constants';
-import { useRouter } from 'next/router';
+
+//Icons
+import GoogleIcon from '../../../components/Icons/GoogleIcon';
+import FacebookIcon from '../../../components/Icons/FacebookIcon';
+import TwitterIcon from '../../../components/Icons/TwitterIcon';
 
 const SignInScreen = (props) =>
 {
@@ -159,9 +164,9 @@ const SignInScreen = (props) =>
 
             <span className="text-xs text-gray-500 font-thin">OR SIGN IN WITH</span>
             <div className="flex space-x-5">
-                <Icons type="google" className="h-7"/>
-                <Icons type="facebook" className="h-7"/>
-                <Icons type="twitter" className="h-7"/>
+              <GoogleIcon onClick={() => {}}/>
+              <FacebookIcon onClick={() => {}}/>
+              <TwitterIcon onClick={() => {}}/>
             </div>
         </div>
     )

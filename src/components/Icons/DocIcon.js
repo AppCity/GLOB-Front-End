@@ -1,6 +1,6 @@
 import Proptypes from "prop-types";
 
-const DocIcon = ({ css, size }) => {
+const DocIcon = ({ css, size, onClick }) => {
   return (
     <svg
       id="Capa_1"
@@ -9,7 +9,8 @@ const DocIcon = ({ css, size }) => {
       xmlns="http://www.w3.org/2000/svg"
       height={size ?? "30px"}
       width={size ?? "30px"}
-      className={`${css}`}
+      className={`${css} cursor-pointer`}
+      onClick={onClick}
     >
       <g>
         <path d="m446.605 124.392-119.997-119.997c-2.801-2.802-6.624-4.395-10.608-4.395h-210c-24.813 0-45 20.187-45 45v422c0 24.813 20.187 45 45 45h300c24.813 0 45-20.187 45-45v-332c0-4.09-1.717-7.931-4.395-10.608zm-115.605-73.179 68.787 68.787h-53.787c-8.271 0-15-6.729-15-15zm75 430.787h-300c-8.271 0-15-6.729-15-15v-422c0-8.271 6.729-15 15-15h195v75c0 24.813 20.187 45 45 45h75v317c0 8.271-6.729 15-15 15z" />
@@ -25,6 +26,7 @@ const DocIcon = ({ css, size }) => {
 DocIcon.propTypes = {
   css: Proptypes.string,
   size: Proptypes.string,
+  onClick: Proptypes.func
 };
 
 export default DocIcon;
