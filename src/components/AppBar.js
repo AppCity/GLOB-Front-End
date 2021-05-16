@@ -13,7 +13,7 @@ const AppBar = (props) =>
 
 
     return(
-        <div className='flex fixed bottom-0 w-full h-16 z-10 rounded-t-3xl 
+        <div className='flex fixed bottom-0 w-full h-14 z-10 rounded-t-3xl 
           justify-around items-center 
           transition-all  
           bg-white bg-opacity-30
@@ -22,11 +22,18 @@ const AppBar = (props) =>
         '
         >
 
-            <HomeIcon size="25px" />
-            <FavoriteIcon size="25px" />
-            <AddIcon size="25px" />
-            <DocIcon size="25px" />
-            <ChatIcon size="25px" />
+            <HomeIcon size="20px" />
+            <FavoriteIcon size="20px" />
+            <div className="flex p-5 rounded-full self-start -mt-5
+            bg-gradient-to-r from-yellow via-orange to-fucsia bg-blend-soft-light
+            filter transition-all shadow-xl
+            hover:drop-shadow-lg
+            cursor-pointer
+            ">
+                <AddIcon size="20px" />
+            </div>
+            <DocIcon size="20px" />
+            <ChatIcon size="20px" />
 
 
 
