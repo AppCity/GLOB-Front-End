@@ -1,25 +1,38 @@
+import { useState } from "react";
 import Proptypes from "prop-types";
+import SvgGradient from "./SvgGradient";
 
-const FavoriteIcon = ({ css, size, onClick }) => {
+const FavoriteIcon = ({ css, size, active, onClick }) => {
+  const [isHover, setIsHover] = useState(false);
+
+  const toggle = () => setIsHover(!isHover);
+
   return (
-    <svg
-      version="1.1"
-      id="Capa_1"
-      xmlns="http://www.w3.org/2000/svg"
-      xmlnsXlink="http://www.w3.org/1999/xlink"
-      x="0px"
-      y="0px"
-      viewBox="0 0 512 512"
-      xmlSpace="preserve"
-      height={size ?? "30px"}
-      width={size ?? "30px"}
-      className={`${css} cursor-pointer`}
-      onClick={onClick}
-    >
-      <g>
+    <div>
+      <SvgGradient />
+      <svg
+        version="1.1"
+        id="Capa_1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+        x="0px"
+        y="0px"
+        viewBox="0 0 512 512"
+        xmlSpace="preserve"
+        height={size ?? "30px"}
+        width={size ?? "30px"}
+        className={`${css} cursor-pointer transform hover:scale-125 ${
+          active && "scale-125"
+        } transition-all`}
+        fill={active || isHover ? "url(#gradient)" : null}
+        onClick={onClick}
+        onMouseEnter={toggle}
+        onMouseLeave={toggle}
+      >
         <g>
-          <path
-            d="M474.644,74.27C449.391,45.616,414.358,29.836,376,29.836c-53.948,0-88.103,32.22-107.255,59.25
+          <g>
+            <path
+              d="M474.644,74.27C449.391,45.616,414.358,29.836,376,29.836c-53.948,0-88.103,32.22-107.255,59.25
 			c-4.969,7.014-9.196,14.047-12.745,20.665c-3.549-6.618-7.775-13.651-12.745-20.665c-19.152-27.03-53.307-59.25-107.255-59.25
 			c-38.358,0-73.391,15.781-98.645,44.435C13.267,101.605,0,138.213,0,177.351c0,42.603,16.633,82.228,52.345,124.7
 			c31.917,37.96,77.834,77.088,131.005,122.397c19.813,16.884,40.302,34.344,62.115,53.429l0.655,0.574
@@ -31,32 +44,34 @@ const FavoriteIcon = ({ css, size, onClick }) => {
 			c2.011,6.175,7.768,10.354,14.262,10.354c6.494,0,12.251-4.179,14.262-10.354c2.404-7.377,9.453-26.595,22.962-45.66
 			c15.06-21.255,41.647-46.593,82.776-46.593c29.621,0,56.66,12.171,76.137,34.27C471.395,115.957,482,145.521,482,177.351
 			C482,254.358,413.255,312.939,309.193,401.614z"
-          />
+            />
+          </g>
         </g>
-      </g>
-      <g></g>
-      <g></g>
-      <g></g>
-      <g></g>
-      <g></g>
-      <g></g>
-      <g></g>
-      <g></g>
-      <g></g>
-      <g></g>
-      <g></g>
-      <g></g>
-      <g></g>
-      <g></g>
-      <g></g>
-    </svg>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+        <g></g>
+      </svg>
+    </div>
   );
 };
 
 FavoriteIcon.propTypes = {
   css: Proptypes.string,
   size: Proptypes.string,
-  onClick: Proptypes.func
+  active: Proptypes.bool,
+  onClick: Proptypes.func,
 };
 
 export default FavoriteIcon;

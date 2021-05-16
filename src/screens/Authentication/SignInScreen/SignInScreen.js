@@ -120,6 +120,7 @@ const SignInScreen = (props) =>
             2xl:px-24 2xl:bg-opacity-70
             transition-all
             ${animate ? "animate-slideUp smd:animate-none md:animate-none lg:animate-none xl:animate-none 2xl:animate-none" : "hidden smd:flex md:flex lg:flex xl:flex 2xl:flex smd:animate-none md:animate-none lg:animate-none xl:animate-none 2xl:animate-none"}
+            
             `}
         >
             <Logo imageCss="h-14 smd:h-20 md:h-auto" customCss={"hidden smd:flex md:flex lg:flex xl:flex 2xl:flex"}/>

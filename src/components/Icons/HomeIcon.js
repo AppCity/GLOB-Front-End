@@ -1,10 +1,15 @@
+import { useState } from "react";
 import Proptypes from "prop-types";
 import SvgGradient from "./SvgGradient";
 
 const HomeIcon = ({ css, size, active, onClick }) => {
+  const [isHover, setIsHover] = useState(false);
+
+  const toggle = () => setIsHover(!isHover);
+
   return (
     <div>
-      {active && <SvgGradient />}
+      <SvgGradient />
       <svg
         id="Layer_1"
         enableBackground="new 0 0 512 512"
@@ -12,9 +17,13 @@ const HomeIcon = ({ css, size, active, onClick }) => {
         viewBox="0 0 512 512"
         width={size ?? "30px"}
         xmlns="http://www.w3.org/2000/svg"
-        className={`${css} cursor-pointer`}
-        fill={active ? "url(#gradient)" : null}
+        className={`${css} cursor-pointer transform hover:scale-125 ${
+          active && "scale-125"
+        } transition-all`}
+        fill={active || isHover ? "url(#gradient)" : null}
         onClick={onClick}
+        onMouseEnter={toggle}
+        onMouseLeave={toggle}
       >
         <g>
           <path d="m426 495.983h-340c-25.364 0-46-20.635-46-46v-242.02c0-8.836 7.163-16 16-16s16 7.164 16 16v242.02c0 7.72 6.28 14 14 14h340c7.72 0 14-6.28 14-14v-242.02c0-8.836 7.163-16 16-16s16 7.164 16 16v242.02c0 25.364-20.635 46-46 46z" />
@@ -30,7 +39,7 @@ HomeIcon.propTypes = {
   css: Proptypes.string,
   size: Proptypes.string,
   active: Proptypes.bool,
-  onClick: Proptypes.func
+  onClick: Proptypes.func,
 };
 
 export default HomeIcon;
