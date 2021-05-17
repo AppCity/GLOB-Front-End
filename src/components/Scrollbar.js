@@ -12,6 +12,16 @@ const Scrollbar = (props) => {
     height
   } = props;
   
+  const renderThumbVertical = ({ style, ...props }) => {
+    return (
+      <div
+        {...props}
+        className="flex rounded-3xl cursor-pointer h-2 absolute b-2
+          bg-gradient-to-br from-yellow via-orange to-fucsia bg-blend-soft-light
+          hover:drop-shadow-lg transition-all"
+      />
+    );
+  };
   
   const renderThumb = ({ style, ...props }) => {
     return (
@@ -28,7 +38,7 @@ const Scrollbar = (props) => {
     <Scrollbars
       autoHide
       // renderView={renderView}
-      // renderThumbHorizontal={renderThumb}
+      renderThumbHorizontal={renderThumbVertical}
       renderThumbVertical={renderThumb}
       autoHideTimeout={autoHideTimeout ?? 2000}
       autoHeight
@@ -46,7 +56,12 @@ const Scrollbar = (props) => {
 };
 
 Scrollbar.propTypes = {
-  style: Proptypes.object.isRequired,
+  height: Proptypes.string.isRequired,
+  autoHideTimeout: Proptypes.number,
+  autoHeightMin: Proptypes.number,
+  autoHeightMax: Proptypes.number,    
+  thumbMinSize: Proptypes.number,
+  thumbSize: Proptypes.number,
 };
 
 export default Scrollbar;
