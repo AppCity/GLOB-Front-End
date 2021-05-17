@@ -11,11 +11,8 @@ import DocIcon from './Icons/DocIcon';
 const AppBar = ({tab, setTab}) =>
 {
 
-    const tabChangeHandler = (tab) =>
-    {
-
-        setTab(tab)
-    }
+    const tabChangeHandler = (tab) => setTab(tab)
+    
 
 
 
