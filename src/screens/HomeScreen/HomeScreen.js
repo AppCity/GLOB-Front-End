@@ -9,6 +9,45 @@ import Navbar from '../../components/Navbar';
 const HomeScreen = (props) =>
 {
 
+    const [tab, setTab] = useState(0)
+
+    let tabUi
+    switch (tab) 
+    {
+        case 0:
+            tabUi = (<div className="flex justify-center items-center h-full">
+            <span>Home</span>
+            
+            </div>)
+            break;
+
+        case 1:
+            tabUi = (<div className="flex justify-center items-center h-full">
+            <span>Favorites</span>
+            
+            </div>)
+            break;
+
+        case 2:
+            tabUi = (<div className="flex justify-center items-center h-full">
+            <span>Documents</span>
+            
+            </div>)
+            break;
+
+        case 3:
+            tabUi = (<div className="flex justify-center items-center h-full">
+            <span>Contact</span>
+            
+            </div>)
+            break;
+    
+        default:
+            break;
+    }
+
+
+
 
     return(
         <div className="flex h-screen">
@@ -16,34 +55,13 @@ const HomeScreen = (props) =>
 
             <div className="flex bg-bg-image opacity-50 h-screen w-full fixed z-0" />
 
-            <div className="flex flex-col w-full z-10 pt-24 pb-14 overflow-y-scroll">
-             <h1 className="text-2xl ">HomeScreen</h1>
-             <h1 className="text-2xl ">HomeScreen</h1>
-             <h1 className="text-2xl ">HomeScreen</h1>
-             <h1 className="text-2xl ">HomeScreen</h1>
-             <h1 className="text-2xl ">HomeScreen</h1>
-             <h1 className="text-2xl ">HomeScreen</h1>
-             <h1 className="text-2xl ">HomeScreen</h1>
-             <h1 className="text-2xl ">HomeScreen</h1>
-             <h1 className="text-2xl ">HomeScreen</h1>
-             <h1 className="text-2xl ">HomeScreen</h1>
-             <h1 className="text-2xl ">HomeScreen</h1>
-             <h1 className="text-2xl ">HomeScreen</h1>
-             <h1 className="text-2xl ">HomeScreen</h1>
-             <h1 className="text-2xl ">HomeScreen</h1>
-             <h1 className="text-2xl ">HomeScreen</h1>
-             <h1 className="text-2xl ">HomeScreen</h1>
-             <h1 className="text-2xl ">HomeScreen</h1>
-             <h1 className="text-2xl ">HomeScreen</h1>
-             <h1 className="text-2xl ">HomeScreen</h1>
-             <h1 className="text-2xl ">HomeScreen</h1>
-             <h1 className="text-2xl ">HomeScreen</h1>
-             <h1 className="text-2xl ">HomeScreen</h1>
-             <Logo />
+            <div className="flex flex-col w-full z-10 pt-24 pb-14">
+                {tabUi}
+            </div>
+            
+            
 
-             </div>
-
-             <AppBar />
+             <AppBar tab={tab} setTab={setTab}/>
         </div>
     )
 };

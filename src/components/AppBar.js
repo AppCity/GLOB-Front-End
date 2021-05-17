@@ -8,8 +8,15 @@ import FavoriteIcon from './Icons/FavoriteIcon';
 import ChatIcon from './Icons/ChatIcon';
 import DocIcon from './Icons/DocIcon';
 
-const AppBar = (props) =>
+const AppBar = ({tab, setTab}) =>
 {
+
+    const tabChangeHandler = (tab) =>
+    {
+
+        setTab(tab)
+    }
+
 
 
     return(
@@ -19,11 +26,11 @@ const AppBar = (props) =>
           bg-white bg-opacity-30
           backdrop-filter backdrop-blur-md
           shadow-t
-        '
+        ' 
         >
 
-            <HomeIcon size="20px" />
-            <FavoriteIcon size="20px" />
+            <HomeIcon size="20px" active={tab===0} onClick={() => tabChangeHandler(0)}/>
+            <FavoriteIcon size="20px" active={tab===1} onClick={() => tabChangeHandler(1)}/>
             <div className="flex p-5 rounded-full self-start -mt-5
             bg-gradient-to-r from-yellow via-orange to-fucsia bg-blend-soft-light
             filter transition-all shadow-xl
@@ -32,8 +39,8 @@ const AppBar = (props) =>
             ">
                 <AddIcon size="20px" />
             </div>
-            <DocIcon size="20px" />
-            <ChatIcon size="20px" />
+            <DocIcon size="20px" active={tab===2} onClick={() => tabChangeHandler(2)}/>
+            <ChatIcon size="20px" active={tab===3} onClick={() => tabChangeHandler(3)}/>
 
 
 
@@ -45,7 +52,8 @@ const AppBar = (props) =>
 
 AppBar.propTypes = 
 {
-
+    tab: Proptypes.bool,
+    setTab: Proptypes.func
 }
 
 export default AppBar;
