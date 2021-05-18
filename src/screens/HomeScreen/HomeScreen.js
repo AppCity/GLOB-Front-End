@@ -8,6 +8,7 @@ import Home from './Tabs/Home';
 import Favorites from './Tabs/Favorites';
 import Documents from './Tabs/Documents';
 import Contact from './Tabs/Contact';
+import Scrollbar from '../../components/Scrollbar';
 
 
 const HomeScreen = (props) =>
@@ -45,11 +46,13 @@ const HomeScreen = (props) =>
         <div className="flex h-screen flex-col">
             <Navbar />
 
-            <div className="flex bg-bg-image opacity-50 h-screen w-full fixed z-0" />
+            <div className="flex bg-bg-image opacity-50 h-screen w-full fixed z-0 bg-no-repeat bg-cover" />
 
+            <Scrollbar>
             <div className="flex flex-col w-full z-10 pt-24 pb-14">
                 {tabUi}
             </div>
+            </Scrollbar>
             
             
 
