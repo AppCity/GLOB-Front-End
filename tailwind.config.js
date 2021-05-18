@@ -7,11 +7,11 @@ module.exports = {
     './pages/**/*.{js,ts,jsx,tsx}', 
     './components/**/*.{js,ts,jsx,tsx}',
     './src/**/*.html',
-    './src/**/*.vue',
-    './src/**/*.jsx',
-    './src/**/*.js',
+    './public/**/*.html',
+    './src/**/*.{js,jsx,ts,tsx}',
   ],  
-  darkMode: false, // or 'media' or 'class'
+  mode: 'jit',
+  darkMode: 'class', // or 'media' or 'class'
   theme: {
     
      extend: {
