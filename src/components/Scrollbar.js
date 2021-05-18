@@ -12,7 +12,7 @@ const Scrollbar = (props) => {
     height
   } = props;
   
-  const renderThumbVertical = ({ style, ...props }) => {
+  const renderThumbHorizontal = ({ style, ...props }) => {
     return (
       <div
         {...props}
@@ -23,7 +23,7 @@ const Scrollbar = (props) => {
     );
   };
   
-  const renderThumb = ({ style, ...props }) => {
+  const renderThumbVertical = ({ style, ...props }) => {
     return (
       <div
         {...props}
@@ -38,8 +38,8 @@ const Scrollbar = (props) => {
     <Scrollbars
       autoHide
       // renderView={renderView}
-      renderThumbHorizontal={renderThumbVertical}
-      renderThumbVertical={renderThumb}
+      renderThumbHorizontal={renderThumbHorizontal}
+      renderThumbVertical={renderThumbVertical}
       autoHideTimeout={autoHideTimeout ?? 2000}
       autoHeight
       autoHeightMin={autoHeightMin ?? 0}
