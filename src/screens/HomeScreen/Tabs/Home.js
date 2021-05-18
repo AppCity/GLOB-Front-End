@@ -118,16 +118,17 @@ const Home = (props) =>
 
 
     return(
-        <div className="flex flex-col items-start h-full overflow-hidden">
-                <Scrollbar height="80px">
-                <div className="flex w-full py-4 pl-4 space-x-3">
+        <div className="flex flex-col items-start">
+            <div className="sticky top-20 w-full z-30">
+            <Scrollbar>
+                <div className="flex py-4 pl-4 space-x-3 items-center">
                     {categoriesBar}
                 </div>
-                </Scrollbar>
+            </Scrollbar>
+            </div>
 
-                {/* <Scrollbar height="500px"> */}
-
-            <div className="flex flex-col px-4 space-y-3 w-full overflow-y-scroll">
+            {/* <Scrollbar> */}
+            <div className="flex flex-col px-4 space-y-3 w-full">
                 <span>Latest News</span>
                 {newsUi}
 
