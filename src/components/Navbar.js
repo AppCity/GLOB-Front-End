@@ -7,12 +7,17 @@ import Input from "./Input";
 const Navbar = (props) => {
   const [isSearchIconHover, setIsSearchIconHover] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchText, setSearchText] = useState("");
 
-  const toggleSearchBar = () => setIsSearchIconHover(!isSearchIconHover);
+  const toggleSearchHover = () => setIsSearchIconHover(!isSearchIconHover);
 
-  const openSearchBar = () =>
+  const toggleSearchBar = () => setIsSearchOpen(!isSearchOpen)
+  
+
+  //Input field handler
+  const inputHandler = (value) =>
   {
-    setIsSearchOpen(!isSearchOpen)
+    setSearchText(value)
   }
 
   return (
@@ -22,18 +27,18 @@ const Navbar = (props) => {
       <div className="flex relative items-center justify-center">
         <div 
           className="flex justify-center items-center h-12 w-12 rounded-full overflow-hidden border border-black cursor-pointer"
-          onMouseEnter={toggleSearchBar}
-          onMouseLeave={toggleSearchBar}
-          onClick={openSearchBar}
+          onMouseEnter={toggleSearchHover}
+          onMouseLeave={toggleSearchHover}
+          onClick={toggleSearchBar}
         >
           <SearchIcon size="16" active={isSearchIconHover} />
         </div>
 
-        {isSearchOpen && <div className="absolute flex left-20  w-80 h-14 z-30 animate-slideUp">
+        {isSearchOpen && <div className="relative flex left-5 z-30 animate-slideUp">
           <Input 
             placeholder="Search Blogs"
-            value=""
-            onChange={(val) => {}}
+            value={searchText}
+            onChange={(val) => inputHandler(val)}
           />
         </div>}
         
