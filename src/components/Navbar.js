@@ -46,7 +46,7 @@ const Navbar = (props) => {
 
       {!isSearchOpen && <div className="animate-slideUp"><Logo imageCss="h-10 " /></div>}
 
-      <div className="flex h-12 w-12 rounded-full overflow-hidden">
+      <div className="flex h-12 w-12 rounded-full overflow-hidden cursor-pointer hover:shadow-lg transition-all">
         <img src={"/images/profile.png"} />
       </div>
     </div>

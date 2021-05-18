@@ -9,7 +9,7 @@ const FavoriteIcon = ({ css, size, active, onClick }) => {
 
   return (
     <div>
-      <SvgGradient />
+      <SvgGradient id="favoriteGradient"/>
       <svg
         version="1.1"
         id="Capa_1"
@@ -24,7 +24,7 @@ const FavoriteIcon = ({ css, size, active, onClick }) => {
         className={`${css} cursor-pointer transform hover:scale-125 ${
           active && "scale-125"
         } transition-all`}
-        fill={active || isHover ? "url(#gradient)" : null}
+        fill={active || isHover ? "url(#favoriteGradient)" : null}
         onClick={onClick}
         onMouseEnter={toggle}
         onMouseLeave={toggle}

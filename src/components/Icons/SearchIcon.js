@@ -8,7 +8,7 @@ const SearchIcon = ({ css, size, active, onClick }) => {
   const toggle = () => setIsHover(!isHover);
   return (
     <div>
-      <SvgGradient />
+      <SvgGradient id="searchGradient"/>
       <svg
         id="Layer_1"
         enableBackground="new 0 0 512.392 512.392"
@@ -19,7 +19,7 @@ const SearchIcon = ({ css, size, active, onClick }) => {
         className={`${css} cursor-pointer transform hover:scale-125 ${
           active && "scale-125"
         } transition-all`}
-        fill={active || isHover ? "url(#gradient)" : null}
+        fill={active || isHover ? "url(#searchGradient)" : null}
         onClick={onClick}
         onMouseEnter={toggle}
         onMouseLeave={toggle}

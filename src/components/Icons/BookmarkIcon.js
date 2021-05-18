@@ -8,14 +8,14 @@ const BookmarkIcon = ({ css, size, active, onClick }) => {
   const toggle = () => setIsHover(!isHover);
   return (
     <div>
-      <SvgGradient />
+      <SvgGradient id="bookmarkGradient"/>
       {!active && <svg
         viewBox="-58 0 404 404.54235"
         xmlns="http://www.w3.org/2000/svg"
         height={size ?? "30px"}
         width={size ?? "30px"}
         className={`${css} cursor-pointer transform hover:scale-125 transition-all`}
-        fill={isHover ? "url(#gradient)" : null}
+        fill={isHover ? "url(#bookmarkGradient)" : null}
         onClick={onClick}
         onMouseEnter={toggle}
         onMouseLeave={toggle}

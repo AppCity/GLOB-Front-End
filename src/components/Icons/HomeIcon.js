@@ -9,7 +9,7 @@ const HomeIcon = ({ css, size, active, onClick }) => {
 
   return (
     <div>
-      <SvgGradient />
+      <SvgGradient id="homeGradient"/>
       <svg
         id="Layer_1"
         enableBackground="new 0 0 512 512"
@@ -20,7 +20,7 @@ const HomeIcon = ({ css, size, active, onClick }) => {
         className={`${css} cursor-pointer transform hover:scale-125 ${
           active && "scale-125"
         } transition-all`}
-        fill={active || isHover ? "url(#gradient)" : null}
+        fill={active || isHover ? "url(#homeGradient)" : null}
         onClick={onClick}
         onMouseEnter={toggle}
         onMouseLeave={toggle}

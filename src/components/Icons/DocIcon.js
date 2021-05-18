@@ -8,7 +8,7 @@ const DocIcon = ({ css, size, active, onClick }) => {
   const toggle = () => setIsHover(!isHover);
   return (
     <div>
-      <SvgGradient />
+      <SvgGradient id="docGradient"/>
       <svg
         id="Capa_1"
         enableBackground="new 0 0 512 512"
@@ -19,7 +19,7 @@ const DocIcon = ({ css, size, active, onClick }) => {
         className={`${css} cursor-pointer transform hover:scale-125 ${
           active && "scale-125"
         } transition-all`}
-        fill={active || isHover ? "url(#gradient)" : null}
+        fill={active || isHover ? "url(#docGradient)" : null}
         onClick={onClick}
         onMouseEnter={toggle}
         onMouseLeave={toggle}
