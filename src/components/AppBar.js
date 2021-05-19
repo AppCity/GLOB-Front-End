@@ -33,7 +33,7 @@ const AppBar = ({tab, setTab}) =>
 
         ' 
         >
-            <div className="flex  rounded-full p-5 bg-white bg-opacity-30 ">
+            <div className="flex  smd:rounded-full smd:p-5 smd:bg-white smd:bg-opacity-30 ">
                 <HomeIcon size="20px" active={tab===0} onClick={() => tabChangeHandler(0)}/>
             </div>
 
