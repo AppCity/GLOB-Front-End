@@ -21,7 +21,7 @@ const ChatIcon = ({ css, size, active, onClick }) => {
         height={size ?? "30px"}
         width={size ?? "30px"}
         className={`${css} cursor-pointer transform hover:scale-125 ${
-          active && "scale-125"
+          active && "animate-bounceLarge"
         } transition-all`}
         fill={active || isHover ? "url(#chatGradient)" : null}
         onClick={onClick}

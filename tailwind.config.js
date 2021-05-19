@@ -66,7 +66,8 @@ module.exports = {
       'spin-slow': 'spin 3s linear infinite',
       wiggle: 'wiggle 1s ease-in-out infinite',
       blink:'blink 1s linear infinite',
-      slideUp:'slideUp 0.3s linear'
+      slideUp:'slideUp 0.3s linear',
+      bounceLarge:'bounceLarge 1s linear infinite',
      },
      keyframes: {
       wiggle: {
@@ -83,7 +84,17 @@ module.exports = {
         '0%': { opacity: 0, transform:'translateY(10%)' },
         '50%': { opacity: 0.5, transform:'translateY(5%)' },
         '100%': { opacity: 1, transform:'translateY(0%)' }
-      }
+      },
+      bounceLarge:{
+        '0%, 100%': {
+          transform: 'translateY(-25%) scale(1.2)',
+          animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)',
+        },
+        '50%':{
+          transform: 'translateY(0) scale(1.2)',
+          animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)'
+        }
+      },
      }
     }
   },
