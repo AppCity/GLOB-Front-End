@@ -60,6 +60,7 @@ module.exports = {
       backgroundImage: {
         'bg-image': "url('/images/background.svg')",
        },
+       backgroundColor: ['responsive', 'group-hover', 'first', 'last', 'odd', 'even', 'hover', 'focus', 'active', 'visited', 'disabled'],
      animation: {
       'spin-slow': 'spin 3s linear infinite',
       wiggle: 'wiggle 1s ease-in-out infinite',
