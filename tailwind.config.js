@@ -16,7 +16,8 @@ module.exports = {
     
      extend: {
       boxShadow: {
-        t:'0 8px 32px 0 rgba( 0, 0, 0, 0.37 )'
+        t:'0 8px 32px 0 rgba( 0, 0, 0, 0.37 )',
+        full:'0 0 0 500px #fff'
       },
       screens: {
         smd: {'min':'768px', 'max':'900px'},

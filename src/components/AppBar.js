@@ -26,17 +26,13 @@ const AppBar = ({tab, setTab}) =>
            xl:h-full xl:w-14 xl:flex-col xl:justify-center xl:left-0 xl:space-y-10 xl:rounded-r-3xl xl:rounded-tl-none
            2xl:h-full 2xl:w-14 2xl:flex-col 2xl:justify-center 2xl:left-0 2xl:space-y-10 2xl:rounded-r-3xl 2xl:rounded-tl-none
 
-        
 
 
 
 
         ' 
         >
-            <div className="flex  smd:rounded-full smd:p-5 smd:bg-white smd:bg-opacity-30 ">
-                <HomeIcon size="20px" active={tab===0} onClick={() => tabChangeHandler(0)}/>
-            </div>
-
+            <HomeIcon size="20px" active={tab===0} onClick={() => tabChangeHandler(0)}/>
 
 
             <FavoriteIcon size="20px" active={tab===1} onClick={() => tabChangeHandler(1)}/>
@@ -54,7 +50,9 @@ const AppBar = ({tab, setTab}) =>
             ">
                 <AddIcon size="20px" />
             </div>
+
             <DocIcon size="20px" active={tab===2} onClick={() => tabChangeHandler(2)}/>
+
             <ChatIcon size="20px" active={tab===3} onClick={() => tabChangeHandler(3)}/>
             <div className="hidden smd:flex md:flex lg:flex xl:flex 2xl:flex">
                 <SettingsIcon size="20px" active={tab===4} onClick={() => tabChangeHandler(4)}/>

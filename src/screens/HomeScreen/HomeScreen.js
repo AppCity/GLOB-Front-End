@@ -44,7 +44,7 @@ const HomeScreen = (props) =>
 
     return(
         <div className="flex h-screen flex-col">
-            {/* <Navbar /> */}
+            <Navbar />
 
             <div className="flex bg-bg-image opacity-50 h-screen w-full fixed z-0 bg-no-repeat bg-cover" />
 
