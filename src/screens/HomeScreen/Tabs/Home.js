@@ -7,6 +7,7 @@ import { kFormatter, timeSince, timeAgo } from '../../../helpers/helpers';
 import LikeIcon from '../../../components/Icons/LikeIcon';
 import ClockIcon from '../../../components/Icons/ClockIcon';
 import BookmarkIcon from '../../../components/Icons/BookmarkIcon';
+import Navbar from '../../../components/Navbar';
 
 const Home = (props) =>
 {
@@ -152,25 +153,96 @@ const Home = (props) =>
             )
         })
 
+        const headerBar = (
+          <div className="hidden smd:flex md:flex lg:flex xl:flex 2xl:flex flex-row justify-center items-center space-x-10 mx-auto">
+            <div className="flex h-24 w-24 rounded-full overflow-hidden cursor-pointer hover:shadow-lg transition-all shadow-2xl">
+              <img src={"/images/profile.png"} />
+            </div>
+            <div className="flex flex-col text-gray-600">
+              <span className="text-2xl">Hey Jackie!</span>
+              <span className="text-5xl font-extrabold">What’s Next?</span>
 
-    return(
-        <div className="flex flex-col items-start">
-            <div className="sticky top-20 w-full z-30">
+            </div>
+          </div>
+        )
+
+        const leftSection = (
+          <div className="flex h-full w-72 bg-blue-200">
+            Section 1
+          </div>
+        )
+
+        const rightSection = (
+          <div className="flex h-full w-full bg-red-300 flex-col">
+            <Navbar />
+
+            Section 2
+
+          </div>
+          )
+
+          //Mobile - Categories Bar
+          const categoriesBarUi =(
+            <div className="sticky top-20 w-full z-30 smd:hidden md:hidden lg:hidden xl:hidden 2xl:hidden">
             <Scrollbar>
                 <div className="flex py-4 pl-4 space-x-3 items-center">
                     {categoriesBar}
                 </div>
             </Scrollbar>
             </div>
+          )
 
-            {/* <Scrollbar> */}
-            <div className="flex flex-col px-4 space-y-3 w-full">
+
+    return(
+        <div className="flex flex-col items-start 
+         smd:h-screen smd:flex-row
+         md:h-screen md:flex-row
+         lg:h-screen lg:flex-row
+         xl:h-screen xl:flex-row
+         2xl:h-screen 2xl:flex-row
+        
+        ">
+            {/* Mobile */}
+            <div className="flex w-full sticky top-0 z-30 smd:hidden md:hidden lg:hidden xl:hidden 2xl:hidden">
+              <Navbar />
+            </div>
+
+            {/* Mobile */}
+            {categoriesBarUi}
+            
+
+            {/* Desktop */}
+            <div className="hidden flex-row w-full h-screen bg-green-300 space-x-8 ml-20 mr-6
+              smd:flex
+              md:flex 
+              lg:flex 
+              xl:flex
+              2xl:flex 
+
+            ">
+              {leftSection}
+              {rightSection}
+            </div>
+
+            {/* Desktop */}
+            <div className="hidden bg-white rounded-l-3xl h-screen top-0 right-0 z-30  justify-center transition-all
+            smd:flex smd:w-40 smd:bg-white 
+            md:flex md:w-60 md:bg-purple-300 
+            lg:flex lg:w-60 lg:bg-blue-300 
+            xl:flex xl:w-70 xl:bg-yellow-300 
+            2xl:flex 2xl:w-70 2xl:bg-red-300 
+
+            ">
+              Sidebar coming soon
+            </div>
+
+            {/* Mobile */}
+            <div className="flex flex-col px-4 space-y-3 w-full 
+            smd:hidden md:hidden lg:hidden: xl:hidden 2xl:hidden
+            ">
                 <span>Latest News</span>
                 {newsUi}
-
             </div>
-            {/* </Scrollbar> */}
-
 
 
             

@@ -49,6 +49,11 @@ module.exports = {
           DEFAULT: '#FF0F91',
           dark: '#FF0F91',
         },
+        grey:{
+          light:'##4F4F4F',
+          DEFAULT:'##4F4F4F',
+          dark:'##4F4F4F'
+        }
       },
       fontFamily: {
         poetsenOne: ['PoetsenOne'],

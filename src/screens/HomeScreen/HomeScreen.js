@@ -44,12 +44,18 @@ const HomeScreen = (props) =>
 
     return(
         <div className="flex h-screen flex-col">
-            <Navbar />
 
-            <div className="flex bg-bg-image opacity-50 h-screen w-full fixed z-0 bg-no-repeat bg-cover" />
+            <div className="flex bg-bg-image opacity-50 h-screen w-full fixed z-0 bg-no-repeat bg-cover 
+            smd:opacity-70
+            md:opacity-70
+            lg:opacity-70
+            xl:opacity-70
+            2xl:opacity-70
+            
+            " />
 
             <Scrollbar>
-            <div className="flex flex-col w-full z-10 pt-24 pb-14">
+            <div className="flex flex-col w-full z-10 pb-14">
                 {tabUi}
             </div>
             </Scrollbar>
