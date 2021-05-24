@@ -55,7 +55,7 @@ const HomeScreen = (props) =>
             " />
 
             <Scrollbar>
-            <div className="flex flex-col w-full z-10 pb-14">
+            <div className="flex flex-col w-full z-10 pb-14 smd:pb-0 md:pb-0 lg:pb-0 xl:pb-0 2xl:pb-0">
                 {tabUi}
             </div>
             </Scrollbar>

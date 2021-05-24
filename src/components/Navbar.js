@@ -27,7 +27,7 @@ const Navbar = (props) => {
 
   return (
     <div
-      className="flex justify-between items-end pb-5 px-3 sticky top-0 w-full h-24 z-20 rounded-b-3xl bg-white bg-opacity-30 backdrop-filter backdrop-blur-md shadow-md
+      className="flex justify-between items-end pb-5 px-3 w-full h-24 z-20 rounded-b-3xl bg-white bg-opacity-30 backdrop-filter backdrop-blur-md shadow-md
       
       smd:bg-transparent smd:backdrop-filter-none smd:blur-0 smd:shadow-none smd:items-center smd:justify-between smd:rounded-none smd:px-0
       md:bg-transparent md:backdrop-filter-none md:blur-0 md:shadow-none md:items-center md:justify-between md:rounded-none md:px-0
