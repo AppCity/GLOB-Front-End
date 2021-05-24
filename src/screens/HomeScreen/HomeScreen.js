@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useLayoutEffect} from 'react'
 import Proptypes from 'prop-types'
 import Button from '../../components/Button'
 import AppBar from '../../components/AppBar'
@@ -9,12 +9,35 @@ import Favorites from './Tabs/Favorites';
 import Documents from './Tabs/Documents';
 import Contact from './Tabs/Contact';
 import Scrollbar from '../../components/Scrollbar';
+import Sidebar from '../../components/Sidebar';
 
 
 const HomeScreen = (props) =>
 {
 
     const [tab, setTab] = useState(0)
+    const [scroll, setScroll] = useState(0)
+
+    const scrollHandler = (e) =>
+      {
+        console.log("e",e.target.scrollTop)
+
+          setScroll(e.target.scrollTop)
+      }
+    
+      //Updates DOM before user can see
+    //   useLayoutEffect(() => 
+    //   {
+    //       window.addEventListener("scroll", scrollHandler)
+    //       return () => 
+    //       {
+    //           window.removeEventListener("scroll", scrollHandler)
+    //       }
+    //   }, [])
+  
+      console.log(scroll)
+    
+  
 
     let tabUi
     switch (tab) 
@@ -45,24 +68,38 @@ const HomeScreen = (props) =>
     return(
         <div className="flex h-screen flex-col">
 
-            <div className="flex bg-bg-image opacity-50 h-screen w-full fixed z-0 bg-no-repeat bg-cover 
-            smd:opacity-70
-            md:opacity-70
-            lg:opacity-70
-            xl:opacity-70
-            2xl:opacity-70
+            {/* Desktop/Mobile - Navbar */}
+            <Navbar scroll={scroll}/>
             
+            {/* BG */}
+            <div className="flex bg-bg-image opacity-50 h-screen w-full fixed z-0 bg-no-repeat bg-cover 
+                smd:opacity-70
+                md:opacity-70
+                lg:opacity-70
+                xl:opacity-70
+                2xl:opacity-70
             " />
 
-            <Scrollbar>
-            <div className="flex flex-col w-full z-10 pb-14 smd:pb-0 md:pb-0 lg:pb-0 xl:pb-0 2xl:pb-0">
-                {tabUi}
-            </div>
+            {/* Tab Components */}
+            <Scrollbar onScroll={scrollHandler}>
+                <div className="flex flex-col w-full z-10 pt-24 pb-14 
+                    smd:pb-0 
+                    md:pb-0 
+                    lg:pb-0 
+                    xl:pb-0 
+                    2xl:pb-0
+                ">
+                    {tabUi}
+                </div>
             </Scrollbar>
-            
-            
 
+            {/* Desktop/Mobile - Appbar */}
              <AppBar tab={tab} setTab={setTab}/>
+
+            {/* Desktop - Sidebar */}
+             {/* <Sidebar>
+                 Children
+             </Sidebar> */}
         </div>
     )
 };

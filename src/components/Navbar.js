@@ -5,12 +5,14 @@ import SearchIcon from "./Icons/SearchIcon";
 import Input from "./Input";
 import ThemeIcon from "./Icons/ThemeIcon";
 
-const Navbar = (props) => {
+const Navbar = ({scroll=0}) => {
   const [isSearchIconHover, setIsSearchIconHover] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchText, setSearchText] = useState("");
 
   const [theme, setTheme] = useState(true);
+ 
+  console.log("scroll =>", scroll)
 
 
   const toggleSearchHover = () => setIsSearchIconHover(!isSearchIconHover);
@@ -25,17 +27,17 @@ const Navbar = (props) => {
     setSearchText(value)
   }
 
-  return (
-    <div
-      className="flex justify-between items-end pb-5 px-3 w-full h-24 z-20 rounded-b-3xl bg-white bg-opacity-30 backdrop-filter backdrop-blur-md shadow-md
-      
-      smd:bg-transparent smd:backdrop-filter-none smd:blur-0 smd:shadow-none smd:items-center smd:justify-between smd:rounded-none smd:px-0
-      md:bg-transparent md:backdrop-filter-none md:blur-0 md:shadow-none md:items-center md:justify-between md:rounded-none md:px-0
-      lg:bg-transparent lg:backdrop-filter-none lg:blur-0 lg:shadow-none lg:items-center lg:justify-between lg:rounded-none lg:px-0
-      xl:bg-transparent xl:backdrop-filter-none xl:blur-0 xl:shadow-none xl:items-center xl:justify-between xl:rounded-none xl:px-0
-      2xl:bg-transparent 2xl:backdrop-filter-none 2xl:blur-0 2xl:shadow-none 2xl:items-center 2xl:justify-between 2xl:rounded-none 2xl:px-0
+  return (            
+  <div className="flex fixed w-full z-20">
 
-      "
+    <div
+      className={`flex justify-between items-end pb-5 px-3 w-full h-24 rounded-b-3xl bg-white bg-opacity-30 backdrop-filter backdrop-blur-md shadow-md transition-all
+      smd:bg-transparent smd:backdrop-filter-none smd:blur-0 smd:shadow-none smd:items-center  smd:rounded-none smd:px-0
+      md:bg-transparent md:backdrop-filter-none md:blur-0 md:shadow-none md:items-center md:rounded-none md:px-0
+      lg:bg-transparent lg:backdrop-filter-none lg:blur-0 lg:shadow-none lg:items-center lg:rounded-none lg:px-0
+      ${scroll !== 0 ? "xl:rounded-b-3xl xl:bg-white xl:bg-opacity-30 xl:backdrop-filter xl:backdrop-blur-md" : "xl:bg-transparent xl:backdrop-filter-none xl:blur-0 xl:shadow-none xl:rounded-none"} xl:items-center xl:px-0 xl:mx-32
+      2xl:bg-transparent 2xl:backdrop-filter-none 2xl:blur-0 2xl:shadow-none 2xl:items-center  2xl:rounded-none 2xl:px-0`}
+      
     >
       <div className="flex relative items-center justify-center transition-all">
         <div 
@@ -69,6 +71,8 @@ const Navbar = (props) => {
         <ThemeIcon size="25" onClick={toggleTheme} theme={theme}/>
       </div>
     </div>
+    </div>
+
   );
 };
 

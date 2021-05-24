@@ -1,4 +1,5 @@
 import Proptypes from "prop-types";
+import { useLayoutEffect, useState } from "react";
 import { Scrollbars } from "react-custom-scrollbars";
 import useWindowSize from "../hooks/windowResize";
 
@@ -10,10 +11,13 @@ const Scrollbar = (props) => {
     autoHeightMax,    
     thumbMinSize,
     thumbSize,
-    height
+    height,
+    onScroll
   } = props;
 
   const { height: useHeight } = useWindowSize()
+
+
   
   const renderThumbHorizontal = ({ style, ...props }) => {
     return (
@@ -51,6 +55,8 @@ const Scrollbar = (props) => {
       thumbMinSize={thumbMinSize ?? 50}
       thumbSize={thumbSize ?? 100}
       universal
+      onScroll={onScroll}
+      
       {...props}
       style={{height:height}}
     >

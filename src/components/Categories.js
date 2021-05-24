@@ -1,7 +1,7 @@
 import Proptypes from "prop-types";
 
 /**
- * CategoryButton component
+ * Categories component
  * @param {*} title - String - Title to show in the Button
  * @param {*} customCss String - classNames
  * @param {*} onClick Function - onClick handler
@@ -9,7 +9,7 @@ import Proptypes from "prop-types";
  * @returns
  */
 
-const CategoryButton = ({ title, onClick, customCss, active }) => {
+const Categories = ({ title, onClick, customCss, active }) => {
   return (
     <span
       className={`text-xs py-2 px-3 rounded-xl focus:outline-none font-thin
@@ -27,11 +27,11 @@ const CategoryButton = ({ title, onClick, customCss, active }) => {
   );
 };
 
-CategoryButton.propTypes = {
+Categories.propTypes = {
   title: Proptypes.string,
   onClick: Proptypes.func,
   customCss: Proptypes.string, //Passing customCss
   active: Proptypes.bool
 };
 
-export default CategoryButton;
+export default Categories;
