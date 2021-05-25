@@ -32,11 +32,17 @@ const Navbar = ({scroll=0}) => {
 
     <div
       className={`flex justify-between items-end pb-5 px-3 w-full h-24 rounded-b-3xl bg-white bg-opacity-30 backdrop-filter backdrop-blur-md shadow-md transition-all
-      smd:bg-transparent smd:backdrop-filter-none smd:blur-0 smd:shadow-none smd:items-center  smd:rounded-none smd:px-0
-      md:bg-transparent md:backdrop-filter-none md:blur-0 md:shadow-none md:items-center md:rounded-none md:px-0
-      lg:bg-transparent lg:backdrop-filter-none lg:blur-0 lg:shadow-none lg:items-center lg:rounded-none lg:px-0
-      ${scroll !== 0 ? "xl:rounded-b-3xl xl:bg-white xl:bg-opacity-30 xl:backdrop-filter xl:backdrop-blur-md" : "xl:bg-transparent xl:backdrop-filter-none xl:blur-0 xl:shadow-none xl:rounded-none"} xl:items-center xl:px-0 xl:mx-32
-      2xl:bg-transparent 2xl:backdrop-filter-none 2xl:blur-0 2xl:shadow-none 2xl:items-center  2xl:rounded-none 2xl:px-0`}
+      
+      smd:items-center smd:px-0 smd:ml-16 smd:mr-[216px] ${scroll !== 0 ? "" : "smd:bg-opacity-0 smd:shadow-none"}
+      
+      md:items-center md:px-0 md:ml-20 md:mr-[264px] ${scroll !== 0 ? "" : "md:bg-opacity-0 md:shadow-none"}
+      
+      lg:items-center lg:px-0 lg:ml-20 lg:mr-[264px] ${scroll !== 0 ? "" : "lg:bg-opacity-0 lg:shadow-none"}
+      
+      xl:items-center xl:px-0 xl:ml-20 xl:mr-[312px] ${scroll !== 0 ? "" : "xl:bg-opacity-0 xl:shadow-none"} 
+
+      2xl:items-center 2xl:px-0 2xl:ml-20 2xl:mr-[312px] ${scroll !== 0 ? "" : "2xl:bg-opacity-0 2xl:shadow-none"}
+      `}
       
     >
       <div className="flex relative items-center justify-center transition-all">
@@ -54,8 +60,7 @@ const Navbar = ({scroll=0}) => {
             placeholder="Search Blogs"
             value={searchText}
             onChange={(val) => inputHandler(val)}
-            css="smd:w-96 md:w-96 lg:w-96 xl:w-96 2xl:w-96"
-            
+            css="smd:w-96 md:w-96 lg:w-96 xl:w-96 2xl:w-96 border-gray-500 placeholder-gray-500"
           />
         </div>}
         

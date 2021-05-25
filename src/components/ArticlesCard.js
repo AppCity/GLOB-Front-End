@@ -8,11 +8,11 @@ const ArticlesCard = ({ image = "", title = "", headline = "" }) => {
         bg-white bg-opacity-30 backdrop-filter backdrop-blur-md  
         "
     >
-      <div className="flex rounded-xl overflow-hidden">
-        <img src={image} className="object-cover w-full h-24" />
+      <div className="flex rounded-t-xl overflow-hidden">
+        <img src={image} className="object-cover w-full h-24 smd:h-16" />
       </div>
 
-      <div className="flex flex-col space-y-1 p-2">
+      <div className="flex flex-col space-y-1 p-2 smd:p-1">
         <span className="bg-gradient-to-r from-orange to-fucsia text-transparent bg-clip-text bg-blend-soft-light">
           {title}
         </span>

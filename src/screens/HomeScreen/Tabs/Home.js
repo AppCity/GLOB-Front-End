@@ -8,6 +8,7 @@ import Sidebar from "../../../components/Sidebar";
 import { categories, myArticles, news } from "../../../data/data";
 import News from "../../../components/News";
 import ArticlesCard from "../../../components/ArticlesCard";
+import AddIcon from "../../../components/Icons/AddIcon";
 
 const Home = (props) => {
   const [categoryState, setCategoryState] = useState("technology");
@@ -17,13 +18,13 @@ const Home = (props) => {
   //Mobile/Desktop - News
   const newsUi = news.map((item) => {
     return (
-      <News 
-        image = {item.image}
-        title = {item.title}
-        headline = {item.headline}
-        likes = {item.likes}
-        timestamp ={item.timestamp} 
-        bookmarked = {item.bookmarked}
+      <News
+        image={item.image}
+        title={item.title}
+        headline={item.headline}
+        likes={item.likes}
+        timestamp={item.timestamp}
+        bookmarked={item.bookmarked}
       />
     );
   });
@@ -31,7 +32,7 @@ const Home = (props) => {
   // Desktop - My Articles
   const myArticlesUi = myArticles.map((item) => {
     return (
-      <ArticlesCard 
+      <ArticlesCard
         image={item.image}
         title={item.title}
         headline={item.headline}
@@ -59,16 +60,16 @@ const Home = (props) => {
   );
 
   const leftSection = (
-    <div className="flex h-full w-44 bg-blue-200 mt-24 flex-col">
-      <div className="flex w-full h-24 justify-end bg-purple-400 sticky top-20 z-20">
-        <div className="flex h-24 w-24 rounded-full overflow-hidden cursor-pointer hover:shadow-2xl transition-all shadow-xl">
+    <div className="flex h-full w-44 flex-col smd:w-32">
+      <div className="flex w-full h-24 justify-end sticky top-24 z-20 smd:justify-center">
+        <div className="flex h-24 w-24 rounded-full overflow-hidden cursor-pointer shadow-xl hover:shadow-2xl transition-all ">
           <img src={"/images/profile.png"} />
         </div>
       </div>
 
       <div className="flex flex-col mt-10 w-full">
-        <div className="flex h-28 w-full rounded-3xl border-2 border-dashed border-gray-500 cursor-pointer hover:border-gray-700 transition-colors justify-center items-center">
-          Add
+        <div className="flex justify-center items-center h-28 w-full rounded-3xl border-2 border-dashed border-gray-400 cursor-pointer hover:border-gray-700 transition-colors ">
+          <AddIcon size="20" css="" dark />
         </div>
 
         <div className="flex flex-col space-y-3 w-full mt-5">
@@ -80,15 +81,8 @@ const Home = (props) => {
   );
 
   const rightSection = (
-    <div
-      className="flex h-full w-full bg-red-300 flex-col 
-  
-  
-            "
-    >
-    
-
-      <div className="flex flex-col text-gray-600 h-24 space-y-5 sticky top-20 bg-yellow-200 z-20">
+    <div className="flex w-full flex-col">
+      <div className="flex flex-col text-gray-600 h-24 space-y-5 sticky top-24 z-20">
         <span className="text-2xl">Hey Jackie!</span>
         <span className="text-5xl font-extrabold">What’s Next?</span>
       </div>
@@ -103,43 +97,36 @@ const Home = (props) => {
   return (
     <div
       className="flex flex-col items-start 
-         smd:h-screen smd:flex-row
-         md:h-screen md:flex-row
-         lg:h-screen lg:flex-row
-         xl:h-screen xl:flex-row
-         2xl:h-screen 2xl:flex-row
-        "
+        smd:h-screen smd:flex-row
+        md:h-screen md:flex-row
+        lg:h-screen lg:flex-row
+        xl:h-screen xl:flex-row
+        2xl:h-screen 2xl:flex-row
+    "
     >
-      {/* Mobile */}
-      {/* <div className="flex w-full sticky top-0 z-30 smd:hidden md:hidden lg:hidden xl:hidden 2xl:hidden">
-        <Navbar />
-      </div> */}
-
       {/* Mobile */}
       {categoriesBarUi}
 
       {/* Desktop */}
       <div
-        className=" flex-row w-full h-screen bg-blue-500 space-x-8 ml-20
-              hidden
-              smd:flex smd:mr-52 smd:ml-14
-              md:flex md:mr-[264px] md:space-x-2
-              lg:flex lg:mr-[264px]
-              xl:flex xl:mr-[312px]
-              2xl:flex 2xl:mr-[312px]
-            "
+        className=" flex-row w-full space-x-8 ml-20 py-2
+          hidden
+          smd:flex smd:ml-16 smd:mr-[216px] 
+          md:flex md:mr-[264px]
+          lg:flex lg:mr-[264px]
+          xl:flex xl:mr-[312px]
+          2xl:flex 2xl:mr-[312px]
+      "
       >
         {leftSection}
         {rightSection}
       </div>
 
-     
-
       {/* Mobile - News */}
       <div
         className="flex flex-col px-4 space-y-3 w-full 
           smd:hidden md:hidden lg:hidden: xl:hidden 2xl:hidden
-        "
+      "
       >
         <span>Latest News</span>
         {newsUi}

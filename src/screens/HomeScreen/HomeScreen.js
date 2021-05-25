@@ -18,24 +18,10 @@ const HomeScreen = (props) =>
     const [tab, setTab] = useState(0)
     const [scroll, setScroll] = useState(0)
 
-    const scrollHandler = (e) =>
-      {
-        console.log("e",e.target.scrollTop)
-
-          setScroll(e.target.scrollTop)
-      }
+    const scrollHandler = (e) => setScroll(e.target.scrollTop)
     
-      //Updates DOM before user can see
-    //   useLayoutEffect(() => 
-    //   {
-    //       window.addEventListener("scroll", scrollHandler)
-    //       return () => 
-    //       {
-    //           window.removeEventListener("scroll", scrollHandler)
-    //       }
-    //   }, [])
-  
-      console.log(scroll)
+    
+
     
   
 
@@ -97,9 +83,9 @@ const HomeScreen = (props) =>
              <AppBar tab={tab} setTab={setTab}/>
 
             {/* Desktop - Sidebar */}
-             {/* <Sidebar>
+             <Sidebar>
                  Children
-             </Sidebar> */}
+             </Sidebar>
         </div>
     )
 };

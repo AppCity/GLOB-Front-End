@@ -72,6 +72,7 @@ Scrollbar.propTypes = {
   autoHeightMax: Proptypes.number,    
   thumbMinSize: Proptypes.number,
   thumbSize: Proptypes.number,
+  onScroll: Proptypes.func
 };
 
 export default Scrollbar;
