@@ -33,15 +33,15 @@ const Navbar = ({scroll=0}) => {
     <div
       className={`flex justify-between items-end pb-5 px-3 w-full h-24 rounded-b-3xl bg-white bg-opacity-30 backdrop-filter backdrop-blur-md shadow-md transition-all
       
-      smd:items-center smd:px-0 smd:ml-16 smd:mr-[216px] ${scroll !== 0 ? "" : "smd:bg-opacity-0 smd:shadow-none"}
+      smd:items-center smd:ml-16 smd:mr-[216px] ${scroll !== 0 ? "" : "smd:bg-opacity-0 smd:shadow-none"}
       
-      md:items-center md:px-0 md:ml-20 md:mr-[264px] ${scroll !== 0 ? "" : "md:bg-opacity-0 md:shadow-none"}
+      md:items-center md:ml-20 md:mr-[264px] ${scroll !== 0 ? "" : "md:bg-opacity-0 md:shadow-none"}
       
-      lg:items-center lg:px-0 lg:ml-20 lg:mr-[264px] ${scroll !== 0 ? "" : "lg:bg-opacity-0 lg:shadow-none"}
+      lg:items-center lg:ml-20 lg:mr-[264px] ${scroll !== 0 ? "" : "lg:bg-opacity-0 lg:shadow-none"}
       
-      xl:items-center xl:px-0 xl:ml-20 xl:mr-[312px] ${scroll !== 0 ? "" : "xl:bg-opacity-0 xl:shadow-none"} 
+      xl:items-center xl:ml-20 xl:mr-[312px] ${scroll !== 0 ? "" : "xl:bg-opacity-0 xl:shadow-none"} 
 
-      2xl:items-center 2xl:px-0 2xl:ml-20 2xl:mr-[312px] ${scroll !== 0 ? "" : "2xl:bg-opacity-0 2xl:shadow-none"}
+      2xl:items-center 2xl:ml-20 2xl:mr-[312px] ${scroll !== 0 ? "" : "2xl:bg-opacity-0 2xl:shadow-none"}
       `}
       
     >

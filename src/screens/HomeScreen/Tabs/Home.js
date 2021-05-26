@@ -12,7 +12,9 @@ import AddIcon from "../../../components/Icons/AddIcon";
 
 const Home = (props) => {
   const [categoryState, setCategoryState] = useState("technology");
+  const [addArticleHover, setAddArticleHover] = useState(false)
 
+  const toggleAddArticleHover = () => setAddArticleHover(!addArticleHover)
   const categoryStateHandler = (value) => setCategoryState(value);
 
   //Mobile/Desktop - News
@@ -59,6 +61,8 @@ const Home = (props) => {
     </div>
   );
 
+  
+
   const leftSection = (
     <div className="flex h-full w-44 flex-col smd:w-32">
       <div className="flex w-full h-24 justify-end sticky top-24 z-20 smd:justify-center">
@@ -68,8 +72,11 @@ const Home = (props) => {
       </div>
 
       <div className="flex flex-col mt-10 w-full">
-        <div className="flex justify-center items-center h-28 w-full rounded-3xl border-2 border-dashed border-gray-400 cursor-pointer hover:border-gray-700 transition-colors ">
-          <AddIcon size="20" css="" dark />
+        <div className={`flex justify-center items-center h-28 w-full rounded-3xl border-2 border-dashed cursor-pointer transition-colors ${addArticleHover ? "border-gray-700" : "border-gray-500"}`}
+        onMouseEnter={toggleAddArticleHover}
+        onMouseLeave={toggleAddArticleHover}
+        >
+          <AddIcon size="20" css="" dark active={addArticleHover}/>
         </div>
 
         <div className="flex flex-col space-y-3 w-full mt-5">

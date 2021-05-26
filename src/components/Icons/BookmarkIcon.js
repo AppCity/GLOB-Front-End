@@ -9,8 +9,6 @@ const BookmarkIcon = ({ css, size, active, onClick }) => {
   return (
     <div>
       <SvgGradient id="bookmarkGradient" />
-      <SvgGradient id="bookmarkGradient2" />
-
       {!active && (
         <svg
           viewBox="-58 0 404 404.54235"
@@ -18,7 +16,7 @@ const BookmarkIcon = ({ css, size, active, onClick }) => {
           height={size ?? "30px"}
           width={size ?? "30px"}
           className={`${css} cursor-pointer transform hover:scale-125 transition-all`}
-          fill={isHover ? "url(#bookmarkGradient2)" : null}
+          fill={isHover ? "url(#bookmarkGradient)" : null}
           onClick={onClick}
           onMouseEnter={toggle}
           onMouseLeave={toggle}
@@ -32,7 +30,7 @@ const BookmarkIcon = ({ css, size, active, onClick }) => {
           width={size ?? "30px"}
           viewBox="-58 0 404 404.54135"
           xmlns="http://www.w3.org/2000/svg"
-          fill={"url(#gradient)"}
+          fill={"url(#bookmarkGradient)"}
           className={`${css} cursor-pointer transform hover:scale-125 transition-all`}
         >
           <path d="m277.527344 0h-267.257813c-5.523437 0-10 4.476562-10 10v374.527344c-.011719 7.503906 4.183594 14.378906 10.855469 17.804687 6.675781 3.429688 14.707031 2.832031 20.796875-1.550781l111.976563-80.265625 111.976562 80.269531c6.097656 4.367188 14.121094 4.960938 20.792969 1.535156 6.667969-3.425781 10.863281-10.292968 10.863281-17.792968v-374.527344c0-5.523438-4.480469-10-10.003906-10zm0 0" />
