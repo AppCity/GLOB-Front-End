@@ -5,18 +5,45 @@ export const categories = [
     id: Math.floor(Math.random() * 9999),
     value: "technology",
     title: "Technology",
+    image:
+      "https://img.ledsmagazine.com/files/base/ebm/leds/image/2020/09/2010LED_Ins1_p01.5f5fd42d7bc7e.png?auto=format&w=720",
   },
-  { id: Math.floor(Math.random() * 9999), value: "motors", title: "Motors" },
-  { id: Math.floor(Math.random() * 9999), value: "travels", title: "Travels" },
-  { id: Math.floor(Math.random() * 9999), value: "cooking", title: "Cooking" },
-  { id: Math.floor(Math.random() * 9999), value: "sports", title: "Sports" },
+  {
+    id: Math.floor(Math.random() * 9999),
+    value: "motors",
+    title: "Motors",
+    image:
+      "http://prod-upp-image-read.ft.com/a4e8f394-313b-11ea-a329-0bcf87a328f2",
+  },
+  {
+    id: Math.floor(Math.random() * 9999),
+    value: "travels",
+    title: "Travels",
+    image:
+      "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fHRyYXZlbHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80",
+  },
+  {
+    id: Math.floor(Math.random() * 9999),
+    value: "cooking",
+    title: "Cooking",
+    image:
+      "https://envato-shoebox-0.imgix.net/6fe6/c858-bf7d-43d9-91be-bca4eb39ca42/1-05673.jpg?auto=compress%2Cformat&fit=max&mark=https%3A%2F%2Felements-assets.envato.com%2Fstatic%2Fwatermark2.png&markalign=center%2Cmiddle&markalpha=18&w=1600&s=590865c9e89ea570da2f98188c4790ef",
+  },
+  {
+    id: Math.floor(Math.random() * 9999),
+    value: "sports",
+    title: "Sports",
+    image:
+      "https://mongooseagency.com/files/3415/9620/1413/Return_of_Sports.jpg",
+  },
   {
     id: Math.floor(Math.random() * 9999),
     value: "programming",
     title: "Programming",
+    image:
+      "https://softcaliber.com/wp-content/uploads/2019/04/programmingLanguages.jpg",
   },
 ];
-
 
 export const news = [
   {
@@ -183,8 +210,8 @@ export const myArticles = [
 ];
 
 export const userData = {
-  name:"Jackie",
-  website:"www.jackieslife.glob.com",
-  dailyReaders:4249,
-  publishedArticles:28
-}
+  name: "Jackie",
+  website: "www.jackieslife.glob.com",
+  dailyReaders: 4249,
+  publishedArticles: 28,
+};

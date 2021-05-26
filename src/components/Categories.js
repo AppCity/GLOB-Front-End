@@ -9,29 +9,55 @@ import Proptypes from "prop-types";
  * @returns
  */
 
-const Categories = ({ title, onClick, customCss, active }) => {
-  return (
+const Categories = ({ title, onClick, customCss, active, image, card }) => {
+  let category = (
     <span
       className={`text-xs py-2 px-3 rounded-xl focus:outline-none font-thin
-      ${active ? "text-bg bg-gradient-to-r from-orange to-fucsia " : "bg-white text-black"}
+      ${
+        active
+          ? "text-bg bg-gradient-to-r from-orange to-fucsia "
+          : "bg-white text-black"
+      }
       transition-all tracking-wide shadow-md bg-blend-soft-light filter
       hover:drop-shadow-lg
       cursor-pointer  text-center
       ${customCss && customCss}
-      `}     
-
+      `}
       onClick={onClick}
     >
       {title}
     </span>
   );
+
+  if (card) {
+    category = (
+      <div className="flex flex-col items-center py-5">
+        <div
+          className="flex relative rounded-3xl w-24 h-20 overflow-hidden shadow-xl"
+          onClick={onClick}
+        >
+          <img src={image} className="object-cover" />
+
+          <div className="flex items-center justify-between absolute bottom-0 left-0 text-gray-200 text-[9px] ml-3 mb-1 z-10">
+            <span>{title}</span>
+          </div>
+
+          <div className="absolute bg-gradient-to-t from-black to-transparent filter bottom-0 h-6 w-full" />
+        </div>
+      </div>
+    );
+  }
+
+  return category;
 };
 
 Categories.propTypes = {
   title: Proptypes.string,
   onClick: Proptypes.func,
   customCss: Proptypes.string, //Passing customCss
-  active: Proptypes.bool
+  active: Proptypes.bool,
+  image: Proptypes.string,
+  card: Proptypes.bool,
 };
 
 export default Categories;
