@@ -10,6 +10,8 @@ import Documents from './Tabs/Documents';
 import Contact from './Tabs/Contact';
 import Scrollbar from '../../components/Scrollbar';
 import Sidebar from '../../components/Sidebar';
+import { myArticles, userData } from '../../data/data';
+import BlogsCard from '../../components/BlogsCard';
 
 
 const HomeScreen = (props) =>
@@ -49,6 +51,43 @@ const HomeScreen = (props) =>
     }
 
 
+    const sidebarChildren = (
+        <div className="flex flex-col w-full space-y-6">
+
+
+            <div className="flex flex-col justify-center items-center py-5">
+                <Logo imageCss="h-10"/>
+            </div>
+
+            <div className="flex flex-col">
+                <span className="flex pl-5">My Blogs</span>
+                <div className="flex pl-5 space-x-3 overflow-x-scroll">
+                    {myArticles.map(item =>
+                    {
+                        return <BlogsCard 
+                            image={item.image}
+                            title = {item.title}
+
+                        />
+                    })}
+                </div>
+            </div>
+            
+
+            <div className="flex flex-col text-xs text-gray-500 px-5 space-y-2">
+                <span>{userData.website}</span>
+                <span>{userData.publishedArticles} daily readers</span>
+                <span>{userData.dailyReaders} published articles</span>
+
+            </div>
+
+            <div className="flex pl-5">
+                categories
+            </div>
+        </div>
+    )
+
+
 
 
     return(
@@ -84,7 +123,7 @@ const HomeScreen = (props) =>
 
             {/* Desktop - Sidebar */}
              <Sidebar>
-                 Children
+                {sidebarChildren}
              </Sidebar>
         </div>
     )

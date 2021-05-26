@@ -181,3 +181,10 @@ export const myArticles = [
       "https://www.healtheuropa.eu/wp-content/uploads/2020/04/iStock-1153003884-696x464.jpg",
   },
 ];
+
+export const userData = {
+  name:"Jackie",
+  website:"www.jackieslife.glob.com",
+  dailyReaders:4249,
+  publishedArticles:28
+}
