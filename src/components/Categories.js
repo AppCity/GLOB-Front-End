@@ -31,9 +31,9 @@ const Categories = ({ title, onClick, customCss, active, image, card }) => {
 
   if (card) {
     category = (
-      <div className="flex flex-col items-center py-5">
+      <div className="flex flex-col items-center py-5 my-5">
         <div
-          className="flex relative rounded-3xl w-24 h-20 overflow-hidden shadow-xl"
+          className="flex relative rounded-3xl w-24 h-20 overflow-hidden shadow-xl hover:shadow-2xl"
           onClick={onClick}
         >
           <img src={image} className="object-cover" />

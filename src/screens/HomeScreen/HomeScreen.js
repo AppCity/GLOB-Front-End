@@ -43,18 +43,20 @@ const HomeScreen = (props) => {
   }
 
   const sidebarChildren = (
-    <div className="flex flex-col w-full space-y-8">
-      <div className="flex flex-col justify-center items-center py-5">
+    <div className="flex flex-col w-full">
+      <div className="flex flex-col justify-center items-center py-5 mt-5">
         <Logo imageCss="h-10" />
       </div>
 
-      <div className="flex flex-col">
+      <div className="flex flex-col mt-5">
         <span className="flex pl-5">My Blogs</span>
-        <div className="flex pl-5 space-x-3 overflow-x-scroll">
+        <Scrollbar>
+        <div className="flex pl-5 space-x-3 -mt-5">
           {myArticles.map((item) => {
             return <BlogsCard image={item.image} title={item.title} />;
           })}
         </div>
+        </Scrollbar>
       </div>
 
       <div className="flex flex-col text-xs text-gray-500 px-5 space-y-2">
@@ -63,17 +65,20 @@ const HomeScreen = (props) => {
         <span>{userData.dailyReaders} published articles</span>
       </div>
 
-      <div className="flex flex-col pl-5 space-y-1">
-        <GradientText>Categories</GradientText>
-        <GradientText customCss="text-xs">
+      <div className="flex flex-col space-y-1 mt-5">
+        <GradientText customCss="pl-5">Categories</GradientText>
+        <GradientText customCss="text-xs pl-5 ">
           Filter the latest news by categories
         </GradientText>
-
-        <div className="flex space-x-3 overflow-x-scroll">
+        
+        <Scrollbar>
+        <div className="flex space-x-3 pl-5 -mt-5">
           {categories.map((item) => {
             return <Categories title={item.title} image={item.image} card />;
           })}
         </div>
+        </Scrollbar>
+
       </div>
     </div>
   );
@@ -98,12 +103,12 @@ const HomeScreen = (props) => {
       <Scrollbar onScroll={scrollHandler}>
         <div
           className="flex flex-col w-full z-10 pt-24 pb-14 
-                    smd:pb-0 
-                    md:pb-0 
-                    lg:pb-0 
-                    xl:pb-0 
-                    2xl:pb-0
-                "
+                smd:pb-0 
+                md:pb-0 
+                lg:pb-0 
+                xl:pb-0 
+                2xl:pb-0
+            "
         >
           {tabUi}
         </div>
