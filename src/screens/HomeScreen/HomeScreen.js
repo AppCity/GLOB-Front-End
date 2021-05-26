@@ -58,7 +58,7 @@ const HomeScreen = (props) =>
             <Navbar scroll={scroll}/>
             
             {/* BG */}
-            <div className="flex bg-bg-image opacity-50 h-screen w-full fixed z-0 bg-no-repeat bg-cover 
+            <div className="flex bg-bg-light h-screen w-full fixed z-0 bg-no-repeat bg-cover 
                 smd:opacity-70
                 md:opacity-70
                 lg:opacity-70

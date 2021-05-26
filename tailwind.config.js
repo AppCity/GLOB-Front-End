@@ -65,6 +65,11 @@ module.exports = {
       },
       backgroundImage: {
         'bg-image': "url('/images/background.svg')",
+        'bg-dark': "url('/images/bgDark.svg')",
+        'bg-light': "url('/images/bgLight.svg')",
+        'bg-login': "url('/images/bgLogin.svg')",
+        'bg-dark-mobile': "url('/images/bgDarkMobile.svg')",
+        'bg-light-mobile': "url('/images/bgLightMobile.svg')",
        },
        backgroundColor: ['responsive', 'group-hover', 'first', 'last', 'odd', 'even', 'hover', 'focus', 'active', 'visited', 'disabled'],
      animation: {
