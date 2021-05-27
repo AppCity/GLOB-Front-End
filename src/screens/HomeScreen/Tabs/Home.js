@@ -114,14 +114,14 @@ const Home = (props) => {
       {/* Mobile */}
       {categoriesBarUi}
 
-      <div className="flex bg-red-500  w-full">
+      {/* <div className="flex w-full sticky top-24 z-30 mt-5">
         <div className="flex ml-20 mr-[312px] bg-yellow-300 w-full space-x-8">
           <div className="w-44 smd:32 bg-green-300 ">Image</div>
           <div className="w-full bg-purple-600 dark:bg-pink-500">Head</div>
         </div>
        
 
-      </div>
+      </div> */}
 
       {/* Desktop */}
       <div

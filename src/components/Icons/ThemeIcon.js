@@ -96,7 +96,7 @@ const ThemeIcon = ({ css, size, active, onClick, theme }) => {
           onMouseLeave={toggle}
         >
           <g id="Page-1" fill="none" fill-rule="evenodd">
-            <g id="079---Brightness" fill={active || isHover ? "url(#themeGradient)" : "#FF7B48"} fill-rule="nonzero">
+            <g id="079---Brightness" fill={"url(#themeGradient)"} fill-rule="nonzero">
               <path
                 id="Shape"
                 d="m14.8 19.67c-3.341 2.995-6.8 6.093-6.8 13.33 0 9.3888407 7.6111593 17 17 17s17-7.6111593 17-17c0-7.237-3.459-10.335-6.8-13.33-2.442-2.187-4.76-4.262-5.141-7.67h-2.059v10c0 .5522847-.4477153 1-1 1s-1-.4477153-1-1v-10h-2v10c0 .5522847-.4477153 1-1 1s-1-.4477153-1-1v-10h-2.055c-.381 3.408-2.699 5.483-5.145 7.67zm11.2 6.33c0-.5522847.4477153-1 1-1s1 .4477153 1 1v1c0 .5522847-.4477153 1-1 1s-1-.4477153-1-1zm-4 0c0-.5522847.4477153-1 1-1s1 .4477153 1 1v1c0 .5522847-.4477153 1-1 1s-1-.4477153-1-1z"
