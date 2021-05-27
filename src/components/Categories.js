@@ -33,7 +33,7 @@ const Categories = ({ title, onClick, customCss, active, image, card }) => {
     category = (
       <div className="flex flex-col items-center py-5 my-5">
         <div
-          className="flex relative rounded-3xl w-24 h-20 overflow-hidden shadow-xl hover:shadow-2xl"
+          className="flex relative rounded-3xl w-24 h-20 overflow-hidden shadow-lg hover:shadow-xl cursor-pointer"
           onClick={onClick}
         >
           <img src={image} className="object-cover" />

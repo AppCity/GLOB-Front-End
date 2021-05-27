@@ -87,43 +87,33 @@ export const news = [
   },
   {
     id: Math.floor(Math.random() * 9999),
-    title: "Virtual Reality",
-    headline: "Why virtual reality is so popular?",
+    title: "Cars",
+    headline: "Why cars are so popular?",
     likes: 500,
     timestamp: new Date(Date.now() - aDay * 2),
     bookmarked: true,
     image:
-      "https://www.healtheuropa.eu/wp-content/uploads/2020/04/iStock-1153003884-696x464.jpg",
+      "https://cdn.luxe.digital/media/2020/12/15110747/fastest-cars-world-2021-luxe-digital%402x.jpg",
   },
   {
     id: Math.floor(Math.random() * 9999),
-    title: "Virtual Reality",
-    headline: "Why virtual reality is so popular?",
+    title: "Motorbikes",
+    headline: "Why Motorbikes are so popular?",
     likes: 500,
     timestamp: new Date(Date.now() - aDay * 2),
     bookmarked: true,
     image:
-      "https://www.healtheuropa.eu/wp-content/uploads/2020/04/iStock-1153003884-696x464.jpg",
+      "https://m.atcdn.co.uk/ect/media/w1200/df9f47dab5e8478b8958c36706a24174.jpg",
   },
   {
     id: Math.floor(Math.random() * 9999),
-    title: "Virtual Reality",
-    headline: "Why virtual reality is so popular?",
+    title: "Adventure",
+    headline: "An unusual and exciting or daring experience.",
     likes: 500,
     timestamp: new Date(Date.now() - aDay * 2),
     bookmarked: true,
     image:
-      "https://www.healtheuropa.eu/wp-content/uploads/2020/04/iStock-1153003884-696x464.jpg",
-  },
-  {
-    id: Math.floor(Math.random() * 9999),
-    title: "Virtual Reality",
-    headline: "Why virtual reality is so popular?",
-    likes: 500,
-    timestamp: new Date(Date.now() - aDay * 2),
-    bookmarked: true,
-    image:
-      "https://www.healtheuropa.eu/wp-content/uploads/2020/04/iStock-1153003884-696x464.jpg",
+      "https://www.silverkris.com/wp-content/uploads/2018/05/Nature-and-Adventure-1920x1069-960x530.jpg",
   },
 ];
 
@@ -169,43 +159,33 @@ export const myArticles = [
   },
   {
     id: Math.floor(Math.random() * 9999),
-    title: "Virtual Reality",
-    headline: "Why virtual reality is so popular?",
+    title: "Cars",
+    headline: "Why cars are so popular?",
     likes: 500,
     timestamp: new Date(Date.now() - aDay * 2),
     bookmarked: true,
     image:
-      "https://www.healtheuropa.eu/wp-content/uploads/2020/04/iStock-1153003884-696x464.jpg",
+      "https://cdn.luxe.digital/media/2020/12/15110747/fastest-cars-world-2021-luxe-digital%402x.jpg",
   },
   {
     id: Math.floor(Math.random() * 9999),
-    title: "Virtual Reality",
-    headline: "Why virtual reality is so popular?",
+    title: "Motorbikes",
+    headline: "Why Motorbikes are so popular?",
     likes: 500,
     timestamp: new Date(Date.now() - aDay * 2),
     bookmarked: true,
     image:
-      "https://www.healtheuropa.eu/wp-content/uploads/2020/04/iStock-1153003884-696x464.jpg",
+      "https://m.atcdn.co.uk/ect/media/w1200/df9f47dab5e8478b8958c36706a24174.jpg",
   },
   {
     id: Math.floor(Math.random() * 9999),
-    title: "Virtual Reality",
-    headline: "Why virtual reality is so popular?",
+    title: "Adventure",
+    headline: "An unusual and exciting or daring experience.",
     likes: 500,
     timestamp: new Date(Date.now() - aDay * 2),
     bookmarked: true,
     image:
-      "https://www.healtheuropa.eu/wp-content/uploads/2020/04/iStock-1153003884-696x464.jpg",
-  },
-  {
-    id: Math.floor(Math.random() * 9999),
-    title: "Virtual Reality",
-    headline: "Why virtual reality is so popular?",
-    likes: 500,
-    timestamp: new Date(Date.now() - aDay * 2),
-    bookmarked: true,
-    image:
-      "https://www.healtheuropa.eu/wp-content/uploads/2020/04/iStock-1153003884-696x464.jpg",
+      "https://www.silverkris.com/wp-content/uploads/2018/05/Nature-and-Adventure-1920x1069-960x530.jpg",
   },
 ];
 

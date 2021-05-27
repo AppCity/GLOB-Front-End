@@ -13,6 +13,9 @@ import { categories, myArticles, userData } from "../../data/data";
 import BlogsCard from "../../components/BlogsCard";
 import GradientText from "../../components/GradientText";
 import Categories from "../../components/Categories";
+import DocsIcon from "../../components/Icons/DocsIcon";
+import GroupIcon from "../../components/Icons/GroupIcon";
+import LinkIcon from "../../components/Icons/LinkIcon";
 
 const HomeScreen = (props) => {
   const [tab, setTab] = useState(0);
@@ -51,18 +54,30 @@ const HomeScreen = (props) => {
       <div className="flex flex-col mt-5">
         <span className="flex pl-5">My Blogs</span>
         <Scrollbar>
-        <div className="flex pl-5 space-x-3 -mt-5">
-          {myArticles.map((item) => {
-            return <BlogsCard image={item.image} title={item.title} />;
-          })}
-        </div>
+          <div className="flex pl-5 space-x-3 -mt-5">
+            {myArticles.map((item) => {
+              return <BlogsCard image={item.image} title={item.title} />;
+            })}
+          </div>
         </Scrollbar>
       </div>
 
-      <div className="flex flex-col text-xs text-gray-500 px-5 space-y-2">
-        <span>{userData.website}</span>
-        <span>{userData.publishedArticles} daily readers</span>
-        <span>{userData.dailyReaders} published articles</span>
+      <div className="flex flex-col text-xs text-gray-500 font-thin px-5 space-y-2 mt-1">
+        <div className="flex space-x-2">
+          <LinkIcon size="15" />
+          <span className="cursor-pointer">{userData.website}</span>
+        </div>
+        <div className="flex space-x-2">
+          <GroupIcon size="15" />
+          <span>{userData.dailyReaders.toLocaleString()} daily readers</span>
+        </div>
+        <div className="flex space-x-2">
+          <DocsIcon size="15" />
+
+          <span>
+            {userData.publishedArticles.toLocaleString()} published articles
+          </span>
+        </div>
       </div>
 
       <div className="flex flex-col space-y-1 mt-5">
@@ -70,15 +85,14 @@ const HomeScreen = (props) => {
         <GradientText customCss="text-xs pl-5 ">
           Filter the latest news by categories
         </GradientText>
-        
-        <Scrollbar>
-        <div className="flex space-x-3 pl-5 -mt-5">
-          {categories.map((item) => {
-            return <Categories title={item.title} image={item.image} card />;
-          })}
-        </div>
-        </Scrollbar>
 
+        <Scrollbar>
+          <div className="flex space-x-3 pl-5 -mt-5">
+            {categories.map((item) => {
+              return <Categories title={item.title} image={item.image} card />;
+            })}
+          </div>
+        </Scrollbar>
       </div>
     </div>
   );

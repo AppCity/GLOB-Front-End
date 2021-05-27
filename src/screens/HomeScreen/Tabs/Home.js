@@ -65,11 +65,11 @@ const Home = (props) => {
 
   const leftSection = (
     <div className="flex h-full w-44 flex-col smd:w-32">
-      <div className="flex w-full h-24 justify-end sticky top-24 z-20 smd:justify-center">
+      {/* <div className="flex w-full h-24 justify-end sticky top-24 z-20 smd:justify-center">
         <div className="flex h-24 w-24 rounded-full overflow-hidden cursor-pointer shadow-xl hover:shadow-2xl transition-all ">
           <img src={"/images/profile.png"} />
         </div>
-      </div>
+      </div> */}
 
       <div className="flex flex-col mt-10 w-full">
         <div className={`flex justify-center items-center h-28 w-full rounded-3xl border-2 border-dashed cursor-pointer transition-colors ${addArticleHover ? "border-gray-700" : "border-gray-500"}`}
@@ -89,10 +89,10 @@ const Home = (props) => {
 
   const rightSection = (
     <div className="flex w-full flex-col">
-      <div className="flex flex-col text-gray-600 h-24 space-y-5 sticky top-24 z-20">
+      {/* <div className="flex flex-col text-gray-600 h-24 space-y-5 sticky top-24 z-20">
         <span className="text-2xl">Hey Jackie!</span>
         <span className="text-5xl font-extrabold">What’s Next?</span>
-      </div>
+      </div> */}
 
       <div className="flex flex-col space-y-3 w-full mt-10">
         <span className="text-gray-500">Latest News</span>
@@ -103,16 +103,25 @@ const Home = (props) => {
 
   return (
     <div
-      className="flex flex-col items-start 
-        smd:h-screen smd:flex-row
-        md:h-screen md:flex-row
-        lg:h-screen lg:flex-row
-        xl:h-screen xl:flex-row
-        2xl:h-screen 2xl:flex-row
+      className="flex flex-col items-start
+        smd:h-screen 
+        md:h-screen
+        lg:h-screen
+        xl:h-screen
+        2xl:h-screen
     "
     >
       {/* Mobile */}
       {categoriesBarUi}
+
+      <div className="flex bg-red-500  w-full">
+        <div className="flex ml-20 mr-[312px] bg-yellow-300 w-full space-x-8">
+          <div className="w-44 smd:32 bg-green-300 ">Image</div>
+          <div className="w-full bg-purple-600 dark:bg-pink-500">Head</div>
+        </div>
+       
+
+      </div>
 
       {/* Desktop */}
       <div
@@ -125,6 +134,7 @@ const Home = (props) => {
           2xl:flex 2xl:mr-[312px]
       "
       >
+      
         {leftSection}
         {rightSection}
       </div>

@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
+import {ThemeProvider} from 'next-themes'
 
 //Redux
 import {ReduxWrapper} from '../store/store';
@@ -34,9 +35,9 @@ const WrappedApp = ({ Component, pageProps }) =>
   return (
     <AnimatePresence exitBeforeEnter>
       {/* <Layout> */}
-
+      <ThemeProvider attribute="class">
         <Component {...pageProps} />
-        
+      </ThemeProvider>
       {/* </Layout> */}
     </AnimatePresence>
   )

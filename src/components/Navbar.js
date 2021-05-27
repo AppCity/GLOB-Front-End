@@ -4,21 +4,27 @@ import Logo from "./Logo";
 import SearchIcon from "./Icons/SearchIcon";
 import Input from "./Input";
 import ThemeIcon from "./Icons/ThemeIcon";
+import {useTheme} from 'next-themes'
 
 const Navbar = ({scroll=0}) => {
   const [isSearchIconHover, setIsSearchIconHover] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchText, setSearchText] = useState("");
 
-  const [theme, setTheme] = useState(true);
- 
+  const [mode, setMode] = useState(true);
+
+  const {theme, setTheme} = useTheme()
+
   console.log("scroll =>", scroll)
 
 
   const toggleSearchHover = () => setIsSearchIconHover(!isSearchIconHover);
 
   const toggleSearchBar = () => setIsSearchOpen(!isSearchOpen)
-  const toggleTheme = () => setTheme(!theme)
+  const toggleTheme = () => {
+    setMode(!mode)
+    theme === 'dark' ? setTheme('light') : setTheme('dark')
+  }
 
 
   //Input field handler
@@ -73,7 +79,7 @@ const Navbar = ({scroll=0}) => {
       </div>
 
       <div className="hidden justify-center items-center smd:flex md:flex lg:flex xl:flex 2xl:flex">
-        <ThemeIcon size="25" onClick={toggleTheme} theme={theme}/>
+        <ThemeIcon size="25" onClick={toggleTheme} theme={mode}/>
       </div>
     </div>
     </div>
