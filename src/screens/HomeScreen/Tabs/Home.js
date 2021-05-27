@@ -64,13 +64,7 @@ const Home = (props) => {
   
 
   const leftSection = (
-    <div className="flex h-full w-44 flex-col smd:w-32">
-      {/* <div className="flex w-full h-24 justify-end sticky top-24 z-20 smd:justify-center">
-        <div className="flex h-24 w-24 rounded-full overflow-hidden cursor-pointer shadow-xl hover:shadow-2xl transition-all ">
-          <img src={"/images/profile.png"} />
-        </div>
-      </div> */}
-
+    <div className="flex h-full w-44 flex-col smd:w-32 overflow-hidden">
       <div className="flex flex-col mt-10 w-full">
         <div className={`flex justify-center items-center h-28 w-full rounded-3xl border-2 border-dashed cursor-pointer transition-colors ${addArticleHover ? "border-gray-700" : "border-gray-500"}`}
         onMouseEnter={toggleAddArticleHover}
@@ -89,11 +83,6 @@ const Home = (props) => {
 
   const rightSection = (
     <div className="flex w-full flex-col">
-      {/* <div className="flex flex-col text-gray-600 h-24 space-y-5 sticky top-24 z-20">
-        <span className="text-2xl">Hey Jackie!</span>
-        <span className="text-5xl font-extrabold">What’s Next?</span>
-      </div> */}
-
       <div className="flex flex-col space-y-3 w-full mt-10">
         <span className="text-gray-500">Latest News</span>
         {newsUi}
@@ -114,18 +103,37 @@ const Home = (props) => {
       {/* Mobile */}
       {categoriesBarUi}
 
-      {/* <div className="flex w-full sticky top-24 z-30 mt-5">
-        <div className="flex ml-20 mr-[312px] bg-yellow-300 w-full space-x-8">
-          <div className="w-44 smd:32 bg-green-300 ">Image</div>
-          <div className="w-full bg-purple-600 dark:bg-pink-500">Head</div>
+      {/* Desktop - Header Card */}
+      <div className="flex w-full sticky top-24 z-30 mt-5">
+        <div className="ml-20 w-full space-x-8
+        hidden
+        smd:flex smd:ml-16 smd:mr-[216px] 
+        md:flex md:mr-[264px]
+        lg:flex lg:mr-[264px]
+        xl:flex xl:mr-[312px]
+        2xl:flex 2xl:mr-[312px]
+        
+        ">
+          <div className="flex w-44 smd:w-32 justify-center">
+            <div className="flex h-24 w-24 rounded-full overflow-hidden cursor-pointer shadow-xl hover:shadow-2xl transition-all z-20">
+              <img src={"/images/profile.png"} />
+            </div>
+          </div>
+          <div className="flex w-full">
+            <div className="flex flex-col text-gray-600 h-24 space-y-5 sticky top-24 z-20">
+              <span className="text-2xl">Hey Jackie!</span>
+              <span className="text-5xl font-extrabold">What’s Next?</span>
+            </div> 
+          </div>
         </div>
        
 
-      </div> */}
+      </div>
 
       {/* Desktop */}
+      <div className="flex-row w-full">
       <div
-        className=" flex-row w-full space-x-8 ml-20 py-2
+        className=" flex-row  space-x-8 ml-20 py-2
           hidden
           smd:flex smd:ml-16 smd:mr-[216px] 
           md:flex md:mr-[264px]
@@ -137,6 +145,7 @@ const Home = (props) => {
       
         {leftSection}
         {rightSection}
+      </div>
       </div>
 
       {/* Mobile - News */}
