@@ -15,9 +15,6 @@ const Navbar = ({scroll=0}) => {
 
   const {theme, setTheme} = useTheme()
 
-  console.log("scroll =>", scroll)
-
-
   const toggleSearchHover = () => setIsSearchIconHover(!isSearchIconHover);
 
   const toggleSearchBar = () => setIsSearchOpen(!isSearchOpen)

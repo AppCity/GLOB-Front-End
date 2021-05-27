@@ -10,7 +10,7 @@ import News from "../../../components/News";
 import ArticlesCard from "../../../components/ArticlesCard";
 import AddIcon from "../../../components/Icons/AddIcon";
 
-const Home = (props) => {
+const Home = ({scroll=0}) => {
   const [categoryState, setCategoryState] = useState("technology");
   const [addArticleHover, setAddArticleHover] = useState(false)
 
@@ -91,15 +91,7 @@ const Home = (props) => {
   );
 
   return (
-    <div
-      className="flex flex-col items-start
-        smd:h-screen 
-        md:h-screen
-        lg:h-screen
-        xl:h-screen
-        2xl:h-screen
-    "
-    >
+    <div className="flex flex-col items-start">
       {/* Mobile */}
       {categoriesBarUi}
 
@@ -125,8 +117,14 @@ const Home = (props) => {
               <span className="text-5xl font-extrabold">What’s Next?</span>
             </div> 
           </div>
+
         </div>
-       
+        
+        <div 
+          className={`absolute bg-gradient-to-r from-white to-transparent filter bottom-0 left-20 right-[312px] h-full rounded-3xl
+          ${scroll > 4 ? "opacity-100" : "opacity-0"} transition-opacity`}
+          />
+
 
       </div>
 

@@ -26,7 +26,7 @@ const HomeScreen = (props) => {
   let tabUi;
   switch (tab) {
     case 0:
-      tabUi = <Home />;
+      tabUi = <Home scroll={scroll}/>;
       break;
 
     case 1:
