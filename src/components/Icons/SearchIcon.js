@@ -18,7 +18,7 @@ const SearchIcon = ({ css, size, active, onClick }) => {
         width={size ?? "30px"}
         className={`${css} cursor-pointer transform hover:scale-125 ${
           active && "scale-125"
-        } transition-all`}
+        } transition-all ${!(active || isHover ) && "dark:fill-[white]"}`}
         fill={active || isHover ? "url(#searchGradient)" : null}
         onClick={onClick}
         onMouseEnter={toggle}

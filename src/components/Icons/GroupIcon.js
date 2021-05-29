@@ -13,7 +13,7 @@ const GroupIcon = ({ css, size, fill }) => {
       xmlSpace="preserve"
       height={size ?? "30px"}
       width={size ?? "30px"}
-      className={`${css}`}
+      className={`${css} dark:fill-[white]`}
       fill={fill ?? null}
     >
       <g>

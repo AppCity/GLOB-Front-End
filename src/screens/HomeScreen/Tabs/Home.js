@@ -66,7 +66,7 @@ const Home = ({scroll=0}) => {
   const leftSection = (
     <div className="flex h-full w-44 flex-col smd:w-32 overflow-hidden">
       <div className="flex flex-col mt-10 w-full">
-        <div className={`flex justify-center items-center h-28 w-full rounded-3xl border-2 border-dashed cursor-pointer transition-colors ${addArticleHover ? "border-gray-700" : "border-gray-500"}`}
+        <div className={`flex justify-center items-center h-28 w-full rounded-3xl border-2 border-dashed cursor-pointer transition-colors ${addArticleHover ? "border-gray-700 dark:border-white" : "border-gray-500 dark:border-gray-300"}`}
         onMouseEnter={toggleAddArticleHover}
         onMouseLeave={toggleAddArticleHover}
         >
@@ -74,7 +74,7 @@ const Home = ({scroll=0}) => {
         </div>
 
         <div className="flex flex-col space-y-3 w-full mt-5">
-          <span className="text-gray-500">My Articles</span>
+          <span className="text-gray-500 dark:text-white">My Articles</span>
           {myArticlesUi}
         </div>
       </div>
@@ -84,7 +84,7 @@ const Home = ({scroll=0}) => {
   const rightSection = (
     <div className="flex w-full flex-col">
       <div className="flex flex-col space-y-3 w-full mt-10">
-        <span className="text-gray-500">Latest News</span>
+        <span className="text-gray-500 dark:text-white">Latest News</span>
         {newsUi}
       </div>
     </div>
@@ -112,7 +112,7 @@ const Home = ({scroll=0}) => {
             </div>
           </div>
           <div className="flex w-full">
-            <div className="flex flex-col text-gray-600 h-24 space-y-5 sticky top-24 z-20">
+            <div className="flex flex-col text-gray-600 dark:text-white h-24 space-y-5 sticky top-24 z-20">
               <span className="text-2xl">Hey Jackie!</span>
               <span className="text-5xl font-extrabold">What’s Next?</span>
             </div> 
@@ -122,7 +122,10 @@ const Home = ({scroll=0}) => {
         
         <div 
           className={`absolute bg-gradient-to-r from-white to-transparent filter bottom-0 left-20 right-[312px] h-full rounded-3xl
-          ${scroll > 4 ? "opacity-100" : "opacity-0"} transition-opacity`}
+          ${scroll > 4 ? "opacity-100 dark:opacity-60" : "opacity-0 dark:opacity-0"} transition-opacity
+          dark:from-black
+          
+          `}
           />
 
 

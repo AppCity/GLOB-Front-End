@@ -23,7 +23,7 @@ const FavoriteIcon = ({ css, size, active, onClick }) => {
         width={size ?? "30px"}
         className={`${css} cursor-pointer transform hover:scale-125 ${
           active && "animate-bounceLarge"
-        } transition-all`}
+        } transition-all ${!(active || isHover ) && "dark:fill-[white]"}`}
         fill={active || isHover ? "url(#favoriteGradient)" : null}
         onClick={onClick}
         onMouseEnter={toggle}

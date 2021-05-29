@@ -14,7 +14,7 @@ const LinkIcon = ({ css, size, fill }) => {
       height={size ?? "30px"}
       width={size ?? "30px"}
       fill={fill ?? null}
-      className={`${css}`}
+      className={`${css} dark:fill-[white]`}
     >
       <g transform="translate(1 1)">
         <g>

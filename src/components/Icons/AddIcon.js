@@ -15,7 +15,7 @@ const AddIcon = ({ css, size, fill, onClick, dark, active }) => {
         width={size ?? "30px"}
         xmlns="http://www.w3.org/2000/svg"
         className={`${css} cursor-pointer transform transition-all ${dark && "hover:scale-125"}
-        ${active && "scale-125"}
+        ${active && "scale-125"} ${!(active || isHover ) && "dark:fill-[white]"}
         `}
         onClick={onClick}
         onMouseEnter={toggle}

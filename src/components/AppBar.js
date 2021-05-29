@@ -19,7 +19,11 @@ const AppBar = ({tab, setTab}) =>
 
     return(
         <div className='flex fixed bottom-0 w-full h-14 z-10 rounded-t-3xl justify-around items-center transition-all  
-          bg-white bg-opacity-30 backdrop-filter backdrop-blur-md shadow-t
+          bg-white bg-opacity-30 backdrop-filter backdrop-blur-md shadow-4xl
+          dark:bg-black dark:bg-opacity-60
+
+
+
            smd:h-full smd:w-14 smd:flex-col smd:justify-center smd:left-0 smd:space-y-10 smd:rounded-r-3xl smd:rounded-tl-none
            md:h-full md:w-14 md:flex-col md:justify-center md:left-0 md:space-y-10 md:rounded-r-3xl md:rounded-tl-none
            lg:h-full lg:w-14 lg:flex-col lg:justify-center lg:left-0 lg:space-y-10 lg:rounded-r-3xl lg:rounded-tl-none
@@ -39,7 +43,7 @@ const AppBar = ({tab, setTab}) =>
             <div className="flex p-5 rounded-full self-start -mt-5
             bg-gradient-to-r from-yellow via-orange to-fucsia bg-blend-soft-light
             filter transition-all shadow-xl
-            hover:drop-shadow-lg
+            hover:shadow-3xl
             cursor-pointer
             smd:hidden
             md:hidden

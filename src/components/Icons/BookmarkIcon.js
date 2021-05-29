@@ -15,7 +15,7 @@ const BookmarkIcon = ({ css, size, active, onClick }) => {
           xmlns="http://www.w3.org/2000/svg"
           height={size ?? "30px"}
           width={size ?? "30px"}
-          className={`${css} cursor-pointer transform hover:scale-125 transition-all`}
+          className={`${css} cursor-pointer transform hover:scale-125 transition-all ${!(active || isHover ) && "dark:fill-[white]"}`}
           fill={isHover ? "url(#bookmarkGradient)" : null}
           onClick={onClick}
           onMouseEnter={toggle}

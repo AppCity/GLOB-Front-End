@@ -21,11 +21,11 @@ const LikeIcon = ({ css, size, active, onClick }) => {
         height={size ?? "30px"}
         width={size ?? "30px"}
         className={`${css} cursor-pointer transform hover:scale-125 ${
-          active && "scale-125"
-        } transition-all`}
+          active && "scale-125 "
+        } transition-all ${!(active || isHover ) && "dark:fill-[white]"}`}
         fill={active || isHover ? "url(#likeGradient)" : null}
         onClick={onClick}
-        onMouseEnter={toggle}
+        onMouseEnter={toggle} 
         onMouseLeave={toggle}
       >
         <g>

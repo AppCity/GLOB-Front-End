@@ -62,7 +62,7 @@ const HomeScreen = (props) => {
         </Scrollbar>
       </div>
 
-      <div className="flex flex-col text-xs text-gray-500 font-thin px-5 space-y-2 mt-1">
+      <div className="flex flex-col text-xs text-gray-500 dark:text-gray-200 font-thin px-5 space-y-2 mt-1">
         <div className="flex space-x-2">
           <LinkIcon size="15" />
           <span className="cursor-pointer">{userData.website}</span>
@@ -105,6 +105,7 @@ const HomeScreen = (props) => {
       {/* BG */}
       <div
         className="flex bg-bg-light h-screen w-full fixed z-0 bg-no-repeat bg-cover 
+                dark:bg-bg-dark
                 smd:opacity-70
                 md:opacity-70
                 lg:opacity-70

@@ -19,7 +19,7 @@ const HomeIcon = ({ css, size, active, onClick }) => {
         xmlns="http://www.w3.org/2000/svg"
         className={`${css} cursor-pointer transform hover:scale-125 ${
           active && "animate-bounceLarge"
-        } transition-all`}
+        } transition-all ${!(active || isHover ) && "dark:fill-[white]"}`}
         fill={active || isHover ? "url(#homeGradient)" : null}
         onClick={onClick}
         onMouseEnter={toggle}

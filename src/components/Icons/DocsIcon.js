@@ -16,7 +16,7 @@ const DocsIcon = ({ css, size }) => {
         xmlSpace="preserve"
         height={size ?? "30px"}
         width={size ?? "30px"}
-        className={`css`}
+        className={`${css} dark:fill-[white]`}
       >
         <g>
           <g>

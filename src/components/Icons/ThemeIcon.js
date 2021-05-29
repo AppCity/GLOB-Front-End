@@ -18,7 +18,7 @@ const ThemeIcon = ({ css, size, active, onClick, theme }) => {
           width={size ?? "30px"}
           className={`${css} cursor-pointer transform hover:scale-125 ${
             active && "scale-125"
-          } transition-all`}
+          } transition-all ${!(active || isHover ) && "dark:fill-[white]"}`}
           fill={active || isHover ? "url(#themeGradient)" : null}
           onClick={onClick}
           onMouseEnter={toggle}
@@ -29,6 +29,7 @@ const ThemeIcon = ({ css, size, active, onClick, theme }) => {
               id="079---Brightness"
               fill={active || isHover ? "url(#themeGradient)" : "#000"}
               fill-rule="nonzero"
+              className={`${!(active || isHover ) && "dark:fill-[white]"}`}
             >
               <path
                 id="Shape"
@@ -89,7 +90,7 @@ const ThemeIcon = ({ css, size, active, onClick, theme }) => {
           width={size ?? "30px"}
           className={`${css} cursor-pointer transform hover:scale-125 ${
             active && "scale-125"
-          } transition-all`}
+          } transition-all ${!(active || isHover ) && "dark:fill-[white]"}`}
           fill={active || isHover ? "url(#themeGradient)" : null}
           onClick={onClick}
           onMouseEnter={toggle}

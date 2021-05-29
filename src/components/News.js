@@ -14,7 +14,9 @@ const News = ({
   bookmarked = false,
 }) => {
   return (
-    <div className="bg-white rounded-xl flex bg-opacity-30 backdrop-filter backdrop-blur-md shadow-md hover:shadow-lg transition-all cursor-pointer">
+    <div className="bg-white rounded-xl flex bg-opacity-30 backdrop-filter backdrop-blur-md shadow-md hover:shadow-lg transition-all cursor-pointer
+    dark:bg-black dark:bg-opacity-60
+    ">
       <div className="flex h-32 w-32 rounded-xl overflow-hidden">
         <img src={image} className="object-cover" />
       </div>
@@ -24,7 +26,7 @@ const News = ({
           <span className="bg-gradient-to-r from-orange to-fucsia text-transparent bg-clip-text bg-blend-soft-light">
             {title}
           </span>
-          <span className="text-xs text-gray-500">{headline}</span>
+          <span className="text-xs text-gray-500 dark:text-white">{headline}</span>
         </div>
 
         <div className="flex flex-row w-full justify-between items-center p-5">
