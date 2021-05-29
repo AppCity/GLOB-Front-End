@@ -93,7 +93,7 @@ const SignInScreen = (props) =>
         password:data.password.value,
       }
       console.log("LOGIN", postData)
-      router.push('/')
+      router.replace('/')      
     }
 
     const [animate, setAnimate] = useState(false)
@@ -111,7 +111,7 @@ const SignInScreen = (props) =>
 
     return(
         <div 
-            className={`flex flex-col py-5 w-full items-center bg-white space-y-4
+            className={`flex flex-col py-5 w-full items-center bg-white space-y-4 dark:bg-black dark:bg-opacity-30
             h-full rounded-t-3xl px-5
             smd:rounded-3xl smd:bg-opacity-70
             md:px-10 md:bg-opacity-70
@@ -125,13 +125,13 @@ const SignInScreen = (props) =>
         >
             <Logo imageCss="h-14 smd:h-20 md:h-auto" customCss={"hidden smd:flex md:flex lg:flex xl:flex 2xl:flex"}/>
 
-            <span className="text-2xl self-start
+            <span className="text-2xl self-start dark:text-white
           smd:self-auto
           md:self-auto
           lg:self-auto
           xl:self-auto
           2xl:self-auto">Welcome back</span>
-            <span className="text-sm text-gray-500 self-start pb-5
+            <span className="text-sm text-gray-500 dark:text-gray-300 self-start pb-5
           smd:self-auto
           md:self-auto
           lg:self-auto
@@ -158,12 +158,12 @@ const SignInScreen = (props) =>
             <Button title="Login" disabled={!data.isFormValid} onClick={login}/>
 
             <div>
-                <span className="text-xs text-gray-500">Forgot your password? </span>
+                <span className="text-xs text-gray-500 dark:text-gray-300">Forgot your password? </span>
             
                 <TextButton title="Reset Here" onClick={() =>{}}/>
             </div>
 
-            <span className="text-xs text-gray-500 font-thin">OR SIGN IN WITH</span>
+            <span className="text-xs text-gray-500 dark:text-gray-300 font-thin">OR SIGN IN WITH</span>
             <div className="flex space-x-5">
               <GoogleIcon onClick={() => {}}/>
               <FacebookIcon onClick={() => {}}/>

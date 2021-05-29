@@ -26,6 +26,7 @@ const AuthBar = (props) =>
             2xl:w-1/3
             transition-all
             overflow-hidden animate-slideUp
+            md:dark:bg-black md:dark:bg-opacity-60
         ">
              <div className="flex w-full justify-around my-3 text-white" >
                 <span                 

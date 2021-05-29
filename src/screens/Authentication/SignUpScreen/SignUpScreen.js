@@ -6,9 +6,12 @@ import Button from '../../../components/Button';
 import Input from '../../../components/Input';
 import Scrollbar from '../../../components/Scrollbar';
 import { EMAIL_REGEX } from '../../../constants/constants';
+import { useRouter } from 'next/router';
 
 const SignUpScreen = (props) =>
 {
+
+  const router = useRouter()
 
     const [data, setData] = useState({
         fullname:{
@@ -106,6 +109,8 @@ const SignUpScreen = (props) =>
         
       }
       console.log("REGISTER", postData)
+
+      router.replace('/')      
     }
 
     const [animate, setAnimate] = useState(false)
@@ -125,7 +130,7 @@ const SignUpScreen = (props) =>
 
     return (
         <div
-          className={`flex flex-col py-5 w-full items-center bg-white space-y-4
+          className={`flex flex-col py-5 w-full items-center bg-white space-y-4 dark:bg-black dark:bg-opacity-30
             h-full rounded-t-3xl
             smd:bg-opacity-70 smd:rounded-3xl 
             md:bg-opacity-70
@@ -139,7 +144,7 @@ const SignUpScreen = (props) =>
         >
           <Logo imageCss="h-14 smd:h-20 md:h-auto" customCss={"hidden smd:flex md:flex lg:flex xl:flex 2xl:flex"}/>
 
-          <span className="text-2xl self-start px-5
+          <span className="text-2xl self-start px-5 dark:text-white
           smd:self-auto
           md:self-auto
           lg:self-auto
@@ -147,7 +152,7 @@ const SignUpScreen = (props) =>
           2xl:self-auto
           "
           >Create Account</span>
-          <span className="text-sm text-gray-500 self-start px-5 pb-5
+          <span className="text-sm text-gray-500 dark:text-gray-300 self-start px-5 pb-5
           smd:self-auto
           md:self-auto
           lg:self-auto
