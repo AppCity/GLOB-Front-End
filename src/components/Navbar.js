@@ -7,19 +7,20 @@ import ThemeIcon from "./Icons/ThemeIcon";
 import {useTheme} from 'next-themes'
 
 const Navbar = ({scroll=0}) => {
+  const {theme, setTheme} = useTheme()
+
   const [isSearchIconHover, setIsSearchIconHover] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchText, setSearchText] = useState("");
 
-  const [mode, setMode] = useState(false);
+  const [mode, setMode] = useState(theme);
 
-  const {theme, setTheme} = useTheme()
 
   const toggleSearchHover = () => setIsSearchIconHover(!isSearchIconHover);
 
   const toggleSearchBar = () => setIsSearchOpen(!isSearchOpen)
   const toggleTheme = () => {
-    setMode(!mode)
+    theme === 'dark' ? setMode('light') : setMode('dark')
     theme === 'dark' ? setTheme('light') : setTheme('dark')
   }
 
