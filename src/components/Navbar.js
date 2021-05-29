@@ -11,7 +11,7 @@ const Navbar = ({scroll=0}) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchText, setSearchText] = useState("");
 
-  const [mode, setMode] = useState(true);
+  const [mode, setMode] = useState(false);
 
   const {theme, setTheme} = useTheme()
 

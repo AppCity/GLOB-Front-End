@@ -35,7 +35,7 @@ const WrappedApp = ({ Component, pageProps }) =>
   return (
     <AnimatePresence exitBeforeEnter>
       {/* <Layout> */}
-      <ThemeProvider attribute="class">
+      <ThemeProvider attribute="class" enableSystem={false}>
         <Component {...pageProps} />
       </ThemeProvider>
       {/* </Layout> */}
