@@ -69,13 +69,19 @@ const Navbar = ({scroll=0}) => {
         
       </div>
 
-      {!isSearchOpen && <div className="animate-slideUp smd:hidden md:hidden lg:hidden xl:hidden 2xl:hidden"><Logo imageCss="h-10 " /></div>}
+      {!isSearchOpen && <div className="animate-slideUp smd:hidden md:hidden lg:hidden xl:hidden 2xl:hidden"><Logo imageCss="h-10" /></div>}
 
       <div className="flex h-12 w-12 rounded-full overflow-hidden cursor-pointer hover:shadow-lg transition-all smd:hidden md:hidden lg:hidden xl:hidden 2xl:hidden ">
         <img src={"/images/profile.png"} />
       </div>
 
-      <div className="hidden justify-center items-center smd:flex md:flex lg:flex xl:flex 2xl:flex">
+      <div className="fixed top-1 right-0 justify-center items-center 
+      smd:flex smd:relative
+      md:flex md:relative
+      lg:flex lg:relative
+      xl:flex xl:relative
+      2xl:flex 2xl:relative
+      ">
         <ThemeIcon size="25" onClick={toggleTheme} theme={mode}/>
       </div>
     </div>
