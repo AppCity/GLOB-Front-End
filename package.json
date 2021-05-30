@@ -1,7 +1,7 @@
 {
   "name": "GLOB",
   "description": "Where globe writes blogs",
-  "homepage": "https://glob.it",
+  "homepage": "https://app-city-glob.vercel.app/",
   "keywords": [
     "GLOB"
   ],
@@ -14,7 +14,7 @@
   "scripts": {
     "start": "next dev",
     "build": "npx git config core.ignorecase false && next build",
-    "postbuild": "next-sitemap & next-on-netlify",
+    "postbuild": "next-sitemap",
     "prod": "next start",
     "build:prod": "next build && next start",
     "kill": "npx kill-port 3000",
@@ -30,7 +30,6 @@
     "lqip-loader": "^2.2.1",
     "moment": "^2.29.1",
     "next": "10.1.3",
-    "next-on-netlify": "^2.9.0",
     "next-optimized-images": "^3.0.0-canary.10",
     "next-redux-wrapper": "^6.0.2",
     "next-themes": "^0.0.14",

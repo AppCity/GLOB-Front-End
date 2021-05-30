@@ -1,6 +1,5 @@
 //Sitemap Config for SEO
-
 module.exports = 
 {
-    siteUrl: 'https://google.com',
+    siteUrl: 'https://app-city-glob.vercel.app/',
 }
