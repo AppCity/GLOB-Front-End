@@ -75,12 +75,11 @@ module.exports = {
         "10xl": ['9rem', '1'],
       },
       backgroundImage: {
-        'bg-image': "url('/images/background.svg')",
-        'bg-dark': "url('/images/bgDark.svg')",
-        'bg-light': "url('/images/bgLight.svg')",
-        'bg-login': "url('/images/bgLogin.svg')",
-        'bg-dark-mobile': "url('/images/bgDarkMobile.svg')",
-        'bg-light-mobile': "url('/images/bgLightMobile.svg')",
+        'img-dark': "url('/images/bgDark.svg')",
+        'img-light': "url('/images/bgLight.svg')",
+        'img-login': "url('/images/bgLogin.svg')",
+        'img-dark-mobile': "url('/images/bgDarkMobile.svg')",
+        'img-light-mobile': "url('/images/bgLightMobile.svg')",
        },
        backgroundColor: ['responsive', 'group-hover', 'first', 'last', 'odd', 'even', 'hover', 'focus', 'active', 'visited', 'disabled'],
      animation: {

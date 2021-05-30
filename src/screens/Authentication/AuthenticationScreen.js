@@ -13,14 +13,13 @@ const AuthenticationScreen = (props) =>
 
     return(
     <div className="flex flex-col justify-center items-center h-screen w-full select-none
-        md:justify-between md:bg-bg-login md:bg-no-repeat md:bg-cover md:flex-row overflow-y-hidden
-        md:dark:bg-bg-dark
+        md:justify-between md:bg-img-login md:bg-no-repeat md:bg-cover md:flex-row overflow-y-hidden
     ">
 
         <Tagline />
 
-        <div className="flex md:hidden my-5">
-            <Logo imageCss="h-20" customCss="py-5"/>
+        <div className="flex items-center justify-center w-full md:hidden">
+            <Logo imageCss="h-14" customCss="py-5"/>
         </div>
 
         <AuthBar />

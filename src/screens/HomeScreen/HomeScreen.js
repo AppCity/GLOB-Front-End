@@ -104,8 +104,8 @@ const HomeScreen = (props) => {
 
       {/* BG */}
       <div
-        className="flex bg-bg-light h-screen w-full fixed z-0 bg-no-repeat bg-cover 
-                dark:bg-bg-dark
+        className="flex bg-img-light h-screen w-full fixed z-0 bg-no-repeat bg-cover 
+                dark:bg-img-dark
                 smd:opacity-70
                 md:opacity-70
                 lg:opacity-70
