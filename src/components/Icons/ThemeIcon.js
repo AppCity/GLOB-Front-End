@@ -10,7 +10,7 @@ const ThemeIcon = ({ css, size, active, onClick, theme }) => {
     <div>
       <SvgGradient id="themeGradient" />
 
-      {theme ? (
+      {theme === 'dark' ? (
         <svg
           viewBox="0 0 50 60"
           xmlns="http://www.w3.org/2000/svg"
