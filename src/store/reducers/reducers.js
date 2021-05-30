@@ -1,13 +1,11 @@
 //Redux
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
 
 //Reducer
-import globReducer from './globReducer'
-
+import globReducer from "./globReducer";
 
 const reducers = combineReducers({
-	glob: globReducer,
-})
-
+  glob: globReducer,
+});
 
 export default reducers;

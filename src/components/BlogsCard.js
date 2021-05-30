@@ -20,8 +20,8 @@ const BlogsCard = ({ image, title }) => {
 };
 
 BlogsCard.propTypes = {
-    image: Proptypes.string,
-    title: Proptypes.string
+  image: Proptypes.string,
+  title: Proptypes.string,
 };
 
 export default BlogsCard;

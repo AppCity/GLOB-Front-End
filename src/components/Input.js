@@ -26,17 +26,22 @@ const Input = ({
   required = false,
   type = null,
   minLength = null,
-  autoFocus=false,
-  error=false,
-  css=""
+  autoFocus = false,
+  error = false,
+  css = "",
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showBorder, setShowBorder] = useState(false);
 
-
   return (
     <div className="flex flex-col w-full">
-      <label className={`text-xs ${!error ? "text-gray-500 dark:text-gray-300" :"text-red-500"}`}>{label}</label>
+      <label
+        className={`text-xs ${
+          !error ? "text-gray-500 dark:text-gray-300" : "text-red-500"
+        }`}
+      >
+        {label}
+      </label>
 
       <div className="flex relative">
         {type === "password" && (
@@ -52,7 +57,9 @@ const Input = ({
           placeholder={placeholder}
           onChange={(e) => onChange(e.target.value)}
           value={value}
-          className={`w-full py-2 border-b ${!error ? "border-gray-300" : "border-red-500"} dark:text-white bg-transparent transition-all rounded-none focus:outline-none ${css}`}
+          className={`w-full py-2 border-b ${
+            !error ? "border-gray-300" : "border-red-500"
+          } dark:text-white bg-transparent transition-all rounded-none focus:outline-none ${css}`}
           required={required}
           minLength={minLength}
           onFocus={() => setShowBorder(true)}
@@ -81,7 +88,6 @@ Input.propTypes = {
   autoFocus: Proptypes.bool,
   error: Proptypes.bool,
   css: Proptypes.string,
-
 };
 
 export default Input;

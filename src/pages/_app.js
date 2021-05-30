@@ -1,37 +1,30 @@
-import { useEffect } from 'react'
-import { useRouter } from 'next/router'
-import {ThemeProvider} from 'next-themes'
+
+import { ThemeProvider } from "next-themes";
 
 //Redux
-import {ReduxWrapper} from '../store/store';
+import { ReduxWrapper } from "../store/store";
 
 //Global Css
-import '../../styles/globals.css'
-
+import "../../styles/globals.css";
 
 //Components
 // import Layout from '../Layout/Layout'
 
 //Page Animation
-import  {  AnimatePresence  }  from  "framer-motion" ; 
-
+import { AnimatePresence } from "framer-motion";
 
 // Redirect from default Netlify Domain
 // if(typeof window != "undefined") //Runs only on client side
 // {
 //   const hostname = window.location.hostname
 
-//   if (hostname == "app-city.netlify.app") 
+//   if (hostname == "app-city.netlify.app")
 //   {
-//     window.location.href = 'https://app-city.co'; 
+//     window.location.href = 'https://app-city.co';
 //   }
 // }
 
-
-
-const WrappedApp = ({ Component, pageProps }) => 
-{
- 
+const WrappedApp = ({ Component, pageProps }) => {
   return (
     <AnimatePresence exitBeforeEnter>
       {/* <Layout> */}
@@ -40,10 +33,7 @@ const WrappedApp = ({ Component, pageProps }) =>
       </ThemeProvider>
       {/* </Layout> */}
     </AnimatePresence>
-  )
-}
-
-
-
+  );
+};
 
 export default ReduxWrapper.withRedux(WrappedApp);

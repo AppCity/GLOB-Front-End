@@ -1,4 +1,4 @@
-import Proptypes from 'prop-types'
+import Proptypes from "prop-types";
 
 /**
  * Logo component
@@ -8,33 +8,30 @@ import Proptypes from 'prop-types'
  */
 
 //Images
-import logo_text from '../../public/images/logo_text.svg'
-import logo_underscore from '../../public/images/logo_underscore.svg'
+import logo_text from "../../public/images/logo_text.svg";
+import logo_underscore from "../../public/images/logo_underscore.svg";
 
-const Logo = ({customCss="", imageCss=""}) =>
-{
+const Logo = ({ customCss = "", imageCss = "" }) => {
+  return (
+    <div className={`flex flex-row ${customCss}`}>
+      <img
+        src={logo_text}
+        alt={"logo_text"}
+        className={`${imageCss} transition-all`}
+      />
 
-    return(
-        <div className={`flex flex-row ${customCss}`}>
-            <img 
-                src = {logo_text}
-                alt = {"logo_text"}
-                className={`${imageCss} transition-all`}
-            />
-
-            <img 
-                src = {logo_underscore}
-                alt = {"logo_underscore"}
-                className={`${imageCss} transition-all animate-blink`}
-            />
-        </div>
-    )
+      <img
+        src={logo_underscore}
+        alt={"logo_underscore"}
+        className={`${imageCss} transition-all animate-blink`}
+      />
+    </div>
+  );
 };
 
-Logo.propTypes = 
-{
-    customCss: Proptypes.string,
-    imageCss: Proptypes.string
-}
+Logo.propTypes = {
+  customCss: Proptypes.string,
+  imageCss: Proptypes.string,
+};
 
 export default Logo;

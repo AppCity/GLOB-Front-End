@@ -18,15 +18,13 @@
   font-display: swap;
 }
 
-body 
-{
+body {
   padding: 0;
   margin: 0;
-  font-family: 'WorkSans', sans-serif;
+  font-family: "WorkSans", sans-serif;
 }
 
 a {
   color: inherit;
   text-decoration: none;
 }
-

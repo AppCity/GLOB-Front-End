@@ -1,26 +1,21 @@
-import types from '../types'
+import types from "../types";
 
 //Api
 // import { NEXTApi } from '../../api/axios'
 
+const setLoading = (status) => {
+  return {
+    type: types.SET_LOADING,
+    payload: status,
+  };
+};
 
-
-const setLoading = (status) =>
-{
-	return {
-		type: types.SET_LOADING,
-		payload: status
-	}
-}
-
-export const setSplashLoading = (value) =>
-{
-	return {
-		type: types.SET_SPLASH_LOADING,
-		payload:value
-	}
-}
-
+export const setSplashLoading = (value) => {
+  return {
+    type: types.SET_SPLASH_LOADING,
+    payload: value,
+  };
+};
 
 //Middleware
 // export const submitContactForm = (fname, lname,	email, message) =>
@@ -32,14 +27,13 @@ export const setSplashLoading = (value) =>
 // 		dispatch(messageStatus(null))
 // 		dispatch(setLoading(true))
 
-
 // 		NEXTApi.post("/email", contactFormBody)
-// 		.then(resp => 
+// 		.then(resp =>
 // 		{
 // 			dispatch(messageStatus("Success"))
 // 			dispatch(setLoading(false))
 // 		})
-// 		.catch(err => 
+// 		.catch(err =>
 // 		{
 // 			dispatch(setLoading(false))
 // 			dispatch(messageStatus("Error"))

@@ -1,6 +1,3 @@
-import { useState, useEffect } from "react";
-import Proptypes from "prop-types";
-
 const ArticlesCard = ({ image = "", title = "", headline = "" }) => {
   return (
     <div

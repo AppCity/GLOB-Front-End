@@ -1,5 +1,4 @@
-import moment from 'moment';
-
+import moment from "moment";
 
 //Time ago Formatter
 export const timeAgo = (date) => {
@@ -10,11 +9,9 @@ export const timeAgo = (date) => {
   return timeAgoString;
 };
 
-
 //Numbers to K formatter
 export const kFormatter = (num) => {
   return Math.abs(num) > 999
     ? Math.sign(num) * (Math.abs(num) / 1000).toFixed(1) + "k"
     : Math.sign(num) * Math.abs(num);
 };
-

@@ -1,20 +1,18 @@
-import { useState, useEffect } from "react";
-import Proptypes from "prop-types";
-import Button from "../../../components/Button";
+import { useState } from "react";
+
 import Categories from "../../../components/Categories";
 import Scrollbar from "../../../components/Scrollbar";
-import Navbar from "../../../components/Navbar";
-import Sidebar from "../../../components/Sidebar";
+
 import { categories, myArticles, news } from "../../../data/data";
 import News from "../../../components/News";
 import ArticlesCard from "../../../components/ArticlesCard";
 import AddIcon from "../../../components/Icons/AddIcon";
 
-const Home = ({scroll=0}) => {
+const Home = ({ scroll = 0 }) => {
   const [categoryState, setCategoryState] = useState("technology");
-  const [addArticleHover, setAddArticleHover] = useState(false)
+  const [addArticleHover, setAddArticleHover] = useState(false);
 
-  const toggleAddArticleHover = () => setAddArticleHover(!addArticleHover)
+  const toggleAddArticleHover = () => setAddArticleHover(!addArticleHover);
   const categoryStateHandler = (value) => setCategoryState(value);
 
   //Mobile/Desktop - News
@@ -61,16 +59,19 @@ const Home = ({scroll=0}) => {
     </div>
   );
 
-  
-
   const leftSection = (
     <div className="flex h-full w-44 flex-col smd:w-32 overflow-hidden">
       <div className="flex flex-col mt-10 w-full">
-        <div className={`flex justify-center items-center h-28 w-full rounded-3xl border-2 border-dashed cursor-pointer transition-colors ${addArticleHover ? "border-gray-700 dark:border-white" : "border-gray-500 dark:border-gray-300"}`}
-        onMouseEnter={toggleAddArticleHover}
-        onMouseLeave={toggleAddArticleHover}
+        <div
+          className={`flex justify-center items-center h-28 w-full rounded-3xl border-2 border-dashed cursor-pointer transition-colors ${
+            addArticleHover
+              ? "border-gray-700 dark:border-white"
+              : "border-gray-500 dark:border-gray-300"
+          }`}
+          onMouseEnter={toggleAddArticleHover}
+          onMouseLeave={toggleAddArticleHover}
         >
-          <AddIcon size="20" css="" dark active={addArticleHover}/>
+          <AddIcon size="20" css="" dark active={addArticleHover} />
         </div>
 
         <div className="flex flex-col space-y-3 w-full mt-5">
@@ -97,7 +98,8 @@ const Home = ({scroll=0}) => {
 
       {/* Desktop - Header Card */}
       <div className="flex w-full sticky top-24 z-30 mt-5">
-        <div className="ml-20 w-full space-x-8
+        <div
+          className="ml-20 w-full space-x-8
         hidden
         smd:flex smd:ml-16 smd:mr-[216px] 
         md:flex md:mr-[264px]
@@ -105,7 +107,8 @@ const Home = ({scroll=0}) => {
         xl:flex xl:mr-[312px]
         2xl:flex 2xl:mr-[312px]
         
-        ">
+        "
+        >
           <div className="flex w-44 smd:w-32 justify-center">
             <div className="flex h-24 w-24 rounded-full overflow-hidden cursor-pointer shadow-xl hover:shadow-2xl transition-all z-20">
               <img src={"/images/profile.png"} />
@@ -115,26 +118,27 @@ const Home = ({scroll=0}) => {
             <div className="flex flex-col text-gray-600 dark:text-white h-24 space-y-5 sticky top-24 z-20">
               <span className="text-2xl">Hey Jackie!</span>
               <span className="text-5xl font-extrabold">What’s Next?</span>
-            </div> 
+            </div>
           </div>
-
         </div>
-        
-        <div 
+
+        <div
           className={`absolute bg-gradient-to-r from-white to-transparent filter bottom-0 left-20 right-[312px] h-full rounded-3xl
-          ${scroll > 4 ? "opacity-100 dark:opacity-60" : "opacity-0 dark:opacity-0"} transition-opacity
+          ${
+            scroll > 4
+              ? "opacity-100 dark:opacity-60"
+              : "opacity-0 dark:opacity-0"
+          } transition-opacity
           dark:from-black
           
           `}
-          />
-
-
+        />
       </div>
 
       {/* Desktop */}
       <div className="flex-row w-full">
-      <div
-        className=" flex-row  space-x-8 ml-20 py-2
+        <div
+          className=" flex-row  space-x-8 ml-20 py-2
           hidden
           smd:flex smd:ml-16 smd:mr-[216px] 
           md:flex md:mr-[264px]
@@ -142,11 +146,10 @@ const Home = ({scroll=0}) => {
           xl:flex xl:mr-[312px]
           2xl:flex 2xl:mr-[312px]
       "
-      >
-      
-        {leftSection}
-        {rightSection}
-      </div>
+        >
+          {leftSection}
+          {rightSection}
+        </div>
       </div>
 
       {/* Mobile - News */}
