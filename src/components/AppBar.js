@@ -51,7 +51,7 @@ const AppBar = ({ tab, setTab }) => {
         <AddIcon size="20px" />
       </div>
 
-      <DocIcon
+      {/* <DocIcon
         size="20px"
         active={tab === 2}
         onClick={() => tabChangeHandler(2)}
@@ -61,12 +61,12 @@ const AppBar = ({ tab, setTab }) => {
         size="20px"
         active={tab === 3}
         onClick={() => tabChangeHandler(3)}
-      />
+      /> */}
       <div className="hidden smd:flex md:flex lg:flex xl:flex 2xl:flex">
         <SettingsIcon
           size="20px"
-          active={tab === 4}
-          onClick={() => tabChangeHandler(4)}
+          active={tab === 3}
+          onClick={() => tabChangeHandler(3)}
         />
       </div>
     </div>

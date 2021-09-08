@@ -15,7 +15,7 @@ const Home = ({ scroll = 0 }) => {
   const toggleAddArticleHover = () => setAddArticleHover(!addArticleHover);
   const categoryStateHandler = (value) => setCategoryState(value);
 
-  let isUserLoggedIn = false;
+  let isUserLoggedIn = true;
 
   //Mobile/Desktop - News
   const newsUi = news.map((item) => {
@@ -140,7 +140,7 @@ const Home = ({ scroll = 0 }) => {
       </div>
 
       {/* Desktop */}
-      <div className="flex-row w-full bg-green-300">
+      <div className="flex-row w-full">
         <div
           className=" flex-row space-x-8 ml-20 py-2
           hidden

@@ -6,7 +6,7 @@ import Navbar from "../../components/Navbar";
 import Home from "./Tabs/Home";
 import Favorites from "./Tabs/Favorites";
 import Documents from "./Tabs/Documents";
-import Contact from "./Tabs/Contact";
+import Settings from "./Tabs/Settings";
 import Scrollbar from "../../components/Scrollbar";
 import Sidebar from "../../components/Sidebar";
 import { categories, myArticles, userData } from "../../data/data";
@@ -21,7 +21,7 @@ const HomeScreen = (props) => {
   const [tab, setTab] = useState(0);
   const [scroll, setScroll] = useState(0);
 
-  let isUserLoggedIn = false;
+  let isUserLoggedIn = true;
 
   const scrollHandler = (e) => setScroll(e.target.scrollTop);
 
@@ -40,7 +40,7 @@ const HomeScreen = (props) => {
       break;
 
     case 3:
-      tabUi = <Contact />;
+      tabUi = <Settings />;
       break;
 
     default:
