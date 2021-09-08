@@ -21,12 +21,14 @@ const HomeScreen = (props) => {
   const [tab, setTab] = useState(0);
   const [scroll, setScroll] = useState(0);
 
+  let isUserLoggedIn = false;
+
   const scrollHandler = (e) => setScroll(e.target.scrollTop);
 
   let tabUi;
   switch (tab) {
     case 0:
-      tabUi = <Home scroll={scroll}/>;
+      tabUi = <Home scroll={scroll} />;
       break;
 
     case 1:
@@ -51,34 +53,37 @@ const HomeScreen = (props) => {
         <Logo imageCss="h-10" />
       </div>
 
-      <div className="flex flex-col mt-5">
-        <span className="flex pl-5">My Blogs</span>
-        <Scrollbar>
-          <div className="flex pl-5 space-x-3 -mt-5">
-            {myArticles.map((item) => {
-              return <BlogsCard image={item.image} title={item.title} />;
-            })}
+      {isUserLoggedIn && (
+        <div className="flex flex-col mt-5">
+          <span className="flex pl-5">My Blogs</span>
+          <Scrollbar>
+            <div className="flex pl-5 space-x-3 -mt-5">
+              {myArticles.map((item) => {
+                return <BlogsCard image={item.image} title={item.title} />;
+              })}
+            </div>
+          </Scrollbar>
+        </div>
+      )}
+      {isUserLoggedIn && (
+        <div className="flex flex-col text-xs text-gray-500 dark:text-gray-200 font-thin px-5 space-y-2 mt-1">
+          <div className="flex space-x-2">
+            <LinkIcon size="15" />
+            <span className="cursor-pointer">{userData.website}</span>
           </div>
-        </Scrollbar>
-      </div>
+          <div className="flex space-x-2">
+            <GroupIcon size="15" />
+            <span>{userData.dailyReaders.toLocaleString()} daily readers</span>
+          </div>
+          <div className="flex space-x-2">
+            <DocsIcon size="15" />
 
-      <div className="flex flex-col text-xs text-gray-500 dark:text-gray-200 font-thin px-5 space-y-2 mt-1">
-        <div className="flex space-x-2">
-          <LinkIcon size="15" />
-          <span className="cursor-pointer">{userData.website}</span>
+            <span>
+              {userData.publishedArticles.toLocaleString()} published articles
+            </span>
+          </div>
         </div>
-        <div className="flex space-x-2">
-          <GroupIcon size="15" />
-          <span>{userData.dailyReaders.toLocaleString()} daily readers</span>
-        </div>
-        <div className="flex space-x-2">
-          <DocsIcon size="15" />
-
-          <span>
-            {userData.publishedArticles.toLocaleString()} published articles
-          </span>
-        </div>
-      </div>
+      )}
 
       <div className="flex flex-col space-y-1 mt-5">
         <GradientText customCss="pl-5">Categories</GradientText>

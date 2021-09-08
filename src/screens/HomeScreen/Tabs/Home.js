@@ -15,6 +15,8 @@ const Home = ({ scroll = 0 }) => {
   const toggleAddArticleHover = () => setAddArticleHover(!addArticleHover);
   const categoryStateHandler = (value) => setCategoryState(value);
 
+  let isUserLoggedIn = false;
+
   //Mobile/Desktop - News
   const newsUi = news.map((item) => {
     return (
@@ -84,7 +86,7 @@ const Home = ({ scroll = 0 }) => {
 
   const rightSection = (
     <div className="flex w-full flex-col">
-      <div className="flex flex-col space-y-3 w-full mt-10">
+      <div className="flex flex-col space-y-3 w-full ">
         <span className="text-gray-500 dark:text-white">Latest News</span>
         {newsUi}
       </div>
@@ -98,8 +100,9 @@ const Home = ({ scroll = 0 }) => {
 
       {/* Desktop - Header Card */}
       <div className="flex w-full sticky top-24 z-30 mt-5">
-        <div
-          className="ml-20 w-full space-x-8
+        {isUserLoggedIn && (
+          <div
+            className="ml-20 w-full space-x-8 mb-10
         hidden
         smd:flex smd:ml-16 smd:mr-[216px] 
         md:flex md:mr-[264px]
@@ -108,19 +111,20 @@ const Home = ({ scroll = 0 }) => {
         2xl:flex 2xl:mr-[312px]
         
         "
-        >
-          <div className="flex w-44 smd:w-32 justify-center">
-            <div className="flex h-24 w-24 rounded-full overflow-hidden cursor-pointer shadow-xl hover:shadow-2xl transition-all z-20">
-              <img src={"/images/profile.png"} />
+          >
+            <div className="flex w-44 smd:w-32 justify-center">
+              <div className="flex h-24 w-24 rounded-full overflow-hidden cursor-pointer shadow-xl hover:shadow-2xl transition-all z-20">
+                <img src={"/images/profile.png"} />
+              </div>
+            </div>
+            <div className="flex w-full">
+              <div className="flex flex-col text-gray-600 dark:text-white h-24 space-y-5 sticky top-24 z-20">
+                <span className="text-2xl">Hey Jackie!</span>
+                <span className="text-5xl font-extrabold">What’s Next?</span>
+              </div>
             </div>
           </div>
-          <div className="flex w-full">
-            <div className="flex flex-col text-gray-600 dark:text-white h-24 space-y-5 sticky top-24 z-20">
-              <span className="text-2xl">Hey Jackie!</span>
-              <span className="text-5xl font-extrabold">What’s Next?</span>
-            </div>
-          </div>
-        </div>
+        )}
 
         <div
           className={`absolute bg-gradient-to-r from-white to-transparent filter bottom-0 left-20 right-[312px] h-full rounded-3xl
@@ -136,9 +140,9 @@ const Home = ({ scroll = 0 }) => {
       </div>
 
       {/* Desktop */}
-      <div className="flex-row w-full">
+      <div className="flex-row w-full bg-green-300">
         <div
-          className=" flex-row  space-x-8 ml-20 py-2
+          className=" flex-row space-x-8 ml-20 py-2
           hidden
           smd:flex smd:ml-16 smd:mr-[216px] 
           md:flex md:mr-[264px]
@@ -147,7 +151,7 @@ const Home = ({ scroll = 0 }) => {
           2xl:flex 2xl:mr-[312px]
       "
         >
-          {leftSection}
+          {isUserLoggedIn && leftSection}
           {rightSection}
         </div>
       </div>

@@ -12,7 +12,7 @@
     "url": "git+https://github.com/AppCity/GLOB-Front-End"
   },
   "scripts": {
-    "start": "next dev",
+    "start": "open \"http://localhost:3000\" && next dev",
     "build": "npx git config core.ignorecase false && next build",
     "postbuild": "next-sitemap",
     "prod": "next start",

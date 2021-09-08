@@ -33,6 +33,8 @@ const App = () => {
     isUserLoggedIn && (
       <>
         <Head title="Home" content="Welcome to GLOB" />
+        <div className="w-full h-4 bg-green-300 sm:bg-blue-300 smd:bg-pink-300 md:bg-yellow-300 lg:bg-orange-dark" />
+
         <HomeScreen />
       </>
     )
