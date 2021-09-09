@@ -50,7 +50,7 @@ const HomeScreen = (props) => {
   const sidebarChildren = (
     <div className="flex flex-col w-full">
       <div className="flex flex-col justify-center items-center py-5 mt-5">
-        <Logo imageCss="h-10" />
+        {/* <Logo imageCss="h-10" /> */}
       </div>
 
       {state.isUserLoggedIn && (
