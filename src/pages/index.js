@@ -14,11 +14,11 @@ const App = () => {
 
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(true);
 
-  useEffect(() => {
-    if (!isUserLoggedIn && !state.isSplashLoading) {
-      router.push("/authentication");
-    }
-  }, [state.isSplashLoading]);
+  // useEffect(() => {
+  //   if (!isUserLoggedIn && !state.isSplashLoading) {
+  //     router.push("/authentication");
+  //   }
+  // }, [state.isSplashLoading]);
 
   if (state.isSplashLoading) {
     return (
