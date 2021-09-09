@@ -6,6 +6,7 @@ const initialState = {
   device: "desktop",
   isLoading: false,
   isSplashLoading: true,
+  isUserLoggedIn: false,
 };
 
 const globReducer = (state = initialState, action) => {
@@ -34,6 +35,9 @@ const globReducer = (state = initialState, action) => {
 
     case actionTypes.SET_SPLASH_LOADING:
       return { ...state, isSplashLoading: action.payload };
+
+    case actionTypes.SET_IS_USER_LOGGED_IN:
+      return { ...state, isUserLoggedIn: action.payload };
 
     default:
       return state;

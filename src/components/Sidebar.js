@@ -1,6 +1,21 @@
 import Proptypes from "prop-types";
+import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
+import Button from "../components/Button";
 
 const Sidebar = ({ children }) => {
+  const state = useSelector((state) => state.glob);
+
+  const router = useRouter();
+
+  const loginHandler = () => {
+    console.log("login");
+    router.push("/authentication");
+  };
+  const logoutHandler = () => {
+    console.log("logout");
+  };
+
   return (
     <div
       className="fixed flex-col bg-white rounded-l-3xl h-screen top-0 right-0 z-30 transition-all 
@@ -15,6 +30,13 @@ const Sidebar = ({ children }) => {
         "
     >
       {children}
+      <div className="flex px-8">
+        <Button
+          title={state.isUserLoggedIn ? "Logout" : "Login"}
+          customCss="px-10"
+          onClick={state.isUserLoggedIn ? logoutHandler : loginHandler}
+        />
+      </div>
     </div>
   );
 };

@@ -3,6 +3,7 @@ const types = {
   SET_LOADING: "SET_LOADING",
   SET_SPLASH_LOADING: "SET_SPLASH_LOADING",
   ERROR: "ERROR",
+  SET_IS_USER_LOGGED_IN: "SET_IS_USER_LOGGED_IN",
 };
 
 export default types;

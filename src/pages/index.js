@@ -12,14 +12,6 @@ const App = () => {
   const state = useSelector((state) => state.glob);
   const router = useRouter();
 
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(true);
-
-  // useEffect(() => {
-  //   if (!isUserLoggedIn && !state.isSplashLoading) {
-  //     router.push("/authentication");
-  //   }
-  // }, [state.isSplashLoading]);
-
   if (state.isSplashLoading) {
     return (
       <>
@@ -30,14 +22,13 @@ const App = () => {
   }
 
   return (
-    isUserLoggedIn && (
-      <>
-        <Head title="Home" content="Welcome to GLOB" />
-        <div className="w-full h-4 bg-green-300 sm:bg-blue-300 smd:bg-pink-300 md:bg-yellow-300 lg:bg-orange-dark" />
+    <>
+      <Head title="Home" content="Welcome to GLOB" />
+      {/* //TODO: Testing only, remove later */}
+      <div className="w-full h-4 bg-green-300 sm:bg-blue-300 smd:bg-pink-300 md:bg-yellow-300 lg:bg-orange-dark" />
 
-        <HomeScreen />
-      </>
-    )
+      <HomeScreen />
+    </>
   );
 };
 

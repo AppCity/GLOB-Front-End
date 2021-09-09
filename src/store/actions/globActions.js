@@ -17,6 +17,13 @@ export const setSplashLoading = (value) => {
   };
 };
 
+export const setIsUserLoggedIn = (value) => {
+  return {
+    type: types.SET_IS_USER_LOGGED_IN,
+    payload: value,
+  };
+};
+
 //Middleware
 // export const submitContactForm = (fname, lname,	email, message) =>
 // {

@@ -16,12 +16,12 @@ import Categories from "../../components/Categories";
 import DocsIcon from "../../components/Icons/DocsIcon";
 import GroupIcon from "../../components/Icons/GroupIcon";
 import LinkIcon from "../../components/Icons/LinkIcon";
+import { useSelector } from "react-redux";
 
 const HomeScreen = (props) => {
+  const state = useSelector((state) => state.glob);
   const [tab, setTab] = useState(0);
   const [scroll, setScroll] = useState(0);
-
-  let isUserLoggedIn = true;
 
   const scrollHandler = (e) => setScroll(e.target.scrollTop);
 
@@ -53,7 +53,7 @@ const HomeScreen = (props) => {
         <Logo imageCss="h-10" />
       </div>
 
-      {isUserLoggedIn && (
+      {state.isUserLoggedIn && (
         <div className="flex flex-col mt-5">
           <span className="flex pl-5">My Blogs</span>
           <Scrollbar>
@@ -65,7 +65,7 @@ const HomeScreen = (props) => {
           </Scrollbar>
         </div>
       )}
-      {isUserLoggedIn && (
+      {state.isUserLoggedIn && (
         <div className="flex flex-col text-xs text-gray-500 dark:text-gray-200 font-thin px-5 space-y-2 mt-1">
           <div className="flex space-x-2">
             <LinkIcon size="15" />

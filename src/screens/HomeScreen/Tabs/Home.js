@@ -7,15 +7,16 @@ import { categories, myArticles, news } from "../../../data/data";
 import News from "../../../components/News";
 import ArticlesCard from "../../../components/ArticlesCard";
 import AddIcon from "../../../components/Icons/AddIcon";
+import { useSelector } from "react-redux";
 
 const Home = ({ scroll = 0 }) => {
+  const state = useSelector((state) => state.glob);
+
   const [categoryState, setCategoryState] = useState("technology");
   const [addArticleHover, setAddArticleHover] = useState(false);
 
   const toggleAddArticleHover = () => setAddArticleHover(!addArticleHover);
   const categoryStateHandler = (value) => setCategoryState(value);
-
-  let isUserLoggedIn = true;
 
   //Mobile/Desktop - News
   const newsUi = news.map((item) => {
@@ -100,7 +101,7 @@ const Home = ({ scroll = 0 }) => {
 
       {/* Desktop - Header Card */}
       <div className="flex w-full sticky top-24 z-30 mt-5">
-        {isUserLoggedIn && (
+        {state.isUserLoggedIn && (
           <div
             className="ml-20 w-full space-x-8 mb-10
         hidden
@@ -151,7 +152,7 @@ const Home = ({ scroll = 0 }) => {
           2xl:flex 2xl:mr-[312px]
       "
         >
-          {isUserLoggedIn && leftSection}
+          {state.isUserLoggedIn && leftSection}
           {rightSection}
         </div>
       </div>
