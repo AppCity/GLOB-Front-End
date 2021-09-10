@@ -93,7 +93,11 @@ const Navbar = ({ scroll = 0 }) => {
         )}
 
         {!state.isUserLoggedIn && (
-          <div className="md:mt-2">
+          <div
+            className={`md:mt-2 ${
+              !isSearchOpen ? "md:animate-slideUp" : " md:hidden"
+            }`}
+          >
             <Logo imageCss="h-10 smd:h-12 md:h-14 lg:h-14 xl:h-16 2xl:h-20" />
           </div>
         )}
