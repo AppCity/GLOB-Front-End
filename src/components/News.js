@@ -31,11 +31,16 @@ const News = ({
     console.log("Bookmark pressed");
   };
 
+  const newsHandler = () => {
+    console.log("Blog Clicked");
+  };
+
   return (
     <div
       className="bg-white rounded-xl flex bg-opacity-30 backdrop-filter backdrop-blur-md shadow-md hover:shadow-lg transition-all cursor-pointer
     dark:bg-black dark:bg-opacity-60 
     "
+      onClick={newsHandler}
     >
       <div className="flex h-32 w-32 rounded-xl overflow-hidden sm:w-36 sm:h-36 md:h-44 md:w-44">
         <img src={image} className="object-cover" />

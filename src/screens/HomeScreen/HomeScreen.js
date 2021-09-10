@@ -29,6 +29,10 @@ const HomeScreen = (props) => {
 
   const scrollHandler = (e) => setScroll(e.target.scrollTop);
 
+  const categoryHandler = () => {
+    console.log("Category Clicked");
+  };
+
   let tabUi;
   switch (tab) {
     case 0:
@@ -113,7 +117,14 @@ const HomeScreen = (props) => {
         <Scrollbar>
           <div className="flex space-x-3 pl-5 -mt-5">
             {categories.map((item) => {
-              return <Categories title={item.title} image={item.image} card />;
+              return (
+                <Categories
+                  title={item.title}
+                  image={item.image}
+                  card
+                  onClick={categoryHandler}
+                />
+              );
             })}
           </div>
         </Scrollbar>

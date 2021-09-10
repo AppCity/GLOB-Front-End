@@ -16,7 +16,10 @@ const Home = ({ scroll = 0 }) => {
   const [addArticleHover, setAddArticleHover] = useState(false);
 
   const toggleAddArticleHover = () => setAddArticleHover(!addArticleHover);
-  const categoryStateHandler = (value) => setCategoryState(value);
+  const categoryStateHandler = (value) => {
+    setCategoryState(value);
+    console.log("Category selected", value);
+  };
 
   //Mobile/Desktop - News
   const newsUi = news.map((item) => {

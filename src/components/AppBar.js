@@ -10,9 +10,11 @@ import SettingsIcon from "./Icons/SettingsIcon";
 import LogoutIcon from "./Icons/LogoutIcon";
 import LoginIcon from "./Icons/LoginIcon";
 import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
 const AppBar = ({ tab, setTab }) => {
   const state = useSelector((state) => state.glob);
+  const router = useRouter();
 
   const tabChangeHandler = (tab) => setTab(tab);
 
@@ -22,6 +24,7 @@ const AppBar = ({ tab, setTab }) => {
 
   const loginHandler = () => {
     console.log("Login Pressed");
+    router.push("/authentication");
   };
   const logoutHandler = () => {
     console.log("Logout Pressed");
