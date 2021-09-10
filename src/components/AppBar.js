@@ -48,14 +48,14 @@ const AppBar = ({ tab, setTab }) => {
         onClick={() => tabChangeHandler(0)}
       />
 
-      {state.isUerLoggedIn && (
+      {state.isUserLoggedIn && (
         <FavoriteIcon
           size="20px"
           active={tab === 1}
           onClick={() => tabChangeHandler(1)}
         />
       )}
-      {state.isUerLoggedIn && (
+      {state.isUserLoggedIn && (
         <div
           className="flex p-5 rounded-full self-start -mt-5
             bg-gradient-to-r from-yellow via-orange to-fucsia bg-blend-soft-light
@@ -69,8 +69,9 @@ const AppBar = ({ tab, setTab }) => {
             2xl:hidden
 
             "
+          onClick={addBlogHandler}
         >
-          <AddIcon size="20px" onClick={addBlogHandler} />
+          <AddIcon size="20px" />
         </div>
       )}
 
@@ -85,7 +86,7 @@ const AppBar = ({ tab, setTab }) => {
         active={tab === 3}
         onClick={() => tabChangeHandler(3)}
       /> */}
-      {state.isUerLoggedIn && (
+      {state.isUserLoggedIn && (
         <div className="flex md:flex lg:flex xl:flex 2xl:flex">
           <SettingsIcon
             size="20px"
@@ -96,7 +97,7 @@ const AppBar = ({ tab, setTab }) => {
       )}
 
       <div className="flex md:hidden ">
-        {state.isUerLoggedIn ? (
+        {state.isUserLoggedIn ? (
           <LogoutIcon size="20px" active={tab === 3} onClick={logoutHandler} />
         ) : (
           <LoginIcon size="20px" active={tab === 3} onClick={loginHandler} />

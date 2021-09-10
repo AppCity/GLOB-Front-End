@@ -29,14 +29,26 @@ const HomeScreen = (props) => {
 
   const scrollHandler = (e) => setScroll(e.target.scrollTop);
 
+  const addNewBlogHandler = () => {
+    console.log("Add new Blog");
+  };
+
   const categoryHandler = () => {
     console.log("Category Clicked");
+  };
+
+  const openBlogHandler = () => {
+    console.log("openBlogHandler");
+  };
+
+  const menuClickHandler = () => {
+    console.log("menuClickHandler");
   };
 
   let tabUi;
   switch (tab) {
     case 0:
-      tabUi = <Home scroll={scroll} />;
+      tabUi = <Home scroll={scroll} setTab={setTab} />;
       break;
 
     case 1:
@@ -70,6 +82,7 @@ const HomeScreen = (props) => {
         }`}
             onMouseEnter={toggleAddArticleHover}
             onMouseLeave={toggleAddArticleHover}
+            onClick={addNewBlogHandler}
           >
             <AddIcon size="20" css="" dark active={addArticleHover} />
           </div>
@@ -82,7 +95,14 @@ const HomeScreen = (props) => {
           <Scrollbar>
             <div className="flex pl-5 space-x-3 -mt-5">
               {myArticles.map((item) => {
-                return <BlogsCard image={item.image} title={item.title} />;
+                return (
+                  <BlogsCard
+                    image={item.image}
+                    title={item.title}
+                    onClick={openBlogHandler}
+                    menuClickHandler={menuClickHandler}
+                  />
+                );
               })}
             </div>
           </Scrollbar>

@@ -9,7 +9,7 @@ import ArticlesCard from "../../../components/ArticlesCard";
 import AddIcon from "../../../components/Icons/AddIcon";
 import { useSelector } from "react-redux";
 
-const Home = ({ scroll = 0 }) => {
+const Home = ({ scroll = 0, setTab }) => {
   const state = useSelector((state) => state.glob);
 
   const [categoryState, setCategoryState] = useState("technology");
@@ -19,6 +19,11 @@ const Home = ({ scroll = 0 }) => {
   const categoryStateHandler = (value) => {
     setCategoryState(value);
     console.log("Category selected", value);
+  };
+
+  const userClickHandler = () => {
+    console.log("userClickHandler");
+    setTab(2);
   };
 
   //Mobile/Desktop - News
@@ -117,7 +122,10 @@ const Home = ({ scroll = 0 }) => {
         "
           >
             <div className="flex w-44 smd:w-32 justify-center">
-              <div className="flex h-24 w-24 rounded-full overflow-hidden cursor-pointer shadow-xl hover:shadow-2xl transition-all">
+              <div
+                className="flex h-24 w-24 rounded-full overflow-hidden cursor-pointer shadow-xl hover:shadow-2xl transition-all"
+                onClick={userClickHandler}
+              >
                 <img src={"/images/profile.png"} />
               </div>
             </div>

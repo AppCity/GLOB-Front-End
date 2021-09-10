@@ -6,7 +6,7 @@ const initialState = {
   device: "desktop",
   isLoading: false,
   isSplashLoading: true,
-  isUserLoggedIn: false,
+  isUserLoggedIn: true,
   theme: "light",
 };
 

@@ -85,18 +85,20 @@ const Navbar = ({ scroll = 0 }) => {
           )}
         </div>
 
-        {!isSearchOpen && state.isUerLoggedIn ? (
+        {!isSearchOpen && state.isUserLoggedIn && (
           //smd:hidden md:hidden lg:hidden xl:hidden 2xl:hidden
           <div className="animate-slideUp md:mt-2">
             <Logo imageCss="h-10 smd:h-12 md:h-14 lg:h-14 xl:h-16 2xl:h-20" />
           </div>
-        ) : (
+        )}
+
+        {!state.isUserLoggedIn && (
           <div className="md:mt-2">
             <Logo imageCss="h-10 smd:h-12 md:h-14 lg:h-14 xl:h-16 2xl:h-20" />
           </div>
         )}
 
-        {state.isUerLoggedIn && (
+        {state.isUserLoggedIn && (
           <div className="flex h-12 w-12 rounded-full overflow-hidden cursor-pointer hover:shadow-lg transition-all smd:hidden md:hidden lg:hidden xl:hidden 2xl:hidden ">
             <img src={"/images/profile.png"} />
           </div>
