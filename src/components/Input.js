@@ -57,7 +57,7 @@ const Input = ({
           placeholder={placeholder}
           onChange={(e) => onChange(e.target.value)}
           value={value}
-          className={`w-full py-2 border-b ${
+          className={`w-full py-2 border-b outline-none ${
             !error ? "border-gray-300" : "border-red-500"
           } dark:text-white bg-transparent transition-all rounded-none focus:outline-none ${css}`}
           required={required}

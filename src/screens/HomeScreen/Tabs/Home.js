@@ -65,7 +65,7 @@ const Home = ({ scroll = 0 }) => {
   const leftSection = (
     <div className="flex h-full w-44 flex-col smd:w-32 overflow-hidden">
       <div className="flex flex-col mt-10 w-full">
-        <div
+        {/* <div
           className={`flex justify-center items-center h-28 w-full rounded-3xl border-2 border-dashed cursor-pointer transition-colors ${
             addArticleHover
               ? "border-gray-700 dark:border-white"
@@ -75,12 +75,12 @@ const Home = ({ scroll = 0 }) => {
           onMouseLeave={toggleAddArticleHover}
         >
           <AddIcon size="20" css="" dark active={addArticleHover} />
-        </div>
+        </div> */}
 
-        <div className="flex flex-col space-y-3 w-full mt-5">
+        {/* <div className="flex flex-col space-y-3 w-full mt-5">
           <span className="text-gray-500 dark:text-white">My Articles</span>
           {myArticlesUi}
-        </div>
+        </div> */}
       </div>
     </div>
   );
@@ -100,7 +100,7 @@ const Home = ({ scroll = 0 }) => {
       {categoriesBarUi}
 
       {/* Desktop - Header Card */}
-      <div className="flex w-full sticky top-24 z-30 mt-5">
+      <div className="flex w-full top-24 mt-5">
         {state.isUserLoggedIn && (
           <div
             className="ml-20 w-full space-x-8 mb-10
@@ -114,12 +114,12 @@ const Home = ({ scroll = 0 }) => {
         "
           >
             <div className="flex w-44 smd:w-32 justify-center">
-              <div className="flex h-24 w-24 rounded-full overflow-hidden cursor-pointer shadow-xl hover:shadow-2xl transition-all z-20">
+              <div className="flex h-24 w-24 rounded-full overflow-hidden cursor-pointer shadow-xl hover:shadow-2xl transition-all">
                 <img src={"/images/profile.png"} />
               </div>
             </div>
             <div className="flex w-full">
-              <div className="flex flex-col text-gray-600 dark:text-white h-24 space-y-5 sticky top-24 z-20">
+              <div className="flex flex-col text-gray-600 dark:text-white h-24 space-y-5 top-24 ">
                 <span className="text-2xl">Hey Jackie!</span>
                 <span className="text-5xl font-extrabold">What’s Next?</span>
               </div>
@@ -127,7 +127,7 @@ const Home = ({ scroll = 0 }) => {
           </div>
         )}
 
-        <div
+        {/* <div
           className={`absolute bg-gradient-to-r from-white to-transparent filter bottom-0 left-20 right-[312px] h-full rounded-3xl
           ${
             scroll > 4
@@ -137,7 +137,7 @@ const Home = ({ scroll = 0 }) => {
           dark:from-black
           
           `}
-        />
+        /> */}
       </div>
 
       {/* Desktop */}
@@ -152,7 +152,7 @@ const Home = ({ scroll = 0 }) => {
           2xl:flex 2xl:mr-[312px]
       "
         >
-          {state.isUserLoggedIn && leftSection}
+          {/* {state.isUserLoggedIn && leftSection} */}
           {rightSection}
         </div>
       </div>

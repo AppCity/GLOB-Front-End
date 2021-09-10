@@ -2,6 +2,7 @@ import Proptypes from "prop-types";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import Button from "../components/Button";
+import Scrollbar from "./Scrollbar";
 
 const Sidebar = ({ children }) => {
   const state = useSelector((state) => state.glob);
@@ -18,7 +19,7 @@ const Sidebar = ({ children }) => {
 
   return (
     <div
-      className="fixed flex-col bg-white rounded-l-3xl h-screen top-0 right-0 z-30 transition-all 
+      className="fixed flex-col bg-white rounded-l-3xl h-screen top-0 right-0 z-30 transition-all overflow-auto
         bg-opacity-30 backdrop-filter backdrop-blur-md shadow-lg
         dark:bg-black dark:bg-opacity-60 dark:backdrop-filter dark:backdrop-blur-md dark:shadow-lg
         hidden
@@ -29,14 +30,16 @@ const Sidebar = ({ children }) => {
         2xl:flex 2xl:w-72
         "
     >
-      {children}
-      <div className="flex px-8">
-        <Button
-          title={state.isUserLoggedIn ? "Logout" : "Login"}
-          customCss="px-10"
-          onClick={state.isUserLoggedIn ? logoutHandler : loginHandler}
-        />
-      </div>
+      <Scrollbar>
+        {children}
+        <div className="flex px-8">
+          <Button
+            title={state.isUserLoggedIn ? "Logout" : "Login"}
+            customCss="px-10 my-10"
+            onClick={state.isUserLoggedIn ? logoutHandler : loginHandler}
+          />
+        </div>
+      </Scrollbar>
     </div>
   );
 };

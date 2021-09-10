@@ -17,11 +17,15 @@ import DocsIcon from "../../components/Icons/DocsIcon";
 import GroupIcon from "../../components/Icons/GroupIcon";
 import LinkIcon from "../../components/Icons/LinkIcon";
 import { useSelector } from "react-redux";
+import AddIcon from "../../components/Icons/AddIcon";
 
 const HomeScreen = (props) => {
   const state = useSelector((state) => state.glob);
   const [tab, setTab] = useState(0);
   const [scroll, setScroll] = useState(0);
+  const [addArticleHover, setAddArticleHover] = useState(false);
+
+  const toggleAddArticleHover = () => setAddArticleHover(!addArticleHover);
 
   const scrollHandler = (e) => setScroll(e.target.scrollTop);
 
@@ -49,8 +53,20 @@ const HomeScreen = (props) => {
 
   const sidebarChildren = (
     <div className="flex flex-col w-full">
-      <div className="flex flex-col justify-center items-center py-5 mt-5">
+      <div className="flex flex-col justify-center py-5 mt-5">
         {/* <Logo imageCss="h-10" /> */}
+        <div
+          className={`flex justify-center items-center h-28 w-44 rounded-3xl border-2 border-dashed cursor-pointer transition-colors mx-5
+        ${
+          addArticleHover
+            ? "border-gray-700 dark:border-white"
+            : "border-gray-500 dark:border-gray-300"
+        }`}
+          onMouseEnter={toggleAddArticleHover}
+          onMouseLeave={toggleAddArticleHover}
+        >
+          <AddIcon size="20" css="" dark active={addArticleHover} />
+        </div>
       </div>
 
       {state.isUserLoggedIn && (

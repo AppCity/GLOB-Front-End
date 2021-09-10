@@ -1,4 +1,6 @@
-const SvgGradient = ({id}) => (
+import { memo } from "react";
+
+const SvgGradient = ({ id }) => (
   <svg width="0" height="0">
     <linearGradient id={id} x1="100%" y1="100%" x2="0%" y2="0%">
       <stop stopColor="#FF0F91" offset="0%" />
@@ -7,4 +9,4 @@ const SvgGradient = ({id}) => (
   </svg>
 );
 
-export default SvgGradient;
+export default memo(SvgGradient);
