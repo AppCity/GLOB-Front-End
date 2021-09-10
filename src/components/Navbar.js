@@ -7,9 +7,13 @@ import Input from "./Input";
 //Icons
 import SearchIcon from "./Icons/SearchIcon";
 import ThemeIcon from "./Icons/ThemeIcon";
+import { useDispatch, useSelector } from "react-redux";
+import * as actions from "../store/actions/actions";
 
 const Navbar = ({ scroll = 0 }) => {
   const { theme, setTheme } = useTheme();
+  const state = useSelector((state) => state.glob);
+  const dispatch = useDispatch();
 
   const [isSearchIconHover, setIsSearchIconHover] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -19,6 +23,7 @@ const Navbar = ({ scroll = 0 }) => {
   const toggleSearchBar = () => setIsSearchOpen(!isSearchOpen);
   const toggleTheme = () => {
     theme === "dark" ? setTheme("light") : setTheme("dark");
+    dispatch(actions.changeTheme(theme === "dark" ? "light" : "dark"));
   };
 
   //Input field handler
@@ -80,16 +85,22 @@ const Navbar = ({ scroll = 0 }) => {
           )}
         </div>
 
-        {!isSearchOpen && (
+        {!isSearchOpen && state.isUerLoggedIn ? (
           //smd:hidden md:hidden lg:hidden xl:hidden 2xl:hidden
           <div className="animate-slideUp md:mt-2">
             <Logo imageCss="h-10 smd:h-12 md:h-14 lg:h-14 xl:h-16 2xl:h-20" />
           </div>
+        ) : (
+          <div className="md:mt-2">
+            <Logo imageCss="h-10 smd:h-12 md:h-14 lg:h-14 xl:h-16 2xl:h-20" />
+          </div>
         )}
 
-        <div className="flex h-12 w-12 rounded-full overflow-hidden cursor-pointer hover:shadow-lg transition-all smd:hidden md:hidden lg:hidden xl:hidden 2xl:hidden ">
-          <img src={"/images/profile.png"} />
-        </div>
+        {state.isUerLoggedIn && (
+          <div className="flex h-12 w-12 rounded-full overflow-hidden cursor-pointer hover:shadow-lg transition-all smd:hidden md:hidden lg:hidden xl:hidden 2xl:hidden ">
+            <img src={"/images/profile.png"} />
+          </div>
+        )}
 
         <div
           className="fixed top-1 right-0 justify-center items-center 

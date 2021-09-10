@@ -40,11 +40,12 @@ const HomeScreen = (props) => {
       break;
 
     case 2:
-      tabUi = <Documents />;
+      tabUi = <Settings />;
       break;
 
     case 3:
-      tabUi = <Settings />;
+      // tabUi = <Settings />;
+      console.log("Logout");
       break;
 
     default:
@@ -55,18 +56,20 @@ const HomeScreen = (props) => {
     <div className="flex flex-col w-full">
       <div className="flex flex-col justify-center py-5 mt-5">
         {/* <Logo imageCss="h-10" /> */}
-        <div
-          className={`flex justify-center items-center h-28 w-44 rounded-3xl border-2 border-dashed cursor-pointer transition-colors mx-5
+        {state.isUserLoggedIn && (
+          <div
+            className={`flex justify-center items-center h-28 w-44 rounded-3xl border-2 border-dashed cursor-pointer transition-colors mx-5
         ${
           addArticleHover
             ? "border-gray-700 dark:border-white"
             : "border-gray-500 dark:border-gray-300"
         }`}
-          onMouseEnter={toggleAddArticleHover}
-          onMouseLeave={toggleAddArticleHover}
-        >
-          <AddIcon size="20" css="" dark active={addArticleHover} />
-        </div>
+            onMouseEnter={toggleAddArticleHover}
+            onMouseLeave={toggleAddArticleHover}
+          >
+            <AddIcon size="20" css="" dark active={addArticleHover} />
+          </div>
+        )}
       </div>
 
       {state.isUserLoggedIn && (

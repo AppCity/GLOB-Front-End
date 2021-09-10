@@ -24,6 +24,13 @@ export const setIsUserLoggedIn = (value) => {
   };
 };
 
+export const changeTheme = (value) => {
+  return {
+    type: types.CHANGE_THEME,
+    payload: value,
+  };
+};
+
 //Middleware
 // export const submitContactForm = (fname, lname,	email, message) =>
 // {

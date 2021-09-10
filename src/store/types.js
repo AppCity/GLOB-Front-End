@@ -4,6 +4,7 @@ const types = {
   SET_SPLASH_LOADING: "SET_SPLASH_LOADING",
   ERROR: "ERROR",
   SET_IS_USER_LOGGED_IN: "SET_IS_USER_LOGGED_IN",
+  CHANGE_THEME: "CHANGE_THEME",
 };
 
 export default types;

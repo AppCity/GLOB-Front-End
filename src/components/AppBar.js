@@ -7,9 +7,25 @@ import FavoriteIcon from "./Icons/FavoriteIcon";
 import ChatIcon from "./Icons/ChatIcon";
 import DocIcon from "./Icons/DocIcon";
 import SettingsIcon from "./Icons/SettingsIcon";
+import LogoutIcon from "./Icons/LogoutIcon";
+import LoginIcon from "./Icons/LoginIcon";
+import { useSelector } from "react-redux";
 
 const AppBar = ({ tab, setTab }) => {
+  const state = useSelector((state) => state.glob);
+
   const tabChangeHandler = (tab) => setTab(tab);
+
+  const addBlogHandler = () => {
+    console.log("Add blog");
+  };
+
+  const loginHandler = () => {
+    console.log("Login Pressed");
+  };
+  const logoutHandler = () => {
+    console.log("Logout Pressed");
+  };
 
   return (
     <div
@@ -29,13 +45,16 @@ const AppBar = ({ tab, setTab }) => {
         onClick={() => tabChangeHandler(0)}
       />
 
-      <FavoriteIcon
-        size="20px"
-        active={tab === 1}
-        onClick={() => tabChangeHandler(1)}
-      />
-      <div
-        className="flex p-5 rounded-full self-start -mt-5
+      {state.isUerLoggedIn && (
+        <FavoriteIcon
+          size="20px"
+          active={tab === 1}
+          onClick={() => tabChangeHandler(1)}
+        />
+      )}
+      {state.isUerLoggedIn && (
+        <div
+          className="flex p-5 rounded-full self-start -mt-5
             bg-gradient-to-r from-yellow via-orange to-fucsia bg-blend-soft-light
             filter transition-all shadow-xl
             hover:shadow-3xl
@@ -47,9 +66,10 @@ const AppBar = ({ tab, setTab }) => {
             2xl:hidden
 
             "
-      >
-        <AddIcon size="20px" />
-      </div>
+        >
+          <AddIcon size="20px" onClick={addBlogHandler} />
+        </div>
+      )}
 
       {/* <DocIcon
         size="20px"
@@ -62,12 +82,22 @@ const AppBar = ({ tab, setTab }) => {
         active={tab === 3}
         onClick={() => tabChangeHandler(3)}
       /> */}
-      <div className="hidden smd:flex md:flex lg:flex xl:flex 2xl:flex">
-        <SettingsIcon
-          size="20px"
-          active={tab === 3}
-          onClick={() => tabChangeHandler(3)}
-        />
+      {state.isUerLoggedIn && (
+        <div className="flex md:flex lg:flex xl:flex 2xl:flex">
+          <SettingsIcon
+            size="20px"
+            active={tab === 2}
+            onClick={() => tabChangeHandler(2)}
+          />
+        </div>
+      )}
+
+      <div className="flex md:hidden ">
+        {state.isUerLoggedIn ? (
+          <LogoutIcon size="20px" active={tab === 3} onClick={logoutHandler} />
+        ) : (
+          <LoginIcon size="20px" active={tab === 3} onClick={loginHandler} />
+        )}
       </div>
     </div>
   );
