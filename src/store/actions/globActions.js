@@ -31,6 +31,13 @@ export const changeTheme = (value) => {
   };
 };
 
+export const setScroll = (value) => {
+  return {
+    type: types.SET_SCROLL,
+    payload: value,
+  };
+};
+
 //Middleware
 // export const submitContactForm = (fname, lname,	email, message) =>
 // {

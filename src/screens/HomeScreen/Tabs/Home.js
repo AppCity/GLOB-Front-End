@@ -3,19 +3,16 @@ import { useState } from "react";
 import Categories from "../../../components/Categories";
 import Scrollbar from "../../../components/Scrollbar";
 
-import { categories, myArticles, news } from "../../../data/data";
+import { categories, news } from "../../../data/data";
 import News from "../../../components/News";
-import ArticlesCard from "../../../components/ArticlesCard";
-import AddIcon from "../../../components/Icons/AddIcon";
+
 import { useSelector } from "react-redux";
 
 const Home = ({ scroll = 0, setTab }) => {
   const state = useSelector((state) => state.glob);
 
   const [categoryState, setCategoryState] = useState("technology");
-  const [addArticleHover, setAddArticleHover] = useState(false);
 
-  const toggleAddArticleHover = () => setAddArticleHover(!addArticleHover);
   const categoryStateHandler = (value) => {
     setCategoryState(value);
     console.log("Category selected", value);
@@ -40,17 +37,6 @@ const Home = ({ scroll = 0, setTab }) => {
     );
   });
 
-  // Desktop - My Articles
-  const myArticlesUi = myArticles.map((item) => {
-    return (
-      <ArticlesCard
-        image={item.image}
-        title={item.title}
-        headline={item.headline}
-      />
-    );
-  });
-
   //Mobile - Categories Bar
   const categoriesBarUi = (
     <div className="sticky top-20 w-full z-30 smd:hidden md:hidden lg:hidden xl:hidden 2xl:hidden">
@@ -70,29 +56,6 @@ const Home = ({ scroll = 0, setTab }) => {
     </div>
   );
 
-  const leftSection = (
-    <div className="flex h-full w-44 flex-col smd:w-32 overflow-hidden">
-      <div className="flex flex-col mt-10 w-full">
-        {/* <div
-          className={`flex justify-center items-center h-28 w-full rounded-3xl border-2 border-dashed cursor-pointer transition-colors ${
-            addArticleHover
-              ? "border-gray-700 dark:border-white"
-              : "border-gray-500 dark:border-gray-300"
-          }`}
-          onMouseEnter={toggleAddArticleHover}
-          onMouseLeave={toggleAddArticleHover}
-        >
-          <AddIcon size="20" css="" dark active={addArticleHover} />
-        </div> */}
-
-        {/* <div className="flex flex-col space-y-3 w-full mt-5">
-          <span className="text-gray-500 dark:text-white">My Articles</span>
-          {myArticlesUi}
-        </div> */}
-      </div>
-    </div>
-  );
-
   const rightSection = (
     <div className="flex w-full flex-col">
       <div className="flex flex-col space-y-3 w-full ">
@@ -103,7 +66,7 @@ const Home = ({ scroll = 0, setTab }) => {
   );
 
   return (
-    <div className="flex flex-col items-start">
+    <div className="flex flex-col items-start  w-full">
       {/* Mobile */}
       {categoriesBarUi}
 
@@ -137,18 +100,6 @@ const Home = ({ scroll = 0, setTab }) => {
             </div>
           </div>
         )}
-
-        {/* <div
-          className={`absolute bg-gradient-to-r from-white to-transparent filter bottom-0 left-20 right-[312px] h-full rounded-3xl
-          ${
-            scroll > 4
-              ? "opacity-100 dark:opacity-60"
-              : "opacity-0 dark:opacity-0"
-          } transition-opacity
-          dark:from-black
-          
-          `}
-        /> */}
       </div>
 
       {/* Desktop */}
@@ -163,7 +114,6 @@ const Home = ({ scroll = 0, setTab }) => {
           2xl:flex 2xl:mr-[312px]
       "
         >
-          {/* {state.isUserLoggedIn && leftSection} */}
           {rightSection}
         </div>
       </div>

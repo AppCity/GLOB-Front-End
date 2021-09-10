@@ -6,8 +6,9 @@ const initialState = {
   device: "desktop",
   isLoading: false,
   isSplashLoading: true,
-  isUserLoggedIn: false,
+  isUserLoggedIn: true,
   theme: "light",
+  scroll: 0,
 };
 
 const globReducer = (state = initialState, action) => {
@@ -42,6 +43,9 @@ const globReducer = (state = initialState, action) => {
 
     case actionTypes.CHANGE_THEME:
       return { ...state, theme: action.payload };
+
+    case actionTypes.SET_SCROLL:
+      return { ...state, scroll: action.payload };
 
     default:
       return state;

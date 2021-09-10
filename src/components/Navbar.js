@@ -10,7 +10,7 @@ import ThemeIcon from "./Icons/ThemeIcon";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../store/actions/actions";
 
-const Navbar = ({ scroll = 0 }) => {
+const Navbar = (props) => {
   const { theme, setTheme } = useTheme();
   const state = useSelector((state) => state.glob);
   const dispatch = useDispatch();
@@ -37,27 +37,27 @@ const Navbar = ({ scroll = 0 }) => {
         className={`flex justify-between items-end pb-5 px-3 w-full h-24 rounded-b-3xl bg-white bg-opacity-30 backdrop-filter backdrop-blur-md shadow-md transition-all
       dark:bg-black dark:bg-opacity-60
       smd:items-center smd:ml-16 smd:mr-[216px] ${
-        scroll !== 0
+        state.scroll !== 0
           ? ""
           : "smd:bg-opacity-0 smd:dark:bg-opacity-0 smd:shadow-none"
       }
       md:items-center md:ml-20 md:mr-[264px] ${
-        scroll !== 0
+        state.scroll !== 0
           ? ""
           : "md:bg-opacity-0 md:dark:bg-opacity-0 md:shadow-none"
       }
       lg:items-center lg:ml-20 lg:mr-[264px] ${
-        scroll !== 0
+        state.scroll !== 0
           ? ""
           : "lg:bg-opacity-0 lg:dark:bg-opacity-0 lg:shadow-none"
       }
       xl:items-center xl:ml-20 xl:mr-[312px] ${
-        scroll !== 0
+        state.scroll !== 0
           ? ""
           : "xl:bg-opacity-0 xl:dark:bg-opacity-0 xl:shadow-none"
       } 
       2xl:items-center 2xl:ml-20 2xl:mr-[312px] ${
-        scroll !== 0
+        state.scroll !== 0
           ? ""
           : "2xl:bg-opacity-0 2xl:dark:bg-opacity-0 2xl:shadow-none"
       }
@@ -108,15 +108,7 @@ const Navbar = ({ scroll = 0 }) => {
           </div>
         )}
 
-        <div
-          className="fixed top-1 right-0 justify-center items-center 
-      smd:flex smd:relative
-      md:flex md:relative
-      lg:flex lg:relative
-      xl:flex xl:relative
-      2xl:flex 2xl:relative
-      "
-        >
+        <div className="fixed top-1 right-0 justify-center items-center smd:flex smd:relative md:flex md:relative lg:flex lg:relative xl:flex xl:relative 2xl:flex 2xl:relative">
           <ThemeIcon size="25" onClick={toggleTheme} theme={theme} />
         </div>
       </div>
@@ -124,8 +116,6 @@ const Navbar = ({ scroll = 0 }) => {
   );
 };
 
-Navbar.propTypes = {
-  scroll: Proptypes.number,
-};
+Navbar.propTypes = {};
 
 export default Navbar;

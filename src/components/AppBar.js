@@ -4,19 +4,17 @@ import Proptypes from "prop-types";
 import AddIcon from "./Icons/AddIcon";
 import HomeIcon from "./Icons/HomeIcon";
 import FavoriteIcon from "./Icons/FavoriteIcon";
-import ChatIcon from "./Icons/ChatIcon";
-import DocIcon from "./Icons/DocIcon";
 import SettingsIcon from "./Icons/SettingsIcon";
 import LogoutIcon from "./Icons/LogoutIcon";
 import LoginIcon from "./Icons/LoginIcon";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
+import * as actions from "../store/actions/actions";
 
-const AppBar = ({ tab, setTab }) => {
+const AppBar = (props) => {
   const state = useSelector((state) => state.glob);
+  const dispatch = useDispatch();
   const router = useRouter();
-
-  const tabChangeHandler = (tab) => setTab(tab);
 
   const addBlogHandler = () => {
     console.log("Add blog");
@@ -28,6 +26,7 @@ const AppBar = ({ tab, setTab }) => {
   };
   const logoutHandler = () => {
     console.log("Logout Pressed");
+    dispatch(actions.setIsUserLoggedIn(false));
   };
 
   return (
@@ -44,63 +43,41 @@ const AppBar = ({ tab, setTab }) => {
     >
       <HomeIcon
         size="20px"
-        active={tab === 0}
-        onClick={() => tabChangeHandler(0)}
+        active={router.pathname === "/"}
+        onClick={() => router.push("/")}
       />
 
       {state.isUserLoggedIn && (
         <FavoriteIcon
           size="20px"
-          active={tab === 1}
-          onClick={() => tabChangeHandler(1)}
+          active={router.pathname === "/favorites"}
+          onClick={() => router.push("/favorites")}
         />
       )}
       {state.isUserLoggedIn && (
         <div
-          className="flex p-5 rounded-full self-start -mt-5
-            bg-gradient-to-r from-yellow via-orange to-fucsia bg-blend-soft-light
-            filter transition-all shadow-xl
-            hover:shadow-3xl
-            cursor-pointer
-            smd:hidden
-            md:hidden
-            lg:hidden
-            xl:hidden
-            2xl:hidden
-
-            "
+          className="flex p-5 rounded-full self-start -mt-5 bg-gradient-to-r from-yellow via-orange to-fucsia bg-blend-soft-light filter transition-all shadow-xl hover:shadow-3xl cursor-pointer smd:hidden md:hidden lg:hidden xl:hidden 2xl:hidden"
           onClick={addBlogHandler}
         >
           <AddIcon size="20px" />
         </div>
       )}
 
-      {/* <DocIcon
-        size="20px"
-        active={tab === 2}
-        onClick={() => tabChangeHandler(2)}
-      />
-
-      <ChatIcon
-        size="20px"
-        active={tab === 3}
-        onClick={() => tabChangeHandler(3)}
-      /> */}
       {state.isUserLoggedIn && (
         <div className="flex md:flex lg:flex xl:flex 2xl:flex">
           <SettingsIcon
             size="20px"
-            active={tab === 2}
-            onClick={() => tabChangeHandler(2)}
+            active={router.pathname === "/settings"}
+            onClick={() => router.push("/settings")}
           />
         </div>
       )}
 
       <div className="flex md:hidden ">
         {state.isUserLoggedIn ? (
-          <LogoutIcon size="20px" active={tab === 3} onClick={logoutHandler} />
+          <LogoutIcon size="20px" onClick={logoutHandler} />
         ) : (
-          <LoginIcon size="20px" active={tab === 3} onClick={loginHandler} />
+          <LoginIcon size="20px" onClick={loginHandler} />
         )}
       </div>
     </div>
