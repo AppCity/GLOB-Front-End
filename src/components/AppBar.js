@@ -25,8 +25,6 @@ const AppBar = (props) => {
     router.push("/authentication");
   };
   const logoutHandler = () => {
-    console.log("Logout Pressed");
-    // dispatch(actions.setIsUserLoggedIn(false));
     dispatch(actions.logout(state.token));
   };
 

@@ -13,7 +13,8 @@ import AddIcon from "./Icons/AddIcon";
 import { useState } from "react";
 import { categories, myArticles, userData } from "../data/data";
 import * as actions from "../store/actions/actions";
-const Sidebar = ({ children }) => {
+
+const Sidebar = (props) => {
   const state = useSelector((state) => state.glob);
   const dispatch = useDispatch();
 
@@ -22,14 +23,9 @@ const Sidebar = ({ children }) => {
   const [addArticleHover, setAddArticleHover] = useState(false);
   const toggleAddArticleHover = () => setAddArticleHover(!addArticleHover);
 
-  const loginHandler = () => {
-    console.log("login");
-    router.push("/authentication");
-  };
-  const logoutHandler = () => {
-    console.log("logout");
-    dispatch(actions.setIsUserLoggedIn(false));
-  };
+  const loginHandler = () => router.push("/authentication");
+
+  const logoutHandler = () => dispatch(actions.logout(state.token));
 
   const addNewBlogHandler = () => {
     console.log("Add new Blog");
