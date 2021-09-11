@@ -93,28 +93,8 @@ const SignInScreen = (props) => {
       username: data.email.value,
       password: data.password.value,
     };
-    console.log("LOGIN", postData);
-
-    try {
-      const response = await frontEndApi.post(FRONTEND_ROUTES.signin, postData);
-      console.log("🚀 --- login --- response", response.data);
-
-      toast.success("Login Successful");
-
-      dispatch(actions.setIsUserLoggedIn(true));
-      dispatch(actions.setToken(response.data.accessToken));
-      router.replace("/");
-    } catch (error) {
-      console.log("🚀 --- Login --- error", error.response.data.message[0]);
-      console.log("🚀 --- Login --- error", error.response.data.message);
-
-      const errorType = typeof error.response.data.message === Array;
-      console.log("🚀 --- Login --- errorType", errorType);
-
-      toast.error(
-        errorType ? error.response.data.message[0] : error.response.data.message
-      );
-    }
+    const callback = () => router.replace("/");
+    dispatch(actions.login(postData, callback));
   };
 
   const [animate, setAnimate] = useState(false);

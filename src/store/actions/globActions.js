@@ -3,6 +3,7 @@ import types from "../types";
 //Api
 import { frontEndApi } from "../../api/axios";
 import toast from "react-hot-toast";
+import { FRONTEND_ROUTES } from "../../constants/backendRoutes";
 
 const setLoading = (status) => {
   return {
@@ -47,6 +48,59 @@ export const setToken = (value) => {
 };
 
 //Middleware
+
+export const signup = (postData, callback) => {
+  return async (dispatch) => {
+    dispatch(setLoading(true));
+
+    try {
+      const response = await frontEndApi.post(FRONTEND_ROUTES.signup, postData);
+      toast.success("Registration Successful");
+
+      dispatch(setIsUserLoggedIn(true));
+      dispatch(setToken(response.data.accessToken));
+      callback && callback();
+    } catch (error) {
+      console.log("🚀 --- register --- error", error.response.data.message[0]);
+      console.log("🚀 --- register --- error", error.response.data.message);
+
+      const errorType = typeof error.response.data.message === Array;
+      console.log("🚀 --- register --- errorType", errorType);
+
+      toast.error(
+        errorType ? error.response.data.message[0] : error.response.data.message
+      );
+    }
+    dispatch(setLoading(false));
+  };
+};
+
+export const login = (postData, callback) => {
+  return async (dispatch) => {
+    dispatch(setLoading(true));
+
+    try {
+      const response = await frontEndApi.post(FRONTEND_ROUTES.signin, postData);
+      toast.success("Login Successful");
+
+      dispatch(setIsUserLoggedIn(true));
+      dispatch(setToken(response.data.accessToken));
+      callback && callback();
+    } catch (error) {
+      console.log("🚀 --- Login --- error", error.response.data.message[0]);
+      console.log("🚀 --- Login --- error", error.response.data.message);
+
+      const errorType = typeof error.response.data.message === Array;
+      console.log("🚀 --- Login --- errorType", errorType);
+
+      toast.error(
+        errorType ? error.response.data.message[0] : error.response.data.message
+      );
+    }
+    dispatch(setLoading(false));
+  };
+};
+
 export const logout = (token) => {
   return (dispatch) => {
     // dispatch(messageStatus(null))

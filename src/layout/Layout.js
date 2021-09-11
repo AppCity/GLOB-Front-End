@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import AppBar from "../components/AppBar";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
+import Spinner from "../components/Spinner";
+
 import SplashScreen from "../screens/SplashScreen/SplashScreen";
 import * as actions from "../store/actions/actions";
 
@@ -11,10 +13,8 @@ const Layout = ({ children }) => {
   const state = useSelector((state) => state.glob);
   const dispatch = useDispatch();
   const { pathname } = useRouter();
-  console.log("🚀 --- Layout --- pathname", pathname);
 
   const isAuthenticationPage = pathname === "/authentication";
-  console.log("🚀 --- Layout --- isAuthenticationPage", isAuthenticationPage);
 
   return (
     <div className="flex  w-full ">
@@ -39,6 +39,7 @@ const Layout = ({ children }) => {
           {children}
         </>
       )}
+      {state.isLoading && <Spinner />}
     </div>
   );
 };

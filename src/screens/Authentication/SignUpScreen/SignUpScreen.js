@@ -112,26 +112,9 @@ const SignUpScreen = (props) => {
       password: data.password.value,
     };
 
-    try {
-      const response = await frontEndApi.post(FRONTEND_ROUTES.signup, postData);
-      console.log("🚀 --- register --- response", response.data);
+    const callback = () => router.replace("/");
 
-      toast.success("Registration Successful");
-
-      dispatch(actions.setIsUserLoggedIn(true));
-      dispatch(actions.setToken(response.data.accessToken));
-      router.replace("/");
-    } catch (error) {
-      console.log("🚀 --- register --- error", error.response.data.message[0]);
-      console.log("🚀 --- register --- error", error.response.data.message);
-
-      const errorType = typeof error.response.data.message === Array;
-      console.log("🚀 --- register --- errorType", errorType);
-
-      toast.error(
-        errorType ? error.response.data.message[0] : error.response.data.message
-      );
-    }
+    dispatch(actions.signup(postData, callback));
   };
 
   const [animate, setAnimate] = useState(false);
