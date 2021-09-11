@@ -126,8 +126,17 @@ module.exports = {
         blink: "blink 1s linear infinite",
         slideUp: "slideUp 0.3s linear",
         bounceLarge: "bounceLarge 1s linear infinite",
+        spinner: "spinner 1s linear infinite",
+        fullPing: "fullPing 1s linear infinite",
       },
       keyframes: {
+        spinner: {
+          "0%": { transform: "rotateX(0deg)" },
+          "100%": { transform: "rotateX(360deg)" },
+        },
+        fullPing: {
+          "75%, 100%": { transform: "scale(10)", opacity: 0 },
+        },
         wiggle: {
           "0%, 100%": { transform: "rotate(-5deg)" },
           "50%": { transform: "rotate(5deg)" },
