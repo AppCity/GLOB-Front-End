@@ -30,7 +30,7 @@ const AppBar = (props) => {
 
   return (
     <div
-      className="flex fixed bottom-0 w-full h-14 z-10 rounded-t-3xl justify-around items-center transition-all  
+      className="flex fixed bottom-0 w-full h-14 z-[500] rounded-t-3xl justify-around items-center transition-all  
           bg-white bg-opacity-30 backdrop-filter backdrop-blur-md shadow-4xl
           dark:bg-black dark:bg-opacity-60
            smd:h-full smd:w-14 smd:flex-col smd:justify-center smd:left-0 smd:space-y-10 smd:rounded-r-3xl smd:rounded-tl-none

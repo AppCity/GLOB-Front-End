@@ -3,10 +3,12 @@ import { useState } from "react";
 import Categories from "../../../components/Categories";
 import Scrollbar from "../../../components/Scrollbar";
 
-import { categories, news } from "../../../data/data";
+import { categories, myArticles, news } from "../../../data/data";
 import News from "../../../components/News";
+import BlogsCard from "../../../components/BlogsCard";
 
 import { useSelector } from "react-redux";
+import GradientText from "../../../components/GradientText";
 
 const Home = ({ scroll = 0, setTab }) => {
   const state = useSelector((state) => state.glob);
@@ -21,6 +23,18 @@ const Home = ({ scroll = 0, setTab }) => {
   const userClickHandler = () => {
     console.log("userClickHandler");
     setTab(2);
+  };
+
+  const openBlogHandler = () => {
+    console.log("openBlogHandler");
+  };
+
+  const menuClickHandler = () => {
+    console.log("menuClickHandler");
+  };
+
+  const openMyBlogs = () => {
+    console.log("openMyBlogs");
   };
 
   //Mobile/Desktop - News
@@ -124,7 +138,39 @@ const Home = ({ scroll = 0, setTab }) => {
           smd:hidden md:hidden lg:hidden: xl:hidden 2xl:hidden
       "
       >
-        <span>Latest News</span>
+        {state.isUserLoggedIn && (
+          <div className="flex flex-col">
+            <span className="flex text-grey dark:text-bg">My Blogs</span>
+            <Scrollbar>
+              <div className="flex space-x-3 -mt-5">
+                {myArticles.map((item, index) => {
+                  if (index < 5) {
+                    return (
+                      <BlogsCard
+                        image={item.image}
+                        title={item.title}
+                        onClick={openBlogHandler}
+                        menuClickHandler={menuClickHandler}
+                      />
+                    );
+                  } else if (index === 5) {
+                    return (
+                      <div
+                        className="flex items-center w-full"
+                        onClick={openMyBlogs}
+                      >
+                        <GradientText customCss="cursor-pointer">
+                          View all
+                        </GradientText>
+                      </div>
+                    );
+                  }
+                })}
+              </div>
+            </Scrollbar>
+          </div>
+        )}
+        <span className="text-grey dark:text-bg">Latest News</span>
         {newsUi}
       </div>
     </div>

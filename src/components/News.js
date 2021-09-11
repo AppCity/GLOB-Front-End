@@ -37,7 +37,7 @@ const News = ({
   return (
     <div>
       <div
-        className="bg-white rounded-xl flex bg-opacity-30 backdrop-filter backdrop-blur-md shadow-md hover:shadow-lg transition-all cursor-pointer dark:bg-black dark:bg-opacity-60"
+        className="bg-white rounded-xl flex bg-opacity-30 backdrop-filter backdrop-blur-md shadow-md hover:shadow-lg transition-all cursor-pointer dark:bg-black dark:bg-opacity-60 "
         onClick={newsHandler}
       >
         <div className="flex h-32 w-32 rounded-xl overflow-hidden sm:w-36 sm:h-36 md:h-44 md:w-44">
@@ -56,14 +56,14 @@ const News = ({
         </div>
       </div>
 
-      <div className="flex flex-row justify-between items-center p-5 sm:pb-8 md:pb-10 -mt-12 sm:-mt-16 ml-[105px] sm:ml-[120px] md:ml-[150px]">
-        <div className="flex flex-row justify-center items-center space-x-1 z-50">
+      <div className="flex flex-row dark:text-bg text-grey justify-between items-center p-5 sm:pb-8 md:pb-10 -mt-12 sm:-mt-16 ml-[105px] sm:ml-[120px] md:ml-[150px]">
+        <div className="flex flex-row justify-center items-center space-x-1 z-50 ">
           <LikeIcon
             size="12"
             css="sm:w-[16px] sm:h-[16px] lg:w-[20px] lg:h-[20px]"
             onClick={likeHandler}
           />
-          <span className="text-xs sm:text-base lg:text-xl">
+          <span className="text-xs sm:text-base lg:text-xl ">
             {kFormatter(likes)}
           </span>
         </div>

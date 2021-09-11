@@ -43,6 +43,10 @@ const Sidebar = (props) => {
     console.log("Category Clicked");
   };
 
+  const openMyBlogs = () => {
+    console.log("openMyBlogs");
+  };
+
   const sidebarChildren = (
     <div className="flex flex-col w-full">
       <div className="flex flex-col justify-center py-5 mt-5">
@@ -65,19 +69,32 @@ const Sidebar = (props) => {
       </div>
 
       {state.isUserLoggedIn && (
-        <div className="flex flex-col mt-5">
+        <div className="flex flex-col my-5">
           <span className="flex pl-5">My Blogs</span>
           <Scrollbar>
             <div className="flex pl-5 space-x-3 -mt-5">
-              {myArticles.map((item) => {
-                return (
-                  <BlogsCard
-                    image={item.image}
-                    title={item.title}
-                    onClick={openBlogHandler}
-                    menuClickHandler={menuClickHandler}
-                  />
-                );
+              {myArticles.map((item, index) => {
+                if (index < 5) {
+                  return (
+                    <BlogsCard
+                      image={item.image}
+                      title={item.title}
+                      onClick={openBlogHandler}
+                      menuClickHandler={menuClickHandler}
+                    />
+                  );
+                } else if (index === 5) {
+                  return (
+                    <div
+                      className="flex items-center w-full pr-5"
+                      onClick={openMyBlogs}
+                    >
+                      <GradientText customCss="cursor-pointer">
+                        View all
+                      </GradientText>
+                    </div>
+                  );
+                }
               })}
             </div>
           </Scrollbar>
