@@ -12,14 +12,14 @@ const App = () => {
   const state = useSelector((state) => state.glob);
   const router = useRouter();
 
-  if (state.isSplashLoading) {
-    return (
-      <>
-        <Head title="Welcome" content="Where globe writes blogs" />
-        <SplashScreen />
-      </>
-    );
-  }
+  // if (state.isSplashLoading) {
+  //   return (
+  //     <>
+  //       <Head title="Welcome" content="Where globe writes blogs" />
+  //       <SplashScreen />
+  //     </>
+  //   );
+  // }
 
   return (
     <>

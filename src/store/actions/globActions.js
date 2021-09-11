@@ -38,6 +38,13 @@ export const setScroll = (value) => {
   };
 };
 
+export const setToken = (value) => {
+  return {
+    type: types.SET_TOKEN,
+    payload: value,
+  };
+};
+
 //Middleware
 // export const submitContactForm = (fname, lname,	email, message) =>
 // {

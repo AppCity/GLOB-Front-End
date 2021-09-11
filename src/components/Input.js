@@ -29,6 +29,7 @@ const Input = ({
   autoFocus = false,
   error = false,
   css = "",
+  inputMode,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showBorder, setShowBorder] = useState(false);
@@ -54,6 +55,7 @@ const Input = ({
         )}
         <input
           type={type && !showPassword ? type : null}
+          inputMode={inputMode}
           placeholder={placeholder}
           onChange={(e) => onChange(e.target.value)}
           value={value}

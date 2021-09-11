@@ -6,9 +6,10 @@ const initialState = {
   device: "desktop",
   isLoading: false,
   isSplashLoading: true,
-  isUserLoggedIn: true,
+  isUserLoggedIn: false,
   theme: "light",
   scroll: 0,
+  token: null,
 };
 
 const globReducer = (state = initialState, action) => {
@@ -46,6 +47,9 @@ const globReducer = (state = initialState, action) => {
 
     case actionTypes.SET_SCROLL:
       return { ...state, scroll: action.payload };
+
+    case actionTypes.SET_TOKEN:
+      return { ...state, token: action.payload };
 
     default:
       return state;

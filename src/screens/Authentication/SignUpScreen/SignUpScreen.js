@@ -6,8 +6,16 @@ import Input from "../../../components/Input";
 import Scrollbar from "../../../components/Scrollbar";
 import { EMAIL_REGEX } from "../../../constants/constants";
 import { useRouter } from "next/router";
+import { frontEndApi } from "../../../api/axios";
+import { FRONTEND_ROUTES } from "../../../constants/backendRoutes";
+import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import * as actions from "../../../store/actions/actions";
 
 const SignUpScreen = (props) => {
+  const state = useSelector((state) => state.glob);
+  const dispatch = useDispatch();
   const router = useRouter();
 
   const [data, setData] = useState({
@@ -62,6 +70,10 @@ const SignUpScreen = (props) => {
       isValid = value.length > 6 && isValid;
     }
 
+    if (field === "phone") {
+      isValid = !isNaN(value) && value.length === 10 && isValid;
+    }
+
     return isValid;
   };
 
@@ -92,7 +104,7 @@ const SignUpScreen = (props) => {
     setData(currentState);
   };
 
-  const register = () => {
+  const register = async () => {
     const postData = {
       fullname: data.fullname.value,
       username: data.username.value,
@@ -100,9 +112,27 @@ const SignUpScreen = (props) => {
       phone: data.phone.value,
       password: data.password.value,
     };
-    console.log("REGISTER", postData);
 
-    router.replace("/");
+    try {
+      const response = await frontEndApi.post(FRONTEND_ROUTES.signup, postData);
+      console.log("🚀 --- register --- response", response.data);
+
+      toast.success("Registration Successful");
+
+      dispatch(actions.setIsUserLoggedIn(true));
+      dispatch(actions.setToken(response.data.accessToken));
+      router.replace("/");
+    } catch (error) {
+      console.log("🚀 --- register --- error", error.response.data.message[0]);
+      console.log("🚀 --- register --- error", error.response.data.message);
+
+      const errorType = typeof error.response.data.message === Array;
+      console.log("🚀 --- register --- errorType", errorType);
+
+      toast.error(
+        errorType ? error.response.data.message[0] : error.response.data.message
+      );
+    }
   };
 
   const [animate, setAnimate] = useState(false);
@@ -189,6 +219,7 @@ const SignUpScreen = (props) => {
             value={data.phone.value}
             error={!data.phone.isValid && data.phone.touched}
             onChange={(val) => dataHandler("phone", val)}
+            inputMode="numeric"
           />
 
           <Input
@@ -196,6 +227,7 @@ const SignUpScreen = (props) => {
             value={data.email.value}
             error={!data.email.isValid && data.email.touched}
             onChange={(val) => dataHandler("email", val)}
+            inputMode="email"
           />
 
           <Input

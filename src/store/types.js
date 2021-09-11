@@ -6,6 +6,7 @@ const types = {
   SET_IS_USER_LOGGED_IN: "SET_IS_USER_LOGGED_IN",
   CHANGE_THEME: "CHANGE_THEME",
   SET_SCROLL: "SET_SCROLL",
+  SET_TOKEN: "SET_TOKEN",
 };
 
 export default types;
