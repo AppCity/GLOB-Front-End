@@ -9,8 +9,7 @@ import { useRouter } from "next/router";
 import { frontEndApi } from "../../../api/axios";
 import { FRONTEND_ROUTES } from "../../../constants/backendRoutes";
 import toast from "react-hot-toast";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../../store/actions/actions";
 
 const SignUpScreen = (props) => {

@@ -12,8 +12,8 @@ export default async function handler(req, res) {
 
     res.status(status).json(data);
   } catch (error) {
-    console.log("🚀 --- slides --- error", error);
+    console.log("🚀 --- Login --- error", error.response);
     const errorMessage = error.response.data;
-    res.status(errorMessage.statusCode).json(error);
+    res.status(error.response.status).json(errorMessage);
   }
 }

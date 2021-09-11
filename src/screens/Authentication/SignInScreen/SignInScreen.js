@@ -13,8 +13,15 @@ import { EMAIL_REGEX } from "../../../constants/constants";
 import GoogleIcon from "../../../components/Icons/GoogleIcon";
 import FacebookIcon from "../../../components/Icons/FacebookIcon";
 import TwitterIcon from "../../../components/Icons/TwitterIcon";
+import { FRONTEND_ROUTES } from "../../../constants/backendRoutes";
+import { frontEndApi } from "../../../api/axios";
+import toast from "react-hot-toast";
+import { useSelector, useDispatch } from "react-redux";
+import * as actions from "../../../store/actions/actions";
 
 const SignInScreen = (props) => {
+  const state = useSelector((state) => state.glob);
+  const dispatch = useDispatch();
   const router = useRouter();
 
   const [data, setData] = useState({
@@ -42,9 +49,9 @@ const SignInScreen = (props) => {
     }
 
     //Email validation
-    if (field === "email") {
-      isValid = EMAIL_REGEX.test(value) && isValid;
-    }
+    // if (field === "email") {
+    //   isValid = EMAIL_REGEX.test(value) && isValid;
+    // }
 
     //Password validation
     if (field === "password") {
@@ -81,13 +88,33 @@ const SignInScreen = (props) => {
     setData(currentState);
   };
 
-  const login = () => {
+  const login = async () => {
     const postData = {
-      email: data.email.value,
+      username: data.email.value,
       password: data.password.value,
     };
     console.log("LOGIN", postData);
-    router.replace("/");
+
+    try {
+      const response = await frontEndApi.post(FRONTEND_ROUTES.signin, postData);
+      console.log("🚀 --- login --- response", response.data);
+
+      toast.success("Login Successful");
+
+      dispatch(actions.setIsUserLoggedIn(true));
+      dispatch(actions.setToken(response.data.accessToken));
+      router.replace("/");
+    } catch (error) {
+      console.log("🚀 --- Login --- error", error.response.data.message[0]);
+      console.log("🚀 --- Login --- error", error.response.data.message);
+
+      const errorType = typeof error.response.data.message === Array;
+      console.log("🚀 --- Login --- errorType", errorType);
+
+      toast.error(
+        errorType ? error.response.data.message[0] : error.response.data.message
+      );
+    }
   };
 
   const [animate, setAnimate] = useState(false);
