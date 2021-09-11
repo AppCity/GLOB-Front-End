@@ -1,7 +1,8 @@
 import types from "../types";
 
 //Api
-// import { NEXTApi } from '../../api/axios'
+import { frontEndApi } from "../../api/axios";
+import toast from "react-hot-toast";
 
 const setLoading = (status) => {
   return {
@@ -46,25 +47,42 @@ export const setToken = (value) => {
 };
 
 //Middleware
-// export const submitContactForm = (fname, lname,	email, message) =>
-// {
-// 	const contactFormBody = {fname, lname,	email, message}
+export const logout = (token) => {
+  return (dispatch) => {
+    // dispatch(messageStatus(null))
+    // dispatch(setLoading(true))
 
-// 	return dispatch =>
-// 	{
-// 		dispatch(messageStatus(null))
-// 		dispatch(setLoading(true))
+    frontEndApi
+      .post("/logout", { token })
+      .then((resp) => {
+        dispatch(setToken(null));
+        dispatch(setIsUserLoggedIn(false));
+        toast.success("Logged out successfully");
+      })
+      .catch((err) => {
+        toast.error("Something went wrong");
+        console.log("error", err);
+        // dispatch(setLoading(false))
+        // dispatch(messageStatus("Error"))
+      });
+  };
+};
 
-// 		NEXTApi.post("/email", contactFormBody)
-// 		.then(resp =>
-// 		{
-// 			dispatch(messageStatus("Success"))
-// 			dispatch(setLoading(false))
-// 		})
-// 		.catch(err =>
-// 		{
-// 			dispatch(setLoading(false))
-// 			dispatch(messageStatus("Error"))
-// 		})
-// 	}
-// }
+// export const logout = (fname, lname, email, message) => {
+//   const contactFormBody = { fname, lname, email, message };
+
+//   return (dispatch) => {
+//     dispatch(messageStatus(null));
+//     dispatch(setLoading(true));
+
+//     NEXTApi.post("/email", contactFormBody)
+//       .then((resp) => {
+//         dispatch(messageStatus("Success"));
+//         dispatch(setLoading(false));
+//       })
+//       .catch((err) => {
+//         dispatch(setLoading(false));
+//         dispatch(messageStatus("Error"));
+//       });
+//   };
+// };

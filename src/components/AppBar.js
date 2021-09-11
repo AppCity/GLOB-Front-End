@@ -26,7 +26,8 @@ const AppBar = (props) => {
   };
   const logoutHandler = () => {
     console.log("Logout Pressed");
-    dispatch(actions.setIsUserLoggedIn(false));
+    // dispatch(actions.setIsUserLoggedIn(false));
+    dispatch(actions.logout(state.token));
   };
 
   return (
