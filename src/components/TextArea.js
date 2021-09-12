@@ -18,7 +18,7 @@ import { useState } from "react";
 //Components
 import TextButton from "./TextButton";
 
-const Input = ({
+const TextArea = ({
   label = "",
   placeholder = "",
   onChange = () => {},
@@ -30,7 +30,7 @@ const Input = ({
   error = false,
   css = "",
   inputMode,
-  autoCapitalize = false,
+  rows = 5,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showBorder, setShowBorder] = useState(false);
@@ -54,7 +54,7 @@ const Input = ({
             />
           </div>
         )}
-        <input
+        <textarea
           type={type && !showPassword ? type : null}
           inputMode={inputMode}
           placeholder={placeholder}
@@ -68,7 +68,7 @@ const Input = ({
           onFocus={() => setShowBorder(true)}
           onBlur={() => setShowBorder(false)}
           autoFocus={autoFocus}
-          autoCapitalize={autoCapitalize ? "on" : "off"}
+          rows={rows}
         />
 
         <div
@@ -81,7 +81,7 @@ const Input = ({
   );
 };
 
-Input.propTypes = {
+TextArea.propTypes = {
   label: Proptypes.string,
   placeholder: Proptypes.string,
   onChange: Proptypes.func.isRequired,
@@ -94,4 +94,4 @@ Input.propTypes = {
   css: Proptypes.string,
 };
 
-export default Input;
+export default TextArea;

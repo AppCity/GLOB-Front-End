@@ -1,4 +1,3 @@
-
 import Head from "../components/Head";
 import AuthenticationScreen from "../screens/Authentication/AuthenticationScreen";
 

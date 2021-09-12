@@ -10,6 +10,7 @@ import LoginIcon from "./Icons/LoginIcon";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import * as actions from "../store/actions/actions";
+import { useEffect } from "react";
 
 const AppBar = (props) => {
   const state = useSelector((state) => state.glob);
@@ -18,6 +19,8 @@ const AppBar = (props) => {
 
   const addBlogHandler = () => {
     console.log("Add blog");
+
+    router.push("addblog");
   };
 
   const loginHandler = () => {

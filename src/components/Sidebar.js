@@ -29,6 +29,7 @@ const Sidebar = (props) => {
 
   const addNewBlogHandler = () => {
     console.log("Add new Blog");
+    router.push("addblog");
   };
 
   const openBlogHandler = () => {
