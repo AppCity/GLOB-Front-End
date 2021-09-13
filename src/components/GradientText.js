@@ -3,7 +3,7 @@ import Proptypes from "prop-types";
 const GradientText = ({ children, customCss }) => {
   return (
     <span
-      className={`w-full 
+      className={`w-full py-2 select-none
         bg-gradient-to-r from-orange to-fucsia text-transparent bg-clip-text bg-blend-soft-light filter
         ${customCss && customCss}`}
     >

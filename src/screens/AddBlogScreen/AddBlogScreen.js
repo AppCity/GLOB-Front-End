@@ -2,10 +2,12 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Button from "../../components/Button";
+import Dropdown from "../../components/Dropdown";
 import GradientText from "../../components/GradientText";
 import Input from "../../components/Input";
 import TextArea from "../../components/TextArea";
 import TextButton from "../../components/TextButton";
+import { categories } from "../../data/data";
 
 const AddBlogScreen = (props) => {
   const state = useSelector((state) => state.glob);
@@ -22,6 +24,12 @@ const AddBlogScreen = (props) => {
       value: "",
       isRequired: true,
       isValid: false,
+      touched: false,
+    },
+    category: {
+      value: categories[0].title,
+      isRequired: true,
+      isValid: true,
       touched: false,
     },
     isFormValid: false,
@@ -66,13 +74,12 @@ const AddBlogScreen = (props) => {
   };
 
   const creatBlogHandler = () => {
-    console.log("creatBlogHandler");
-
     const postData = {
       username: data.title.value,
       password: data.content.value,
+      category: data.category.value,
     };
-    console.log("data =>", postData);
+    console.log("creatBlogHandler data =>", postData);
   };
 
   useEffect(() => {
@@ -96,6 +103,13 @@ const AddBlogScreen = (props) => {
           error={!data.title.isValid && data.title.touched}
           onChange={(val) => dataHandler("title", val)}
           autoCapitalize
+        />
+
+        <Dropdown
+          label="Category"
+          data={categories}
+          setCategory={(val) => dataHandler("category", val)}
+          category={data.category.value}
         />
 
         <TextArea
