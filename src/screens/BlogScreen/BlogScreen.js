@@ -23,23 +23,24 @@ const BlogScreen = (props) => {
 
   const blogId = router.query.id;
 
-  const selectedBlog = {}; //news.find((item) => String(item.id) === blogId);
+  const selectedBlog = state.blogs.find((item) => item.id === blogId);
+  console.log("🚀 --- BlogScreen --- selectedBlog", selectedBlog);
 
   const [data, setData] = useState({
     title: {
-      value: "",
+      value: selectedBlog.title,
       isRequired: true,
       isValid: false,
       touched: false,
     },
     content: {
-      value: "",
+      value: selectedBlog.content,
       isRequired: true,
       isValid: false,
       touched: false,
     },
     category: {
-      value: categories[0].title,
+      value: selectedBlog.category,
       isRequired: true,
       isValid: true,
       touched: false,
@@ -164,7 +165,7 @@ const BlogScreen = (props) => {
           autoFocus
           label="Enter a Title"
           required
-          value={selectedBlog.title}
+          value={data.title.value}
           error={!data.title.isValid && data.title.touched}
           onChange={(val) => dataHandler("title", val)}
           autoCapitalize
