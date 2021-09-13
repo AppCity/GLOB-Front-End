@@ -1,11 +1,11 @@
 import Proptypes from "prop-types";
 import { memo } from "react";
 //Components
-import MenuVertical from "./Icons/MenuVertical";
+import MenuButton from "./MenuButton";
 
-const BlogsCard = ({ image, title, onClick = () => {}, menuClickHandler }) => {
+const BlogsCard = ({ image, title, onClick = () => {}, id }) => {
   return (
-    <div className="flex flex-col items-center py-5 my-5">
+    <div className="flex flex-col items-center py-5 my-5 relative">
       <div
         className="flex relative rounded-3xl w-40 h-32 overflow-hidden shadow-lg hover:shadow-xl cursor-pointer "
         onClick={onClick}
@@ -18,8 +18,8 @@ const BlogsCard = ({ image, title, onClick = () => {}, menuClickHandler }) => {
 
         <div className="absolute bg-gradient-to-t from-black to-transparent filter bottom-0 h-6 w-full" />
       </div>
-      <div className="flex w-full justify-end mr-5 -mt-5">
-        <MenuVertical size="10" onClick={menuClickHandler} />
+      <div className="flex justify-end z-40 absolute right-5 bottom-5">
+        <MenuButton size="10" id={id} />
       </div>
     </div>
   );

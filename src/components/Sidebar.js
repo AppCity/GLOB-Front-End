@@ -80,6 +80,7 @@ const Sidebar = (props) => {
                       title={item.title}
                       onClick={openBlogHandler}
                       menuClickHandler={menuClickHandler}
+                      id={item.id}
                     />
                   );
                 } else if (index === 5) {

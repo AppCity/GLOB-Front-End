@@ -19,7 +19,7 @@ const Layout = ({ children }) => {
   return (
     <div className="flex  w-full ">
       {/* //TODO: Testing only, remove later */}
-      <div className="w-full h-4 fixed t-0 bg-green-300 sm:bg-blue-300 smd:bg-pink-300 md:bg-yellow-300 lg:bg-orange-dark xl:bg-red-500 z-50" />
+      {/* <div className="w-full h-4 fixed t-0 bg-green-300 sm:bg-blue-300 smd:bg-pink-300 md:bg-yellow-300 lg:bg-orange-dark xl:bg-red-500 z-50" /> */}
 
       {!isAuthenticationPage && (
         <div

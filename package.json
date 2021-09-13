@@ -21,6 +21,7 @@
     "git": "npx git config --local user.name 'Santhosh' && npx git config --local user.email 'santhosh.umapathi@app-city.co'"
   },
   "dependencies": {
+    "@headlessui/react": "^1.4.1",
     "axios": "^0.21.1",
     "framer-motion": "^4.1.10",
     "image-trace-loader": "^1.0.2",

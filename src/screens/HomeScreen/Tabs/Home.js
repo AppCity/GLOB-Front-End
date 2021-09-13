@@ -151,6 +151,7 @@ const Home = ({ scroll = 0, setTab }) => {
                         title={item.title}
                         onClick={openBlogHandler}
                         menuClickHandler={menuClickHandler}
+                        id={item.id}
                       />
                     );
                   } else if (index === 5) {
