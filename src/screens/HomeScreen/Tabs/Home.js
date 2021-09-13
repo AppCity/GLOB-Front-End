@@ -9,9 +9,11 @@ import BlogsCard from "../../../components/BlogsCard";
 
 import { useSelector } from "react-redux";
 import GradientText from "../../../components/GradientText";
+import { useRouter } from "next/router";
 
 const Home = ({ scroll = 0, setTab }) => {
   const state = useSelector((state) => state.glob);
+  const router = useRouter();
 
   const [categoryState, setCategoryState] = useState("technology");
 
@@ -33,9 +35,7 @@ const Home = ({ scroll = 0, setTab }) => {
     console.log("menuClickHandler");
   };
 
-  const openMyBlogs = () => {
-    console.log("openMyBlogs");
-  };
+  const openMyBlogs = () => router.push("/myblogs");
 
   //Mobile/Desktop - News
   const newsUi = news.map((item) => {

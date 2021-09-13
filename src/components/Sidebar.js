@@ -44,9 +44,7 @@ const Sidebar = (props) => {
     console.log("Category Clicked");
   };
 
-  const openMyBlogs = () => {
-    console.log("openMyBlogs");
-  };
+  const openMyBlogs = () => router.push("/myblogs");
 
   const sidebarChildren = (
     <div className="flex flex-col w-full">
