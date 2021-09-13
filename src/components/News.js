@@ -4,6 +4,8 @@ import BookmarkIcon from "./Icons/BookmarkIcon";
 import { kFormatter, timeAgo } from "../helpers/helpers";
 import { useSelector } from "react-redux";
 import toast, { Toaster } from "react-hot-toast";
+import { useRouter } from "next/router";
+
 const News = ({
   image = "",
   title = "",
@@ -11,8 +13,11 @@ const News = ({
   likes = 0,
   timestamp = new Date(),
   bookmarked = false,
+  id = "",
 }) => {
   const state = useSelector((state) => state.glob);
+
+  const router = useRouter();
 
   const likeHandler = () => {
     if (state.isUserLoggedIn) {
@@ -32,6 +37,7 @@ const News = ({
 
   const newsHandler = () => {
     console.log("Blog Clicked");
+    router.push("/blogs/" + id);
   };
 
   return (

@@ -27,8 +27,9 @@ const Home = ({ scroll = 0, setTab }) => {
     setTab(2);
   };
 
-  const openBlogHandler = () => {
+  const openBlogHandler = (id) => {
     console.log("openBlogHandler");
+    router.push("/blogs/" + id);
   };
 
   const menuClickHandler = () => {
@@ -47,6 +48,7 @@ const Home = ({ scroll = 0, setTab }) => {
         likes={item.likes}
         timestamp={item.timestamp}
         bookmarked={item.bookmarked}
+        id={item.id}
       />
     );
   });
@@ -149,7 +151,7 @@ const Home = ({ scroll = 0, setTab }) => {
                       <BlogsCard
                         image={item.image}
                         title={item.title}
-                        onClick={openBlogHandler}
+                        onClick={() => openBlogHandler(item.id)}
                         menuClickHandler={menuClickHandler}
                         id={item.id}
                       />

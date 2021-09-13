@@ -32,8 +32,9 @@ const Sidebar = (props) => {
     router.push("addblog");
   };
 
-  const openBlogHandler = () => {
+  const openBlogHandler = (id) => {
     console.log("openBlogHandler");
+    router.push("/blogs/" + id);
   };
 
   const menuClickHandler = () => {
@@ -78,7 +79,7 @@ const Sidebar = (props) => {
                     <BlogsCard
                       image={item.image}
                       title={item.title}
-                      onClick={openBlogHandler}
+                      onClick={() => openBlogHandler(item.id)}
                       menuClickHandler={menuClickHandler}
                       id={item.id}
                     />

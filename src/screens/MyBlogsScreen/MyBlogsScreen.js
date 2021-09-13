@@ -9,8 +9,9 @@ const MyBlogsScreen = (props) => {
   const state = useSelector((state) => state.glob);
   const router = useRouter();
 
-  const openBlogHandler = () => {
+  const openBlogHandler = (id) => {
     console.log("openBlogHandler");
+    router.push("/blogs/" + id);
   };
 
   const menuClickHandler = () => {
@@ -36,7 +37,7 @@ const MyBlogsScreen = (props) => {
               <BlogsCard
                 image={item.image}
                 title={item.title}
-                onClick={openBlogHandler}
+                onClick={() => openBlogHandler(item.id)}
                 menuClickHandler={menuClickHandler}
               />
             );

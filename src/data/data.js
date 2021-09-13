@@ -54,6 +54,7 @@ export const news = [
     timestamp: new Date(Date.now() - aDay),
     bookmarked: false,
     image: "https://digitaltree.ai/wp-content/uploads/2021/05/BIG-DATA.jpg",
+    category: "Technology",
   },
   {
     id: Math.floor(Math.random() * 9999),
@@ -62,6 +63,8 @@ export const news = [
     likes: 1000,
     timestamp: new Date(Date.now() - aDay * 2),
     bookmarked: true,
+    category: "Technology",
+
     image:
       "https://i.pcmag.com/imagery/roundups/06oZZT0EtPd7odEzxm8azce-16..1585156064.jpg",
   },
@@ -72,6 +75,8 @@ export const news = [
     likes: 55000,
     timestamp: new Date(),
     bookmarked: false,
+    category: "Technology",
+
     image:
       "https://itchronicles.com/wp-content/uploads/2018/10/bigstock-Programming-Web-Banner-Best-P-258081862.jpg",
   },
@@ -82,6 +87,8 @@ export const news = [
     likes: 500,
     timestamp: new Date(Date.now() - aDay * 2),
     bookmarked: true,
+    category: "Motor",
+
     image:
       "https://www.healtheuropa.eu/wp-content/uploads/2020/04/iStock-1153003884-696x464.jpg",
   },
@@ -92,6 +99,8 @@ export const news = [
     likes: 500,
     timestamp: new Date(Date.now() - aDay * 2),
     bookmarked: true,
+    category: "Motor",
+
     image:
       "https://cdn.luxe.digital/media/2020/12/15110747/fastest-cars-world-2021-luxe-digital%402x.jpg",
   },
@@ -102,6 +111,8 @@ export const news = [
     likes: 500,
     timestamp: new Date(Date.now() - aDay * 2),
     bookmarked: true,
+    category: "Motor",
+
     image:
       "https://m.atcdn.co.uk/ect/media/w1200/df9f47dab5e8478b8958c36706a24174.jpg",
   },
@@ -112,6 +123,8 @@ export const news = [
     likes: 500,
     timestamp: new Date(Date.now() - aDay * 2),
     bookmarked: true,
+    category: "Travel",
+
     image:
       "https://www.silverkris.com/wp-content/uploads/2018/05/Nature-and-Adventure-1920x1069-960x530.jpg",
   },
