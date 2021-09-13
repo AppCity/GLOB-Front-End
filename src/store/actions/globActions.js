@@ -5,7 +5,7 @@ import { frontEndApi } from "../../api/axios";
 import toast from "react-hot-toast";
 import { FRONTEND_ROUTES } from "../../constants/backendRoutes";
 
-const setLoading = (status) => {
+export const setLoading = (status) => {
   return {
     type: types.SET_LOADING,
     payload: status,

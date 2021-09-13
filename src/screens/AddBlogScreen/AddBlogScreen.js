@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useState, useEffect, useRef } from "react";
+import toast from "react-hot-toast";
+import { useSelector, useDispatch } from "react-redux";
 import Button from "../../components/Button";
 import Dropdown from "../../components/Dropdown";
 import GradientText from "../../components/GradientText";
@@ -8,10 +9,15 @@ import Input from "../../components/Input";
 import TextArea from "../../components/TextArea";
 import TextButton from "../../components/TextButton";
 import { categories } from "../../data/data";
+import Image from "next/image";
+import * as actions from "../../store/actions/actions";
 
 const AddBlogScreen = (props) => {
   const state = useSelector((state) => state.glob);
   const router = useRouter();
+  const uploadLogoRef = useRef();
+  const [localImage, setLocalImage] = useState();
+  const dispatch = useDispatch();
 
   const [data, setData] = useState({
     title: {
@@ -82,6 +88,51 @@ const AddBlogScreen = (props) => {
     console.log("creatBlogHandler data =>", postData);
   };
 
+  const uploadImageHandler = async (e, type) => {
+    dispatch(actions.setLoading(true));
+
+    const file = e.target.files[0];
+    console.log("🚀 --- uploadImageHandler --- file", file);
+    try {
+      if (file) {
+        const extn = file.name.split(".").pop();
+
+        //Check if file is .png || .jpg || .jpeg
+        if (extn !== "png" && extn !== "jpg" && extn !== "jpeg") {
+          toast.error("Only images allowed");
+          uploadLogoRef.current.value = null;
+          return;
+        }
+
+        setLocalImage(URL.createObjectURL(file));
+
+        const formData = new FormData();
+        formData.append("file", file);
+        console.log("🚀 --- uploadImageHandler --- formData", formData);
+
+        // formData.append("customer_id", state.customer.id);
+        // formData.append("type", type);
+
+        // const response = await nextAPI.post("/upload/image", formData, {
+        //   headers: {
+        //     "Content-Type": "multipart/form-data",
+        //   },
+        // });
+      }
+    } catch (error) {
+      console.log("🚀 --- uploadImageHandler --- error", error);
+      toast.error("Image upload failed");
+    }
+
+    //Remove file from memory after upload
+    // uploadLogoRef.current.value = null;
+    dispatch(actions.setLoading(false));
+  };
+
+  const chooseFile = () => {
+    uploadLogoRef.current.click();
+  };
+
   useEffect(() => {
     if (!state.isUserLoggedIn) {
       router.push("/authentication");
@@ -121,8 +172,34 @@ const AddBlogScreen = (props) => {
           onChange={(val) => dataHandler("content", val)}
         />
 
-        <div className="flex w-40">
-          <TextButton title="Upload an Image" customCss="text-lg" />
+        <div className="flex flex-col w-40 space-y-5">
+          {localImage && (
+            <div className="flex h-40 bg-blue-200 shadow-xl rounded-md overflow-hidden">
+              <Image
+                src={localImage}
+                layout="intrinsic"
+                unoptimized
+                objectFit="cover"
+                width={200}
+                height={200}
+              />
+            </div>
+          )}
+          <TextButton
+            title="Upload an Image"
+            customCss="text-lg"
+            onClick={chooseFile}
+          />
+          <span></span>
+          <input
+            type="file"
+            name="file"
+            ref={uploadLogoRef}
+            id="uploadLogo"
+            className="hidden"
+            onChange={(e) => uploadImageHandler(e, "logo")}
+            accept="image/png, image/jpeg, image/jpg"
+          />
         </div>
       </div>
 

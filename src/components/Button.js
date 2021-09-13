@@ -12,7 +12,7 @@ import Proptypes from "prop-types";
 const Button = ({ title, onClick, customCss, disabled }) => {
   return (
     <button
-      className={`text-bg text-lg py-2 w-full rounded-3xl  focus:outline-none 
+      className={`text-bg text-lg py-2 w-full rounded-3xl outline-none focus:outline-none 
       bg-gradient-to-r from-yellow via-orange to-fucsia bg-blend-soft-light
       filter transition-all tracking-wide shadow-lg dark:shadow-lg
       ${disabled ? "" : "hover:drop-shadow-xl dark:hover:shadow-xl"}
