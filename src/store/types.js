@@ -7,6 +7,9 @@ const types = {
   CHANGE_THEME: "CHANGE_THEME",
   SET_SCROLL: "SET_SCROLL",
   SET_TOKEN: "SET_TOKEN",
+  SET_BLOGS: "SET_BLOGS",
+  SET_BLOG: "SET_BLOG",
+  SET_USER: "SET_USER",
 };
 
 export default types;

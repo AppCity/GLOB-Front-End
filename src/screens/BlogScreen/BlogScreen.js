@@ -8,7 +8,7 @@ import GradientText from "../../components/GradientText";
 import Input from "../../components/Input";
 import TextArea from "../../components/TextArea";
 import TextButton from "../../components/TextButton";
-import { categories, news } from "../../data/data";
+import { categories } from "../../data/data";
 import Image from "next/image";
 import * as actions from "../../store/actions/actions";
 import EditIcon from "../../components/Icons/EditIcon";
@@ -23,7 +23,7 @@ const BlogScreen = (props) => {
 
   const blogId = router.query.id;
 
-  const selectedBlog = news.find((item) => String(item.id) === blogId);
+  const selectedBlog = {}; //news.find((item) => String(item.id) === blogId);
 
   const [data, setData] = useState({
     title: {
@@ -143,6 +143,8 @@ const BlogScreen = (props) => {
     if (!state.isUserLoggedIn) {
       router.push("/authentication");
     }
+
+    dispatch(actions.getBlog(blogId));
   }, []);
 
   return (

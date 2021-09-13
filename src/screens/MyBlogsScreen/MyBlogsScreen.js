@@ -3,7 +3,6 @@ import { memo, useEffect } from "react";
 import { useSelector } from "react-redux";
 import BlogsCard from "../../components/BlogsCard";
 import GradientText from "../../components/GradientText";
-import { myArticles } from "../../data/data";
 
 const MyBlogsScreen = (props) => {
   const state = useSelector((state) => state.glob);
@@ -31,8 +30,8 @@ const MyBlogsScreen = (props) => {
       </GradientText>
 
       <div className="flex flex-col w-full space-y-10 shadow-sm dark:bg-black dark:bg-opacity-30 bg-white bg-opacity-30 rounded-xl p-5 ">
-        <div className="flex pl-5 space-x-3 flex-wrap">
-          {myArticles.map((item, index) => {
+        {/* <div className="flex pl-5 space-x-3 flex-wrap">
+          {.map((item, index) => {
             return (
               <BlogsCard
                 image={item.image}
@@ -42,7 +41,7 @@ const MyBlogsScreen = (props) => {
               />
             );
           })}
-        </div>
+        </div> */}
       </div>
     </div>
   );

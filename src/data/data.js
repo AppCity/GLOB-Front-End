@@ -47,45 +47,6 @@ export const categories = [
   },
 ];
 
-export const userData = {
-  userId: userId,
-  fullname: "Jackie Chan",
-  username: "Jackie-Chan",
-  email: "Jackie-Chan@gmail.com",
-  website: "www.jackieslife.glob.com",
-  dailyReaders: 4249,
-  publishedArticles: 28,
-  profileImage:
-    "https://www.brandinginasia.com/wp-content/uploads/2021/08/Jackie-Chan-Shopee.jpg",
-  blogsPreview: [
-    {
-      userId: userId,
-      blogId: blogId,
-      title: "Ronaldo the BEST",
-      image:
-        "https://e0.365dm.com/21/09/768x432/skysports-pogba-paul-cristiano_5511238.jpg?20210913100812",
-    },
-  ],
-  blogs: [
-    {
-      id: blogId,
-      userId: userId,
-      category: "sports",
-      title: "Ronaldo the BEST",
-      headline: "Ronaldo is the BEST football player!",
-      content:
-        "Association football, more commonly known as simply football or soccer, is a team sport played with a spherical ball between two teams of 11 players. It is played by approximately 250 million players in over 200 countries and dependencies, making it the world's most popular sport",
-      likes: 2100,
-      timestamp: new Date(Date.now() - aDay),
-      image:
-        "https://e0.365dm.com/21/09/768x432/skysports-pogba-paul-cristiano_5511238.jpg?20210913100812",
-      pageGroup: 1,
-    },
-  ],
-  favorites: [blogs[0].id, blogs[2].id],
-  likes: [blogs[0].id, blogs[2].id],
-};
-
 export const blogs = [
   {
     id: `${Math.floor(Math.random() * 9999)}`,
@@ -194,3 +155,42 @@ export const blogs = [
     pageGroup: 1,
   },
 ];
+
+export const userData = {
+  userId: userId,
+  fullname: "Jackie Chan",
+  username: "Jackie-Chan",
+  email: "Jackie-Chan@gmail.com",
+  website: "www.jackieslife.glob.com",
+  dailyReaders: 4249,
+  publishedArticles: 28,
+  profileImage:
+    "https://www.brandinginasia.com/wp-content/uploads/2021/08/Jackie-Chan-Shopee.jpg",
+  blogsPreview: [
+    {
+      userId: userId,
+      blogId: blogId,
+      title: "Ronaldo the BEST",
+      image:
+        "https://e0.365dm.com/21/09/768x432/skysports-pogba-paul-cristiano_5511238.jpg?20210913100812",
+    },
+  ],
+  blogs: [
+    {
+      id: blogId,
+      userId: userId,
+      category: "sports",
+      title: "Ronaldo the BEST",
+      headline: "Ronaldo is the BEST football player!",
+      content:
+        "Association football, more commonly known as simply football or soccer, is a team sport played with a spherical ball between two teams of 11 players. It is played by approximately 250 million players in over 200 countries and dependencies, making it the world's most popular sport",
+      likes: 2100,
+      timestamp: new Date(Date.now() - aDay),
+      image:
+        "https://e0.365dm.com/21/09/768x432/skysports-pogba-paul-cristiano_5511238.jpg?20210913100812",
+      pageGroup: 1,
+    },
+  ],
+  favorites: [blogs[0].id, blogs[2].id],
+  likes: [blogs[0].id, blogs[2].id],
+};

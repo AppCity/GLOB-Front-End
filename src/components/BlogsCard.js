@@ -1,9 +1,9 @@
 import Proptypes from "prop-types";
-import { memo } from "react";
+import { memo, useCallbacks } from "react";
 //Components
 import MenuButton from "./MenuButton";
 
-const BlogsCard = ({ image, title, onClick = () => {}, id }) => {
+const BlogsCard = ({ id = "", image = "", title = "", onClick = () => {} }) => {
   return (
     <div className="flex flex-col items-center py-5 my-5 relative">
       <div

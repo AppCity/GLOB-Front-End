@@ -9,6 +9,7 @@ import SearchIcon from "./Icons/SearchIcon";
 import ThemeIcon from "./Icons/ThemeIcon";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../store/actions/actions";
+import Image from "next/image";
 
 const Navbar = (props) => {
   const { theme, setTheme } = useTheme();
@@ -102,9 +103,19 @@ const Navbar = (props) => {
           </div>
         )}
 
-        {state.isUserLoggedIn && (
+        {state.isUserLoggedIn && state.user && (
           <div className="flex h-12 w-12 rounded-full overflow-hidden cursor-pointer hover:shadow-lg transition-all smd:hidden md:hidden lg:hidden xl:hidden 2xl:hidden ">
-            <img src={"/images/profile.png"} />
+            {/* <img src={"/images/profile.png"} /> */}
+            <div className="flex w-full h-full ">
+              <Image
+                src={state.user.profileImage}
+                layout="intrinsic"
+                objectFit="cover"
+                width={200}
+                height={200}
+                alt="Profile Image"
+              />
+            </div>
           </div>
         )}
 

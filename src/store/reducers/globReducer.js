@@ -10,6 +10,9 @@ const initialState = {
   theme: "light",
   scroll: 0,
   token: null,
+  blogs: [],
+  blog: null,
+  user: null,
 };
 
 const globReducer = (state = initialState, action) => {
@@ -50,6 +53,15 @@ const globReducer = (state = initialState, action) => {
 
     case actionTypes.SET_TOKEN:
       return { ...state, token: action.payload };
+
+    case actionTypes.SET_BLOGS:
+      return { ...state, blogs: action.payload };
+
+    case actionTypes.SET_BLOG:
+      return { ...state, blog: action.payload };
+
+    case actionTypes.SET_USER:
+      return { ...state, user: action.payload };
 
     default:
       return state;

@@ -1,4 +1,5 @@
 import Proptypes from "prop-types";
+import { memo } from "react";
 
 /**
  * Categories component
@@ -9,7 +10,14 @@ import Proptypes from "prop-types";
  * @returns
  */
 
-const Categories = ({ title, onClick, customCss, active, image, card }) => {
+const Categories = ({
+  title = "",
+  onClick = () => {},
+  customCss = "",
+  active = false,
+  image = "",
+  card = false,
+}) => {
   let category = (
     <span
       className={`text-xs py-2 px-3 rounded-xl focus:outline-none font-thin
@@ -60,4 +68,4 @@ Categories.propTypes = {
   card: Proptypes.bool,
 };
 
-export default Categories;
+export default memo(Categories);

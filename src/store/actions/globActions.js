@@ -47,6 +47,27 @@ export const setToken = (value) => {
   };
 };
 
+export const setBlogs = (value) => {
+  return {
+    type: types.SET_BLOGS,
+    payload: value,
+  };
+};
+
+export const setBlog = (value) => {
+  return {
+    type: types.SET_BLOG,
+    payload: value,
+  };
+};
+
+export const setUser = (value) => {
+  return {
+    type: types.SET_USER,
+    payload: value,
+  };
+};
+
 //Middleware
 
 export const signup = (postData, callback) => {
@@ -119,6 +140,60 @@ export const logout = (token) => {
         // dispatch(setLoading(false))
         // dispatch(messageStatus("Error"))
       });
+  };
+};
+
+export const getBlogs = (token) => {
+  return async (dispatch) => {
+    dispatch(setLoading(true));
+
+    await frontEndApi
+      .get(FRONTEND_ROUTES.blogs, { token })
+      .then((resp) => {
+        console.log("Blogs =>", resp.data);
+        dispatch(setBlogs(resp.data));
+      })
+      .catch((err) => {
+        toast.error("Unable to get blogs");
+        console.log("error", err);
+      });
+    dispatch(setLoading(false));
+  };
+};
+
+export const getBlog = (id) => {
+  return async (dispatch) => {
+    dispatch(setLoading(true));
+
+    await frontEndApi
+      .get(FRONTEND_ROUTES.blogs + "/" + id)
+      .then((resp) => {
+        console.log("Blog =>", resp.data);
+        dispatch(setBlog(resp.data));
+      })
+      .catch((err) => {
+        toast.error("Unable to get blog");
+        console.log("error", err);
+      });
+    dispatch(setLoading(false));
+  };
+};
+
+export const getUser = (id) => {
+  return async (dispatch) => {
+    dispatch(setLoading(true));
+
+    await frontEndApi
+      .get(FRONTEND_ROUTES.user, { id })
+      .then((resp) => {
+        console.log("User =>", resp.data);
+        dispatch(setUser(resp.data));
+      })
+      .catch((err) => {
+        toast.error("Unable to get user");
+        console.log("error", err);
+      });
+    dispatch(setLoading(false));
   };
 };
 

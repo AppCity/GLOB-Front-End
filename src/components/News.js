@@ -1,44 +1,41 @@
+import { memo, useCallback } from "react";
 import LikeIcon from "./Icons/LikeIcon";
 import ClockIcon from "./Icons/ClockIcon";
 import BookmarkIcon from "./Icons/BookmarkIcon";
 import { kFormatter, timeAgo } from "../helpers/helpers";
 import { useSelector } from "react-redux";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { useRouter } from "next/router";
 
 const News = ({
-  image = "",
+  id = "",
   title = "",
   headline = "",
+  image = "",
   likes = 0,
   timestamp = new Date(),
   bookmarked = false,
-  id = "",
 }) => {
   const state = useSelector((state) => state.glob);
-
   const router = useRouter();
 
-  const likeHandler = () => {
+  const likeHandler = useCallback(() => {
     if (state.isUserLoggedIn) {
+      console.log("Like =>", id);
     } else {
       toast.error("Login to like a post");
     }
-    console.log("Like pressed");
-  };
+  }, [id]);
 
-  const bookmarkHandler = () => {
+  const bookmarkHandler = useCallback(() => {
     if (state.isUserLoggedIn) {
+      console.log("Bookmark =>", id);
     } else {
       toast.error("Login to bookmark a post");
     }
-    console.log("Bookmark pressed");
-  };
+  }, [id]);
 
-  const newsHandler = () => {
-    console.log("Blog Clicked");
-    router.push("/blogs/" + id);
-  };
+  const newsHandler = useCallback(() => router.push("/blogs/" + id), [id]);
 
   return (
     <div>
@@ -97,6 +94,4 @@ const News = ({
   );
 };
 
-News.propTypes = {};
-
-export default News;
+export default memo(News);

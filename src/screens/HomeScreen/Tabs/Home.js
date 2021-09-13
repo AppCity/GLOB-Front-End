@@ -1,18 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Categories from "../../../components/Categories";
 import Scrollbar from "../../../components/Scrollbar";
 
-import { categories, myArticles, news } from "../../../data/data";
+import { categories } from "../../../data/data";
 import News from "../../../components/News";
 import BlogsCard from "../../../components/BlogsCard";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import GradientText from "../../../components/GradientText";
 import { useRouter } from "next/router";
+import * as actions from "../../../store/actions/actions";
+import Image from "next/image";
 
 const Home = ({ scroll = 0, setTab }) => {
   const state = useSelector((state) => state.glob);
+  const dispatch = useDispatch();
+
   const router = useRouter();
 
   const [categoryState, setCategoryState] = useState("technology");
@@ -22,33 +26,24 @@ const Home = ({ scroll = 0, setTab }) => {
     console.log("Category selected", value);
   };
 
-  const userClickHandler = () => {
-    console.log("userClickHandler");
-    setTab(2);
-  };
+  const userClickHandler = () => router.push("/settings");
 
-  const openBlogHandler = (id) => {
-    console.log("openBlogHandler");
-    router.push("/blogs/" + id);
-  };
-
-  const menuClickHandler = () => {
-    console.log("menuClickHandler");
-  };
-
-  const openMyBlogs = () => router.push("/myblogs");
+  useEffect(() => {
+    dispatch(actions.getBlogs());
+    state.isUserLoggedIn && dispatch(actions.getUser());
+  }, [state.isUserLoggedIn]);
 
   //Mobile/Desktop - News
-  const newsUi = news.map((item) => {
+  const newsUi = state.blogs.map((item) => {
     return (
       <News
-        image={item.image}
+        id={item.id}
         title={item.title}
         headline={item.headline}
+        image={item.image}
         likes={item.likes}
         timestamp={item.timestamp}
         bookmarked={item.bookmarked}
-        id={item.id}
       />
     );
   });
@@ -88,7 +83,7 @@ const Home = ({ scroll = 0, setTab }) => {
 
       {/* Desktop - Header Card */}
       <div className="flex w-full top-24 mt-5">
-        {state.isUserLoggedIn && (
+        {state.isUserLoggedIn && state.user && (
           <div
             className="ml-20 w-full space-x-8 mb-10
         hidden
@@ -105,12 +100,21 @@ const Home = ({ scroll = 0, setTab }) => {
                 className="flex h-24 w-24 rounded-full overflow-hidden cursor-pointer shadow-xl hover:shadow-2xl transition-all"
                 onClick={userClickHandler}
               >
-                <img src={"/images/profile.png"} />
+                <div className="flex w-full h-full ">
+                  <Image
+                    src={state.user.profileImage}
+                    layout="intrinsic"
+                    objectFit="cover"
+                    width={200}
+                    height={200}
+                    alt="Profile Image"
+                  />
+                </div>
               </div>
             </div>
             <div className="flex w-full">
               <div className="flex flex-col text-gray-600 dark:text-white h-24 space-y-5 top-24 ">
-                <span className="text-2xl">Hey Jackie!</span>
+                <span className="text-2xl">Hey {state.user.username}!</span>
                 <span className="text-5xl font-extrabold">What’s Next?</span>
               </div>
             </div>
@@ -140,39 +144,40 @@ const Home = ({ scroll = 0, setTab }) => {
           smd:hidden md:hidden lg:hidden: xl:hidden 2xl:hidden
       "
       >
-        {state.isUserLoggedIn && (
-          <div className="flex flex-col">
-            <span className="flex text-grey dark:text-bg">My Blogs</span>
-            <Scrollbar>
-              <div className="flex space-x-3 -mt-5">
-                {myArticles.map((item, index) => {
-                  if (index < 5) {
-                    return (
-                      <BlogsCard
-                        image={item.image}
-                        title={item.title}
-                        onClick={() => openBlogHandler(item.id)}
-                        menuClickHandler={menuClickHandler}
-                        id={item.id}
-                      />
-                    );
-                  } else if (index === 5) {
-                    return (
-                      <div
-                        className="flex items-center w-full"
-                        onClick={openMyBlogs}
-                      >
-                        <GradientText customCss="cursor-pointer">
-                          View all
-                        </GradientText>
-                      </div>
-                    );
-                  }
-                })}
-              </div>
-            </Scrollbar>
-          </div>
-        )}
+        {state.isUserLoggedIn &&
+          state.user &&
+          state.user.blogsPreview.length > 0 && (
+            <div className="flex flex-col">
+              <span className="flex text-grey dark:text-bg">My Blogs</span>
+              <Scrollbar>
+                <div className="flex space-x-3 -mt-5">
+                  {state.user.blogsPreview.map((item, index) => {
+                    if (index < 5) {
+                      return (
+                        <BlogsCard
+                          image={item.image}
+                          title={item.title}
+                          onClick={() => openBlogHandler(item.id)}
+                          id={item.id}
+                        />
+                      );
+                    } else if (index === 5) {
+                      return (
+                        <div
+                          className="flex items-center w-full"
+                          onClick={openMyBlogs}
+                        >
+                          <GradientText customCss="cursor-pointer">
+                            View all
+                          </GradientText>
+                        </div>
+                      );
+                    }
+                  })}
+                </div>
+              </Scrollbar>
+            </div>
+          )}
         <span className="text-grey dark:text-bg">Latest News</span>
         {newsUi}
       </div>
