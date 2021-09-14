@@ -1,4 +1,4 @@
-import { create } from "axios";
+import axios from "axios";
 
 let FRONT_END_BASE_URL;
 const HEADERS = {
@@ -13,13 +13,14 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
   // Production
   FRONT_END_BASE_URL = process.env.NEXT_PUBLIC_FRONTEND_BASE_URL;
 }
+console.log("🚀 --- FRONT_END_BASE_URL", FRONT_END_BASE_URL);
 
-export const frontEndApi = create({
+export const frontEndApi = axios.create({
   baseURL: FRONT_END_BASE_URL + "/api",
   headers: HEADERS,
 });
 
-export const backEndApi = create({
+export const backEndApi = axios.create({
   baseURL: process.env.BACKEND_BASE_URL,
   headers: HEADERS,
 });
