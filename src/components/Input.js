@@ -33,6 +33,7 @@ const Input = ({
   autoCapitalize = false,
   editMode = true,
   textCss = "",
+  showLabel = false,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showBorder, setShowBorder] = useState(false);
@@ -45,6 +46,7 @@ const Input = ({
         }`}
       >
         {editMode && label}
+        {showLabel && label}
       </label>
 
       <div className="flex relative">
