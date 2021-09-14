@@ -29,7 +29,7 @@ const Home = ({ scroll = 0, setTab }) => {
   const userClickHandler = () => router.push("/settings");
 
   useEffect(() => {
-    dispatch(actions.getBlogs());
+    dispatch(actions.getBlogs("token"));
     state.isUserLoggedIn && dispatch(actions.getUser());
   }, [state.isUserLoggedIn]);
 

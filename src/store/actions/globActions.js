@@ -144,10 +144,10 @@ export const logout = (token) => {
 };
 
 export const getBlogs = (token) => {
-  return async (dispatch) => {
+  return (dispatch) => {
     dispatch(setLoading(true));
 
-    await frontEndApi
+    frontEndApi
       .get(FRONTEND_ROUTES.blogs, { token })
       .then((resp) => {
         console.log("Blogs =>", resp.data);
