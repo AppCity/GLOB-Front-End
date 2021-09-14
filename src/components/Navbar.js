@@ -10,11 +10,13 @@ import ThemeIcon from "./Icons/ThemeIcon";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../store/actions/actions";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const Navbar = (props) => {
   const { theme, setTheme } = useTheme();
   const state = useSelector((state) => state.glob);
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const [isSearchIconHover, setIsSearchIconHover] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -31,6 +33,8 @@ const Navbar = (props) => {
   const inputHandler = (value) => {
     setSearchText(value);
   };
+
+  const goToSettings = () => router.push("/settings");
 
   return (
     <div className="flex fixed w-full z-20">
@@ -106,7 +110,7 @@ const Navbar = (props) => {
         {state.isUserLoggedIn && state.user && (
           <div className="flex h-12 w-12 rounded-full overflow-hidden cursor-pointer hover:shadow-lg transition-all smd:hidden md:hidden lg:hidden xl:hidden 2xl:hidden ">
             {/* <img src={"/images/profile.png"} /> */}
-            <div className="flex w-full h-full ">
+            <div className="flex w-full h-full" onClick={goToSettings}>
               <Image
                 src={state.user.profileImage}
                 layout="intrinsic"

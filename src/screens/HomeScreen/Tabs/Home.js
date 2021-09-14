@@ -114,7 +114,9 @@ const Home = ({ scroll = 0, setTab }) => {
             </div>
             <div className="flex w-full">
               <div className="flex flex-col text-gray-600 dark:text-white h-24 space-y-5 top-24 ">
-                <span className="text-2xl">Hey {state.user.username}!</span>
+                <span className="text-2xl">
+                  Hey <GradientText>{state.user.username}!</GradientText>
+                </span>
                 <span className="text-5xl font-extrabold">What’s Next?</span>
               </div>
             </div>
@@ -147,7 +149,16 @@ const Home = ({ scroll = 0, setTab }) => {
         {state.isUserLoggedIn &&
           state.user &&
           state.user.blogsPreview.length > 0 && (
-            <div className="flex flex-col">
+            <div
+              className="flex flex-col
+            "
+            >
+              <div className="flex flex-col text-gray-600 dark:text-white h-24 space-y-2">
+                <span className="text-xl">
+                  Hey <GradientText>{state.user.username}!</GradientText>
+                </span>
+                <span className="text-4xl font-extrabold">What’s Next?</span>
+              </div>
               <span className="flex text-grey dark:text-bg">My Blogs</span>
               <Scrollbar>
                 <div className="flex space-x-3 -mt-5">
