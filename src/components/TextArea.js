@@ -31,7 +31,7 @@ const TextArea = ({
   css = "",
   inputMode,
   rows = 5,
-  editMode = false,
+  editMode = true,
   textCss = "",
 }) => {
   const [showPassword, setShowPassword] = useState(false);

@@ -21,13 +21,10 @@ const BlogScreen = (props) => {
   const router = useRouter();
   const uploadLogoRef = useRef();
   const [localImage, setLocalImage] = useState();
-  const [editMode, setEditMode] = useState(false);
+  const [editMode, setEditMode] = useState(router.query.editMode ?? false);
   const [isUserBlog, setIsUserBlog] = useState(false);
 
   const blogId = router.query.id;
-
-  // const state.blog = state.blog; //state.blogs.find((item) => item.id === blogId);
-  console.log("🚀 --- BlogScreen --- state.blog", state.blog);
 
   const [data, setData] = useState({
     title: {
@@ -159,7 +156,8 @@ const BlogScreen = (props) => {
   }, [blogId]);
 
   useEffect(() => {
-    if (state.blog)
+    dispatch(actions.setLoading(true));
+    if (state.blog) {
       setData({
         title: {
           value: state.blog?.title,
@@ -188,10 +186,19 @@ const BlogScreen = (props) => {
         image: state.blog.image,
         isFormValid: false,
       });
-
-    {
-      state.user && checkIfUserBlog();
+      setLocalImage(state.blog.image);
+      if (!state.blog.image) dispatch(actions.setLoading(false));
     }
+
+    if (router.query.editMode) {
+      setEditMode(true);
+    }
+
+    state.user && checkIfUserBlog();
+
+    return () => {
+      state.blog && dispatch(actions.setBlog(null));
+    };
   }, [state.blog, blogId]);
 
   const checkIfUserBlog = () => {
@@ -272,9 +279,9 @@ const BlogScreen = (props) => {
     });
   };
 
-  if (!state.blog) {
-    return toast.error("Blog not found");
-  }
+  const deleteHandler = () => {
+    console.log("Delete blog =>", blogId);
+  };
 
   return (
     <div className="flex w-full h-full mt-24 z-10 p-5 flex-col items-center space-y-5 smd:ml-16 smd:mr-[216px] md:ml-16 md:mr-[264px] xl:mr-[295px] mb-20 smd:mb-0 md:mb-0">
@@ -289,20 +296,23 @@ const BlogScreen = (props) => {
             ) : (
               <CancelIcon size={20} onClick={cancelHandler} />
             )}
-            <DeleteIcon size={20} />
+            <DeleteIcon size={20} onClick={deleteHandler} />
           </div>
         )}
       </div>
 
       <div className="flex flex-col w-full space-y-10 shadow-sm dark:bg-black dark:bg-opacity-30 bg-white bg-opacity-30 rounded-xl p-5 ">
-        <Image
-          src={state.blog.image}
-          layout="intrinsic"
-          width={400}
-          height={400}
-          objectFit="cover"
-          className="rounded-lg shadow-lg"
-        />
+        {state.blog && state.blog.image && (
+          <Image
+            src={state.blog.image}
+            layout="intrinsic"
+            width={400}
+            height={400}
+            objectFit="cover"
+            className="rounded-lg shadow-lg"
+            onLoad={() => dispatch(actions.setLoading(false))}
+          />
+        )}
 
         <Input
           autoFocus

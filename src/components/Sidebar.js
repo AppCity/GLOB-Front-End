@@ -28,7 +28,7 @@ const Sidebar = (props) => {
     dispatch(actions.logout(state.token))
   );
 
-  const addNewBlogHandler = useCallback(() => router.push("addblog"));
+  const addNewBlogHandler = useCallback(() => router.push("/addblog"));
   const openBlogHandler = useCallback((id) => {
     console.log("🚀 --- openBlogHandler --- id", id);
     router.push("/blogs/" + id);

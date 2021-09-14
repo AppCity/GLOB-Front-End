@@ -4,13 +4,20 @@ import EditIcon from "./Icons/EditIcon";
 import DeleteIcon from "./Icons/DeleteIcon";
 
 import SvgGradient from "./Icons/SvgGradient";
+import { useRouter } from "next/router";
 
 const MenuButton = ({ size, css, id }) => {
+  const router = useRouter();
+
   const [isHover, setIsHover] = useState(false);
   const toggle = () => setIsHover(!isHover);
 
   const editHandler = () => {
     console.log("edit clicked", id);
+    router.push({
+      pathname: "/blogs/" + id,
+      query: { id, editMode: true },
+    });
   };
 
   const deleteHandler = () => {

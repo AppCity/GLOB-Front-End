@@ -26,6 +26,12 @@ const AddBlogScreen = (props) => {
       isValid: false,
       touched: false,
     },
+    headline: {
+      value: "",
+      isRequired: true,
+      isValid: false,
+      touched: false,
+    },
     content: {
       value: "",
       isRequired: true,
@@ -81,8 +87,9 @@ const AddBlogScreen = (props) => {
 
   const creatBlogHandler = () => {
     const postData = {
-      username: data.title.value,
-      password: data.content.value,
+      title: data.title.value,
+      headline: data.headline.value,
+      content: data.content.value,
       category: data.category.value,
     };
     console.log("creatBlogHandler data =>", postData);
@@ -153,6 +160,16 @@ const AddBlogScreen = (props) => {
           value={data.title.value}
           error={!data.title.isValid && data.title.touched}
           onChange={(val) => dataHandler("title", val)}
+          autoCapitalize
+        />
+
+        <Input
+          autoFocus
+          label="Enter a Headline"
+          required
+          value={data.headline.value}
+          error={!data.headline.isValid && data.headline.touched}
+          onChange={(val) => dataHandler("headline", val)}
           autoCapitalize
         />
 

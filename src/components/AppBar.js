@@ -20,7 +20,7 @@ const AppBar = (props) => {
   const addBlogHandler = () => {
     console.log("Add blog");
 
-    router.push("addblog");
+    router.push("/addblog");
   };
 
   const loginHandler = () => {
