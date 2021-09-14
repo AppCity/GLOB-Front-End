@@ -49,8 +49,8 @@ export const categories = [
 
 export const blogs = [
   {
-    id: `${Math.floor(Math.random() * 9999)}`,
-    userId: "U" + `${Math.floor(Math.random() * 9999)}`,
+    id: "B-001",
+    userId: "U-001",
     category: "Programming",
     title: "Big Data",
     headline: "Why Big Data Needs Thick Data?",
@@ -62,8 +62,8 @@ export const blogs = [
     pageGroup: 1,
   },
   {
-    id: `${Math.floor(Math.random() * 9999)}`,
-    userId: "U" + `${Math.floor(Math.random() * 9999)}`,
+    id: "B-002",
+    userId: "U-002",
     category: "Technology",
     title: "Smart Phone",
     headline: "Telegram Vs Whatsapp.",
@@ -76,8 +76,8 @@ export const blogs = [
     pageGroup: 1,
   },
   {
-    id: `${Math.floor(Math.random() * 9999)}`,
-    userId: "U" + `${Math.floor(Math.random() * 9999)}`,
+    id: "B-003",
+    userId: "U-003",
     category: "Programming",
     title: "Programming",
     headline: "Best Practies for Python Programming! ",
@@ -90,8 +90,8 @@ export const blogs = [
     pageGroup: 1,
   },
   {
-    id: `${Math.floor(Math.random() * 9999)}`,
-    userId: "U" + `${Math.floor(Math.random() * 9999)}`,
+    id: "B-004",
+    userId: "U-003",
     category: "Technology",
     title: "Virtual Reality",
     headline: "Why virtual reality is so popular?",
@@ -104,8 +104,8 @@ export const blogs = [
     pageGroup: 1,
   },
   {
-    id: `${Math.floor(Math.random() * 9999)}`,
-    userId: "U" + `${Math.floor(Math.random() * 9999)}`,
+    id: "B-005",
+    userId: "U-005",
     category: "Motors",
     title: "Cars",
     headline: "Why cars are so popular?",
@@ -118,8 +118,8 @@ export const blogs = [
     pageGroup: 1,
   },
   {
-    id: `${Math.floor(Math.random() * 9999)}`,
-    userId: "U" + `${Math.floor(Math.random() * 9999)}`,
+    id: "B-006",
+    userId: "U-006",
     category: "Motors",
     title: "Motorbikes",
     headline: "Why Motorbikes are so popular?",
@@ -132,8 +132,8 @@ export const blogs = [
     pageGroup: 1,
   },
   {
-    id: `${Math.floor(Math.random() * 9999)}`,
-    userId: "U" + `${Math.floor(Math.random() * 9999)}`,
+    id: "B-007",
+    userId: "U-008",
     category: "Travels",
     title: "Adventure",
     headline: "An unusual and exciting or daring experience.",
@@ -146,8 +146,8 @@ export const blogs = [
     pageGroup: 1,
   },
   {
-    id: blogId,
-    userId: userId,
+    id: "B-008",
+    userId: "U-008",
     category: "Sports",
     title: "Ronaldo the BEST",
     headline: "Ronaldo is the BEST football player!",
@@ -162,7 +162,7 @@ export const blogs = [
 ];
 
 export const userData = {
-  userId: userId,
+  userId: "U-008",
   fullname: "Jackie Chan",
   username: "Jackie-Chan",
   email: "Jackie-Chan@gmail.com",
@@ -173,17 +173,38 @@ export const userData = {
     "https://www.brandinginasia.com/wp-content/uploads/2021/08/Jackie-Chan-Shopee.jpg",
   blogsPreview: [
     {
-      userId: blogs[7].userId,
-      id: blogs[7].id,
+      id: "B-008",
+      userId: "U-008",
       title: "Ronaldo the BEST",
       image:
         "https://e0.365dm.com/21/09/768x432/skysports-pogba-paul-cristiano_5511238.jpg?20210913100812",
     },
+    {
+      id: "B-007",
+      userId: "U-008",
+      title: "Adventure",
+      image:
+        "https://www.silverkris.com/wp-content/uploads/2018/05/Nature-and-Adventure-1920x1069-960x530.jpg",
+    },
   ],
   blogs: [
     {
-      id: blogs[7].id,
-      userId: blogs[7].userId,
+      id: "B-007",
+      userId: "U-008",
+      category: "Travels",
+      title: "Adventure",
+      headline: "An unusual and exciting or daring experience.",
+      content:
+        "An adventure is an exciting experience or undertaking that is typically bold, sometimes risky. Adventures may be activities with some potential for physical danger such as traveling, exploring, skydiving, mountain climbing, scuba diving, river rafting or participating in extreme sports.",
+      likes: 500,
+      timestamp: new Date(Date.now() - aDay * 2),
+      image:
+        "https://www.silverkris.com/wp-content/uploads/2018/05/Nature-and-Adventure-1920x1069-960x530.jpg",
+      pageGroup: 1,
+    },
+    {
+      id: "B-008",
+      userId: "U-008",
       category: "Sports",
       title: "Ronaldo the BEST",
       headline: "Ronaldo is the BEST football player!",
@@ -196,6 +217,6 @@ export const userData = {
       pageGroup: 1,
     },
   ],
-  favorites: [blogs[0].id, blogs[2].id],
-  likes: [blogs[0].id, blogs[2].id],
+  favorites: ["B-002", "B-004"],
+  likes: ["B-002", "B-004"],
 };

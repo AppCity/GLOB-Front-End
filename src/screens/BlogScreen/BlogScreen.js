@@ -26,34 +26,35 @@ const BlogScreen = (props) => {
 
   const blogId = router.query.id;
 
-  const selectedBlog = state.blogs.find((item) => item.id === blogId);
-  console.log("🚀 --- BlogScreen --- selectedBlog", selectedBlog);
+  // const state.blog = state.blog; //state.blogs.find((item) => item.id === blogId);
+  console.log("🚀 --- BlogScreen --- state.blog", state.blog);
 
   const [data, setData] = useState({
     title: {
-      value: selectedBlog?.title,
+      value: "",
       isRequired: true,
       isValid: false,
       touched: false,
     },
     headline: {
-      value: selectedBlog?.headline,
+      value: "",
       isRequired: true,
       isValid: false,
       touched: false,
     },
     content: {
-      value: selectedBlog?.content,
+      value: "",
       isRequired: true,
       isValid: false,
       touched: false,
     },
     category: {
-      value: selectedBlog?.category,
+      value: "",
       isRequired: true,
       isValid: true,
       touched: false,
     },
+    image: "",
     isFormValid: false,
   });
 
@@ -103,7 +104,7 @@ const BlogScreen = (props) => {
       headline: data.headline.value,
       content: data.content.value,
       category: data.category.value,
-      image: localImage,
+      image: localImage ?? data.image,
     };
     console.log("creatBlogHandler data =>", postData);
   };
@@ -155,27 +156,123 @@ const BlogScreen = (props) => {
 
   useEffect(() => {
     dispatch(actions.getBlog(blogId));
+  }, [blogId]);
+
+  useEffect(() => {
+    if (state.blog)
+      setData({
+        title: {
+          value: state.blog?.title,
+          isRequired: true,
+          isValid: false,
+          touched: false,
+        },
+        headline: {
+          value: state.blog?.headline,
+          isRequired: true,
+          isValid: false,
+          touched: false,
+        },
+        content: {
+          value: state.blog?.content,
+          isRequired: true,
+          isValid: false,
+          touched: false,
+        },
+        category: {
+          value: state.blog?.category,
+          isRequired: true,
+          isValid: true,
+          touched: false,
+        },
+        image: state.blog.image,
+        isFormValid: false,
+      });
 
     {
       state.user && checkIfUserBlog();
     }
-  }, []);
+  }, [state.blog, blogId]);
 
   const checkIfUserBlog = () => {
+    setIsUserBlog(false);
+
     state.user.blogs.forEach((item) => {
       console.log(
         "🚀 --- state.user.blogs.forEach --- item",
         item.userId,
-        selectedBlog?.userId
+        state.blog?.userId
       );
-      if (item.userId === selectedBlog?.userId) {
+      if (item.userId === state.blog?.userId) {
         setIsUserBlog(true);
         return;
       }
     });
   };
 
-  if (!selectedBlog) {
+  const editHandler = () => {
+    toggleEditMode();
+    setData({
+      title: {
+        value: state.blog?.title,
+        isRequired: true,
+        isValid: true,
+        touched: true,
+      },
+      headline: {
+        value: state.blog?.headline,
+        isRequired: true,
+        isValid: true,
+        touched: true,
+      },
+      content: {
+        value: state.blog?.content,
+        isRequired: true,
+        isValid: true,
+        touched: true,
+      },
+      category: {
+        value: state.blog?.category,
+        isRequired: true,
+        isValid: true,
+        touched: true,
+      },
+      isFormValid: true,
+    });
+  };
+
+  const cancelHandler = () => {
+    toggleEditMode();
+    setData({
+      title: {
+        value: state.blog?.title,
+        isRequired: true,
+        isValid: false,
+        touched: false,
+      },
+      headline: {
+        value: state.blog?.headline,
+        isRequired: true,
+        isValid: false,
+        touched: false,
+      },
+      content: {
+        value: state.blog?.content,
+        isRequired: true,
+        isValid: false,
+        touched: false,
+      },
+      category: {
+        value: state.blog?.category,
+        isRequired: true,
+        isValid: true,
+        touched: false,
+      },
+      isFormValid: false,
+    });
+  };
+
+  if (!state.blog) {
     return toast.error("Blog not found");
   }
 
@@ -188,9 +285,9 @@ const BlogScreen = (props) => {
         {isUserBlog && (
           <div className="flex space-x-5">
             {!editMode ? (
-              <EditIcon size={20} onClick={toggleEditMode} />
+              <EditIcon size={20} onClick={editHandler} />
             ) : (
-              <CancelIcon size={20} onClick={toggleEditMode} />
+              <CancelIcon size={20} onClick={cancelHandler} />
             )}
             <DeleteIcon size={20} />
           </div>
@@ -199,7 +296,7 @@ const BlogScreen = (props) => {
 
       <div className="flex flex-col w-full space-y-10 shadow-sm dark:bg-black dark:bg-opacity-30 bg-white bg-opacity-30 rounded-xl p-5 ">
         <Image
-          src={selectedBlog.image}
+          src={state.blog.image}
           layout="intrinsic"
           width={400}
           height={400}
@@ -236,7 +333,7 @@ const BlogScreen = (props) => {
             label="Category"
             data={categories}
             setCategory={(val) => dataHandler("category", val)}
-            category={selectedBlog.category}
+            category={data.category.value}
           />
         )}
 
