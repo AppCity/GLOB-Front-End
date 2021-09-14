@@ -31,25 +31,25 @@ const BlogScreen = (props) => {
 
   const [data, setData] = useState({
     title: {
-      value: selectedBlog.title,
+      value: selectedBlog?.title,
       isRequired: true,
       isValid: false,
       touched: false,
     },
     headline: {
-      value: selectedBlog.headline,
+      value: selectedBlog?.headline,
       isRequired: true,
       isValid: false,
       touched: false,
     },
     content: {
-      value: selectedBlog.content,
+      value: selectedBlog?.content,
       isRequired: true,
       isValid: false,
       touched: false,
     },
     category: {
-      value: selectedBlog.category,
+      value: selectedBlog?.category,
       isRequired: true,
       isValid: true,
       touched: false,
@@ -166,14 +166,18 @@ const BlogScreen = (props) => {
       console.log(
         "🚀 --- state.user.blogs.forEach --- item",
         item.userId,
-        selectedBlog.userId
+        selectedBlog?.userId
       );
-      if (item.userId === selectedBlog.userId) {
+      if (item.userId === selectedBlog?.userId) {
         setIsUserBlog(true);
         return;
       }
     });
   };
+
+  if (!selectedBlog) {
+    return toast.error("Blog not found");
+  }
 
   return (
     <div className="flex w-full h-full mt-24 z-10 p-5 flex-col items-center space-y-5 smd:ml-16 smd:mr-[216px] md:ml-16 md:mr-[264px] xl:mr-[295px] mb-20 smd:mb-0 md:mb-0">
