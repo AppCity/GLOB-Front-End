@@ -1,9 +1,14 @@
 import Proptypes from "prop-types";
-import { memo, useCallbacks } from "react";
+import { memo } from "react";
+import { useSelector } from "react-redux";
 //Components
 import MenuButton from "./MenuButton";
 
 const BlogsCard = ({ id = "", image = "", title = "", onClick = () => {} }) => {
+  const state = useSelector((state) => state.glob);
+
+  const showMenu = state.user.blogs.find((item) => item.id === id);
+
   return (
     <div className="flex flex-col items-center py-5 my-5 relative">
       <div
@@ -18,9 +23,11 @@ const BlogsCard = ({ id = "", image = "", title = "", onClick = () => {} }) => {
 
         <div className="absolute bg-gradient-to-t from-black to-transparent filter bottom-0 h-6 w-full" />
       </div>
-      <div className="flex justify-end z-40 absolute right-5 bottom-5">
-        <MenuButton size="10" id={id} />
-      </div>
+      {showMenu && (
+        <div className="flex justify-end z-40 absolute right-5 bottom-5">
+          <MenuButton size="10" id={id} />
+        </div>
+      )}
     </div>
   );
 };
