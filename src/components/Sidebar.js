@@ -29,7 +29,10 @@ const Sidebar = (props) => {
   );
 
   const addNewBlogHandler = useCallback(() => router.push("addblog"));
-  const openBlogHandler = useCallback((id) => router.push("/blogs/" + id));
+  const openBlogHandler = useCallback((id) => {
+    console.log("🚀 --- openBlogHandler --- id", id);
+    router.push("/blogs/" + id);
+  });
 
   const categoryHandler = useCallback((value) => {
     console.log("Category Clicked", value);

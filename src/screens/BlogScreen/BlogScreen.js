@@ -13,6 +13,7 @@ import Image from "next/image";
 import * as actions from "../../store/actions/actions";
 import EditIcon from "../../components/Icons/EditIcon";
 import DeleteIcon from "../../components/Icons/DeleteIcon";
+import CancelIcon from "../../components/Icons/CancelIcon";
 
 const BlogScreen = (props) => {
   const state = useSelector((state) => state.glob);
@@ -20,6 +21,8 @@ const BlogScreen = (props) => {
   const router = useRouter();
   const uploadLogoRef = useRef();
   const [localImage, setLocalImage] = useState();
+  const [editMode, setEditMode] = useState(false);
+  const [isUserBlog, setIsUserBlog] = useState(false);
 
   const blogId = router.query.id;
 
@@ -29,6 +32,12 @@ const BlogScreen = (props) => {
   const [data, setData] = useState({
     title: {
       value: selectedBlog.title,
+      isRequired: true,
+      isValid: false,
+      touched: false,
+    },
+    headline: {
+      value: selectedBlog.headline,
       isRequired: true,
       isValid: false,
       touched: false,
@@ -47,6 +56,8 @@ const BlogScreen = (props) => {
     },
     isFormValid: false,
   });
+
+  const toggleEditMode = () => setEditMode(!editMode);
 
   //Validate input fields
   const checkValidity = (value, isRequired, field) => {
@@ -88,9 +99,11 @@ const BlogScreen = (props) => {
 
   const creatBlogHandler = () => {
     const postData = {
-      username: data.title.value,
-      password: data.content.value,
+      title: data.title.value,
+      headline: data.headline.value,
+      content: data.content.value,
       category: data.category.value,
+      image: localImage,
     };
     console.log("creatBlogHandler data =>", postData);
   };
@@ -141,12 +154,26 @@ const BlogScreen = (props) => {
   };
 
   useEffect(() => {
-    if (!state.isUserLoggedIn) {
-      router.push("/authentication");
-    }
-
     dispatch(actions.getBlog(blogId));
+
+    {
+      state.user && checkIfUserBlog();
+    }
   }, []);
+
+  const checkIfUserBlog = () => {
+    state.user.blogs.forEach((item) => {
+      console.log(
+        "🚀 --- state.user.blogs.forEach --- item",
+        item.userId,
+        selectedBlog.userId
+      );
+      if (item.userId === selectedBlog.userId) {
+        setIsUserBlog(true);
+        return;
+      }
+    });
+  };
 
   return (
     <div className="flex w-full h-full mt-24 z-10 p-5 flex-col items-center space-y-5 smd:ml-16 smd:mr-[216px] md:ml-16 md:mr-[264px] xl:mr-[295px] mb-20 smd:mb-0 md:mb-0">
@@ -154,13 +181,28 @@ const BlogScreen = (props) => {
         <GradientText customCss="text-2xl sm:text-3xl md:text-4xl font-extrabold">
           Let's read something Interesting ..
         </GradientText>
-        <div className="flex space-x-5">
-          <EditIcon size={20} />
-          <DeleteIcon size={20} />
-        </div>
+        {isUserBlog && (
+          <div className="flex space-x-5">
+            {!editMode ? (
+              <EditIcon size={20} onClick={toggleEditMode} />
+            ) : (
+              <CancelIcon size={20} onClick={toggleEditMode} />
+            )}
+            <DeleteIcon size={20} />
+          </div>
+        )}
       </div>
 
       <div className="flex flex-col w-full space-y-10 shadow-sm dark:bg-black dark:bg-opacity-30 bg-white bg-opacity-30 rounded-xl p-5 ">
+        <Image
+          src={selectedBlog.image}
+          layout="intrinsic"
+          width={400}
+          height={400}
+          objectFit="cover"
+          className="rounded-lg shadow-lg"
+        />
+
         <Input
           autoFocus
           label="Enter a Title"
@@ -169,14 +211,30 @@ const BlogScreen = (props) => {
           error={!data.title.isValid && data.title.touched}
           onChange={(val) => dataHandler("title", val)}
           autoCapitalize
+          editMode={editMode}
+          textCss="text-4xl"
         />
 
-        <Dropdown
-          label="Category"
-          data={categories}
-          setCategory={(val) => dataHandler("category", val)}
-          category={selectedBlog.category}
+        <Input
+          autoFocus
+          label="Enter a Headlines"
+          required
+          value={data.headline.value}
+          error={!data.headline.isValid && data.headline.touched}
+          onChange={(val) => dataHandler("headline", val)}
+          autoCapitalize
+          editMode={editMode}
+          textCss="text-2xl"
         />
+
+        {editMode && (
+          <Dropdown
+            label="Category"
+            data={categories}
+            setCategory={(val) => dataHandler("category", val)}
+            category={selectedBlog.category}
+          />
+        )}
 
         <TextArea
           autoFocus
@@ -185,46 +243,52 @@ const BlogScreen = (props) => {
           value={data.content.value}
           error={!data.content.isValid && data.content.touched}
           onChange={(val) => dataHandler("content", val)}
+          editMode={editMode}
+          textCss="text-xl"
         />
 
-        <div className="flex flex-col w-40 space-y-5">
-          {localImage && (
-            <div className="flex h-40 bg-blue-200 shadow-xl rounded-md overflow-hidden">
-              <Image
-                src={localImage}
-                layout="intrinsic"
-                unoptimized
-                objectFit="cover"
-                width={200}
-                height={200}
-              />
-            </div>
-          )}
-          <TextButton
-            title="Upload an Image"
-            customCss="text-lg"
-            onClick={chooseFile}
-          />
-          <span></span>
-          <input
-            type="file"
-            name="file"
-            ref={uploadLogoRef}
-            id="uploadLogo"
-            className="hidden"
-            onChange={(e) => uploadImageHandler(e, "logo")}
-            accept="image/png, image/jpeg, image/jpg"
+        {editMode && (
+          <div className="flex flex-col w-40 space-y-5">
+            {localImage && (
+              <div className="flex h-40 bg-blue-200 shadow-xl rounded-md overflow-hidden">
+                <Image
+                  src={localImage}
+                  layout="intrinsic"
+                  unoptimized
+                  objectFit="cover"
+                  width={200}
+                  height={200}
+                />
+              </div>
+            )}
+            <TextButton
+              title="Upload an Image"
+              customCss="text-lg"
+              onClick={chooseFile}
+            />
+            <span></span>
+            <input
+              type="file"
+              name="file"
+              ref={uploadLogoRef}
+              id="uploadLogo"
+              className="hidden"
+              onChange={(e) => uploadImageHandler(e, "logo")}
+              accept="image/png, image/jpeg, image/jpg"
+            />
+          </div>
+        )}
+      </div>
+
+      {editMode && (
+        <div className="flex justify-center items-center w-44">
+          <Button
+            title="Create"
+            disabled={!data.isFormValid}
+            onClick={creatBlogHandler}
           />
         </div>
-      </div>
-
-      <div className="flex justify-center items-center w-44">
-        <Button
-          title="Create"
-          disabled={!data.isFormValid}
-          onClick={creatBlogHandler}
-        />
-      </div>
+      )}
     </div>
   );
 };

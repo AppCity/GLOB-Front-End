@@ -51,7 +51,7 @@ export const blogs = [
   {
     id: `${Math.floor(Math.random() * 9999)}`,
     userId: "U" + `${Math.floor(Math.random() * 9999)}`,
-    category: "programming",
+    category: "Programming",
     title: "Big Data",
     headline: "Why Big Data Needs Thick Data?",
     content:
@@ -64,7 +64,7 @@ export const blogs = [
   {
     id: `${Math.floor(Math.random() * 9999)}`,
     userId: "U" + `${Math.floor(Math.random() * 9999)}`,
-    category: "technology",
+    category: "Technology",
     title: "Smart Phone",
     headline: "Telegram Vs Whatsapp.",
     content:
@@ -78,10 +78,11 @@ export const blogs = [
   {
     id: `${Math.floor(Math.random() * 9999)}`,
     userId: "U" + `${Math.floor(Math.random() * 9999)}`,
-    category: "programming",
+    category: "Programming",
     title: "Programming",
     headline: "Best Practies for Python Programming! ",
-    content: "",
+    content:
+      "Programming is the process of creating a set of instructions that tell a computer how to perform a task. Programming can be done using a variety of computer programming languages, such as JavaScript, Python, and C++.",
     likes: 55000,
     timestamp: new Date(),
     image:
@@ -91,10 +92,11 @@ export const blogs = [
   {
     id: `${Math.floor(Math.random() * 9999)}`,
     userId: "U" + `${Math.floor(Math.random() * 9999)}`,
-    category: "technology",
+    category: "Technology",
     title: "Virtual Reality",
     headline: "Why virtual reality is so popular?",
-    content: "",
+    content:
+      "Virtual Reality (VR) is a computer-generated environment with scenes and objects that appear to be real, making the user feel they are immersed in their surroundings. This environment is perceived through a device known as a Virtual Reality headset or helmet.",
     likes: 500,
     timestamp: new Date(Date.now() - aDay * 2),
     image:
@@ -104,10 +106,11 @@ export const blogs = [
   {
     id: `${Math.floor(Math.random() * 9999)}`,
     userId: "U" + `${Math.floor(Math.random() * 9999)}`,
-    category: "motors",
+    category: "Motors",
     title: "Cars",
     headline: "Why cars are so popular?",
-    content: "",
+    content:
+      "Cars - Motori ruggenti (Cars) è un film d'animazione del 2006 co-scritto e diretto da John Lasseter; prodotto dai Pixar Animation Studios, in co-produzione ...",
     likes: 500,
     timestamp: new Date(Date.now() - aDay * 2),
     image:
@@ -117,10 +120,11 @@ export const blogs = [
   {
     id: `${Math.floor(Math.random() * 9999)}`,
     userId: "U" + `${Math.floor(Math.random() * 9999)}`,
-    category: "motors",
+    category: "Motors",
     title: "Motorbikes",
     headline: "Why Motorbikes are so popular?",
-    content: "",
+    content:
+      "The two terms are actually interchangeable and used to describe the exact same type of vehicle. While the motorcycle is a combination of motor and bicycle, the motorbike is a combo of motor and bike. ... In comparison, motorbike is less formal and should be used as such",
     likes: 2100,
     timestamp: new Date(Date.now() - aDay * 2),
     image:
@@ -130,10 +134,11 @@ export const blogs = [
   {
     id: `${Math.floor(Math.random() * 9999)}`,
     userId: "U" + `${Math.floor(Math.random() * 9999)}`,
-    category: "travels",
+    category: "Travels",
     title: "Adventure",
     headline: "An unusual and exciting or daring experience.",
-    content: "",
+    content:
+      "An adventure is an exciting experience or undertaking that is typically bold, sometimes risky. Adventures may be activities with some potential for physical danger such as traveling, exploring, skydiving, mountain climbing, scuba diving, river rafting or participating in extreme sports.",
     likes: 500,
     timestamp: new Date(Date.now() - aDay * 2),
     image:
@@ -142,8 +147,8 @@ export const blogs = [
   },
   {
     id: blogId,
-    userId: "U" + `${Math.floor(Math.random() * 9999)}`,
-    category: "sports",
+    userId: userId,
+    category: "Sports",
     title: "Ronaldo the BEST",
     headline: "Ronaldo is the BEST football player!",
     content:
@@ -168,8 +173,8 @@ export const userData = {
     "https://www.brandinginasia.com/wp-content/uploads/2021/08/Jackie-Chan-Shopee.jpg",
   blogsPreview: [
     {
-      userId: userId,
-      blogId: blogId,
+      userId: blogs[7].userId,
+      id: blogs[7].id,
       title: "Ronaldo the BEST",
       image:
         "https://e0.365dm.com/21/09/768x432/skysports-pogba-paul-cristiano_5511238.jpg?20210913100812",
@@ -177,9 +182,9 @@ export const userData = {
   ],
   blogs: [
     {
-      id: blogId,
-      userId: userId,
-      category: "sports",
+      id: blogs[7].id,
+      userId: blogs[7].userId,
+      category: "Sports",
       title: "Ronaldo the BEST",
       headline: "Ronaldo is the BEST football player!",
       content:

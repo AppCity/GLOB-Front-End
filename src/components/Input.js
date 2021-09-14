@@ -31,6 +31,8 @@ const Input = ({
   css = "",
   inputMode,
   autoCapitalize = false,
+  editMode = true,
+  textCss = "",
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showBorder, setShowBorder] = useState(false);
@@ -42,7 +44,7 @@ const Input = ({
           !error ? "text-gray-500 dark:text-gray-300" : "text-red-500"
         }`}
       >
-        {label}
+        {editMode && label}
       </label>
 
       <div className="flex relative">
@@ -61,14 +63,21 @@ const Input = ({
           onChange={(e) => onChange(e.target.value)}
           value={value}
           className={`w-full py-2 border-b outline-none ${
-            !error ? "border-gray-300" : "border-red-500"
-          } dark:text-white bg-transparent transition-all rounded-none focus:outline-none ${css}`}
+            editMode
+              ? !error
+                ? "border-gray-300"
+                : "border-red-500"
+              : "border-none"
+          } dark:text-white bg-transparent transition-all rounded-none focus:outline-none ${css}
+          ${!editMode && textCss}
+          `}
           required={required}
           minLength={minLength}
           onFocus={() => setShowBorder(true)}
           onBlur={() => setShowBorder(false)}
           autoFocus={autoFocus}
           autoCapitalize={autoCapitalize ? "on" : "off"}
+          disabled={!editMode}
         />
 
         <div

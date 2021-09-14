@@ -12,7 +12,17 @@ module.exports = withOptimizedImages({
     quality: 100,
   },
   images: {
-    domains: ["www.brandinginasia.com"],
+    domains: [
+      "www.brandinginasia.com",
+      "e0.365dm.com",
+      "digitaltree.ai",
+      "i.pcmag.com",
+      "itchronicles.com",
+      "www.healtheuropa.eu",
+      "cdn.luxe.digital",
+      "m.atcdn.co.uk",
+      "www.silverkris.com",
+    ],
   },
   target: "serverless",
 });
