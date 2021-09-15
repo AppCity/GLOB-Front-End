@@ -1,4 +1,6 @@
+import { useRouter } from "next/router";
 import Proptypes from "prop-types";
+import { memo } from "react";
 
 /**
  * Logo component
@@ -12,8 +14,15 @@ import logo_text from "../../public/images/logo_text.svg";
 import logo_underscore from "../../public/images/logo_underscore.svg";
 
 const Logo = ({ customCss = "", imageCss = "" }) => {
+  const router = useRouter();
+
+  const goHome = () => router.push("/");
+
   return (
-    <div className={`flex flex-row ${customCss}`}>
+    <div
+      className={`flex flex-row ${customCss} cursor-pointer `}
+      onClick={goHome}
+    >
       <img
         src={logo_text}
         alt={"logo_text"}
@@ -34,4 +43,4 @@ Logo.propTypes = {
   imageCss: Proptypes.string,
 };
 
-export default Logo;
+export default memo(Logo);

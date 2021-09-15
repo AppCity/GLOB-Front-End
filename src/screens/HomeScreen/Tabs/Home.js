@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 import Categories from "../../../components/Categories";
 import Scrollbar from "../../../components/Scrollbar";
@@ -27,6 +27,10 @@ const Home = ({ scroll = 0, setTab }) => {
   };
 
   const userClickHandler = () => router.push("/settings");
+
+  const openBlogHandler = useCallback((id) => {
+    router.push("/blogs/" + id);
+  });
 
   useEffect(() => {
     dispatch(actions.getBlogs("token"));

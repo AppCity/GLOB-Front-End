@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { memo } from "react";
 import Image from "next/image";
 
 const Spinner = (props) => {
@@ -12,13 +12,14 @@ const Spinner = (props) => {
           objectFit="contain"
           placeholder="empty"
           alt="Spinner"
-          priority
+          priority={true}
           width={200}
           height={200}
+          loading={"eager"}
         />
       </div>
     </div>
   );
 };
 
-export default Spinner;
+export default memo(Spinner);

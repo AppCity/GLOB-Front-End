@@ -87,36 +87,40 @@ const SettingsScreen = (props) => {
     setData(currentState);
   };
 
-  //TODO: Check Here
   const editHandler = () => {
     toggleEditMode();
-    setData({
-      title: {
-        value: state.blog?.title,
-        isRequired: true,
-        isValid: true,
-        touched: true,
-      },
-      headline: {
-        value: state.blog?.headline,
-        isRequired: true,
-        isValid: true,
-        touched: true,
-      },
-      content: {
-        value: state.blog?.content,
-        isRequired: true,
-        isValid: true,
-        touched: true,
-      },
-      category: {
-        value: state.blog?.category,
-        isRequired: true,
-        isValid: true,
-        touched: true,
-      },
-      isFormValid: true,
-    });
+    if (editMode) {
+      console.log("save");
+    } else {
+      console.log("edit mode begin");
+      setData({
+        username: {
+          value: state.user.username,
+          isRequired: true,
+          isValid: false,
+          touched: false,
+        },
+        fullname: {
+          value: state.user.fullname,
+          isRequired: true,
+          isValid: false,
+          touched: false,
+        },
+        email: {
+          value: state.user.email,
+          isRequired: true,
+          isValid: false,
+          touched: false,
+        },
+        website: {
+          value: state.user.website,
+          isRequired: true,
+          isValid: true,
+          touched: false,
+        },
+        isFormValid: true,
+      });
+    }
   };
 
   const cancelHandler = () => {
@@ -266,9 +270,8 @@ const SettingsScreen = (props) => {
             <Button title="Cancel" onClick={cancelHandler} />
           </div>
         )}
-        //TODO: Check here
         <div className="flex justify-center items-center w-44">
-          <Button title={editMode ? "Save" : "Edit"} onClick={toggleEditMode} />
+          <Button title={editMode ? "Save" : "Edit"} onClick={editHandler} />
         </div>
       </div>
     </div>

@@ -92,6 +92,7 @@ const AddBlogScreen = (props) => {
       content: data.content.value,
       category: data.category.value,
     };
+
     console.log("creatBlogHandler data =>", postData);
   };
 

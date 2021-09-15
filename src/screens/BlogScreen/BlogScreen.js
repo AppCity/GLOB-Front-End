@@ -103,6 +103,7 @@ const BlogScreen = (props) => {
       category: data.category.value,
       image: localImage ?? data.image,
     };
+    toggleEditMode();
     console.log("creatBlogHandler data =>", postData);
   };
 
@@ -286,8 +287,8 @@ const BlogScreen = (props) => {
 
   return (
     <div className="flex w-full h-full mt-24 z-10 p-5 flex-col items-center space-y-5 smd:ml-16 smd:mr-[216px] md:ml-16 md:mr-[264px] xl:mr-[295px] mb-20 smd:mb-0 md:mb-0">
-      <div className="flex items-center justify-between w-full">
-        <GradientText customCss="text-2xl sm:text-3xl md:text-4xl font-extrabold">
+      <div className="flex items-center justify-between w-full ">
+        <GradientText customCss="text-2xl sm:text-3xl md:text-4xl font-extrabold w-72 sm:w-full">
           Let's read something Interesting ..
         </GradientText>
         {isUserBlog && (
@@ -302,7 +303,7 @@ const BlogScreen = (props) => {
         )}
       </div>
 
-      <div className="flex flex-col w-full space-y-10 shadow-sm dark:bg-black dark:bg-opacity-30 bg-white bg-opacity-30 rounded-xl p-5 ">
+      <div className="flex flex-col w-full space-y-10 shadow-sm dark:bg-black dark:bg-opacity-30 bg-white bg-opacity-30 rounded-xl p-5 z-40">
         {state.blog && state.blog.image && (
           <Image
             src={state.blog.image}

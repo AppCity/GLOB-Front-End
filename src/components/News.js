@@ -60,7 +60,7 @@ const News = ({
       </div>
 
       <div className="flex flex-row dark:text-bg text-grey justify-between items-center p-5 sm:pb-8 md:pb-10 -mt-12 sm:-mt-16 ml-[105px] sm:ml-[120px] md:ml-[150px]">
-        <div className="flex flex-row justify-center items-center space-x-1 z-50 ">
+        <div className="flex flex-row justify-center items-center space-x-1 z-10 ">
           <LikeIcon
             size="12"
             css="sm:w-[16px] sm:h-[16px] lg:w-[20px] lg:h-[20px]"
@@ -71,7 +71,7 @@ const News = ({
           </span>
         </div>
 
-        <div className="flex flex-row justify-center items-center space-x-1 z-50">
+        <div className="flex flex-row justify-center items-center space-x-1 z-10">
           <ClockIcon
             size="12"
             css="sm:w-[16px] sm:h-[16px] lg:w-[20px] lg:h-[20px]"
@@ -81,7 +81,7 @@ const News = ({
           </span>
         </div>
 
-        <div className="flex flex-row justify-center items-center space-x-1 z-50">
+        <div className="flex flex-row justify-center items-center space-x-1 z-10">
           <BookmarkIcon
             onClick={bookmarkHandler}
             size="12"
