@@ -46,7 +46,7 @@ const Input = ({
         }`}
       >
         {editMode && label}
-        {showLabel && label}
+        {showLabel && !editMode && label}
       </label>
 
       <div className="flex relative">

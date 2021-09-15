@@ -218,7 +218,6 @@ const BlogScreen = (props) => {
     });
   };
 
-  //TODO: Check here
   const editHandler = () => {
     toggleEditMode();
     setData({

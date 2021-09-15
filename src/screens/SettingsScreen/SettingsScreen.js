@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { memo, useEffect, useMemo, useState } from "react";
+import { memo, useEffect, useMemo, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import BlogsCard from "../../components/BlogsCard";
 import GradientText from "../../components/GradientText";
@@ -11,13 +11,17 @@ import TextArea from "../../components/TextArea";
 import Dropdown from "../../components/Dropdown";
 import Input from "../../components/Input";
 import { categories } from "../../data/data";
+import toast from "react-hot-toast";
 
 const SettingsScreen = (props) => {
   const state = useSelector((state) => state.glob);
   const router = useRouter();
   const dispatch = useDispatch();
+  const uploadLogoRef = useRef();
 
   const [editMode, setEditMode] = useState(false);
+  const [localImage, setLocalImage] = useState(state.user.profileImage);
+  console.log("🚀 --- SettingsScreen --- localImage", localImage);
 
   const [data, setData] = useState({
     username: {
@@ -93,33 +97,33 @@ const SettingsScreen = (props) => {
       console.log("save");
     } else {
       console.log("edit mode begin");
-      setData({
-        username: {
-          value: state.user.username,
-          isRequired: true,
-          isValid: false,
-          touched: false,
-        },
-        fullname: {
-          value: state.user.fullname,
-          isRequired: true,
-          isValid: false,
-          touched: false,
-        },
-        email: {
-          value: state.user.email,
-          isRequired: true,
-          isValid: false,
-          touched: false,
-        },
-        website: {
-          value: state.user.website,
-          isRequired: true,
-          isValid: true,
-          touched: false,
-        },
-        isFormValid: true,
-      });
+      // setData({
+      //   username: {
+      //     value: state.user.username,
+      //     isRequired: true,
+      //     isValid: false,
+      //     touched: false,
+      //   },
+      //   fullname: {
+      //     value: state.user.fullname,
+      //     isRequired: true,
+      //     isValid: false,
+      //     touched: false,
+      //   },
+      //   email: {
+      //     value: state.user.email,
+      //     isRequired: true,
+      //     isValid: false,
+      //     touched: false,
+      //   },
+      //   website: {
+      //     value: state.user.website,
+      //     isRequired: true,
+      //     isValid: true,
+      //     touched: false,
+      //   },
+      //   isFormValid: true,
+      // });
     }
   };
 
@@ -152,7 +156,51 @@ const SettingsScreen = (props) => {
       },
       isFormValid: true,
     });
+    setLocalImage(state.user.profileImage);
   };
+
+  const uploadImageHandler = async (e, type) => {
+    dispatch(actions.setLoading(true));
+
+    const file = e.target.files[0];
+    console.log("🚀 --- uploadImageHandler --- file", file);
+    try {
+      if (file) {
+        const extn = file.name.split(".").pop();
+
+        //Check if file is .png || .jpg || .jpeg
+        if (extn !== "png" && extn !== "jpg" && extn !== "jpeg") {
+          toast.error("Only images allowed");
+          uploadLogoRef.current.value = null;
+          return;
+        }
+
+        setLocalImage(URL.createObjectURL(file));
+
+        const formData = new FormData();
+        formData.append("file", file);
+        console.log("🚀 --- uploadImageHandler --- formData", formData);
+
+        // formData.append("customer_id", state.customer.id);
+        // formData.append("type", type);
+
+        // const response = await nextAPI.post("/upload/image", formData, {
+        //   headers: {
+        //     "Content-Type": "multipart/form-data",
+        //   },
+        // });
+      }
+    } catch (error) {
+      console.log("🚀 --- uploadImageHandler --- error", error);
+      toast.error("Image upload failed");
+    }
+
+    //Remove file from memory after upload
+    // uploadLogoRef.current.value = null;
+    dispatch(actions.setLoading(false));
+  };
+
+  const chooseFile = () => uploadLogoRef.current.click();
 
   useEffect(() => {
     if (!state.isUserLoggedIn) {
@@ -177,12 +225,25 @@ const SettingsScreen = (props) => {
           }`}
         >
           <Image
-            src={state.user.profileImage}
+            src={localImage}
             layout="intrinsic"
             objectFit="cover"
             width={400}
             height={400}
             alt="Profile Image"
+            onClick={() => {
+              editMode && chooseFile();
+            }}
+            unoptimized
+          />
+          <input
+            type="file"
+            name="file"
+            ref={uploadLogoRef}
+            id="uploadLogo"
+            className="hidden"
+            onChange={(e) => uploadImageHandler(e, "logo")}
+            accept="image/png, image/jpeg, image/jpg"
           />
         </div>
         <Input
@@ -249,7 +310,6 @@ const SettingsScreen = (props) => {
           {/* <TextButton
             title="Upload an Image"
             customCss="text-lg"
-            onClick={chooseFile}
           /> */}
           <span></span>
           <input
