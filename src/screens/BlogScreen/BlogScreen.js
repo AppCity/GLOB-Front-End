@@ -30,30 +30,31 @@ const BlogScreen = (props) => {
     title: {
       value: "",
       isRequired: true,
-      isValid: false,
-      touched: false,
+      isValid: true,
+      touched: true,
     },
     headline: {
       value: "",
       isRequired: true,
-      isValid: false,
-      touched: false,
+      isValid: true,
+      touched: true,
     },
     content: {
       value: "",
       isRequired: true,
-      isValid: false,
-      touched: false,
+      isValid: true,
+      touched: true,
     },
     category: {
       value: "",
       isRequired: true,
       isValid: true,
-      touched: false,
+      touched: true,
     },
-    image: "",
-    isFormValid: false,
+    isFormValid: true,
   });
+
+  console.log("🚀 --- BlogScreen --- data", data);
 
   const toggleEditMode = () => setEditMode(!editMode);
 
@@ -95,13 +96,13 @@ const BlogScreen = (props) => {
     setData(currentState);
   };
 
-  const creatBlogHandler = () => {
+  const saveBlog = () => {
     const postData = {
       title: data.title.value,
       headline: data.headline.value,
       content: data.content.value,
       category: data.category.value,
-      image: localImage ?? data.image,
+      image: localImage,
     };
     toggleEditMode();
     console.log("creatBlogHandler data =>", postData);
@@ -148,9 +149,7 @@ const BlogScreen = (props) => {
     dispatch(actions.setLoading(false));
   };
 
-  const chooseFile = () => {
-    uploadLogoRef.current.click();
-  };
+  const chooseFile = () => uploadLogoRef.current.click();
 
   useEffect(() => {
     dispatch(actions.getBlog(blogId));
@@ -163,29 +162,28 @@ const BlogScreen = (props) => {
         title: {
           value: state.blog?.title,
           isRequired: true,
-          isValid: false,
-          touched: false,
+          isValid: true,
+          touched: true,
         },
         headline: {
           value: state.blog?.headline,
           isRequired: true,
-          isValid: false,
-          touched: false,
+          isValid: true,
+          touched: true,
         },
         content: {
           value: state.blog?.content,
           isRequired: true,
-          isValid: false,
-          touched: false,
+          isValid: true,
+          touched: true,
         },
         category: {
           value: state.blog?.category,
           isRequired: true,
           isValid: true,
-          touched: false,
+          touched: true,
         },
-        image: state.blog.image,
-        isFormValid: false,
+        isFormValid: true,
       });
       setLocalImage(state.blog.image);
       if (!state.blog.image) dispatch(actions.setLoading(false));
@@ -220,33 +218,6 @@ const BlogScreen = (props) => {
 
   const editHandler = () => {
     toggleEditMode();
-    setData({
-      title: {
-        value: state.blog?.title,
-        isRequired: true,
-        isValid: true,
-        touched: true,
-      },
-      headline: {
-        value: state.blog?.headline,
-        isRequired: true,
-        isValid: true,
-        touched: true,
-      },
-      content: {
-        value: state.blog?.content,
-        isRequired: true,
-        isValid: true,
-        touched: true,
-      },
-      category: {
-        value: state.blog?.category,
-        isRequired: true,
-        isValid: true,
-        touched: true,
-      },
-      isFormValid: true,
-    });
   };
 
   const cancelHandler = () => {
@@ -395,9 +366,9 @@ const BlogScreen = (props) => {
       {editMode && (
         <div className="flex justify-center items-center w-44">
           <Button
-            title="Create"
+            title="Save"
             disabled={!data.isFormValid}
-            onClick={creatBlogHandler}
+            onClick={saveBlog}
           />
         </div>
       )}
