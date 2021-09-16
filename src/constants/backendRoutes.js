@@ -4,6 +4,7 @@ export const FRONTEND_ROUTES = {
   logout: "/logout",
   blogs: "/blogs",
   user: "/user",
+  categories: "/categories",
 };
 
 export const BACKEND_ROUTES = {
@@ -12,4 +13,5 @@ export const BACKEND_ROUTES = {
   logout: "/logout",
   blogs: "/blogs",
   user: "/user",
+  categories: "/categories",
 };

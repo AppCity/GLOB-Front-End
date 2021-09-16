@@ -68,6 +68,13 @@ export const setUser = (value) => {
   };
 };
 
+export const setCategories = (value) => {
+  return {
+    type: types.SET_CATEGORIES,
+    payload: value,
+  };
+};
+
 //Middleware
 
 export const signup = (postData, callback) => {
@@ -191,6 +198,24 @@ export const getUser = (id) => {
       })
       .catch((err) => {
         toast.error("Unable to get user");
+        console.log("error", err);
+      });
+    dispatch(setLoading(false));
+  };
+};
+
+export const getCategories = (token) => {
+  return (dispatch) => {
+    dispatch(setLoading(true));
+
+    frontEndApi
+      .get(FRONTEND_ROUTES.categories, { params: { token } })
+      .then((resp) => {
+        console.log("categories =>", resp.data);
+        dispatch(setCategories(resp.data));
+      })
+      .catch((err) => {
+        toast.error("Unable to get categories");
         console.log("error", err);
       });
     dispatch(setLoading(false));

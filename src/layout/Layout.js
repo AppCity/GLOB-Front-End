@@ -16,6 +16,14 @@ const Layout = ({ children }) => {
 
   const isAuthenticationPage = pathname === "/authentication";
 
+  useEffect(() => {
+    if (state.token) {
+      dispatch(actions.getCategories(state.token));
+    }
+  }, [state.token]);
+
+  console.log("state.categories", state.categories);
+
   return (
     <div className="flex  w-full ">
       {/* //TODO: Testing only, remove later */}
