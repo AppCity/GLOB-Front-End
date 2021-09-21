@@ -7,13 +7,12 @@ export default async function handler(req, res) {
     // const payload = { ...req.body };
     const id = req.query.id;
 
-    const status = 200;
-    const data = blogs.find((item) => item.id === id);
+    // const status = 200;
+    // const data = blogs.find((item) => item.id === id);
 
-    // const { status, data } = await backEndApi.get(
-    //   BACKEND_ROUTES.blogs,
-    //   payload
-    // );
+    const { status, data } = await backEndApi.get(BACKEND_ROUTES.blogs, {
+      params: { id },
+    });
 
     res.status(status).json(data);
   } catch (error) {

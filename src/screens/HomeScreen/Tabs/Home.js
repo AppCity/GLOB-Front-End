@@ -29,8 +29,11 @@ const Home = ({ scroll = 0, setTab }) => {
   const userClickHandler = () => router.push("/settings");
 
   const openBlogHandler = useCallback((id) => {
-    router.push("/blogs/" + id);
+    console.log("🚀 --- openBlogHandler --- id", id);
+    // router.push("/blogs/" + id);
   });
+
+  const openMyBlogs = useCallback(() => router.push("/myblogs"));
 
   useEffect(() => {
     dispatch(actions.getBlogs("token"));
@@ -41,7 +44,7 @@ const Home = ({ scroll = 0, setTab }) => {
   const newsUi = state.blogs.map((item) => {
     return (
       <News
-        id={item.id}
+        id={item._id} //FIXME: Change to id later
         title={item.title}
         headline={item.headline}
         image={item.image}
@@ -166,7 +169,7 @@ const Home = ({ scroll = 0, setTab }) => {
               <span className="flex text-grey dark:text-bg">My Blogs</span>
               <Scrollbar>
                 <div className="flex space-x-3 -mt-5">
-                  {state.user.blogsPreview.map((item, index) => {
+                  {state.blogs.map((item, index) => {
                     if (index < 5) {
                       return (
                         <BlogsCard
