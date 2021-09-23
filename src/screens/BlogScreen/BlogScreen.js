@@ -54,8 +54,6 @@ const BlogScreen = (props) => {
     isFormValid: true,
   });
 
-  console.log("🚀 --- BlogScreen --- data", data);
-
   const toggleEditMode = () => setEditMode(!editMode);
 
   //Validate input fields
@@ -102,10 +100,11 @@ const BlogScreen = (props) => {
       headline: data.headline.value,
       content: data.content.value,
       category: data.category.value,
-      image: localImage,
+      // image: localImage,//FIXME: Fix later
     };
     toggleEditMode();
     console.log("creatBlogHandler data =>", postData);
+    dispatch(actions.editBlog(blogId, state.token, postData)); //FIXME: fix id
   };
 
   const uploadImageHandler = async (e, type) => {
@@ -203,12 +202,7 @@ const BlogScreen = (props) => {
   const checkIfUserBlog = () => {
     setIsUserBlog(false);
 
-    state.user.blogs.forEach((item) => {
-      console.log(
-        "🚀 --- state.user.blogs.forEach --- item",
-        item.userId,
-        state.blog?.userId
-      );
+    state.userBlogs.forEach((item) => {
       if (item.userId === state.blog?.userId) {
         setIsUserBlog(true);
         return;

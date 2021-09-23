@@ -14,6 +14,7 @@ const initialState = {
   blog: null,
   user: null,
   categories: null,
+  userBlogs: null,
 };
 
 const globReducer = (state = initialState, action) => {
@@ -66,6 +67,9 @@ const globReducer = (state = initialState, action) => {
 
     case actionTypes.SET_CATEGORIES:
       return { ...state, categories: action.payload };
+
+    case actionTypes.SET_USER_BLOGS:
+      return { ...state, userBlogs: action.payload };
 
     default:
       return state;

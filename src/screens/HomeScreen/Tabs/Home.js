@@ -40,6 +40,10 @@ const Home = ({ scroll = 0, setTab }) => {
     state.isUserLoggedIn && dispatch(actions.getUser());
   }, [state.isUserLoggedIn]);
 
+  useEffect(() => {
+    state.user && dispatch(actions.getUserBlogs(state.user.id, state.token));
+  }, [state.user]);
+
   //Mobile/Desktop - News
   const newsUi = state.blogs.map((item) => {
     return (
@@ -153,30 +157,26 @@ const Home = ({ scroll = 0, setTab }) => {
           smd:hidden md:hidden lg:hidden: xl:hidden 2xl:hidden
       "
       >
-        {state.isUserLoggedIn &&
-          state.user &&
-          state.user.blogsPreview.length > 0 && (
-            <div
-              className="flex flex-col
-            "
-            >
-              <div className="flex flex-col text-gray-600 dark:text-white h-24 space-y-2">
-                <span className="text-xl">
-                  Hey <GradientText>{state.user.username}!</GradientText>
-                </span>
-                <span className="text-4xl font-extrabold">What’s Next?</span>
-              </div>
-              <span className="flex text-grey dark:text-bg">My Blogs</span>
-              <Scrollbar>
-                <div className="flex space-x-3 -mt-5">
-                  {state.blogs.map((item, index) => {
+        {state.userBlogs && state.userBlogs.length > 0 && (
+          <div className="flex flex-col">
+            <div className="flex flex-col text-gray-600 dark:text-white h-24 space-y-2">
+              <span className="text-xl">
+                Hey <GradientText>{state.user.username}!</GradientText>
+              </span>
+              <span className="text-4xl font-extrabold">What’s Next?</span>
+            </div>
+            <span className="flex text-grey dark:text-bg">My Blogs</span>
+            <Scrollbar>
+              <div className="flex space-x-3 -mt-5">
+                {state.userBlogs &&
+                  state.userBlogs.map((item, index) => {
                     if (index < 5) {
                       return (
                         <BlogsCard
                           image={item.image}
                           title={item.title}
-                          onClick={() => openBlogHandler(item.id)}
-                          id={item.id}
+                          onClick={() => openBlogHandler(item._id)} //FIXME: id object fix later
+                          id={item._id} //FIXME: id object fix later
                         />
                       );
                     } else if (index === 5) {
@@ -192,10 +192,10 @@ const Home = ({ scroll = 0, setTab }) => {
                       );
                     }
                   })}
-                </div>
-              </Scrollbar>
-            </div>
-          )}
+              </div>
+            </Scrollbar>
+          </div>
+        )}
         <span className="text-grey dark:text-bg">Latest News</span>
         {newsUi}
       </div>

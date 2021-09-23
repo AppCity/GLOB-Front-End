@@ -68,29 +68,30 @@ const Sidebar = (props) => {
             <span className="flex pl-5">My Blogs</span>
             <Scrollbar>
               <div className="flex pl-5 space-x-3 -mt-5">
-                {state.user.blogsPreview.map((item, index) => {
-                  if (index < 5) {
-                    return (
-                      <BlogsCard
-                        id={item.id}
-                        image={item.image}
-                        title={item.title}
-                        onClick={() => openBlogHandler(item.id)}
-                      />
-                    );
-                  } else if (index === 5) {
-                    return (
-                      <div
-                        className="flex items-center w-full pr-5"
-                        onClick={openMyBlogs}
-                      >
-                        <GradientText customCss="cursor-pointer">
-                          View all
-                        </GradientText>
-                      </div>
-                    );
-                  }
-                })}
+                {state.userBlogs &&
+                  state.userBlogs.map((item, index) => {
+                    if (index < 5) {
+                      return (
+                        <BlogsCard
+                          id={item.id}
+                          image={item.image}
+                          title={item.title}
+                          onClick={() => openBlogHandler(item._id)} //FIXME: fix id object later
+                        />
+                      );
+                    } else if (index === 5) {
+                      return (
+                        <div
+                          className="flex items-center w-full pr-5"
+                          onClick={openMyBlogs}
+                        >
+                          <GradientText customCss="cursor-pointer">
+                            View all
+                          </GradientText>
+                        </div>
+                      );
+                    }
+                  })}
               </div>
             </Scrollbar>
           </div>

@@ -10,7 +10,9 @@ const types = {
   SET_BLOGS: "SET_BLOGS",
   SET_BLOG: "SET_BLOG",
   SET_USER: "SET_USER",
+  SET_USER_BLOGS: "SET_USER_BLOGS",
   SET_CATEGORIES: "SET_CATEGORIES",
+  EDIT_BLOG: "EDIT_BLOG",
 };
 
 export default types;

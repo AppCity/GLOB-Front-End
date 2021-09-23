@@ -6,13 +6,21 @@ export default async function handler(req, res) {
   //Get Blogs
   if (req.method === "GET") {
     try {
-      // const token = req.query.token;
+      const token = req.query.token;
+      const userId = req.query.userId;
 
-      // const headers = {
-      //   Authorization: "Bearer " + token,
-      // };
+      const headers = {
+        Authorization: "Bearer " + token,
+      };
 
-      const { status, data } = await backEndApi.get(BACKEND_ROUTES.blogs);
+      const params = {
+        userId,
+      };
+
+      const { status, data } = await backEndApi.get(BACKEND_ROUTES.blogs, {
+        headers,
+        params,
+      });
 
       //TODO: Remove later, for testing only
       // const status = 200;

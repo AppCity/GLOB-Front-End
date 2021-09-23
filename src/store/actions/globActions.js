@@ -75,8 +75,14 @@ export const setCategories = (value) => {
   };
 };
 
-//Middleware
+export const setUserBlogs = (value) => {
+  return {
+    type: types.SET_USER_BLOGS,
+    payload: value,
+  };
+};
 
+//Middleware
 export const signup = (postData, callback) => {
   return async (dispatch) => {
     dispatch(setLoading(true));
@@ -176,7 +182,7 @@ export const getBlog = (id) => {
       .get(FRONTEND_ROUTES.blogs + "/" + id)
       .then((resp) => {
         console.log("Blog =>", resp.data);
-        dispatch(setBlog(resp.data));
+        dispatch(setBlog(resp.data[0])); //FIXME: Only object later
       })
       .catch((err) => {
         toast.error("Unable to get blog");
@@ -204,6 +210,24 @@ export const getUser = (id) => {
   };
 };
 
+export const getUserBlogs = (userId, token) => {
+  return async (dispatch) => {
+    dispatch(setLoading(true));
+
+    await frontEndApi
+      .get(FRONTEND_ROUTES.blogs, { userId: "6148c95a3427260004a7f020", token }) //FIXME: Remove the testing id later
+      .then((resp) => {
+        console.log("User Blogs =>", resp.data);
+        dispatch(setUserBlogs(resp.data));
+      })
+      .catch((err) => {
+        toast.error("Unable to get user blogs");
+        console.log("error", err);
+      });
+    dispatch(setLoading(false));
+  };
+};
+
 export const getCategories = (token) => {
   return (dispatch) => {
     dispatch(setLoading(true));
@@ -216,6 +240,27 @@ export const getCategories = (token) => {
       })
       .catch((err) => {
         toast.error("Unable to get categories");
+        console.log("error", err);
+      });
+    dispatch(setLoading(false));
+  };
+};
+
+export const editBlog = (id, token, putData) => {
+  return async (dispatch) => {
+    dispatch(setLoading(true));
+
+    await frontEndApi
+      .put(FRONTEND_ROUTES.blogs + "/" + id, {
+        data: { ...putData, id },
+        token,
+      })
+      .then((resp) => {
+        console.log("Edit Blog =>", resp.data);
+        // dispatch(setBlog(resp.data[0])); //FIXME: check
+      })
+      .catch((err) => {
+        toast.error("Unable to Edit blog");
         console.log("error", err);
       });
     dispatch(setLoading(false));

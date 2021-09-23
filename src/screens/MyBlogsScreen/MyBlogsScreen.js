@@ -30,18 +30,19 @@ const MyBlogsScreen = (props) => {
       </GradientText>
 
       <div className="flex flex-col w-full space-y-10 shadow-sm dark:bg-black dark:bg-opacity-30 bg-white bg-opacity-30 rounded-xl p-5 ">
-        {/* <div className="flex pl-5 space-x-3 flex-wrap">
-          {.map((item, index) => {
-            return (
-              <BlogsCard
-                image={item.image}
-                title={item.title}
-                onClick={() => openBlogHandler(item.id)}
-                menuClickHandler={menuClickHandler}
-              />
-            );
-          })}
-        </div> */}
+        <div className="flex pl-5 space-x-3 flex-wrap">
+          {state.userBlogs &&
+            state.userBlogs.map((item, index) => {
+              return (
+                <BlogsCard
+                  image={item.image}
+                  title={item.title}
+                  onClick={() => openBlogHandler(item._id)} //FIXME: id object fix later
+                  menuClickHandler={menuClickHandler}
+                />
+              );
+            })}
+        </div>
       </div>
     </div>
   );
