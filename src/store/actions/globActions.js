@@ -182,7 +182,7 @@ export const getBlog = (id) => {
       .get(FRONTEND_ROUTES.blogs + "/" + id)
       .then((resp) => {
         console.log("Blog =>", resp.data);
-        dispatch(setBlog(resp.data[0])); //FIXME: Only object later
+        dispatch(setBlog(resp.data));
       })
       .catch((err) => {
         toast.error("Unable to get blog");
@@ -266,22 +266,3 @@ export const editBlog = (id, token, putData) => {
     dispatch(setLoading(false));
   };
 };
-
-// export const logout = (fname, lname, email, message) => {
-//   const contactFormBody = { fname, lname, email, message };
-
-//   return (dispatch) => {
-//     dispatch(messageStatus(null));
-//     dispatch(setLoading(true));
-
-//     NEXTApi.post("/email", contactFormBody)
-//       .then((resp) => {
-//         dispatch(messageStatus("Success"));
-//         dispatch(setLoading(false));
-//       })
-//       .catch((err) => {
-//         dispatch(setLoading(false));
-//         dispatch(messageStatus("Error"));
-//       });
-//   };
-// };
