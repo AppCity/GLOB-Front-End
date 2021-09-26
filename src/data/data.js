@@ -223,3 +223,5 @@
 // };
 
 export const avatar = "https://avatarfiles.alphacoders.com/834/83404.png";
+export const blogImage =
+  "https://neilpatel.com/wp-content/uploads/2017/08/blog.jpg";

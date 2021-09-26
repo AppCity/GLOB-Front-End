@@ -10,6 +10,7 @@ import TextArea from "../../components/TextArea";
 import TextButton from "../../components/TextButton";
 import Image from "next/image";
 import * as actions from "../../store/actions/actions";
+import { blogImage } from "../../data/data";
 
 const AddBlogScreen = (props) => {
   const state = useSelector((state) => state.glob);
@@ -90,7 +91,7 @@ const AddBlogScreen = (props) => {
       headline: data.headline.value,
       content: data.content.value,
       category: data.category.value,
-      image: "",
+      image: blogImage,
     };
 
     const callback = () => router.push("/");
