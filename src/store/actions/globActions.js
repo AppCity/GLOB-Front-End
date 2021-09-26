@@ -166,7 +166,6 @@ export const getBlogs = (token) => {
     frontEndApi
       .get(FRONTEND_ROUTES.blogs, { token })
       .then((resp) => {
-        console.log("Blogs =>", resp.data);
         dispatch(setBlogs(resp.data));
       })
       .catch((err) => {
@@ -202,7 +201,6 @@ export const getUser = (userId, token) => {
     await frontEndApi
       .get(FRONTEND_ROUTES.user, { params: { userId, token } })
       .then((resp) => {
-        console.log("User =>", resp.data);
         dispatch(setUser(resp.data));
       })
       .catch((err) => {
@@ -218,9 +216,8 @@ export const getUserBlogs = (userId, token) => {
     dispatch(setLoading(true));
 
     await frontEndApi
-      .get(FRONTEND_ROUTES.blogs, { userId, token })
+      .get(FRONTEND_ROUTES.blogs, { params: { userId, token } })
       .then((resp) => {
-        console.log("User Blogs =>", resp.data);
         dispatch(setUserBlogs(resp.data));
       })
       .catch((err) => {

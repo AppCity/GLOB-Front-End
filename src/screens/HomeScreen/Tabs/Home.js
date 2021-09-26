@@ -40,7 +40,8 @@ const Home = ({ scroll = 0, setTab }) => {
   }, []); //state.isUserLoggedIn
 
   useEffect(() => {
-    state.user && dispatch(actions.getUserBlogs(state.user.id, state.token));
+    state.user &&
+      dispatch(actions.getUserBlogs(state.user.userId, state.token));
   }, [state.user]);
 
   //Mobile/Desktop - News
