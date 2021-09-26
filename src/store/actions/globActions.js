@@ -195,12 +195,12 @@ export const getBlog = (id) => {
   };
 };
 
-export const getUser = (id) => {
+export const getUser = (userId, token) => {
   return async (dispatch) => {
     dispatch(setLoading(true));
 
     await frontEndApi
-      .get(FRONTEND_ROUTES.user, { id })
+      .get(FRONTEND_ROUTES.user, { params: { userId, token } })
       .then((resp) => {
         console.log("User =>", resp.data);
         dispatch(setUser(resp.data));
@@ -264,6 +264,26 @@ export const editBlog = (id, token, putData) => {
       })
       .catch((err) => {
         toast.error("Unable to Edit blog");
+        console.log("error", err);
+      });
+    dispatch(setLoading(false));
+  };
+};
+
+export const editUser = (token, putData) => {
+  return async (dispatch) => {
+    dispatch(setLoading(true));
+
+    await frontEndApi
+      .put(FRONTEND_ROUTES.user, {
+        data: { ...putData },
+        token,
+      })
+      .then((resp) => {
+        dispatch(getUser(putData.userId, token));
+      })
+      .catch((err) => {
+        toast.error("Unable to Update user");
         console.log("error", err);
       });
     dispatch(setLoading(false));

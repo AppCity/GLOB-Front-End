@@ -48,6 +48,12 @@ const SettingsScreen = (props) => {
       isValid: true,
       touched: false,
     },
+    phone: {
+      value: state.user.phone,
+      isRequired: true,
+      isValid: true,
+      touched: false,
+    },
     isFormValid: true,
   });
 
@@ -94,36 +100,18 @@ const SettingsScreen = (props) => {
   const editHandler = () => {
     toggleEditMode();
     if (editMode) {
-      console.log("save");
-    } else {
-      console.log("edit mode begin");
-      // setData({
-      //   username: {
-      //     value: state.user.username,
-      //     isRequired: true,
-      //     isValid: false,
-      //     touched: false,
-      //   },
-      //   fullname: {
-      //     value: state.user.fullname,
-      //     isRequired: true,
-      //     isValid: false,
-      //     touched: false,
-      //   },
-      //   email: {
-      //     value: state.user.email,
-      //     isRequired: true,
-      //     isValid: false,
-      //     touched: false,
-      //   },
-      //   website: {
-      //     value: state.user.website,
-      //     isRequired: true,
-      //     isValid: true,
-      //     touched: false,
-      //   },
-      //   isFormValid: true,
-      // });
+      const putData = {
+        userId: state.user.userId,
+        username: data.username.value,
+        fullname: data.fullname.value,
+        email: data.email.value,
+        website: data.website.value, //FIXME: Check is saved on backend
+        phone: data.phone.value,
+        profileImage: "", //FIXME: FIx image later
+      };
+      console.log("🚀 --- editHandler --- putData", putData);
+
+      dispatch(actions.editUser(state.token, putData));
     }
   };
 
@@ -150,6 +138,12 @@ const SettingsScreen = (props) => {
       },
       website: {
         value: state.user.website,
+        isRequired: true,
+        isValid: true,
+        touched: false,
+      },
+      phone: {
+        value: state.user.phone,
         isRequired: true,
         isValid: true,
         touched: false,
@@ -223,19 +217,24 @@ const SettingsScreen = (props) => {
           className={`flex h-60 w-60 rounded-full overflow-hidden shadow-xl transition-all ${
             editMode && "cursor-pointer hover:shadow-3xl"
           }`}
+          onClick={() => {
+            editMode && chooseFile();
+          }}
         >
-          <Image
-            src={localImage}
-            layout="intrinsic"
-            objectFit="cover"
-            width={400}
-            height={400}
-            alt="Profile Image"
-            onClick={() => {
-              editMode && chooseFile();
-            }}
-            unoptimized
-          />
+          {localImage && (
+            <Image
+              src={localImage}
+              layout="intrinsic"
+              objectFit="cover"
+              width={400}
+              height={400}
+              alt="Profile Image"
+              // onClick={() => {
+              //   editMode && chooseFile();
+              // }}
+              unoptimized
+            />
+          )}
           <input
             type="file"
             name="file"
@@ -290,6 +289,17 @@ const SettingsScreen = (props) => {
           error={!data.website.isValid && data.website.touched}
           onChange={(val) => dataHandler("website", val)}
           autoCapitalize
+          editMode={editMode}
+          showLabel
+        />
+
+        <Input
+          autoFocus
+          label="Phone"
+          required
+          value={data.phone.value}
+          error={!data.phone.isValid && data.phone.touched}
+          onChange={(val) => dataHandler("phone", val)}
           editMode={editMode}
           showLabel
         />
