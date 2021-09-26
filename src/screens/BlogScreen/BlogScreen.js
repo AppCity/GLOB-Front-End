@@ -94,7 +94,8 @@ const BlogScreen = (props) => {
   };
 
   const saveBlog = () => {
-    const postData = {
+    const putData = {
+      ...state.blog,
       title: data.title.value,
       headline: data.headline.value,
       content: data.content.value,
@@ -102,8 +103,7 @@ const BlogScreen = (props) => {
       // image: localImage,//FIXME: Fix later
     };
     toggleEditMode();
-    console.log("creatBlogHandler data =>", postData);
-    dispatch(actions.editBlog(blogId, state.token, postData)); //FIXME: fix id
+    dispatch(actions.editBlog(blogId, state.token, putData)); //FIXME: fix id
   };
 
   const uploadImageHandler = async (e, type) => {

@@ -13,10 +13,10 @@ import * as actions from "../../store/actions/actions";
 
 const AddBlogScreen = (props) => {
   const state = useSelector((state) => state.glob);
+  const dispatch = useDispatch();
   const router = useRouter();
   const uploadLogoRef = useRef();
   const [localImage, setLocalImage] = useState();
-  const dispatch = useDispatch();
 
   const [data, setData] = useState({
     title: {
@@ -90,9 +90,10 @@ const AddBlogScreen = (props) => {
       headline: data.headline.value,
       content: data.content.value,
       category: data.category.value,
+      image: "",
     };
 
-    console.log("creatBlogHandler data =>", postData);
+    dispatch(actions.createBlog(state.token, postData));
   };
 
   const uploadImageHandler = async (e, type) => {

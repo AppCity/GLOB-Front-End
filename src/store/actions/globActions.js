@@ -245,13 +245,13 @@ export const getCategories = (token) => {
   };
 };
 
-export const editBlog = (id, token, putData) => {
+export const editBlog = (blogId, token, putData) => {
   return async (dispatch) => {
     dispatch(setLoading(true));
 
     await frontEndApi
-      .put(FRONTEND_ROUTES.blogs + "/" + id, {
-        data: { ...putData, id },
+      .put(FRONTEND_ROUTES.blogs + "/" + blogId, {
+        data: { ...putData },
         token,
       })
       .then((resp) => {
@@ -280,6 +280,27 @@ export const editUser = (token, putData) => {
       })
       .catch((err) => {
         toast.error("Unable to Update user");
+        console.log("error", err);
+      });
+    dispatch(setLoading(false));
+  };
+};
+
+export const createBlog = (token, postData) => {
+  return async (dispatch) => {
+    dispatch(setLoading(true));
+
+    await frontEndApi
+      .post(FRONTEND_ROUTES.blogs, {
+        data: { ...postData },
+        token,
+      })
+      .then((resp) => {
+        // console.log("🚀 --- .Create Blog --- resp", resp.data);
+        // dispatch(getUser(putData.userId, token));
+      })
+      .catch((err) => {
+        toast.error("Unable to Create Blog");
         console.log("error", err);
       });
     dispatch(setLoading(false));

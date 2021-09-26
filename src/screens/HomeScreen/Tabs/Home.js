@@ -11,6 +11,7 @@ import GradientText from "../../../components/GradientText";
 import { useRouter } from "next/router";
 import * as actions from "../../../store/actions/actions";
 import Image from "next/image";
+import { avatar } from "../../../data/data";
 
 const Home = ({ scroll = 0, setTab }) => {
   const state = useSelector((state) => state.glob);
@@ -112,18 +113,16 @@ const Home = ({ scroll = 0, setTab }) => {
                 className="flex h-24 w-24 rounded-full overflow-hidden cursor-pointer shadow-xl hover:shadow-2xl transition-all"
                 onClick={userClickHandler}
               >
-                {state.user.profileImage && (
-                  <div className="flex w-full h-full ">
-                    <Image
-                      src={state.user.profileImage}
-                      layout="intrinsic"
-                      objectFit="cover"
-                      width={200}
-                      height={200}
-                      alt="Profile Image"
-                    />
-                  </div>
-                )}
+                <div className="flex w-full h-full ">
+                  <Image
+                    src={state.user.profileImage ?? avatar}
+                    layout="intrinsic"
+                    objectFit="cover"
+                    width={200}
+                    height={200}
+                    alt="Profile Image"
+                  />
+                </div>
               </div>
             </div>
             <div className="flex w-full">

@@ -69,7 +69,9 @@ const globReducer = (state = initialState, action) => {
       return { ...state, categories: action.payload };
 
     case actionTypes.SET_USER_BLOGS:
-      return { ...state, userBlogs: action.payload };
+      const blogsArray = [];
+      blogsArray.push(action.payload);
+      return { ...state, userBlogs: blogsArray }; //FIXME: Change it to normal action.payload
 
     default:
       return state;

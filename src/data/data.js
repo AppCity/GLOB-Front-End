@@ -221,3 +221,5 @@
 //   favorites: ["B-002", "B-004"],
 //   likes: ["B-002", "B-004"],
 // };
+
+export const avatar = "https://avatarfiles.alphacoders.com/834/83404.png";

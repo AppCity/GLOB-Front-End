@@ -28,4 +28,27 @@ export default async function handler(req, res) {
       res.status(error.response.status).json(errorMessage);
     }
   }
+  //Create Blog
+  if (req.method === "POST") {
+    try {
+      const token = req.body.token;
+      const postData = req.body.data;
+
+      const headers = {
+        Authorization: "Bearer " + token,
+      };
+
+      const { status, data } = await backEndApi.post(
+        BACKEND_ROUTES.blogs,
+        postData,
+        { headers }
+      );
+
+      res.status(status).json(data);
+    } catch (error) {
+      console.log("🚀 --- Create Blog --- error", error.response);
+      const errorMessage = error.response.data;
+      res.status(error.response.status).json(errorMessage);
+    }
+  }
 }

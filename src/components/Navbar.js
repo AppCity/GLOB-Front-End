@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../store/actions/actions";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { avatar } from "../data/data";
 
 const Navbar = (props) => {
   const { theme, setTheme } = useTheme();
@@ -107,12 +108,12 @@ const Navbar = (props) => {
           </div>
         )}
 
-        {state.isUserLoggedIn && state.user && state.user.profileImage && (
+        {state.isUserLoggedIn && state.user && (
           <div className="flex h-12 w-12 rounded-full overflow-hidden cursor-pointer hover:shadow-lg transition-all smd:hidden md:hidden lg:hidden xl:hidden 2xl:hidden ">
             {/* <img src={"/images/profile.png"} /> */}
             <div className="flex w-full h-full" onClick={goToSettings}>
               <Image
-                src={state.user.profileImage}
+                src={state.user.profileImage ?? avatar}
                 layout="intrinsic"
                 objectFit="cover"
                 width={200}

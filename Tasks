@@ -1,4 +1,23 @@
 /*------------------------------------------------------------
     TASKS:
 ------------------------------------------------------------*/
-7. FIX App Bar desktop for figma effect
+
+//FIXME: Category click, filter blogs
+//FIXME: Like clicked, like a blog
+//FIXME: Bookmark clicked, save blog to user favs
+//FIXME: BLog detail screen, text area moves when not in edit
+//FIXME: Image placeholder for loading images
+//FIXME: Store token in storage
+//FIXME: Use token on refresh or call refresh token if expired
+//FIXME: Settings page not visible if not authorized
+//FIXME: Update edit page after save with api
+//FIXME: Favorites tab, Show user favorites or No Fav found, clickable to see the blog
+//FIXME: Home Page, Navbar, Sidebar, Settings Page profile pic placeholder
+//FIXME: Blog card placeholder if blogs loading
+//FIXME: Edit a blog, refresh with new data 
+//FIXME: Delete a blog
+//FIXME: userBlogs object to array
+//FIXME: Create a blog -> Go to home page after creating
+//FIXME: 
+
+

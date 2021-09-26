@@ -11,6 +11,7 @@ import TextArea from "../../components/TextArea";
 import Dropdown from "../../components/Dropdown";
 import Input from "../../components/Input";
 import toast from "react-hot-toast";
+import { avatar } from "../../data/data";
 
 const SettingsScreen = (props) => {
   const state = useSelector((state) => state.glob);
@@ -19,8 +20,9 @@ const SettingsScreen = (props) => {
   const uploadLogoRef = useRef();
 
   const [editMode, setEditMode] = useState(false);
-  const [localImage, setLocalImage] = useState(state.user?.profileImage);
-  console.log("🚀 --- SettingsScreen --- localImage", localImage);
+  const [localImage, setLocalImage] = useState(
+    state.user?.profileImage ?? avatar
+  );
 
   const [data, setData] = useState({
     username: {
@@ -106,7 +108,7 @@ const SettingsScreen = (props) => {
         email: data.email.value,
         website: data.website.value, //FIXME: Check is saved on backend
         phone: data.phone.value,
-        profileImage: "", //FIXME: FIx image later
+        profileImage: avatar, //FIXME: FIx image later
       };
       console.log("🚀 --- editHandler --- putData", putData);
 
@@ -149,7 +151,7 @@ const SettingsScreen = (props) => {
       },
       isFormValid: true,
     });
-    setLocalImage(state.user?.profileImage);
+    setLocalImage(state.user?.profileImage ?? avatar);
   };
 
   const uploadImageHandler = async (e, type) => {

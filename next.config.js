@@ -22,6 +22,7 @@ module.exports = withOptimizedImages({
       "cdn.luxe.digital",
       "m.atcdn.co.uk",
       "www.silverkris.com",
+      "avatarfiles.alphacoders.com",
     ],
   },
   target: "serverless",
