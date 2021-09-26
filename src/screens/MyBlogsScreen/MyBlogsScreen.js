@@ -37,7 +37,7 @@ const MyBlogsScreen = (props) => {
                 <BlogsCard
                   image={item.image}
                   title={item.title}
-                  onClick={() => openBlogHandler(item._id)} //FIXME: id object fix later
+                  onClick={() => openBlogHandler(item.id)}
                   menuClickHandler={menuClickHandler}
                 />
               );

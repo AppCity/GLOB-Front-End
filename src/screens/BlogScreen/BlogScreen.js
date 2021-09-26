@@ -25,6 +25,7 @@ const BlogScreen = (props) => {
   const [isUserBlog, setIsUserBlog] = useState(false);
 
   const blogId = router.query.id;
+  console.log("🚀 --- BlogScreen --- blogId", blogId);
 
   const [data, setData] = useState({
     title: {

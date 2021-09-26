@@ -107,7 +107,7 @@ const Navbar = (props) => {
           </div>
         )}
 
-        {state.isUserLoggedIn && state.user && (
+        {state.isUserLoggedIn && state.user && state.user.profileImage && (
           <div className="flex h-12 w-12 rounded-full overflow-hidden cursor-pointer hover:shadow-lg transition-all smd:hidden md:hidden lg:hidden xl:hidden 2xl:hidden ">
             {/* <img src={"/images/profile.png"} /> */}
             <div className="flex w-full h-full" onClick={goToSettings}>

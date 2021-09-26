@@ -61,55 +61,57 @@ const Sidebar = (props) => {
         )}
       </div>
 
-      {state.isUserLoggedIn &&
-        state.user &&
-        state.user.blogsPreview.length > 0 && (
-          <div className="flex flex-col my-5">
-            <span className="flex pl-5">My Blogs</span>
-            <Scrollbar>
-              <div className="flex pl-5 space-x-3 -mt-5">
-                {state.userBlogs &&
-                  state.userBlogs.map((item, index) => {
-                    if (index < 5) {
-                      return (
-                        <BlogsCard
-                          id={item.id}
-                          image={item.image}
-                          title={item.title}
-                          onClick={() => openBlogHandler(item._id)} //FIXME: fix id object later
-                        />
-                      );
-                    } else if (index === 5) {
-                      return (
-                        <div
-                          className="flex items-center w-full pr-5"
-                          onClick={openMyBlogs}
-                        >
-                          <GradientText customCss="cursor-pointer">
-                            View all
-                          </GradientText>
-                        </div>
-                      );
-                    }
-                  })}
-              </div>
-            </Scrollbar>
-          </div>
-        )}
+      {state.isUserLoggedIn && state.user && state.userBlogs && (
+        <div className="flex flex-col my-5">
+          <span className="flex pl-5">My Blogs</span>
+          <Scrollbar>
+            <div className="flex pl-5 space-x-3 -mt-5">
+              {state.userBlogs &&
+                state.userBlogs.map((item, index) => {
+                  if (index < 5) {
+                    return (
+                      <BlogsCard
+                        id={item.id}
+                        image={item.image}
+                        title={item.title}
+                        onClick={() => openBlogHandler(item.id)}
+                      />
+                    );
+                  } else if (index === 5) {
+                    return (
+                      <div
+                        className="flex items-center w-full pr-5"
+                        onClick={openMyBlogs}
+                      >
+                        <GradientText customCss="cursor-pointer">
+                          View all
+                        </GradientText>
+                      </div>
+                    );
+                  }
+                })}
+            </div>
+          </Scrollbar>
+        </div>
+      )}
       {state.isUserLoggedIn && (
         <div className="flex flex-col text-xs text-gray-500 dark:text-gray-200 font-thin px-5 space-y-2 mt-1">
-          <div className="flex space-x-2">
-            <LinkIcon size="15" />
-            <span className="cursor-pointer">{userData.website}</span>
-          </div>
+          {state.user.website && (
+            <div className="flex space-x-2">
+              <LinkIcon size="15" />
+              <span className="cursor-pointer">{state.user.website}</span>
+            </div>
+          )}
           <div className="flex space-x-2">
             <GroupIcon size="15" />
-            <span>{userData.dailyReaders.toLocaleString()} daily readers</span>
+            <span>
+              {state.user.dailyReaders.toLocaleString()} daily readers
+            </span>
           </div>
           <div className="flex space-x-2">
             <DocsIcon size="15" />
             <span>
-              {userData.publishedArticles.toLocaleString()} published articles
+              {state.user.publishedArticles.toLocaleString()} published articles
             </span>
           </div>
         </div>

@@ -93,6 +93,7 @@ export const signup = (postData, callback) => {
 
       dispatch(setIsUserLoggedIn(true));
       dispatch(setToken(response.data.accessToken));
+      dispatch(setUser(response.data));
       callback && callback();
     } catch (error) {
       console.log("🚀 --- register --- error", error.response.data.message[0]);
@@ -119,6 +120,8 @@ export const login = (postData, callback) => {
 
       dispatch(setIsUserLoggedIn(true));
       dispatch(setToken(response.data.accessToken));
+      dispatch(setUser(response.data));
+
       callback && callback();
     } catch (error) {
       console.log("🚀 --- Login --- error", error.response.data.message[0]);
@@ -215,7 +218,7 @@ export const getUserBlogs = (userId, token) => {
     dispatch(setLoading(true));
 
     await frontEndApi
-      .get(FRONTEND_ROUTES.blogs, { userId: "6148c95a3427260004a7f020", token }) //FIXME: Remove the testing id later
+      .get(FRONTEND_ROUTES.blogs, { userId, token })
       .then((resp) => {
         console.log("User Blogs =>", resp.data);
         dispatch(setUserBlogs(resp.data));

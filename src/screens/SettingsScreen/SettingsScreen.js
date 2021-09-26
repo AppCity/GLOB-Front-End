@@ -20,7 +20,7 @@ const SettingsScreen = (props) => {
   const uploadLogoRef = useRef();
 
   const [editMode, setEditMode] = useState(false);
-  const [localImage, setLocalImage] = useState(state.user.profileImage);
+  const [localImage, setLocalImage] = useState(state.user?.profileImage);
   console.log("🚀 --- SettingsScreen --- localImage", localImage);
 
   const [data, setData] = useState({
@@ -156,7 +156,7 @@ const SettingsScreen = (props) => {
       },
       isFormValid: true,
     });
-    setLocalImage(state.user.profileImage);
+    setLocalImage(state.user?.profileImage);
   };
 
   const uploadImageHandler = async (e, type) => {

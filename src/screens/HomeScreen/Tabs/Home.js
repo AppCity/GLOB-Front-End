@@ -37,8 +37,8 @@ const Home = ({ scroll = 0, setTab }) => {
 
   useEffect(() => {
     dispatch(actions.getBlogs("token"));
-    state.isUserLoggedIn && dispatch(actions.getUser());
-  }, [state.isUserLoggedIn]);
+    // state.isUserLoggedIn && dispatch(actions.getUser());
+  }, []); //state.isUserLoggedIn
 
   useEffect(() => {
     state.user && dispatch(actions.getUserBlogs(state.user.id, state.token));
@@ -48,7 +48,7 @@ const Home = ({ scroll = 0, setTab }) => {
   const newsUi = state.blogs.map((item) => {
     return (
       <News
-        id={item._id} //FIXME: Change to id later
+        id={item.id}
         title={item.title}
         headline={item.headline}
         image={item.image}
@@ -111,16 +111,18 @@ const Home = ({ scroll = 0, setTab }) => {
                 className="flex h-24 w-24 rounded-full overflow-hidden cursor-pointer shadow-xl hover:shadow-2xl transition-all"
                 onClick={userClickHandler}
               >
-                <div className="flex w-full h-full ">
-                  <Image
-                    src={state.user.profileImage}
-                    layout="intrinsic"
-                    objectFit="cover"
-                    width={200}
-                    height={200}
-                    alt="Profile Image"
-                  />
-                </div>
+                {state.user.profileImage && (
+                  <div className="flex w-full h-full ">
+                    <Image
+                      src={state.user.profileImage}
+                      layout="intrinsic"
+                      objectFit="cover"
+                      width={200}
+                      height={200}
+                      alt="Profile Image"
+                    />
+                  </div>
+                )}
               </div>
             </div>
             <div className="flex w-full">
@@ -157,7 +159,7 @@ const Home = ({ scroll = 0, setTab }) => {
           smd:hidden md:hidden lg:hidden: xl:hidden 2xl:hidden
       "
       >
-        {state.userBlogs && state.userBlogs.length > 0 && (
+        {state.userBlogs && state.userBlogs && (
           <div className="flex flex-col">
             <div className="flex flex-col text-gray-600 dark:text-white h-24 space-y-2">
               <span className="text-xl">
@@ -175,8 +177,8 @@ const Home = ({ scroll = 0, setTab }) => {
                         <BlogsCard
                           image={item.image}
                           title={item.title}
-                          onClick={() => openBlogHandler(item._id)} //FIXME: id object fix later
-                          id={item._id} //FIXME: id object fix later
+                          onClick={() => openBlogHandler(item.id)}
+                          id={item.id}
                         />
                       );
                     } else if (index === 5) {
