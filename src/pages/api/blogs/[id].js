@@ -3,7 +3,7 @@ import { BACKEND_ROUTES } from "../../../constants/backendRoutes";
 
 export default async function handler(req, res) {
   console.log("🚀 --- handler --- req", req.method);
-
+  //Get blog
   if (req.method === "GET") {
     try {
       // const payload = { ...req.body };
@@ -23,6 +23,7 @@ export default async function handler(req, res) {
       res.status(error.response.status).json(errorMessage);
     }
   }
+  //Edit Blog
   if (req.method === "PUT") {
     try {
       const payload = { ...req.body.data };
@@ -44,6 +45,24 @@ export default async function handler(req, res) {
       res.status(status).json(data);
     } catch (error) {
       console.log("🚀 --- Blog ID --- error", error.response);
+      const errorMessage = error.response.data;
+      res.status(error.response.status).json(errorMessage);
+    }
+  }
+  //Delete blog
+  if (req.method === "DELETE") {
+    try {
+      const id = req.query.id;
+      const token = req.query.token;
+
+      const { status, data } = await backEndApi.delete(BACKEND_ROUTES.blogs, {
+        headers: { Authorization: "Bearer " + token },
+        params: { id },
+      });
+
+      res.status(status).json(data);
+    } catch (error) {
+      console.log("🚀 --- Delete blog --- error", error.response);
       const errorMessage = error.response.data;
       res.status(error.response.status).json(errorMessage);
     }

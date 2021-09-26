@@ -93,7 +93,9 @@ const AddBlogScreen = (props) => {
       image: "",
     };
 
-    dispatch(actions.createBlog(state.token, postData));
+    const callback = () => router.push("/");
+
+    dispatch(actions.createBlog(state.token, postData, callback));
   };
 
   const uploadImageHandler = async (e, type) => {

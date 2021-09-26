@@ -183,14 +183,13 @@ export const getBlog = (id) => {
     await frontEndApi
       .get(FRONTEND_ROUTES.blogs + "/" + id)
       .then((resp) => {
-        console.log("Blog =>", resp.data);
         dispatch(setBlog(resp.data));
       })
       .catch((err) => {
         toast.error("Unable to get blog");
         console.log("error", err);
-      });
-    dispatch(setLoading(false));
+      })
+      .finally(() => dispatch(setLoading(false)));
   };
 };
 
@@ -240,8 +239,8 @@ export const getCategories = (token) => {
       .catch((err) => {
         toast.error("Unable to get categories");
         console.log("error", err);
-      });
-    dispatch(setLoading(false));
+      })
+      .finally(() => dispatch(setLoading(false)));
   };
 };
 
@@ -255,14 +254,13 @@ export const editBlog = (blogId, token, putData) => {
         token,
       })
       .then((resp) => {
-        console.log("Edit Blog =>", resp.data);
-        // dispatch(setBlog(resp.data[0])); //FIXME: check
+        dispatch(getBlog(blogId));
       })
       .catch((err) => {
         toast.error("Unable to Edit blog");
         console.log("error", err);
-      });
-    dispatch(setLoading(false));
+      })
+      .finally(() => dispatch(setLoading(false)));
   };
 };
 
@@ -286,7 +284,7 @@ export const editUser = (token, putData) => {
   };
 };
 
-export const createBlog = (token, postData) => {
+export const createBlog = (token, postData, callback) => {
   return async (dispatch) => {
     dispatch(setLoading(true));
 
@@ -296,11 +294,35 @@ export const createBlog = (token, postData) => {
         token,
       })
       .then((resp) => {
+        if (callback) {
+          callback();
+        }
         // console.log("🚀 --- .Create Blog --- resp", resp.data);
-        // dispatch(getUser(putData.userId, token));
       })
       .catch((err) => {
         toast.error("Unable to Create Blog");
+        console.log("error", err);
+      });
+    dispatch(setLoading(false));
+  };
+};
+
+export const deleteBlog = (blogId, token, callback) => {
+  return async (dispatch) => {
+    dispatch(setLoading(true));
+
+    await frontEndApi
+      .delete(FRONTEND_ROUTES.blogs + "/" + blogId, {
+        params: { id: blogId, token },
+      })
+      .then((resp) => {
+        if (callback) {
+          callback();
+        }
+        // console.log("Delete Blog =>", resp.data);
+      })
+      .catch((err) => {
+        toast.error("Unable to Delete blog");
         console.log("error", err);
       });
     dispatch(setLoading(false));

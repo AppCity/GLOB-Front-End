@@ -150,8 +150,9 @@ const BlogScreen = (props) => {
   const chooseFile = () => uploadLogoRef.current.click();
 
   useEffect(() => {
+    // !state.blog &&
     dispatch(actions.getBlog(blogId));
-  }, [blogId]);
+  }, []);
 
   useEffect(() => {
     dispatch(actions.setLoading(true));
@@ -192,11 +193,13 @@ const BlogScreen = (props) => {
     }
 
     state.user && checkIfUserBlog();
+  }, [state.blog, blogId]);
 
+  useEffect(() => {
     return () => {
       state.blog && dispatch(actions.setBlog(null));
     };
-  }, [state.blog, blogId]);
+  }, []);
 
   const checkIfUserBlog = () => {
     setIsUserBlog(false);
@@ -245,7 +248,8 @@ const BlogScreen = (props) => {
   };
 
   const deleteHandler = () => {
-    console.log("Delete blog =>", blogId);
+    const callback = () => router.push("/");
+    dispatch(actions.deleteBlog(blogId, state.token, callback));
   };
 
   return (
