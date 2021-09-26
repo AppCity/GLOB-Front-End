@@ -1,6 +1,5 @@
 import { backEndApi } from "../../../api/axios";
 import { BACKEND_ROUTES } from "../../../constants/backendRoutes";
-import { blogs } from "../../../data/data";
 
 export default async function handler(req, res) {
   console.log("🚀 --- handler --- req", req.method);
@@ -32,7 +31,6 @@ export default async function handler(req, res) {
       console.log("🚀 --- handler --- payload", payload);
       // const id = req.body.id;
 
-      // const status = 200;
       // const data = blogs.find((item) => item.id === id);
 
       const { status, data } = await backEndApi.put(

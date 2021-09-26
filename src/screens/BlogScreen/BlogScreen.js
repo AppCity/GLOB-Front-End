@@ -8,7 +8,6 @@ import GradientText from "../../components/GradientText";
 import Input from "../../components/Input";
 import TextArea from "../../components/TextArea";
 import TextButton from "../../components/TextButton";
-import { categories } from "../../data/data";
 import Image from "next/image";
 import * as actions from "../../store/actions/actions";
 import EditIcon from "../../components/Icons/EditIcon";
@@ -25,7 +24,6 @@ const BlogScreen = (props) => {
   const [isUserBlog, setIsUserBlog] = useState(false);
 
   const blogId = router.query.id;
-  console.log("🚀 --- BlogScreen --- blogId", blogId);
 
   const [data, setData] = useState({
     title: {
@@ -308,7 +306,7 @@ const BlogScreen = (props) => {
         {editMode && (
           <Dropdown
             label="Category"
-            data={categories}
+            data={state.categories}
             setCategory={(val) => dataHandler("category", val)}
             category={data.category.value}
           />

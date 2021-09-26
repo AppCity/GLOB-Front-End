@@ -10,7 +10,6 @@ import TextButton from "../../components/TextButton";
 import TextArea from "../../components/TextArea";
 import Dropdown from "../../components/Dropdown";
 import Input from "../../components/Input";
-import { categories } from "../../data/data";
 import toast from "react-hot-toast";
 
 const SettingsScreen = (props) => {

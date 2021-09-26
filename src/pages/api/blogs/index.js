@@ -1,6 +1,5 @@
 import { backEndApi } from "../../../api/axios";
 import { BACKEND_ROUTES } from "../../../constants/backendRoutes";
-import { blogs } from "../../../data/data";
 
 export default async function handler(req, res) {
   //Get Blogs
@@ -21,10 +20,6 @@ export default async function handler(req, res) {
         headers,
         params,
       });
-
-      //TODO: Remove later, for testing only
-      // const status = 200;
-      // const data = blogs;
 
       res.status(status).json(data);
     } catch (error) {

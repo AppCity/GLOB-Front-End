@@ -3,7 +3,6 @@ import { useState, useEffect, useCallback } from "react";
 import Categories from "../../../components/Categories";
 import Scrollbar from "../../../components/Scrollbar";
 
-import { categories } from "../../../data/data";
 import News from "../../../components/News";
 import BlogsCard from "../../../components/BlogsCard";
 
@@ -64,15 +63,16 @@ const Home = ({ scroll = 0, setTab }) => {
     <div className="sticky top-20 w-full z-30 smd:hidden md:hidden lg:hidden xl:hidden 2xl:hidden">
       <Scrollbar>
         <div className="flex py-4 pl-4 space-x-3 items-center">
-          {categories.map((item) => {
-            return (
-              <Categories
-                title={item.title}
-                active={item.value === categoryState}
-                onClick={() => categoryStateHandler(item.value)}
-              />
-            );
-          })}
+          {state.categories &&
+            state.categories.map((item) => {
+              return (
+                <Categories
+                  title={item.title}
+                  active={item.value === categoryState}
+                  onClick={() => categoryStateHandler(item.value)}
+                />
+              );
+            })}
         </div>
       </Scrollbar>
     </div>

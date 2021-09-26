@@ -8,7 +8,6 @@ import GradientText from "../../components/GradientText";
 import Input from "../../components/Input";
 import TextArea from "../../components/TextArea";
 import TextButton from "../../components/TextButton";
-import { categories } from "../../data/data";
 import Image from "next/image";
 import * as actions from "../../store/actions/actions";
 
@@ -39,7 +38,7 @@ const AddBlogScreen = (props) => {
       touched: false,
     },
     category: {
-      value: categories[0].title,
+      value: state.categories[0].title,
       isRequired: true,
       isValid: true,
       touched: false,
@@ -176,7 +175,7 @@ const AddBlogScreen = (props) => {
 
         <Dropdown
           label="Category"
-          data={categories}
+          data={state.categories}
           setCategory={(val) => dataHandler("category", val)}
           category={data.category.value}
         />

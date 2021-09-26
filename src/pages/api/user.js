@@ -1,6 +1,5 @@
 import { backEndApi } from "../../api/axios";
 import { BACKEND_ROUTES } from "../../constants/backendRoutes";
-import { userData } from "../../data/data";
 
 export default async function handler(req, res) {
   if (req.method === "GET") {

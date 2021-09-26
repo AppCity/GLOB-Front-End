@@ -11,7 +11,6 @@ import GroupIcon from "./Icons/GroupIcon";
 import LinkIcon from "./Icons/LinkIcon";
 import BlogsCard from "./BlogsCard";
 import AddIcon from "./Icons/AddIcon";
-import { categories, userData } from "../data/data";
 import * as actions from "../store/actions/actions";
 
 const Sidebar = (props) => {
@@ -125,16 +124,17 @@ const Sidebar = (props) => {
 
         <Scrollbar>
           <div className="flex space-x-3 pl-5 -mt-5">
-            {categories.map((item) => {
-              return (
-                <Categories
-                  title={item.title}
-                  image={item.image}
-                  card
-                  onClick={() => categoryHandler(item.value)}
-                />
-              );
-            })}
+            {state.categories &&
+              state.categories.map((item) => {
+                return (
+                  <Categories
+                    title={item.title}
+                    image={item.image}
+                    card
+                    onClick={() => categoryHandler(item.value)}
+                  />
+                );
+              })}
           </div>
         </Scrollbar>
       </div>

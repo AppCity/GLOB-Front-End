@@ -238,7 +238,6 @@ export const getCategories = (token) => {
     frontEndApi
       .get(FRONTEND_ROUTES.categories, { params: { token } })
       .then((resp) => {
-        console.log("categories =>", resp.data);
         dispatch(setCategories(resp.data));
       })
       .catch((err) => {
