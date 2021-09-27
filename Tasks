@@ -6,7 +6,6 @@
 //FIXME: Like clicked, like a blog
 //FIXME: Bookmark clicked, save blog to user favs
 //FIXME: BLog detail screen, text area moves when not in edit
-//FIXME: Image placeholder for loading images
 //FIXME: Store token in storage
 //FIXME: Use token on refresh or call refresh token if expired
 //FIXME: Settings page not visible if not authorized

@@ -12,6 +12,7 @@ import { useRouter } from "next/router";
 import * as actions from "../../../store/actions/actions";
 import Image from "next/image";
 import { avatar } from "../../../data/data";
+import Skeleton from "react-loading-skeleton";
 
 const Home = ({ scroll = 0, setTab }) => {
   const state = useSelector((state) => state.glob);
@@ -57,6 +58,16 @@ const Home = ({ scroll = 0, setTab }) => {
     );
   });
 
+  const skeletonBlogs = new Array(15).fill("");
+
+  const blogsSkeleton = skeletonBlogs.map((item) => {
+    return (
+      <div className="h-40 rounded-lg overflow-hidden">
+        <Skeleton className="w-full h-40" />
+      </div>
+    );
+  });
+
   //Mobile - Categories Bar
   const categoriesBarUi = (
     <div className="sticky top-20 w-full z-30 smd:hidden md:hidden lg:hidden xl:hidden 2xl:hidden">
@@ -81,7 +92,7 @@ const Home = ({ scroll = 0, setTab }) => {
     <div className="flex w-full flex-col">
       <div className="flex flex-col space-y-3 w-full ">
         <span className="text-gray-500 dark:text-white">Latest News</span>
-        {newsUi}
+        {state.blogs.length > 0 ? newsUi : blogsSkeleton}
       </div>
     </div>
   );
@@ -196,7 +207,8 @@ const Home = ({ scroll = 0, setTab }) => {
           </div>
         )}
         <span className="text-grey dark:text-bg">Latest News</span>
-        {newsUi}
+
+        {state.blogs.length > 0 ? newsUi : blogsSkeleton}
       </div>
     </div>
   );

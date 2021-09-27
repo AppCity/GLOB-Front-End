@@ -12,12 +12,14 @@ import Dropdown from "../../components/Dropdown";
 import Input from "../../components/Input";
 import toast from "react-hot-toast";
 import { avatar } from "../../data/data";
+import Skeleton from "react-loading-skeleton";
 
 const SettingsScreen = (props) => {
   const state = useSelector((state) => state.glob);
   const router = useRouter();
   const dispatch = useDispatch();
   const uploadLogoRef = useRef();
+  const [isSkeletonLoaded, setIsSkeletonLoaded] = useState(true);
 
   const [editMode, setEditMode] = useState(false);
   const [localImage, setLocalImage] = useState(
@@ -203,6 +205,8 @@ const SettingsScreen = (props) => {
     }
   }, []);
 
+  const avatarSkeleton = <Skeleton width={240} height={240} circle />;
+
   return (
     <div className="flex w-full h-full mt-24 z-10 p-5 flex-col items-center space-y-5 smd:ml-16 smd:mr-[216px] md:ml-16 md:mr-[264px] xl:mr-[295px] mb-20 smd:mb-0 md:mb-0">
       <GradientText customCss="text-3xl sm:text-4xl md:text-5xl font-extrabold">
@@ -222,6 +226,8 @@ const SettingsScreen = (props) => {
             editMode && chooseFile();
           }}
         >
+          {isSkeletonLoaded && avatarSkeleton}
+
           {localImage && (
             <Image
               src={localImage}
@@ -234,6 +240,7 @@ const SettingsScreen = (props) => {
               //   editMode && chooseFile();
               // }}
               unoptimized
+              onLoad={() => setIsSkeletonLoaded(false)}
             />
           )}
           <input

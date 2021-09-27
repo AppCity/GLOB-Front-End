@@ -1,6 +1,8 @@
 import { useRouter } from "next/router";
 import { useState, useEffect, useRef } from "react";
 import toast from "react-hot-toast";
+import Skeleton from "react-loading-skeleton";
+
 import { useSelector, useDispatch } from "react-redux";
 import Button from "../../components/Button";
 import Dropdown from "../../components/Dropdown";
@@ -22,6 +24,7 @@ const BlogScreen = (props) => {
   const [localImage, setLocalImage] = useState();
   const [editMode, setEditMode] = useState(router.query.editMode ?? false);
   const [isUserBlog, setIsUserBlog] = useState(false);
+  const [skeletonLoading, setSkeletonLoading] = useState(true);
 
   const blogId = router.query.id;
 
@@ -150,12 +153,11 @@ const BlogScreen = (props) => {
   const chooseFile = () => uploadLogoRef.current.click();
 
   useEffect(() => {
-    // !state.blog &&
     dispatch(actions.getBlog(blogId));
   }, []);
 
   useEffect(() => {
-    dispatch(actions.setLoading(true));
+    // dispatch(actions.setLoading(true));
     if (state.blog) {
       setData({
         title: {
@@ -197,7 +199,7 @@ const BlogScreen = (props) => {
 
   useEffect(() => {
     return () => {
-      state.blog && dispatch(actions.setBlog(null));
+      dispatch(actions.setBlog(null));
     };
   }, []);
 
@@ -279,9 +281,11 @@ const BlogScreen = (props) => {
             height={400}
             objectFit="cover"
             className="rounded-lg shadow-lg"
-            onLoad={() => dispatch(actions.setLoading(false))}
+            onLoad={() => setSkeletonLoading(false)}
           />
         )}
+
+        {skeletonLoading && <Skeleton className="rounded-lg h-[400px]" />}
 
         <Input
           autoFocus
