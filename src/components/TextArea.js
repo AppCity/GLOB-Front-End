@@ -70,7 +70,7 @@ const TextArea = ({
               : "border-none"
           } dark:text-white bg-transparent transition-all rounded-none focus:outline-none ${css}
           ${!editMode && textCss}
-          
+          ${editMode ? "" : "resize-none"}
           `}
           required={required}
           minLength={minLength}

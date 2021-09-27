@@ -26,9 +26,7 @@ export default async function handler(req, res) {
   if (req.method === "PUT") {
     try {
       const payload = { ...req.body.data };
-      console.log("🚀 --- handler --- payload", payload);
       const token = req.body.token;
-      console.log("🚀 --- handler --- token", token);
 
       const { status, data } = await backEndApi.put(
         BACKEND_ROUTES.user,

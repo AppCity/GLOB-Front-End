@@ -144,11 +144,10 @@ const AddBlogScreen = (props) => {
     uploadLogoRef.current.click();
   };
 
-  useEffect(() => {
-    if (!state.isUserLoggedIn) {
-      router.push("/authentication");
-    }
-  }, []);
+  if (!state.isUserLoggedIn) {
+    router.push("/authentication");
+    return <></>;
+  }
 
   return (
     <div className="flex w-full h-full mt-24 z-10 p-5 flex-col items-center space-y-5 smd:ml-16 smd:mr-[216px] md:ml-16 md:mr-[264px] xl:mr-[295px] mb-20 smd:mb-0 md:mb-0">

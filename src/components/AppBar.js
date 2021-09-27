@@ -18,17 +18,15 @@ const AppBar = (props) => {
   const router = useRouter();
 
   const addBlogHandler = () => {
-    console.log("Add blog");
-
     router.push("/addblog");
   };
 
   const loginHandler = () => {
-    console.log("Login Pressed");
     router.push("/authentication");
   };
   const logoutHandler = () => {
     dispatch(actions.logout(state.token));
+    router.replace("/");
   };
 
   return (

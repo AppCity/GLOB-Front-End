@@ -106,7 +106,7 @@ const BlogScreen = (props) => {
       // image: localImage,//FIXME: Fix later
     };
     toggleEditMode();
-    dispatch(actions.editBlog(blogId, state.token, putData)); //FIXME: fix id
+    dispatch(actions.editBlog(blogId, state.token, putData));
   };
 
   const uploadImageHandler = async (e, type) => {

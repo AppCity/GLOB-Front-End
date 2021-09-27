@@ -23,13 +23,13 @@ const Sidebar = (props) => {
 
   const loginHandler = useCallback(() => router.push("/authentication"));
 
-  const logoutHandler = useCallback(() =>
-    dispatch(actions.logout(state.token))
-  );
+  const logoutHandler = useCallback(() => {
+    dispatch(actions.logout(state.token));
+    router.replace("/");
+  });
 
   const addNewBlogHandler = useCallback(() => router.push("/addblog"));
   const openBlogHandler = useCallback((id) => {
-    console.log("🚀 --- openBlogHandler --- id", id);
     router.push("/blogs/" + id);
   });
 
@@ -62,10 +62,13 @@ const Sidebar = (props) => {
 
       {state.isUserLoggedIn && state.user && state.userBlogs && (
         <div className="flex flex-col my-5">
-          <span className="flex pl-5">My Blogs</span>
+          {state.userBlogs && state.userBlogs.length > 0 && (
+            <span className="flex pl-5">My Blogs</span>
+          )}
           <Scrollbar>
             <div className="flex pl-5 space-x-3 -mt-5">
               {state.userBlogs &&
+                state.userBlogs.length > 0 &&
                 state.userBlogs.map((item, index) => {
                   if (index < 5) {
                     return (

@@ -5,11 +5,6 @@
 //FIXME: Category click, filter blogs
 //FIXME: Like clicked, like a blog
 //FIXME: Bookmark clicked, save blog to user favs
-//FIXME: BLog detail screen, text area moves when not in edit
 //FIXME: Store token in storage
 //FIXME: Use token on refresh or call refresh token if expired
-//FIXME: Settings page not visible if not authorized
-//FIXME: Favorites tab, Show user favorites or No Fav found, clickable to see the blog
-//FIXME: userBlogs object to array
-
-
+//FIXME: Favorites tab, Show user favorites, clickable to see the blog

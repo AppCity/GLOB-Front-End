@@ -22,37 +22,43 @@ const SettingsScreen = (props) => {
   const [isSkeletonLoaded, setIsSkeletonLoaded] = useState(true);
 
   const [editMode, setEditMode] = useState(false);
+
+  if (!state.isUserLoggedIn) {
+    router.push("/authentication");
+    return <></>;
+  }
+
   const [localImage, setLocalImage] = useState(
     state.user?.profileImage ?? avatar
   );
 
   const [data, setData] = useState({
     username: {
-      value: state.user.username,
+      value: state.user?.username,
       isRequired: true,
       isValid: false,
       touched: false,
     },
     fullname: {
-      value: state.user.fullname,
+      value: state.user?.fullname,
       isRequired: true,
       isValid: false,
       touched: false,
     },
     email: {
-      value: state.user.email,
+      value: state.user?.email,
       isRequired: true,
       isValid: false,
       touched: false,
     },
     website: {
-      value: state.user.website,
+      value: state.user?.website,
       isRequired: true,
       isValid: true,
       touched: false,
     },
     phone: {
-      value: state.user.phone,
+      value: state.user?.phone,
       isRequired: true,
       isValid: true,
       touched: false,
@@ -112,7 +118,6 @@ const SettingsScreen = (props) => {
         phone: data.phone.value,
         profileImage: avatar, //FIXME: FIx image later
       };
-      console.log("🚀 --- editHandler --- putData", putData);
 
       dispatch(actions.editUser(state.token, putData));
     }

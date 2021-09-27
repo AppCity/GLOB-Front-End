@@ -25,6 +25,7 @@ module.exports = withOptimizedImages({
       "avatarfiles.alphacoders.com",
       "neilpatel.com",
       "i1.wp.com",
+      "res.cloudinary.com",
     ],
   },
   target: "serverless",

@@ -192,10 +192,13 @@ const Home = ({ scroll = 0, setTab }) => {
               </span>
               <span className="text-4xl font-extrabold">What’s Next?</span>
             </div>
-            <span className="flex text-grey dark:text-bg">My Blogs</span>
+            {state.userBlogs && state.userBlogs.length > 0 && (
+              <span className="flex text-grey dark:text-bg">My Blogs</span>
+            )}
             <Scrollbar>
               <div className="flex space-x-3 -mt-5">
                 {state.userBlogs &&
+                  state.userBlogs.length > 0 &&
                   state.userBlogs.map((item, index) => {
                     if (index < 5) {
                       return (

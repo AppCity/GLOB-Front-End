@@ -82,6 +82,12 @@ export const setUserBlogs = (value) => {
   };
 };
 
+export const clearData = () => {
+  return {
+    type: types.CLEAR_DATA,
+  };
+};
+
 //Middleware
 export const signup = (postData, callback) => {
   return async (dispatch) => {
@@ -140,7 +146,6 @@ export const login = (postData, callback) => {
 
 export const logout = (token) => {
   return (dispatch) => {
-    // dispatch(messageStatus(null))
     // dispatch(setLoading(true))
 
     frontEndApi
@@ -154,7 +159,9 @@ export const logout = (token) => {
         toast.error("Something went wrong");
         console.log("error", err);
         // dispatch(setLoading(false))
-        // dispatch(messageStatus("Error"))
+      })
+      .finally(() => {
+        dispatch(clearData());
       });
   };
 };
