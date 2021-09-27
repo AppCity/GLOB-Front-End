@@ -62,7 +62,7 @@ const AddBlogScreen = (props) => {
     const currentState = { ...data };
     const currentField = { ...currentState[formField] };
 
-    currentField.value = value.trim();
+    currentField.value = value; //.trim();
     currentField.touched = true;
     currentState[formField] = currentField;
     //Fields Validation
