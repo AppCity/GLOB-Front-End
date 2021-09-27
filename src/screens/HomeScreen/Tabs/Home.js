@@ -21,6 +21,7 @@ const Home = ({ scroll = 0, setTab }) => {
   const router = useRouter();
 
   const [categoryState, setCategoryState] = useState("technology");
+  const [isSkeletonLoaded, setIsSkeletonLoaded] = useState(true);
 
   const categoryStateHandler = (value) => {
     setCategoryState(value);
@@ -62,8 +63,18 @@ const Home = ({ scroll = 0, setTab }) => {
 
   const blogsSkeleton = skeletonBlogs.map((item) => {
     return (
-      <div className="h-40 rounded-lg overflow-hidden">
-        <Skeleton className="w-full h-40" />
+      <div>
+        <div className="bg-white rounded-xl flex bg-opacity-30 backdrop-filter backdrop-blur-md shadow-md hover:shadow-lg transition-all cursor-pointer dark:bg-black dark:bg-opacity-60 items-center">
+          <div className="flex h-full rounded-xl overflow-hidden">
+            <Skeleton className="flex h-32" width={125} />
+          </div>
+
+          <div className="flex flex-col space-y-2 px-5 py-3 overflow-hidden">
+            <Skeleton className="flex h-2" width={700} height={40} />
+
+            <Skeleton className="flex h-2" width={700} height={100} />
+          </div>
+        </div>
       </div>
     );
   });
@@ -97,6 +108,8 @@ const Home = ({ scroll = 0, setTab }) => {
     </div>
   );
 
+  const avatarSkeleton = <Skeleton width={100} height={100} circle />;
+
   return (
     <div className="flex flex-col items-start  w-full">
       {/* Mobile */}
@@ -121,7 +134,7 @@ const Home = ({ scroll = 0, setTab }) => {
                 className="flex h-24 w-24 rounded-full overflow-hidden cursor-pointer shadow-xl hover:shadow-2xl transition-all"
                 onClick={userClickHandler}
               >
-                <div className="flex w-full h-full ">
+                <div className="flex w-full h-full">
                   <Image
                     src={state.user.profileImage ?? avatar}
                     layout="intrinsic"
@@ -129,7 +142,11 @@ const Home = ({ scroll = 0, setTab }) => {
                     width={200}
                     height={200}
                     alt="Profile Image"
+                    onLoad={() =>
+                      setTimeout(() => setIsSkeletonLoaded(false), 1000)
+                    }
                   />
+                  {isSkeletonLoaded && avatarSkeleton}
                 </div>
               </div>
             </div>

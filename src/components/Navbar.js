@@ -12,6 +12,7 @@ import * as actions from "../store/actions/actions";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { avatar } from "../data/data";
+import Skeleton from "react-loading-skeleton";
 
 const Navbar = (props) => {
   const { theme, setTheme } = useTheme();
@@ -22,6 +23,7 @@ const Navbar = (props) => {
   const [isSearchIconHover, setIsSearchIconHover] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchText, setSearchText] = useState("");
+  const [isSkeletonLoaded, setIsSkeletonLoaded] = useState(true);
 
   const toggleSearchHover = () => setIsSearchIconHover(!isSearchIconHover);
   const toggleSearchBar = () => setIsSearchOpen(!isSearchOpen);
@@ -36,6 +38,8 @@ const Navbar = (props) => {
   };
 
   const goToSettings = () => router.push("/settings");
+
+  const avatarSkeleton = <Skeleton width={50} height={50} circle />;
 
   return (
     <div className="flex fixed w-full z-20">
@@ -110,7 +114,6 @@ const Navbar = (props) => {
 
         {state.isUserLoggedIn && state.user && (
           <div className="flex h-12 w-12 rounded-full overflow-hidden cursor-pointer hover:shadow-lg transition-all smd:hidden md:hidden lg:hidden xl:hidden 2xl:hidden ">
-            {/* <img src={"/images/profile.png"} /> */}
             <div className="flex w-full h-full" onClick={goToSettings}>
               <Image
                 src={state.user.profileImage ?? avatar}
@@ -119,7 +122,11 @@ const Navbar = (props) => {
                 width={200}
                 height={200}
                 alt="Profile Image"
+                onLoad={() =>
+                  setTimeout(() => setIsSkeletonLoaded(false), 1000)
+                }
               />
+              {isSkeletonLoaded && avatarSkeleton}
             </div>
           </div>
         )}

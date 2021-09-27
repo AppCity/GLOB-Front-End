@@ -240,7 +240,7 @@ const SettingsScreen = (props) => {
               //   editMode && chooseFile();
               // }}
               unoptimized
-              onLoad={() => setIsSkeletonLoaded(false)}
+              onLoad={() => setTimeout(() => setIsSkeletonLoaded(false), 1000)}
             />
           )}
           <input

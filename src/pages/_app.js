@@ -25,8 +25,8 @@ const WrappedApp = ({ Component, pageProps }) => {
   return (
     <ThemeProvider attribute="class" enableSystem={false}>
       <SkeletonTheme
-        color={state.theme === "light" ? "#FDFCFD" : "#1F252B"}
-        highlightColor={state.theme === "light" ? "#fff" : "#444444"}
+        color={state.theme === "light" ? "#FEF1E6" : "#424642"}
+        highlightColor={state.theme === "light" ? "#F9D5A7" : "#FF7B48"}
       >
         <Toaster
           position="bottom-center"
