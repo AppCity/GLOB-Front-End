@@ -10,7 +10,7 @@
 //FIXME: Use token on refresh or call refresh token if expired
 //FIXME: Settings page not visible if not authorized
 //FIXME: Favorites tab, Show user favorites or No Fav found, clickable to see the blog
-//FIXME: Home Page, Navbar, Sidebar, Settings Page profile pic placeholder
+//FIXME: Home Page, Navbar, Sidebar profile pic placeholder
 //FIXME: Blog card placeholder if blogs loading
 //FIXME: userBlogs object to array
 
