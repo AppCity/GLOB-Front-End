@@ -343,7 +343,7 @@ export const deleteBlog = (blogId, token, callback) => {
   };
 };
 
-export const blogLikeUnlike = ({ token, blogId, userId, active, callback }) => {
+export const updateLike = ({ token, blogId, userId, active, callback }) => {
   return async (dispatch) => {
     dispatch(setLoading(true));
 
@@ -366,6 +366,40 @@ export const blogLikeUnlike = ({ token, blogId, userId, active, callback }) => {
       })
       .catch((err) => {
         toast.error("Unable to Like blog");
+        console.log("error", err);
+      });
+    dispatch(setLoading(false));
+  };
+};
+
+export const updateBookmark = ({
+  token,
+  blogId,
+  userId,
+  favorite,
+  callback,
+}) => {
+  return async (dispatch) => {
+    dispatch(setLoading(true));
+
+    await frontEndApi
+      .put(FRONTEND_ROUTES.blogs, {
+        token,
+        id: blogId,
+        userId,
+        favorite,
+      })
+      .then((resp) => {
+        if (callback) {
+          callback();
+        }
+        if (resp.data.description) {
+          toast.error(resp.data.description);
+        }
+        dispatch(getBlogs());
+      })
+      .catch((err) => {
+        toast.error("Unable to Bookmark blog");
         console.log("error", err);
       });
     dispatch(setLoading(false));

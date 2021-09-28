@@ -2,7 +2,7 @@
     TASKS:
 ------------------------------------------------------------*/
 
-//FIXME: Bookmark clicked, save blog to user favs
 //FIXME: Store token in storage
 //FIXME: Use token on refresh or call refresh token if expired
 //FIXME: Favorites tab, Show user favorites, clickable to see the blog
+//FIXME: Infinite scrolling

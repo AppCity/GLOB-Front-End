@@ -23,8 +23,9 @@ const News = ({
 
   const likeHandler = useCallback(() => {
     if (state.isUserLoggedIn) {
+      //FIXME: Unlike when already liked check
       dispatch(
-        actions.blogLikeUnlike({
+        actions.updateLike({
           active: true,
           blogId: id,
           token: state.token,
@@ -38,7 +39,15 @@ const News = ({
 
   const bookmarkHandler = useCallback(() => {
     if (state.isUserLoggedIn) {
-      console.log("Bookmark =>", id);
+      //FIXME: remove favorite when already liked check
+      dispatch(
+        actions.updateBookmark({
+          favorite: true,
+          blogId: id,
+          token: state.token,
+          userId: state.user.userId,
+        })
+      );
     } else {
       toast.error("Login to bookmark a post");
     }

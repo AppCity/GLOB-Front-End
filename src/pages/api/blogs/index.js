@@ -48,7 +48,7 @@ export default async function handler(req, res) {
 
       res.status(status).json(data);
     } catch (error) {
-      console.log("🚀 --- Create Blog --- error", error.response);
+      console.log("🚀 --- Update Blog --- error", error.response);
       const errorMessage = error.response.data;
       res.status(error.response.status).json(errorMessage);
     }
@@ -60,11 +60,13 @@ export default async function handler(req, res) {
       const id = req.body.id;
       const userId = req.body.userId;
       const active = req.body.active;
+      const favorite = req.body.favorite;
 
-      const postData = {
+      const putData = {
         id,
         userId,
         active,
+        favorite,
       };
 
       const headers = {
@@ -73,13 +75,13 @@ export default async function handler(req, res) {
 
       const { status, data } = await backEndApi.put(
         BACKEND_ROUTES.blogs,
-        postData,
+        putData,
         { headers }
       );
 
       res.status(status).json(data);
     } catch (error) {
-      console.log("🚀 --- Create Blog --- error", error.response);
+      console.log("🚀 --- Update Blog --- error", error.response);
       const errorMessage = error.response.data;
       res.status(error.response.status).json(errorMessage);
     }
