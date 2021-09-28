@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AppBar from "../components/AppBar";
 import Navbar from "../components/Navbar";
@@ -15,6 +15,15 @@ const Layout = ({ children }) => {
   const { pathname } = useRouter();
 
   const isAuthenticationPage = pathname === "/authentication";
+
+  useLayoutEffect(() => {
+    const token = localStorage.getItem("token");
+    console.log("🚀 --- useLayoutEffect --- token", token);
+
+    if (token) {
+      dispatch(actions.setToken(token));
+    }
+  }, []);
 
   useEffect(() => {
     dispatch(actions.getCategories(state.token));

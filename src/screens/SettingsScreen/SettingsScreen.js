@@ -114,7 +114,7 @@ const SettingsScreen = (props) => {
         username: data.username.value,
         fullname: data.fullname.value,
         email: data.email.value,
-        website: data.website.value, //FIXME: Check is saved on backend
+        website: data.website.value,
         phone: data.phone.value,
         profileImage: avatar, //FIXME: FIx image later
       };

@@ -107,6 +107,9 @@ export const signup = (postData, callback) => {
       dispatch(setIsUserLoggedIn(true));
       dispatch(setToken(response.data.accessToken));
       dispatch(setUser(response.data));
+
+      localStorage.setItem("token", response.data.accessToken);
+
       callback && callback();
     } catch (error) {
       console.log("🚀 --- register --- error", error.response.data.message[0]);
@@ -134,6 +137,8 @@ export const login = (postData, callback) => {
       dispatch(setIsUserLoggedIn(true));
       dispatch(setToken(response.data.accessToken));
       dispatch(setUser(response.data));
+
+      localStorage.setItem("token", response.data.accessToken);
 
       callback && callback();
     } catch (error) {
