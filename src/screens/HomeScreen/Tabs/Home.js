@@ -68,15 +68,15 @@ const Home = ({ scroll = 0, setTab }) => {
   const blogsSkeleton = skeletonBlogs.map((item) => {
     return (
       <div>
-        <div className="bg-white rounded-xl flex bg-opacity-30 backdrop-filter backdrop-blur-md shadow-md hover:shadow-lg transition-all cursor-pointer dark:bg-black dark:bg-opacity-60 items-center">
-          <div className="flex h-full rounded-xl overflow-hidden">
-            <Skeleton className="flex h-32" width={125} />
+        <div className="bg-white rounded-xl flex bg-opacity-30 backdrop-filter backdrop-blur-md shadow-md hover:shadow-lg transition-all cursor-pointer dark:bg-black dark:bg-opacity-60">
+          <div className="flex flex-col w-24 rounded-xl h-full overflow-hidden">
+            <Skeleton className="flex h-20" />
           </div>
 
-          <div className="flex flex-col space-y-2 px-5 py-3 overflow-hidden">
-            <Skeleton className="flex h-2" width={700} height={40} />
+          <div className="flex flex-col space-y-1 px-5 py-1 overflow-hidden w-full h-full">
+            <Skeleton className="flex h-3" />
 
-            <Skeleton className="flex h-2" width={700} height={100} />
+            <Skeleton className="flex h-10" />
           </div>
         </div>
       </div>
