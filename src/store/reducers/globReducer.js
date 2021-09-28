@@ -14,6 +14,7 @@ const initialState = {
   blog: null,
   user: null,
   categories: null,
+  category: null,
   userBlogs: null,
 };
 
@@ -73,6 +74,9 @@ const globReducer = (state = initialState, action) => {
 
     case actionTypes.CLEAR_DATA:
       return { ...state, user: null, blog: null, userBlogs: null };
+
+    case actionTypes.SET_CATEGORY:
+      return { ...state, category: action.payload };
 
     default:
       return state;

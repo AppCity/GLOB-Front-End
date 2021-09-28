@@ -2,7 +2,6 @@
     TASKS:
 ------------------------------------------------------------*/
 
-//FIXME: Category click, filter blogs
 //FIXME: Like clicked, like a blog
 //FIXME: Bookmark clicked, save blog to user favs
 //FIXME: Store token in storage

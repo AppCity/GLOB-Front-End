@@ -34,7 +34,13 @@ const Sidebar = (props) => {
   });
 
   const categoryHandler = useCallback((value) => {
-    console.log("Category Clicked", value);
+    if (state.category === value) {
+      dispatch(actions.setCategory(null));
+      dispatch(actions.getBlogs());
+    } else {
+      dispatch(actions.setCategory(value));
+      dispatch(actions.getBlogs(value));
+    }
   });
 
   const openMyBlogs = useCallback(() => router.push("/myblogs"));
@@ -134,6 +140,7 @@ const Sidebar = (props) => {
                     title={item.title}
                     image={item.image}
                     card
+                    active={state.category === item.value}
                     onClick={() => categoryHandler(item.value)}
                   />
                 );

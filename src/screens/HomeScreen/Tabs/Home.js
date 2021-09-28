@@ -20,12 +20,16 @@ const Home = ({ scroll = 0, setTab }) => {
 
   const router = useRouter();
 
-  const [categoryState, setCategoryState] = useState("technology");
   const [isSkeletonLoaded, setIsSkeletonLoaded] = useState(true);
 
   const categoryStateHandler = (value) => {
-    setCategoryState(value);
-    console.log("Category selected", value);
+    if (state.category === value) {
+      dispatch(actions.setCategory(null));
+      dispatch(actions.getBlogs());
+    } else {
+      dispatch(actions.setCategory(value));
+      dispatch(actions.getBlogs(value));
+    }
   };
 
   const userClickHandler = () => router.push("/settings");
@@ -38,7 +42,7 @@ const Home = ({ scroll = 0, setTab }) => {
   const openMyBlogs = useCallback(() => router.push("/myblogs"));
 
   useEffect(() => {
-    dispatch(actions.getBlogs("token"));
+    dispatch(actions.getBlogs());
     state.user && dispatch(actions.getUser(state.user.userId, state.token));
     state.user &&
       dispatch(actions.getUserBlogs(state.user.userId, state.token));
@@ -89,7 +93,7 @@ const Home = ({ scroll = 0, setTab }) => {
               return (
                 <Categories
                   title={item.title}
-                  active={item.value === categoryState}
+                  active={item.value === state.category}
                   onClick={() => categoryStateHandler(item.value)}
                 />
               );

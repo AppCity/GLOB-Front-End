@@ -88,6 +88,13 @@ export const clearData = () => {
   };
 };
 
+export const setCategory = (value) => {
+  return {
+    type: types.SET_CATEGORY,
+    payload: value,
+  };
+};
+
 //Middleware
 export const signup = (postData, callback) => {
   return async (dispatch) => {
@@ -166,12 +173,12 @@ export const logout = (token) => {
   };
 };
 
-export const getBlogs = (token) => {
+export const getBlogs = (category) => {
   return (dispatch) => {
     dispatch(setLoading(true));
 
     frontEndApi
-      .get(FRONTEND_ROUTES.blogs, { token })
+      .get(FRONTEND_ROUTES.blogs, { params: { category } })
       .then((resp) => {
         dispatch(setBlogs(resp.data));
       })

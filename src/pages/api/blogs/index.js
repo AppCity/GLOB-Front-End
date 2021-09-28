@@ -7,6 +7,7 @@ export default async function handler(req, res) {
     try {
       const token = req.query.token;
       const userId = req.query.userId;
+      const category = req.query.category;
 
       const headers = {
         Authorization: "Bearer " + token,
@@ -14,6 +15,7 @@ export default async function handler(req, res) {
 
       const params = {
         userId,
+        category,
       };
 
       const { status, data } = await backEndApi.get(BACKEND_ROUTES.blogs, {
