@@ -53,4 +53,35 @@ export default async function handler(req, res) {
       res.status(error.response.status).json(errorMessage);
     }
   }
+  //Like/Unlike Blog
+  if (req.method === "PUT") {
+    try {
+      const token = req.body.token;
+      const id = req.body.id;
+      const userId = req.body.userId;
+      const active = req.body.active;
+
+      const postData = {
+        id,
+        userId,
+        active,
+      };
+
+      const headers = {
+        Authorization: "Bearer " + token,
+      };
+
+      const { status, data } = await backEndApi.put(
+        BACKEND_ROUTES.blogs,
+        postData,
+        { headers }
+      );
+
+      res.status(status).json(data);
+    } catch (error) {
+      console.log("🚀 --- Create Blog --- error", error.response);
+      const errorMessage = error.response.data;
+      res.status(error.response.status).json(errorMessage);
+    }
+  }
 }

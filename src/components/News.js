@@ -3,9 +3,10 @@ import LikeIcon from "./Icons/LikeIcon";
 import ClockIcon from "./Icons/ClockIcon";
 import BookmarkIcon from "./Icons/BookmarkIcon";
 import { kFormatter, timeAgo } from "../helpers/helpers";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import { useRouter } from "next/router";
+import * as actions from "../store/actions/actions";
 
 const News = ({
   id = "",
@@ -17,11 +18,19 @@ const News = ({
   bookmarked = false,
 }) => {
   const state = useSelector((state) => state.glob);
+  const dispatch = useDispatch();
   const router = useRouter();
 
   const likeHandler = useCallback(() => {
     if (state.isUserLoggedIn) {
-      console.log("Like =>", id);
+      dispatch(
+        actions.blogLikeUnlike({
+          active: true,
+          blogId: id,
+          token: state.token,
+          userId: state.user.userId,
+        })
+      );
     } else {
       toast.error("Login to like a post");
     }
