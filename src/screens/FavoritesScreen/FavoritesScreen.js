@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { memo, useEffect, useMemo } from "react";
+import { memo, useEffect, useLayoutEffect, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import BlogsCard from "../../components/BlogsCard";
 import GradientText from "../../components/GradientText";
@@ -10,19 +10,18 @@ const FavoritesScreen = (props) => {
   const router = useRouter();
   const dispatch = useDispatch();
 
+  useLayoutEffect(() => {
+    dispatch(
+      actions.getFavoritesBlogs({
+        userId: state.user.userId,
+        token: state.token,
+      })
+    );
+  }, []);
+
   const openBlogHandler = (id) => router.push("/blogs/" + id);
 
-  const favorites = [];
-
-  useMemo(() =>
-    state.blogs.forEach((element) => {
-      state.user.favorites.forEach((fav) => {
-        if (fav === element.id) {
-          favorites.push(element);
-        }
-      });
-    })
-  );
+  const favorites = state.favoriteBlogs ?? [];
 
   if (!state.isUserLoggedIn) {
     router.push("/authentication");

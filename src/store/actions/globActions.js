@@ -95,6 +95,13 @@ export const setCategory = (value) => {
   };
 };
 
+export const setFavoritesBlogs = (value) => {
+  return {
+    type: types.SET_FAVORITES_BLOG,
+    payload: value,
+  };
+};
+
 //Middleware
 export const signup = (postData, callback) => {
   return async (dispatch) => {
@@ -405,6 +412,23 @@ export const updateBookmark = ({
       })
       .catch((err) => {
         toast.error("Unable to Bookmark blog");
+        console.log("error", err);
+      });
+    dispatch(setLoading(false));
+  };
+};
+
+export const getFavoritesBlogs = ({ userId, token }) => {
+  return async (dispatch) => {
+    dispatch(setLoading(true));
+
+    await frontEndApi
+      .get(FRONTEND_ROUTES.favorites, { params: { userId, token } })
+      .then((resp) => {
+        dispatch(setFavoritesBlogs(resp.data));
+      })
+      .catch((err) => {
+        toast.error("Unable to get favorites blogs");
         console.log("error", err);
       });
     dispatch(setLoading(false));
