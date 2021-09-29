@@ -6,6 +6,7 @@ export const FRONTEND_ROUTES = {
   user: "/user",
   categories: "/categories",
   favorites: "/favorites",
+  token: "/token",
 };
 
 export const BACKEND_ROUTES = {
@@ -16,4 +17,5 @@ export const BACKEND_ROUTES = {
   user: "/user",
   categories: "/categories",
   favorites: "/favorites",
+  token: "/token",
 };

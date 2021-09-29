@@ -17,6 +17,7 @@ const types = {
   CREATE_BLOG: "CREATE_BLOG",
   CLEAR_DATA: "CLEAR_DATA",
   SET_FAVORITES_BLOG: "SET_FAVORITES_BLOG",
+  REFRESH_TOKEN: "REFRESH_TOKEN",
 };
 
 export default types;

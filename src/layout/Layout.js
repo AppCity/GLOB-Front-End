@@ -18,10 +18,9 @@ const Layout = ({ children }) => {
 
   useLayoutEffect(() => {
     const token = localStorage.getItem("token");
-    console.log("🚀 --- useLayoutEffect --- token", token);
 
     if (token) {
-      dispatch(actions.setToken(token));
+      dispatch(actions.refreshToken({ token }));
     }
   }, []);
 

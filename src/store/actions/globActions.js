@@ -434,3 +434,33 @@ export const getFavoritesBlogs = ({ userId, token }) => {
     dispatch(setLoading(false));
   };
 };
+
+export const refreshToken = ({ token, callback }) => {
+  return async (dispatch) => {
+    dispatch(setLoading(true));
+
+    try {
+      const response = await frontEndApi.get(FRONTEND_ROUTES.token, {
+        params: { token },
+      });
+      toast.success("Login Successful");
+
+      dispatch(setIsUserLoggedIn(true));
+      dispatch(setToken(response.data.accessToken));
+      dispatch(setUser(response.data));
+
+      localStorage.setItem("token", response.data.accessToken);
+
+      callback && callback();
+    } catch (error) {
+      console.log("🚀 --- Login --- error", error.response.data.message[0]);
+      console.log("🚀 --- Login --- error", error.response.data.message);
+
+      const errorType = typeof error.response.data.message === Array;
+      console.log("🚀 --- Refresh --- errorType", errorType);
+
+      localStorage.removeItem("token");
+    }
+    dispatch(setLoading(false));
+  };
+};
