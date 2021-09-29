@@ -36,10 +36,10 @@ const Sidebar = (props) => {
   const categoryHandler = useCallback((value) => {
     if (state.category === value) {
       dispatch(actions.setCategory(null));
-      dispatch(actions.getBlogs());
+      dispatch(actions.getBlogs({ token: state.token }));
     } else {
       dispatch(actions.setCategory(value));
-      dispatch(actions.getBlogs(value));
+      dispatch(actions.getBlogs({ category: value, token: state.token }));
     }
   });
 

@@ -178,12 +178,12 @@ export const logout = (token) => {
   };
 };
 
-export const getBlogs = (category) => {
+export const getBlogs = ({ category, token }) => {
   return (dispatch) => {
     dispatch(setLoading(true));
 
     frontEndApi
-      .get(FRONTEND_ROUTES.blogs, { params: { category } })
+      .get(FRONTEND_ROUTES.blogs, { params: { category, token } })
       .then((resp) => {
         dispatch(setBlogs(resp.data));
       })
@@ -367,7 +367,7 @@ export const updateLike = ({ token, blogId, userId, active, callback }) => {
         if (resp.data.description) {
           toast.error(resp.data.description);
         }
-        dispatch(getBlogs());
+        dispatch(getBlogs({ token }));
       })
       .catch((err) => {
         toast.error("Unable to Like blog");
@@ -401,7 +401,7 @@ export const updateBookmark = ({
         if (resp.data.description) {
           toast.error(resp.data.description);
         }
-        dispatch(getBlogs());
+        dispatch(getBlogs({ token }));
       })
       .catch((err) => {
         toast.error("Unable to Bookmark blog");

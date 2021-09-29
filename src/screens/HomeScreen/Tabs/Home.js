@@ -25,10 +25,10 @@ const Home = ({ scroll = 0, setTab }) => {
   const categoryStateHandler = (value) => {
     if (state.category === value) {
       dispatch(actions.setCategory(null));
-      dispatch(actions.getBlogs());
+      dispatch(actions.getBlogs({ token: state.token }));
     } else {
       dispatch(actions.setCategory(value));
-      dispatch(actions.getBlogs(value));
+      dispatch(actions.getBlogs({ category: value, token: state.token }));
     }
   };
 
@@ -42,7 +42,7 @@ const Home = ({ scroll = 0, setTab }) => {
   const openMyBlogs = useCallback(() => router.push("/myblogs"));
 
   useEffect(() => {
-    dispatch(actions.getBlogs());
+    dispatch(actions.getBlogs({ token: state.token }));
     state.user && dispatch(actions.getUser(state.user.userId, state.token));
     state.user &&
       dispatch(actions.getUserBlogs(state.user.userId, state.token));

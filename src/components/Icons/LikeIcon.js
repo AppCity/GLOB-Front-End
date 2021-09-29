@@ -8,7 +8,7 @@ const LikeIcon = ({ css, size, active, onClick }) => {
   const toggle = () => setIsHover(!isHover);
   return (
     <div>
-      <SvgGradient id="likeGradient"/>
+      <SvgGradient id="likeGradient" />
       <svg
         version="1.1"
         id="Capa_1"
@@ -22,10 +22,10 @@ const LikeIcon = ({ css, size, active, onClick }) => {
         width={size ?? "30px"}
         className={`${css} cursor-pointer transform hover:scale-125 ${
           active && "scale-125 "
-        } transition-all ${!(active || isHover ) && "dark:fill-[white]"}`}
+        } transition-all ${!(active || isHover) && "dark:fill-[white]"}`}
         fill={active || isHover ? "url(#likeGradient)" : null}
         onClick={onClick}
-        onMouseEnter={toggle} 
+        onMouseEnter={toggle}
         onMouseLeave={toggle}
       >
         <g>

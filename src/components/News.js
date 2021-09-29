@@ -21,12 +21,13 @@ const News = ({
   const dispatch = useDispatch();
   const router = useRouter();
 
+  const checkStatus = state.blogs.find((item) => item.id === id);
+
   const likeHandler = useCallback(() => {
     if (state.isUserLoggedIn) {
-      //FIXME: Unlike when already liked check
       dispatch(
         actions.updateLike({
-          active: true,
+          active: checkStatus.activeLike ? false : true,
           blogId: id,
           token: state.token,
           userId: state.user.userId,
@@ -39,10 +40,9 @@ const News = ({
 
   const bookmarkHandler = useCallback(() => {
     if (state.isUserLoggedIn) {
-      //FIXME: remove favorite when already liked check
       dispatch(
         actions.updateBookmark({
-          favorite: true,
+          favorite: checkStatus.activeFavorite ? false : true,
           blogId: id,
           token: state.token,
           userId: state.user.userId,
@@ -83,6 +83,7 @@ const News = ({
             size="12"
             css="sm:w-[16px] sm:h-[16px] lg:w-[20px] lg:h-[20px]"
             onClick={likeHandler}
+            active={checkStatus.activeLike}
           />
           <span className="text-xs sm:text-base lg:text-xl ">
             {kFormatter(likes)}
@@ -104,7 +105,7 @@ const News = ({
             onClick={bookmarkHandler}
             size="12"
             css="sm:w-[16px] sm:h-[16px] lg:w-[20px] lg:h-[20px]"
-            active={bookmarked}
+            active={checkStatus.activeFavorite}
           />
         </div>
       </div>
