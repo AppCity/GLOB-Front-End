@@ -104,7 +104,7 @@ const Sidebar = (props) => {
       )}
       {state.isUserLoggedIn && (
         <div className="flex flex-col text-xs text-gray-500 dark:text-gray-200 font-thin px-5 space-y-2 mt-1">
-          {state.user.website && (
+          {state.user?.website && (
             <div className="flex space-x-2">
               <LinkIcon size="15" />
               <span className="cursor-pointer">{state.user.website}</span>
@@ -113,13 +113,14 @@ const Sidebar = (props) => {
           <div className="flex space-x-2">
             <GroupIcon size="15" />
             <span>
-              {state.user.dailyReaders.toLocaleString()} daily readers
+              {state.user?.dailyReaders.toLocaleString()} daily readers
             </span>
           </div>
           <div className="flex space-x-2">
             <DocsIcon size="15" />
             <span>
-              {state.user.publishedArticles.toLocaleString()} published articles
+              {state.user?.publishedArticles.toLocaleString()} published
+              articles
             </span>
           </div>
         </div>

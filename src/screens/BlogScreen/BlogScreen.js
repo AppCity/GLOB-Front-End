@@ -210,12 +210,13 @@ const BlogScreen = (props) => {
   const checkIfUserBlog = () => {
     setIsUserBlog(false);
 
-    state.userBlogs.forEach((item) => {
-      if (item.userId === state.blog?.userId) {
-        setIsUserBlog(true);
-        return;
-      }
-    });
+    state.userBlogs &&
+      state.userBlogs.forEach((item) => {
+        if (item.userId === state.blog?.userId) {
+          setIsUserBlog(true);
+          return;
+        }
+      });
   };
 
   const editHandler = () => {
@@ -287,7 +288,7 @@ const BlogScreen = (props) => {
             height={400}
             objectFit="cover"
             className="rounded-lg shadow-lg"
-            onLoad={() => setSkeletonLoading(false)}
+            onLoad={() => setTimeout(() => setSkeletonLoading(false), 1000)}
           />
         )}
 

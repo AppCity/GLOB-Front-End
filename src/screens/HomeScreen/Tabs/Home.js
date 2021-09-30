@@ -110,7 +110,12 @@ const Home = ({ scroll = 0, setTab }) => {
     <div className="flex w-full flex-col">
       <div className="flex flex-col space-y-3 w-full ">
         <span className="text-gray-500 dark:text-white">Latest News</span>
-        {state.blogs.length > 0 ? newsUi : blogsSkeleton}
+        {state.isLoading && blogsSkeleton}
+        {!state.isLoading && state.blogs.length > 0 ? (
+          newsUi
+        ) : (
+          <span className="text-xl">No Blogs found</span>
+        )}
       </div>
     </div>
   );
@@ -234,8 +239,12 @@ const Home = ({ scroll = 0, setTab }) => {
           </div>
         )}
         <span className="text-grey dark:text-bg">Latest News</span>
-
-        {state.blogs.length > 0 ? newsUi : blogsSkeleton}
+        {state.isLoading && blogsSkeleton}
+        {!state.isLoading && state.blogs.length > 0 ? (
+          newsUi
+        ) : (
+          <span className="text-xl">No Blogs found</span>
+        )}
       </div>
     </div>
   );

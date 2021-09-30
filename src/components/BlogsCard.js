@@ -7,7 +7,8 @@ import MenuButton from "./MenuButton";
 const BlogsCard = ({ id = "", image = "", title = "", onClick = () => {} }) => {
   const state = useSelector((state) => state.glob);
 
-  const showMenu = state.userBlogs.find((item) => item.id === id);
+  const showMenu =
+    state.userBlogs && state.userBlogs.find((item) => item.id === id);
 
   return (
     <div className="flex flex-col items-center py-5 my-5 relative">
