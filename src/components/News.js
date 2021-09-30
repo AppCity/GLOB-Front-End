@@ -36,7 +36,7 @@ const News = ({
     } else {
       toast.error("Login to like a post");
     }
-  }, [id]);
+  }, [id, checkStatus.activeLike]);
 
   const bookmarkHandler = useCallback(() => {
     if (state.isUserLoggedIn) {
@@ -51,7 +51,7 @@ const News = ({
     } else {
       toast.error("Login to bookmark a post");
     }
-  }, [id]);
+  }, [id, checkStatus.activeFavorite]);
 
   const newsHandler = useCallback(() => router.push("/blogs/" + id), [id]);
 

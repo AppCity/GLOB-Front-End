@@ -2,6 +2,6 @@
     TASKS:
 ------------------------------------------------------------*/
 
-//FIXME: Use token on refresh or call refresh token if expired
 //FIXME: Infinite scrolling
 //FIXME: Image upload for blog, user
+//FIXME: Keyboard entry

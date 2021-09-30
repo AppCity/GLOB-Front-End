@@ -2,7 +2,7 @@ import { useState } from "react";
 import Proptypes from "prop-types";
 import SvgGradient from "./SvgGradient";
 
-const LikeIcon = ({ css, size, active, onClick }) => {
+const LikeIcon = ({ css, size, active, onClick, id }) => {
   const [isHover, setIsHover] = useState(false);
 
   const toggle = () => setIsHover(!isHover);
@@ -22,8 +22,9 @@ const LikeIcon = ({ css, size, active, onClick }) => {
         width={size ?? "30px"}
         className={`${css} cursor-pointer transform hover:scale-125 ${
           active && "scale-125 "
-        } transition-all ${!(active || isHover) && "dark:fill-[white]"}`}
-        fill={active || isHover ? "url(#likeGradient)" : null}
+        } transition-all ${!(active || isHover) && "dark:fill-[white]"} 
+        ${active || isHover ? "fill-[#FF0F91]" : ""} `}
+        // fill={active || isHover ? "url(#likeGradient)" : null}
         onClick={onClick}
         onMouseEnter={toggle}
         onMouseLeave={toggle}
