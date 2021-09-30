@@ -208,6 +208,10 @@ const SettingsScreen = (props) => {
     if (!state.isUserLoggedIn) {
       router.push("/authentication");
     }
+
+    return () => {
+      dispatch(actions.setCategory(null));
+    };
   }, []);
 
   const avatarSkeleton = <Skeleton width={240} height={240} circle />;

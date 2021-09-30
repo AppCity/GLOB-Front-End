@@ -19,6 +19,12 @@ const FavoritesScreen = (props) => {
     );
   }, []);
 
+  useEffect(() => {
+    return () => {
+      dispatch(actions.setCategory(null));
+    };
+  }, []);
+
   const openBlogHandler = (id) => router.push("/blogs/" + id);
 
   const favorites = state.favoriteBlogs ?? [];

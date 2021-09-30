@@ -154,6 +154,10 @@ const BlogScreen = (props) => {
 
   useEffect(() => {
     dispatch(actions.getBlog(blogId));
+
+    return () => {
+      dispatch(actions.setCategory(null));
+    };
   }, []);
 
   useEffect(() => {

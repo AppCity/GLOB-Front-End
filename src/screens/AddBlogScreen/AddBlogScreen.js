@@ -149,6 +149,12 @@ const AddBlogScreen = (props) => {
     return <></>;
   }
 
+  useEffect(() => {
+    return () => {
+      dispatch(actions.setCategory(null));
+    };
+  }, []);
+
   return (
     <div className="flex w-full h-full mt-24 z-10 p-5 flex-col items-center space-y-5 smd:ml-16 smd:mr-[216px] md:ml-16 md:mr-[264px] xl:mr-[295px] mb-20 smd:mb-0 md:mb-0">
       <GradientText customCss="text-3xl sm:text-4xl md:text-5xl font-extrabold">

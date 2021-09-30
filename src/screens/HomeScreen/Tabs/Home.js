@@ -46,6 +46,10 @@ const Home = ({ scroll = 0, setTab }) => {
     state.user && dispatch(actions.getUser(state.user.userId, state.token));
     state.user &&
       dispatch(actions.getUserBlogs(state.user.userId, state.token));
+
+    return () => {
+      dispatch(actions.setCategory(null));
+    };
   }, []);
 
   //Mobile/Desktop - News
