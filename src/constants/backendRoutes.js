@@ -7,6 +7,7 @@ export const FRONTEND_ROUTES = {
   categories: "/categories",
   favorites: "/favorites",
   token: "/token",
+  images: "/images",
 };
 
 export const BACKEND_ROUTES = {
@@ -18,4 +19,5 @@ export const BACKEND_ROUTES = {
   categories: "/categories",
   favorites: "/favorites",
   token: "/token",
+  images: "/images",
 };

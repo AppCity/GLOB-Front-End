@@ -469,3 +469,32 @@ export const refreshToken = ({ token, callback }) => {
     dispatch(setLoading(false));
   };
 };
+
+export const editUserImage = ({ token, file, userId }) => {
+  return async (dispatch) => {
+    dispatch(setLoading(true));
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("userId", userId);
+
+    await frontEndApi
+      .post(FRONTEND_ROUTES.images, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        params: {
+          token,
+        },
+      })
+      .then((resp) => {
+        console.log("🚀 --- .then --- resp", resp.data);
+        dispatch(getUser(userId, token));
+      })
+      .catch((err) => {
+        toast.error("Unable to Upload User Image");
+        console.log("error", err);
+      });
+    dispatch(setLoading(false));
+  };
+};

@@ -32,6 +32,8 @@ const SettingsScreen = (props) => {
     state.user?.profileImage ?? avatar
   );
 
+  const [uploadImage, setUploadImage] = useState(null);
+
   const [data, setData] = useState({
     username: {
       value: state.user?.username,
@@ -116,10 +118,17 @@ const SettingsScreen = (props) => {
         email: data.email.value,
         website: data.website.value,
         phone: data.phone.value,
-        profileImage: avatar, //FIXME: FIx image later
+        // profileImage: avatar, //FIXME: FIx image later
       };
 
       dispatch(actions.editUser(state.token, putData));
+      dispatch(
+        actions.editUserImage({
+          token: state.token,
+          file: uploadImage,
+          userId: state.user.userId,
+        })
+      );
     }
   };
 
@@ -163,29 +172,25 @@ const SettingsScreen = (props) => {
 
   const uploadImageHandler = async (e, type) => {
     dispatch(actions.setLoading(true));
-
     const file = e.target.files[0];
     console.log("🚀 --- uploadImageHandler --- file", file);
     try {
       if (file) {
         const extn = file.name.split(".").pop();
-
         //Check if file is .png || .jpg || .jpeg
         if (extn !== "png" && extn !== "jpg" && extn !== "jpeg") {
           toast.error("Only images allowed");
           uploadLogoRef.current.value = null;
           return;
         }
-
         setLocalImage(URL.createObjectURL(file));
+        setUploadImage(file);
 
-        const formData = new FormData();
-        formData.append("file", file);
-        console.log("🚀 --- uploadImageHandler --- formData", formData);
-
+        // const formData = new FormData();
+        // formData.append("file", file);
+        // console.log("🚀 --- uploadImageHandler --- formData", formData);
         // formData.append("customer_id", state.customer.id);
         // formData.append("type", type);
-
         // const response = await nextAPI.post("/upload/image", formData, {
         //   headers: {
         //     "Content-Type": "multipart/form-data",
@@ -196,7 +201,6 @@ const SettingsScreen = (props) => {
       console.log("🚀 --- uploadImageHandler --- error", error);
       toast.error("Image upload failed");
     }
-
     //Remove file from memory after upload
     // uploadLogoRef.current.value = null;
     dispatch(actions.setLoading(false));
@@ -237,28 +241,24 @@ const SettingsScreen = (props) => {
         >
           {isSkeletonLoaded && avatarSkeleton}
 
-          {localImage && (
-            <Image
-              src={localImage}
-              layout="intrinsic"
-              objectFit="cover"
-              width={400}
-              height={400}
-              alt="Profile Image"
-              // onClick={() => {
-              //   editMode && chooseFile();
-              // }}
-              unoptimized
-              onLoad={() => setTimeout(() => setIsSkeletonLoaded(false), 1000)}
-            />
-          )}
+          <Image
+            src={localImage}
+            layout="intrinsic"
+            objectFit="cover"
+            width={400}
+            height={400}
+            alt="Profile Image"
+            unoptimized
+            onLoad={() => setTimeout(() => setIsSkeletonLoaded(false), 1000)}
+          />
+
           <input
             type="file"
             name="file"
             ref={uploadLogoRef}
             id="uploadLogo"
             className="hidden"
-            onChange={(e) => uploadImageHandler(e, "logo")}
+            onChange={uploadImageHandler}
             accept="image/png, image/jpeg, image/jpg"
           />
         </div>
@@ -321,8 +321,8 @@ const SettingsScreen = (props) => {
           showLabel
         />
 
-        <div className="flex flex-col w-40 space-y-5">
-          {/* {localImage && (
+        {/* <div className="flex flex-col w-40 space-y-5">
+           {localImage && (
             <div className="flex h-40 bg-blue-200 shadow-xl rounded-md overflow-hidden">
               <Image
                 src={localImage}
@@ -333,11 +333,11 @@ const SettingsScreen = (props) => {
                 height={200}
               />
             </div>
-          )} */}
-          {/* <TextButton
+          )} 
+          <TextButton
             title="Upload an Image"
             customCss="text-lg"
-          /> */}
+          /> 
           <span></span>
           <input
             type="file"
@@ -348,7 +348,7 @@ const SettingsScreen = (props) => {
             // onChange={(e) => uploadImageHandler(e, "logo")}
             accept="image/png, image/jpeg, image/jpg"
           />
-        </div>
+        </div> */}
       </div>
 
       <div className="flex space-x-10">
