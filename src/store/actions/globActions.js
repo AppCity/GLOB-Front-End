@@ -172,6 +172,9 @@ export const logout = (token) => {
       .then((resp) => {
         dispatch(setToken(null));
         dispatch(setIsUserLoggedIn(false));
+        dispatch(setFavoritesBlogs(null));
+        dispatch(getBlogs({ category: null, token: null }));
+
         toast.success("Logged out successfully");
       })
       .catch((err) => {

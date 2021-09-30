@@ -166,6 +166,7 @@ const SignInScreen = (props) => {
         value={data.password.value}
         error={!data.password.isValid && data.password.touched}
         onChange={(val) => dataHandler("password", val)}
+        onClick={() => login()}
       />
 
       <Button title="Login" disabled={!data.isFormValid} onClick={login} />

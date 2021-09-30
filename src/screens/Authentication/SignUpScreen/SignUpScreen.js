@@ -218,6 +218,7 @@ const SignUpScreen = (props) => {
             value={data.password.value}
             error={!data.password.isValid && data.password.touched}
             onChange={(val) => dataHandler("password", val)}
+            onClick={() => register()}
           />
         </div>
       </Scrollbar>

@@ -34,6 +34,7 @@ const Input = ({
   editMode = true,
   textCss = "",
   showLabel = false,
+  onClick = () => {},
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showBorder, setShowBorder] = useState(false);
@@ -80,6 +81,7 @@ const Input = ({
           autoFocus={autoFocus}
           autoCapitalize={autoCapitalize ? "on" : "off"}
           disabled={!editMode}
+          onKeyPress={onClick}
         />
 
         <div
