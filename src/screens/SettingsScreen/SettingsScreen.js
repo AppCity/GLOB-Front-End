@@ -173,7 +173,6 @@ const SettingsScreen = (props) => {
   const uploadImageHandler = async (e, type) => {
     dispatch(actions.setLoading(true));
     const file = e.target.files[0];
-    console.log("🚀 --- uploadImageHandler --- file", file);
     try {
       if (file) {
         const extn = file.name.split(".").pop();
@@ -185,17 +184,6 @@ const SettingsScreen = (props) => {
         }
         setLocalImage(URL.createObjectURL(file));
         setUploadImage(file);
-
-        // const formData = new FormData();
-        // formData.append("file", file);
-        // console.log("🚀 --- uploadImageHandler --- formData", formData);
-        // formData.append("customer_id", state.customer.id);
-        // formData.append("type", type);
-        // const response = await nextAPI.post("/upload/image", formData, {
-        //   headers: {
-        //     "Content-Type": "multipart/form-data",
-        //   },
-        // });
       }
     } catch (error) {
       console.log("🚀 --- uploadImageHandler --- error", error);

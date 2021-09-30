@@ -165,7 +165,7 @@ const Home = ({ scroll = 0, setTab }) => {
             <div className="flex w-full">
               <div className="flex flex-col text-gray-600 dark:text-white h-24 space-y-5 top-24 ">
                 <span className="text-2xl">
-                  Hey <GradientText>{state.user.username}!</GradientText>
+                  Hey <GradientText>{state.user?.username}!</GradientText>
                 </span>
                 <span className="text-5xl font-extrabold">What’s Next?</span>
               </div>
@@ -200,7 +200,7 @@ const Home = ({ scroll = 0, setTab }) => {
           <div className="flex flex-col">
             <div className="flex flex-col text-gray-600 dark:text-white h-24 space-y-2">
               <span className="text-xl">
-                Hey <GradientText>{state.user.username}!</GradientText>
+                Hey <GradientText>{state.user?.username}!</GradientText>
               </span>
               <span className="text-4xl font-extrabold">What’s Next?</span>
             </div>

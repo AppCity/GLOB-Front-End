@@ -475,7 +475,7 @@ export const editUserImage = ({ token, file, userId }) => {
     dispatch(setLoading(true));
 
     const formData = new FormData();
-    formData.append("file", file);
+    formData.append("image", file);
     formData.append("userId", userId);
 
     await frontEndApi
