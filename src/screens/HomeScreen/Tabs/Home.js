@@ -35,8 +35,7 @@ const Home = ({ scroll = 0, setTab }) => {
   const userClickHandler = () => router.push("/settings");
 
   const openBlogHandler = useCallback((id) => {
-    console.log("🚀 --- openBlogHandler --- id", id);
-    // router.push("/blogs/" + id);
+    router.push("/blogs/" + id);
   });
 
   const openMyBlogs = useCallback(() => router.push("/myblogs"));

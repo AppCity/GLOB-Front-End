@@ -1,15 +1,16 @@
 import { useRouter } from "next/router";
 import { memo, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import BlogsCard from "../../components/BlogsCard";
 import GradientText from "../../components/GradientText";
+import * as actions from "../../store/actions/actions";
 
 const MyBlogsScreen = (props) => {
   const state = useSelector((state) => state.glob);
+  const dispatch = useDispatch();
   const router = useRouter();
 
   const openBlogHandler = (id) => {
-    console.log("openBlogHandler");
     router.push("/blogs/" + id);
   };
 
@@ -45,6 +46,7 @@ const MyBlogsScreen = (props) => {
                   title={item.title}
                   onClick={() => openBlogHandler(item.id)}
                   menuClickHandler={menuClickHandler}
+                  id={item.id}
                 />
               );
             })}

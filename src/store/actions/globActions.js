@@ -333,7 +333,7 @@ export const createBlog = (token, postData, callback) => {
   };
 };
 
-export const deleteBlog = (blogId, token, callback) => {
+export const deleteBlog = (blogId, token, callback, userId) => {
   return async (dispatch) => {
     dispatch(setLoading(true));
 
@@ -342,10 +342,10 @@ export const deleteBlog = (blogId, token, callback) => {
         params: { id: blogId, token },
       })
       .then((resp) => {
+        dispatch(getUserBlogs(userId, token));
         if (callback) {
           callback();
         }
-        // console.log("Delete Blog =>", resp.data);
       })
       .catch((err) => {
         toast.error("Unable to Delete blog");

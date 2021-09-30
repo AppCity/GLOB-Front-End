@@ -5,15 +5,18 @@ import DeleteIcon from "./Icons/DeleteIcon";
 
 import SvgGradient from "./Icons/SvgGradient";
 import { useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
+import * as actions from "../store/actions/actions";
 
 const MenuButton = ({ size, css, id }) => {
   const router = useRouter();
+  const state = useSelector((state) => state.glob);
+  const dispatch = useDispatch();
 
   const [isHover, setIsHover] = useState(false);
   const toggle = () => setIsHover(!isHover);
 
   const editHandler = () => {
-    console.log("edit clicked", id);
     router.push({
       pathname: "/blogs/" + id,
       query: { id, editMode: true },
@@ -21,7 +24,8 @@ const MenuButton = ({ size, css, id }) => {
   };
 
   const deleteHandler = () => {
-    console.log("deleteHandler", id);
+    const callback = () => router.push("/");
+    dispatch(actions.deleteBlog(id, state.token, callback, state.user.userId));
   };
 
   return (
@@ -37,13 +41,13 @@ const MenuButton = ({ size, css, id }) => {
               xmlns="http://www.w3.org/2000/svg"
               height={size ?? "30px"}
               width={size ?? "30px"}
-              fill={open || isHover ? "url(#menuVerticalGradient)" : "#dbdfe3"}
+              fill={open || isHover ? "#FF0F91" : "#dbdfe3"}
               //   onClick={onClick}
               onMouseEnter={toggle}
               onMouseLeave={toggle}
               className={`${css} cursor-pointer transform hover:scale-125 ${
-                open && "animate-bounceLarge"
-              } transition-all`}
+                open && "animate-bounceLarge fill-[#FF0F91]"
+              } transition-all `}
             >
               <path d="m303.347 18.875c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138c25.166-25.167 65.97-25.167 91.138 0" />
               <path d="m303.347 212.209c25.167 25.167 25.167 65.971 0 91.138s-65.971 25.167-91.138 0-25.167-65.971 0-91.138c25.166-25.167 65.97-25.167 91.138 0" />

@@ -255,7 +255,9 @@ const BlogScreen = (props) => {
 
   const deleteHandler = () => {
     const callback = () => router.push("/");
-    dispatch(actions.deleteBlog(blogId, state.token, callback));
+    dispatch(
+      actions.deleteBlog(blogId, state.token, callback, state.user.userId)
+    );
   };
 
   return (
