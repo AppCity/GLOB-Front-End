@@ -346,6 +346,8 @@ export const deleteBlog = (blogId, token, callback, userId) => {
       })
       .then((resp) => {
         dispatch(getUserBlogs(userId, token));
+        dispatch(getBlogs({ token, category: null }));
+
         if (callback) {
           callback();
         }
