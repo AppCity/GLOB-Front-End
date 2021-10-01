@@ -1,10 +1,14 @@
-import { backEndApi } from "../../api/axios";
-import { BACKEND_ROUTES } from "../../constants/backendRoutes";
 //Formidable
 import { IncomingForm } from "formidable";
-import FormData from "form-data";
-const fs = require("fs");
-//FIXME: Not working
+let cloudinary = require("cloudinary").v2;
+
+// Cloudinary Config
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
 //Disable default parser
 export const config = {
   api: {
@@ -13,7 +17,7 @@ export const config = {
 };
 
 export default async function handler(req, res) {
-  //   parse form with a Promise wrapper
+  // Parse form with a Promise wrapper
   const clientForm = await new Promise((resolve, reject) => {
     const form = new IncomingForm();
 
@@ -24,56 +28,40 @@ export default async function handler(req, res) {
   });
 
   const file = clientForm?.files?.image;
-
   const userId = clientForm?.fields?.userId;
+  const blogId = clientForm?.fields?.blogId;
+  const folder = clientForm?.fields?.folder;
   const fileName = file.name.split(".").shift();
   const extn = "." + file.name.split(".").pop();
   const filePath = file.path;
-  const destFileName =
-    userId +
-    "/" +
-    fileName +
-    //"_" +new Date().toISOString().replace(/\s+/g, "_") +
-    extn;
 
-  // var stats = fs.statSync(filePath);
-  // console.log("is file ? " + stats.isFile());
-  // console.log("is directory ? " + stats.isDirectory());
-  const form = new FormData();
-
-  // form.append("image", file);
-  form.append("userId", userId);
-  form.append("image", fs.createReadStream(filePath));
-  // form.append(
-  //   "image",
-  //   fs.createReadStream(filePath, {
-  //     encoding: "binary",
-  //   })
-  // );
+  let public_id = userId;
+  if (blogId) {
+    public_id = blogId;
+  }
 
   //Upload Image
   try {
-    const token = req.query.token;
-    // const form = req.body;
-
-    const headers = {
-      Authorization: "Bearer " + token,
-      "Content-Type": "multipart/form-data",
-    };
-
-    const { status, data } = await backEndApi.post(
-      BACKEND_ROUTES.images,
-      form,
-      { headers }
+    cloudinary.uploader.upload(
+      filePath,
+      {
+        resource_type: "image",
+        public_id: public_id,
+        overwrite: true,
+        folder: folder,
+      },
+      function (error, result) {
+        if (error) {
+          // console.log("ERROR Image Upload==>", { error });
+          return res.status(422).json(error);
+        } else {
+          // console.log("SUCCESS==>", result);
+          res.status(200).json({ imageUrl: result.url });
+        }
+      }
     );
-
-    console.log("🚀 --- handler --- data", data);
-
-    res.status(status).json(data);
   } catch (error) {
-    console.log("🚀 --- Update User Image --- error", error);
-    // console.log("🚀 --- Update User Image --- error", error.response);
-    const errorMessage = error.response.data;
-    res.status(error.response.status).json(errorMessage);
+    // console.log("🚀 --- Update User Image --- error", error);
+    res.status(422).json(error);
   }
 }

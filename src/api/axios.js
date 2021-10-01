@@ -1,6 +1,8 @@
 import axios from "axios";
 
-let FRONT_END_BASE_URL, BACK_END_BASE_URL;
+let FRONT_END_BASE_URL;
+let BACK_END_BASE_URL = process.env.BACKEND_BASE_URL;
+
 const HEADERS = {
   Accept: "application/json, text/plain, */*",
   "Content-Type": "application/json",
@@ -9,11 +11,9 @@ const HEADERS = {
 if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
   // Development
   FRONT_END_BASE_URL = process.env.NEXT_PUBLIC_LOCALHOST;
-  BACK_END_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_DEVELOPMENT;
 } else {
   // Production
   FRONT_END_BASE_URL = process.env.NEXT_PUBLIC_FRONTEND_BASE_URL;
-  BACK_END_BASE_URL = process.env.BACKEND_BASE_URL;
 }
 
 export const frontEndApi = axios.create({

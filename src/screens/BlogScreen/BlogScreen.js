@@ -98,24 +98,26 @@ const BlogScreen = (props) => {
   };
 
   const saveBlog = async () => {
+    const imageUrl = await dispatch(
+      actions.uploadImage({
+        file: uploadImage,
+        userId: state.user.userId,
+        blogId: blogId,
+        folder: "blogs",
+      })
+    );
+
     const putData = {
       ...state.blog,
       title: data.title.value,
       headline: data.headline.value,
       content: data.content.value,
       category: data.category.value,
+      image: imageUrl,
     };
+
     toggleEditMode();
     await dispatch(actions.editBlog(blogId, state.token, putData));
-    await dispatch(
-      actions.uploadImage({
-        token: state.token,
-        file: uploadImage,
-        userId: state.user.userId,
-        blogId: blogId,
-      })
-    );
-
     await dispatch(actions.getBlog(blogId));
     await dispatch(actions.getUserBlogs(state.user.userId, state.token));
   };

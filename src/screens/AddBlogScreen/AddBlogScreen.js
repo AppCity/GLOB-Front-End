@@ -18,6 +18,7 @@ const AddBlogScreen = (props) => {
   const router = useRouter();
   const uploadLogoRef = useRef();
   const [localImage, setLocalImage] = useState();
+  const [uploadImage, setUploadImage] = useState(null);
 
   const [data, setData] = useState({
     title: {
@@ -85,13 +86,22 @@ const AddBlogScreen = (props) => {
     setData(currentState);
   };
 
-  const creatBlogHandler = () => {
+  const creatBlogHandler = async () => {
+    const imageUrl = await dispatch(
+      actions.uploadImage({
+        file: uploadImage,
+        userId: state.user.userId,
+        blogId: new Date(),
+        folder: "blogs/new",
+      })
+    );
+
     const postData = {
       title: data.title.value,
       headline: data.headline.value,
       content: data.content.value,
       category: data.category.value,
-      image: blogImage,
+      image: imageUrl,
     };
 
     const callback = () => router.push("/");
@@ -99,50 +109,31 @@ const AddBlogScreen = (props) => {
     dispatch(actions.createBlog(state.token, postData, callback));
   };
 
-  const uploadImageHandler = async (e, type) => {
+  const uploadImageHandler = async (e) => {
     dispatch(actions.setLoading(true));
-
     const file = e.target.files[0];
-    console.log("🚀 --- uploadImageHandler --- file", file);
     try {
       if (file) {
         const extn = file.name.split(".").pop();
-
         //Check if file is .png || .jpg || .jpeg
         if (extn !== "png" && extn !== "jpg" && extn !== "jpeg") {
           toast.error("Only images allowed");
           uploadLogoRef.current.value = null;
           return;
         }
-
         setLocalImage(URL.createObjectURL(file));
-
-        const formData = new FormData();
-        formData.append("file", file);
-        console.log("🚀 --- uploadImageHandler --- formData", formData);
-
-        // formData.append("customer_id", state.customer.id);
-        // formData.append("type", type);
-
-        // const response = await nextAPI.post("/upload/image", formData, {
-        //   headers: {
-        //     "Content-Type": "multipart/form-data",
-        //   },
-        // });
+        setUploadImage(file);
       }
     } catch (error) {
       console.log("🚀 --- uploadImageHandler --- error", error);
       toast.error("Image upload failed");
     }
-
     //Remove file from memory after upload
     // uploadLogoRef.current.value = null;
     dispatch(actions.setLoading(false));
   };
 
-  const chooseFile = () => {
-    uploadLogoRef.current.click();
-  };
+  const chooseFile = () => uploadLogoRef.current.click();
 
   if (!state.isUserLoggedIn) {
     router.push("/authentication");

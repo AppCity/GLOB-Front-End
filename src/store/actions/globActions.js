@@ -471,34 +471,27 @@ export const refreshToken = ({ token, callback }) => {
   };
 };
 
-export const uploadImage = ({ token, file, userId, blogId }) => {
+export const uploadImage = ({ file, userId, blogId, folder }) => {
   return async (dispatch) => {
     dispatch(setLoading(true));
 
     const formData = new FormData();
     formData.append("image", file);
+    formData.append("folder", folder);
     formData.append("userId", userId);
     blogId && formData.append("blogId", blogId);
 
-    console.log("process.env.BACKEND_BASE_URL", process.env.BACKEND_BASE_URL);
-
-    await backEndApi
-      .post(BACKEND_ROUTES.images, formData, {
-        //FRONTEND_ROUTES.images
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: "Bearer " + token,
-        },
-        // params: { token },
-      })
-      .then((resp) => {
-        console.log("🚀 --- .then --- resp", resp.data);
-        dispatch(getUser(userId, token));
-      })
-      .catch((err) => {
-        toast.error("Unable to Upload User Image");
-        console.log("error", err);
+    try {
+      const {
+        data: { imageUrl },
+      } = await frontEndApi.post(FRONTEND_ROUTES.images, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
       });
+      return imageUrl;
+    } catch (error) {
+      toast.error("Unable to Upload User Image");
+      console.log("error", error);
+    }
     dispatch(setLoading(false));
   };
 };

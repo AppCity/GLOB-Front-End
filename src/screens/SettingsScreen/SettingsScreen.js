@@ -108,9 +108,17 @@ const SettingsScreen = (props) => {
     setData(currentState);
   };
 
-  const editHandler = () => {
+  const editHandler = async () => {
     toggleEditMode();
     if (editMode) {
+      const imageUrl = await dispatch(
+        actions.uploadImage({
+          file: uploadImage,
+          userId: state.user.userId,
+          folder: "users",
+        })
+      );
+
       const putData = {
         userId: state.user.userId,
         username: data.username.value,
@@ -118,16 +126,10 @@ const SettingsScreen = (props) => {
         email: data.email.value,
         website: data.website.value,
         phone: data.phone.value,
+        profileImage: imageUrl,
       };
 
       dispatch(actions.editUser(state.token, putData));
-      dispatch(
-        actions.uploadImage({
-          token: state.token,
-          file: uploadImage,
-          userId: state.user.userId,
-        })
-      );
     }
   };
 
