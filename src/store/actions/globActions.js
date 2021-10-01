@@ -206,7 +206,7 @@ export const getBlogs = ({ category, token }) => {
   };
 };
 
-export const getBlog = (id, callback) => {
+export const getBlog = (id) => {
   return async (dispatch) => {
     dispatch(setLoading(true));
 
@@ -214,7 +214,6 @@ export const getBlog = (id, callback) => {
       .get(FRONTEND_ROUTES.blogs + "/" + id)
       .then((resp) => {
         dispatch(setBlog(resp.data));
-        callback && callback();
       })
       .catch((err) => {
         toast.error("Unable to get blog");

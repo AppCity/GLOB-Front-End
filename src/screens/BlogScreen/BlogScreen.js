@@ -116,9 +116,8 @@ const BlogScreen = (props) => {
       })
     );
 
-    const callback = () =>
-      dispatch(actions.getUserBlogs(state.user.userId, state.token));
-    await dispatch(actions.getBlog(blogId, callback));
+    await dispatch(actions.getBlog(blogId));
+    await dispatch(actions.getUserBlogs(state.user.userId, state.token));
   };
 
   const uploadImageHandler = async (e) => {
