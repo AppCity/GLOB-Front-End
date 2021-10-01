@@ -39,6 +39,13 @@ const Input = ({
   const [showPassword, setShowPassword] = useState(false);
   const [showBorder, setShowBorder] = useState(false);
 
+  const onKeyDown = (e) => {
+    //When enter key is pressed
+    if (e.key === "Enter") {
+      onClick();
+    }
+  };
+
   return (
     <div className="flex flex-col w-full">
       <label
@@ -81,7 +88,7 @@ const Input = ({
           autoFocus={autoFocus}
           autoCapitalize={autoCapitalize ? "on" : "off"}
           disabled={!editMode}
-          onKeyPress={onClick}
+          onKeyDown={onKeyDown} //FIXME:Not good
         />
 
         <div

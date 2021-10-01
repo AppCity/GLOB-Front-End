@@ -18,7 +18,8 @@
     "prod": "next start",
     "build:prod": "next build && next start",
     "kill": "npx kill-port 3000",
-    "git": "npx git config --local user.name 'Santhosh' && npx git config --local user.email 'santhosh.umapathi@app-city.co'"
+    "git": "npx git config --local user.name 'Santhosh' && npx git config --local user.email 'santhosh.umapathi@app-city.co'",
+    "mac": "npx open -n -a /Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome --args --user-data-dir='/tmp/chrome_dev_test' --disable-web-security && react-scripts start"
   },
   "dependencies": {
     "@headlessui/react": "^1.4.1",
