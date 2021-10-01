@@ -118,7 +118,6 @@ const SettingsScreen = (props) => {
         email: data.email.value,
         website: data.website.value,
         phone: data.phone.value,
-        // profileImage: avatar, //FIXME: FIx image later
       };
 
       dispatch(actions.editUser(state.token, putData));
@@ -170,7 +169,7 @@ const SettingsScreen = (props) => {
     setLocalImage(state.user?.profileImage ?? avatar);
   };
 
-  const uploadImageHandler = async (e, type) => {
+  const uploadImageHandler = async (e) => {
     dispatch(actions.setLoading(true));
     const file = e.target.files[0];
     try {

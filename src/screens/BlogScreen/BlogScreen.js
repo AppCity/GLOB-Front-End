@@ -25,6 +25,7 @@ const BlogScreen = (props) => {
   const [editMode, setEditMode] = useState(router.query.editMode ?? false);
   const [isUserBlog, setIsUserBlog] = useState(false);
   const [skeletonLoading, setSkeletonLoading] = useState(true);
+  const [uploadImage, setUploadImage] = useState(null);
 
   const blogId = router.query.id;
 
@@ -96,55 +97,49 @@ const BlogScreen = (props) => {
     setData(currentState);
   };
 
-  const saveBlog = () => {
+  const saveBlog = async () => {
     const putData = {
       ...state.blog,
       title: data.title.value,
       headline: data.headline.value,
       content: data.content.value,
       category: data.category.value,
-      // image: localImage,//FIXME: Fix later
     };
     toggleEditMode();
-    dispatch(actions.editBlog(blogId, state.token, putData));
+    await dispatch(actions.editBlog(blogId, state.token, putData));
+    await dispatch(
+      actions.uploadImage({
+        token: state.token,
+        file: uploadImage,
+        userId: state.user.userId,
+        blogId: blogId,
+      })
+    );
+
+    const callback = () =>
+      dispatch(actions.getUserBlogs(state.user.userId, state.token));
+    await dispatch(actions.getBlog(blogId, callback));
   };
 
-  const uploadImageHandler = async (e, type) => {
+  const uploadImageHandler = async (e) => {
     dispatch(actions.setLoading(true));
-
     const file = e.target.files[0];
-    console.log("🚀 --- uploadImageHandler --- file", file);
     try {
       if (file) {
         const extn = file.name.split(".").pop();
-
         //Check if file is .png || .jpg || .jpeg
         if (extn !== "png" && extn !== "jpg" && extn !== "jpeg") {
           toast.error("Only images allowed");
           uploadLogoRef.current.value = null;
           return;
         }
-
         setLocalImage(URL.createObjectURL(file));
-
-        const formData = new FormData();
-        formData.append("file", file);
-        console.log("🚀 --- uploadImageHandler --- formData", formData);
-
-        // formData.append("customer_id", state.customer.id);
-        // formData.append("type", type);
-
-        // const response = await nextAPI.post("/upload/image", formData, {
-        //   headers: {
-        //     "Content-Type": "multipart/form-data",
-        //   },
-        // });
+        setUploadImage(file);
       }
     } catch (error) {
       console.log("🚀 --- uploadImageHandler --- error", error);
       toast.error("Image upload failed");
     }
-
     //Remove file from memory after upload
     // uploadLogoRef.current.value = null;
     dispatch(actions.setLoading(false));
@@ -252,6 +247,7 @@ const BlogScreen = (props) => {
       },
       isFormValid: false,
     });
+    setLocalImage(state.blog?.image);
   };
 
   const deleteHandler = () => {
@@ -280,14 +276,15 @@ const BlogScreen = (props) => {
       </div>
 
       <div className="flex flex-col w-full space-y-10 shadow-sm dark:bg-black dark:bg-opacity-30 bg-white bg-opacity-30 rounded-xl p-5 z-40">
-        {state.blog && state.blog.image && (
+        {state.blog && localImage && (
           <Image
-            src={state.blog.image}
+            src={localImage}
             layout="intrinsic"
             width={400}
             height={400}
             objectFit="cover"
             className="rounded-lg shadow-lg"
+            unoptimized
             onLoad={() => setTimeout(() => setSkeletonLoading(false), 1000)}
           />
         )}

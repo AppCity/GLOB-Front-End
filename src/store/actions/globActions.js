@@ -206,7 +206,7 @@ export const getBlogs = ({ category, token }) => {
   };
 };
 
-export const getBlog = (id) => {
+export const getBlog = (id, callback) => {
   return async (dispatch) => {
     dispatch(setLoading(true));
 
@@ -214,6 +214,7 @@ export const getBlog = (id) => {
       .get(FRONTEND_ROUTES.blogs + "/" + id)
       .then((resp) => {
         dispatch(setBlog(resp.data));
+        callback && callback();
       })
       .catch((err) => {
         toast.error("Unable to get blog");
@@ -479,6 +480,8 @@ export const uploadImage = ({ token, file, userId, blogId }) => {
     formData.append("image", file);
     formData.append("userId", userId);
     blogId && formData.append("blogId", blogId);
+
+    console.log("process.env.BACKEND_BASE_URL", process.env.BACKEND_BASE_URL);
 
     await backEndApi
       .post(BACKEND_ROUTES.images, formData, {
