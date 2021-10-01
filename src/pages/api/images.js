@@ -4,7 +4,7 @@ import { BACKEND_ROUTES } from "../../constants/backendRoutes";
 import { IncomingForm } from "formidable";
 import FormData from "form-data";
 const fs = require("fs");
-
+//FIXME: Not working
 //Disable default parser
 export const config = {
   api: {
@@ -24,6 +24,7 @@ export default async function handler(req, res) {
   });
 
   const file = clientForm?.files?.image;
+
   const userId = clientForm?.fields?.userId;
   const fileName = file.name.split(".").shift();
   const extn = "." + file.name.split(".").pop();
@@ -35,11 +36,20 @@ export default async function handler(req, res) {
     //"_" +new Date().toISOString().replace(/\s+/g, "_") +
     extn;
 
+  // var stats = fs.statSync(filePath);
+  // console.log("is file ? " + stats.isFile());
+  // console.log("is directory ? " + stats.isDirectory());
   const form = new FormData();
 
   // form.append("image", file);
   form.append("userId", userId);
   form.append("image", fs.createReadStream(filePath));
+  // form.append(
+  //   "image",
+  //   fs.createReadStream(filePath, {
+  //     encoding: "binary",
+  //   })
+  // );
 
   //Upload Image
   try {
@@ -61,8 +71,7 @@ export default async function handler(req, res) {
 
     res.status(status).json(data);
   } catch (error) {
-    console.log("🚀 --- Update User Image --- error", error.response.data);
-
+    console.log("🚀 --- Update User Image --- error", error);
     // console.log("🚀 --- Update User Image --- error", error.response);
     const errorMessage = error.response.data;
     res.status(error.response.status).json(errorMessage);

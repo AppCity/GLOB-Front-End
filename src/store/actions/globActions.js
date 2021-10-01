@@ -1,9 +1,10 @@
 import types from "../types";
 
 //Api
-import { frontEndApi } from "../../api/axios";
+import { backEndApi, frontEndApi } from "../../api/axios";
 import toast from "react-hot-toast";
-import { FRONTEND_ROUTES } from "../../constants/backendRoutes";
+import { BACKEND_ROUTES, FRONTEND_ROUTES } from "../../constants/backendRoutes";
+import axios from "axios";
 
 export const setLoading = (status) => {
   return {
@@ -470,22 +471,23 @@ export const refreshToken = ({ token, callback }) => {
   };
 };
 
-export const editUserImage = ({ token, file, userId }) => {
+export const uploadImage = ({ token, file, userId, blogId }) => {
   return async (dispatch) => {
     dispatch(setLoading(true));
 
     const formData = new FormData();
     formData.append("image", file);
     formData.append("userId", userId);
+    blogId && formData.append("blogId", blogId);
 
-    await frontEndApi
-      .post(FRONTEND_ROUTES.images, formData, {
+    await backEndApi
+      .post(BACKEND_ROUTES.images, formData, {
+        //FRONTEND_ROUTES.images
         headers: {
           "Content-Type": "multipart/form-data",
+          Authorization: "Bearer " + token,
         },
-        params: {
-          token,
-        },
+        // params: { token },
       })
       .then((resp) => {
         console.log("🚀 --- .then --- resp", resp.data);

@@ -123,7 +123,7 @@ const SettingsScreen = (props) => {
 
       dispatch(actions.editUser(state.token, putData));
       dispatch(
-        actions.editUserImage({
+        actions.uploadImage({
           token: state.token,
           file: uploadImage,
           userId: state.user.userId,
