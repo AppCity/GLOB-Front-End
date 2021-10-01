@@ -120,11 +120,11 @@ export const signup = (postData, callback) => {
 
       callback && callback();
     } catch (error) {
-      console.log("🚀 --- register --- error", error.response.data.message[0]);
-      console.log("🚀 --- register --- error", error.response.data.message);
+      // console.log("🚀 --- register --- error", error.response.data.message[0]);
+      // console.log("🚀 --- register --- error", error.response.data.message);
 
       const errorType = typeof error.response.data.message === Array;
-      console.log("🚀 --- register --- errorType", errorType);
+      // console.log("🚀 --- register --- errorType", errorType);
 
       toast.error(
         errorType ? error.response.data.message[0] : error.response.data.message
@@ -150,11 +150,11 @@ export const login = (postData, callback) => {
 
       callback && callback();
     } catch (error) {
-      console.log("🚀 --- Login --- error", error.response.data.message[0]);
-      console.log("🚀 --- Login --- error", error.response.data.message);
+      // console.log("🚀 --- Login --- error", error.response.data.message[0]);
+      // console.log("🚀 --- Login --- error", error.response.data.message);
 
       const errorType = typeof error.response.data.message === Array;
-      console.log("🚀 --- Login --- errorType", errorType);
+      // console.log("🚀 --- Login --- errorType", errorType);
 
       toast.error(
         errorType ? error.response.data.message[0] : error.response.data.message
@@ -180,7 +180,7 @@ export const logout = (token) => {
       })
       .catch((err) => {
         toast.error("Something went wrong");
-        console.log("error", err);
+        // console.log("error", err);
         // dispatch(setLoading(false))
       })
       .finally(() => {
@@ -200,7 +200,7 @@ export const getBlogs = ({ category, token }) => {
       })
       .catch((err) => {
         toast.error("Unable to get blogs");
-        console.log("error", err);
+        // console.log("error", err);
       });
     dispatch(setLoading(false));
   };
@@ -217,7 +217,7 @@ export const getBlog = (id) => {
       })
       .catch((err) => {
         toast.error("Unable to get blog");
-        console.log("error", err);
+        // console.log("error", err);
       })
       .finally(() => dispatch(setLoading(false)));
   };
@@ -234,7 +234,7 @@ export const getUser = (userId, token) => {
       })
       .catch((err) => {
         toast.error("Unable to get user");
-        console.log("error", err);
+        // console.log("error", err);
       });
     dispatch(setLoading(false));
   };
@@ -251,7 +251,7 @@ export const getUserBlogs = (userId, token) => {
       })
       .catch((err) => {
         toast.error("Unable to get user blogs");
-        console.log("error", err);
+        // console.log("error", err);
       });
     dispatch(setLoading(false));
   };
@@ -268,7 +268,7 @@ export const getCategories = (token) => {
       })
       .catch((err) => {
         toast.error("Unable to get categories");
-        console.log("error", err);
+        // console.log("error", err);
       })
       .finally(() => dispatch(setLoading(false)));
   };
@@ -288,7 +288,7 @@ export const editBlog = (blogId, token, putData) => {
       })
       .catch((err) => {
         toast.error("Unable to Edit blog");
-        console.log("error", err);
+        // console.log("error", err);
       })
       .finally(() => dispatch(setLoading(false)));
   };
@@ -308,7 +308,7 @@ export const editUser = (token, putData) => {
       })
       .catch((err) => {
         toast.error("Unable to Update user");
-        console.log("error", err);
+        // console.log("error", err);
       });
     dispatch(setLoading(false));
   };
@@ -331,7 +331,7 @@ export const createBlog = (token, postData, callback) => {
       })
       .catch((err) => {
         toast.error("Unable to Create Blog");
-        console.log("error", err);
+        // console.log("error", err);
       });
     dispatch(setLoading(false));
   };
@@ -355,7 +355,7 @@ export const deleteBlog = (blogId, token, callback, userId) => {
       })
       .catch((err) => {
         toast.error("Unable to Delete blog");
-        console.log("error", err);
+        // console.log("error", err);
       });
     dispatch(setLoading(false));
   };
@@ -373,7 +373,7 @@ export const updateLike = ({ token, blogId, userId, active, callback }) => {
         active,
       })
       .then((resp) => {
-        console.log("🚀 --- .then --- resp", resp.data.description);
+        // console.log("🚀 --- .then --- resp", resp.data.description);
         if (callback) {
           callback();
         }
@@ -384,7 +384,7 @@ export const updateLike = ({ token, blogId, userId, active, callback }) => {
       })
       .catch((err) => {
         toast.error("Unable to Like blog");
-        console.log("error", err);
+        // console.log("error", err);
       });
     dispatch(setLoading(false));
   };
@@ -418,7 +418,7 @@ export const updateBookmark = ({
       })
       .catch((err) => {
         toast.error("Unable to Bookmark blog");
-        console.log("error", err);
+        // console.log("error", err);
       });
     dispatch(setLoading(false));
   };
@@ -435,7 +435,7 @@ export const getFavoritesBlogs = ({ userId, token }) => {
       })
       .catch((err) => {
         toast.error("Unable to get favorites blogs");
-        console.log("error", err);
+        // console.log("error", err);
       });
     dispatch(setLoading(false));
   };
@@ -459,11 +459,11 @@ export const refreshToken = ({ token, callback }) => {
 
       callback && callback();
     } catch (error) {
-      console.log("🚀 --- Login --- error", error.response.data.message[0]);
-      console.log("🚀 --- Login --- error", error.response.data.message);
+      // console.log("🚀 --- Login --- error", error.response.data.message[0]);
+      // console.log("🚀 --- Login --- error", error.response.data.message);
 
       const errorType = typeof error.response.data.message === Array;
-      console.log("🚀 --- Refresh --- errorType", errorType);
+      // console.log("🚀 --- Refresh --- errorType", errorType);
 
       localStorage.removeItem("token");
     }
@@ -490,7 +490,7 @@ export const uploadImage = ({ file, userId, blogId, folder }) => {
       return imageUrl;
     } catch (error) {
       toast.error("Unable to Upload User Image");
-      console.log("error", error);
+      // console.log("error", error);
     }
     dispatch(setLoading(false));
   };

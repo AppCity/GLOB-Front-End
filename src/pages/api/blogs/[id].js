@@ -2,7 +2,7 @@ import { backEndApi } from "../../../api/axios";
 import { BACKEND_ROUTES } from "../../../constants/backendRoutes";
 
 export default async function handler(req, res) {
-  console.log("🚀 --- handler --- req", req.method);
+  // console.log("🚀 --- handler --- req", req.method);
   //Get blog
   if (req.method === "GET") {
     try {
@@ -18,7 +18,7 @@ export default async function handler(req, res) {
 
       res.status(status).json(data);
     } catch (error) {
-      console.log("🚀 --- Blog ID --- error", error.response);
+      // console.log("🚀 --- Blog ID --- error", error.response);
       const errorMessage = error.response.data;
       res.status(error.response.status).json(errorMessage);
     }
@@ -29,7 +29,7 @@ export default async function handler(req, res) {
       const payload = { ...req.body.data };
       const token = req.body.token;
 
-      console.log("🚀 --- handler --- payload", payload);
+      // console.log("🚀 --- handler --- payload", payload);
       // const id = req.body.id;
 
       // const data = blogs.find((item) => item.id === id);
@@ -44,7 +44,7 @@ export default async function handler(req, res) {
 
       res.status(status).json(data);
     } catch (error) {
-      console.log("🚀 --- Blog ID --- error", error.response);
+      // console.log("🚀 --- Blog ID --- error", error.response);
       const errorMessage = error.response.data;
       res.status(error.response.status).json(errorMessage);
     }
@@ -62,7 +62,7 @@ export default async function handler(req, res) {
 
       res.status(status).json(data);
     } catch (error) {
-      console.log("🚀 --- Delete blog --- error", error.response);
+      // console.log("🚀 --- Delete blog --- error", error.response);
       const errorMessage = error.response.data;
       res.status(error.response.status).json(errorMessage);
     }

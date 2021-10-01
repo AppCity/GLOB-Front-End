@@ -25,7 +25,7 @@ export default async function handler(req, res) {
 
       res.status(status).json(data);
     } catch (error) {
-      console.log("🚀 --- Blogs --- error", error.response);
+      // console.log("🚀 --- Blogs --- error", error.response);
       const errorMessage = error.response.data;
       res.status(error.response.status).json(errorMessage);
     }
@@ -48,7 +48,7 @@ export default async function handler(req, res) {
 
       res.status(status).json(data);
     } catch (error) {
-      console.log("🚀 --- Update Blog --- error", error.response);
+      // console.log("🚀 --- Update Blog --- error", error.response);
       const errorMessage = error.response.data;
       res.status(error.response.status).json(errorMessage);
     }
@@ -81,7 +81,7 @@ export default async function handler(req, res) {
 
       res.status(status).json(data);
     } catch (error) {
-      console.log("🚀 --- Update Blog --- error", error.response);
+      // console.log("🚀 --- Update Blog --- error", error.response);
       const errorMessage = error.response.data;
       res.status(error.response.status).json(errorMessage);
     }

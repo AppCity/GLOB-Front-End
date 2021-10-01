@@ -15,7 +15,7 @@ const MyBlogsScreen = (props) => {
   };
 
   const menuClickHandler = () => {
-    console.log("menuClickHandler");
+    // console.log("menuClickHandler");
   };
 
   if (!state.isUserLoggedIn) {

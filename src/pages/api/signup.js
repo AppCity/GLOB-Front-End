@@ -12,7 +12,7 @@ export default async function handler(req, res) {
 
     res.status(status).json(data);
   } catch (error) {
-    console.log("🚀 --- SignUp --- error", error.response);
+    // console.log("🚀 --- SignUp --- error", error.response);
     const errorMessage = error.response.data;
     res.status(error.response.status).json(errorMessage);
   }

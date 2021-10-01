@@ -18,7 +18,7 @@ export default async function handler(req, res) {
 
       res.status(status).json(data);
     } catch (error) {
-      console.log("🚀 --- User --- error", error.response);
+      // console.log("🚀 --- User --- error", error.response);
       const errorMessage = error.response.data;
       res.status(error.response.status).json(errorMessage);
     }
@@ -40,7 +40,7 @@ export default async function handler(req, res) {
 
       res.status(status).json(data);
     } catch (error) {
-      console.log("🚀 --- User Update error", error.response);
+      // console.log("🚀 --- User Update error", error.response);
       const errorMessage = error.response.data;
       res.status(error.response.status).json(errorMessage);
     }

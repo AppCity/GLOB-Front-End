@@ -187,7 +187,7 @@ const SettingsScreen = (props) => {
         setUploadImage(file);
       }
     } catch (error) {
-      console.log("🚀 --- uploadImageHandler --- error", error);
+      // console.log("🚀 --- uploadImageHandler --- error", error);
       toast.error("Image upload failed");
     }
     //Remove file from memory after upload
